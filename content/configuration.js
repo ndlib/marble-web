@@ -39,7 +39,7 @@ module.exports = {
     title: 'Digital Collections',
     author: 'ndlib',
     description: 'Notre Dame Digital Collections',
-    siteUrl: 'https://marble.library.nd.edu',
+    siteUrl: 'https://marble.nd.edu',
     // apis and embedded urls
     // universalViewerBaseURL: 'https://viewer-iiif.library.nd.edu/universalviewer/index.html',
 

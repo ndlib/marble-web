@@ -23,8 +23,7 @@ module.exports = {
           },
           production: {
             policy: [
-              { userAgent: '*', disallow: ['/'] },
-              // { userAgent: '*', allow: '/' },
+              { userAgent: '*', allow: '/' },
             ],
           },
         },

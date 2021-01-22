@@ -16,6 +16,7 @@ import dateImage from 'assets/images/date.jpg'
 import formatImage from 'assets/images/format.jpg'
 import campuslocationImage from 'assets/images/campus_location.jpg'
 import allImage from 'assets/images/all_items.jpg'
+import GoogleVerification from '/GoogleVerification'
 
 const IndexPage = ({ location }) => {
   const { t } = useTranslation()
@@ -111,6 +112,7 @@ const IndexPage = ({ location }) => {
 
         }
       </CardGroup>
+      <GoogleVerification />
     </React.Fragment>
   )
 }

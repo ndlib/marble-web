@@ -23,7 +23,7 @@ module.exports = {
           },
           production: {
             policy: [
-              { userAgent: '*', disallow: ['/search', '/user', '/mirador'] },
+              { userAgent: '*', disallow: ['/search', '/user', '/item/*/mirador'] },
             ],
           },
         },

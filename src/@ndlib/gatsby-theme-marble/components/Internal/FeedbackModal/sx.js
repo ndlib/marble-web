@@ -1,0 +1,41 @@
+module.exports = {
+  feedbackButton: {
+    '@media screen and (min-width: 620px)': {
+      position:'fixed',
+      bottom:'50vmin',
+      right:'-35px',
+      fontSize:'1.2em',
+      border:'0px solid black',
+      color:'#FFFFFF',
+      backgroundColor:'#002a43',
+      width:'8.3em',
+      height:'2.2em',
+      transform: 'rotate(-90deg)',
+      cursor: 'pointer',
+      borderRadius: '5px 5px 0px 0px',
+    },
+    '@media screen and (max-width: 619px)': {
+      position:'fixed',
+      display:'block',
+      bottom:'.2em',
+      right:'1em',
+      fontSize:'1.2em',
+      border:'0px solid black',
+      color: '#FFFFFF',
+      backgroundColor: '#002a43',
+      paddingTop: '5.em',
+      width: '8.3em',
+      height: '2.2em',
+      cursor: 'pointer',
+      borderRadius: '5px',
+    },
+  },
+  'ReactModal--ReactModal__Overlay ReactModal__Overlay--after-open': {
+    backgroundColor: '#000000',
+  },
+  frame: {
+    width: '500px',
+    height: 'auto',
+    resize: 'both',
+  },
+}

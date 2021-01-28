@@ -16,7 +16,7 @@
     "gatsby-plugin-typography": "^2.3.2",
     "gatsby-transformer-sharp": "^2.5.11",
     "lodash.merge": "^4.6.2",
-    "nock": "^13.0.6",
+
     "react": "16.11",
     "react-dom": "16.11",
     "typography": "^0.16.19"
@@ -47,6 +47,7 @@
     "jest": "^26.0.1",
     "jest-environment-enzyme": "^7.0.2",
     "jest-enzyme": "^7.0.2",
+    "nock": "^13.0.6",
     "prettier": "^2.0.5",
     "react-dev-utils": "^10.2.1"
   },

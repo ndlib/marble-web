@@ -1,6 +1,5 @@
 const configuration = require('./content/configuration')
 const s3BucketName = process.env.S3_DEST_BUCKET || ''
-const allowRobots = process.env.ALLOW_ROBOTS || 'false'
 
 module.exports = {
   siteMetadata: configuration.siteMetadata,
@@ -23,7 +22,7 @@ module.exports = {
             ],
           },
           production: {
-            policy: allowRobots === 'true' ? [
+            policy: configuration.siteMetadata.allowRobots === 'true' ? [
               { userAgent: '*', disallow: ['/search', '/user', '/item/*/mirador'] },
             ] : [
               { userAgent: '*', disallow: ['/'] },

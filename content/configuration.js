@@ -56,6 +56,7 @@ module.exports = {
     },
     userContentPath: userContentPath,
     pruneMetadataWithNoImages: true,
+    allowRobots: allowRobots,
     //
     languages: languages,
   },

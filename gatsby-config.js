@@ -22,14 +22,11 @@ module.exports = {
             ],
           },
           production: {
-            policy: [
+            policy: configuration.siteMetadata.allowRobots === 'true' ? [
               { userAgent: '*', disallow: ['/search', '/user', '/item/*/mirador'] },
+            ] : [
+              { userAgent: '*', disallow: ['/'] },
             ],
-            // policy: configuration.siteMetadata.allowRobots === 'true' ? [
-            //   { userAgent: '*', disallow: ['/search', '/user', '/item/*/mirador'] },
-            // ] : [
-            //   { userAgent: '*', disallow: ['/'] },
-            // ],
           },
         },
       },

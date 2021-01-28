@@ -15,16 +15,20 @@ const authClientIssuer = process.env.AUTH_CLIENT_ISSUER || ''
 const searchUrl = process.env.SEARCH_URL || ''
 const searchIndex = process.env.SEARCH_INDEX || ''
 const s3BucketName = process.env.S3_DEST_BUCKET || ''
+const allowRobots = process.env.ALLOW_ROBOTS || 'false'
+const iiifViewerUrl = process.env.IIIF_VIEWER_URL || ''
 
 console.table([
   { variable: 'SEARCH_INDEX:', value: searchIndex },
   { variable: 'SEARCH_URL:', value: searchUrl },
   { variable: 'GOOGLE_MAP_KEY:', value: googleMapKey },
   { variable: 'USER_CONTENT_PATH:', value: userContentPath },
+  { variable: 'IIIF_VIEWER_URL:', value: iiifViewerUrl },
   { variable: 'AUTH_CLIENT_URL:', value: authClientURL },
   { variable: 'AUTH_CLIENT_ID:', value: authClientClientId },
   { variable: 'AUTH_CLIENT_ISSUER:', value: authClientIssuer },
   { variable: 'S3_DEST_BUCKET:', value: s3BucketName },
+  { variable: 'ALLOW_ROBOTS', value: allowRobots },
 ])
 
 const themeColor = '#0A233F'

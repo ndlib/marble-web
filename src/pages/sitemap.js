@@ -5,7 +5,6 @@ import Layout from 'components/Layout'
 import Seo from 'components/Internal/Seo'
 import { BaseStyles } from 'theme-ui'
 import Link from 'components/Internal/Link'
-import miradorIcon from 'assets/icons/svg/mirador-24px.svg'
 
 export const AllPage = ({
   data,
@@ -32,23 +31,6 @@ export const AllPage = ({
             >
               {edge.node.title}
             </Link>
-            {
-              edge.node.display.toLowerCase() === 'manifest' ? (
-                <Link to={`${edge.node.slug}/mirador`}>
-                  <img
-                    src={miradorIcon}
-                    alt='Open in Mirador'
-                    style={{
-                      height: '16px',
-                      width: '16px',
-                      verticalAlign: 'text-bottom',
-                      display: 'inline',
-                    }}
-                  />
-                </Link>
-              ) : null
-
-            }
           </BaseStyles>
           <span>&nbsp;</span>
         </li>

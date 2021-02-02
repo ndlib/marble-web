@@ -17,7 +17,6 @@ const DataLayer = ({ title, description, author, image, url }) => {
       }
     </Helmet>
   )
-  
 }
 
 DataLayer.propTypes = {

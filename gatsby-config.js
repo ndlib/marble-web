@@ -22,12 +22,11 @@ module.exports = {
             ],
           },
           production: {
-            policy: [{ userAgent: '*', disallow: ['/search', '/user', '/item/*/mirador'] },],
-            // policy: configuration.siteMetadata.allowRobots === 'true' ? [
-            //   { userAgent: '*', disallow: ['/search', '/user', '/item/*/mirador'] },
-            // ] : [
-            //   { userAgent: '*', disallow: ['/'] },
-            // ],
+            policy: configuration.siteMetadata.allowRobots === 'true' ? [
+              { userAgent: '*', disallow: ['/search', '/user', '/item/*/mirador'] },
+            ] : [
+              { userAgent: '*', disallow: ['/'] },
+            ],
           },
         },
       },

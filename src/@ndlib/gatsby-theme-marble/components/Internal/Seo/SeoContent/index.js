@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import CanonicalLink from './CanonicalLink'
+import CanonicalLink from '@ndlib/gatsby-theme-marble/src/components/Internal/Seo/SeoContent/CanonicalLink'
 // import SchemaLink from './SchemaLink'
-import MetaTagGroup from './MetaTagGroup'
+import MetaTagGroup from '@ndlib/gatsby-theme-marble/src/components/Internal/Seo/SeoContent/MetaTagGroup'
 import DataLayer from './DataLayer'
-import { getOpenGraph, getTwitter } from './data'
+import { getOpenGraph, getTwitter } from '@ndlib/gatsby-theme-marble/src/components/Internal/Seo/SeoContent/data'
 
 export const SeoContent = ({
   title,
@@ -21,7 +21,6 @@ export const SeoContent = ({
 }) => {
   const openGraph = getOpenGraph(url, title, description, image)
   const twitter = getTwitter(author, title, description, image)
-  const dataLayer = createDataLayer(title, creator, image, description, url)
   const titleFix = title.includes('Mirador Viewer') ? title : `${title} | ${siteTitle}`
   let indexable = null
   if (noIndex === true) {
@@ -47,8 +46,7 @@ export const SeoContent = ({
       <CanonicalLink base={siteUrl} pathname={pathname} />
       <MetaTagGroup tags={openGraph} />
       <MetaTagGroup tags={twitter} />
-      <MetaTagGroup tags={dataLayer} />
-      <DataLayer title description author image url />
+      <DataLayer title={title} description={description} author={author} image={image} url={url} />
       {indexable}
     </React.Fragment>
   )

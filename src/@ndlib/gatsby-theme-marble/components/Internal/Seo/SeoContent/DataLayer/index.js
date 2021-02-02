@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
 const DataLayer = ({ title, description, author, image, url }) => {
-  let dataLayer = []
+  window.dataLayer = window.dataLayer || []
   return (
     <Helmet>
       {
-        dataLayer = dataLayer.push({
+        window.dataLayer.push({
           'name': title,
           'description': description,
           'creator': author,

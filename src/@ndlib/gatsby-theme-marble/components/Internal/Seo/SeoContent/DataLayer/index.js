@@ -17,12 +17,13 @@ const DataLayer = ({ title, description, author, image, url }) => {
       }
     </Helmet>
   )
+  
 }
 
 DataLayer.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  creator: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
 }

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { useState } from 'react'
-import ActionModal from 'components/Internal/ActionModal'
+import ActionModal from '@ndlib/gatsby-theme-marble/src/components/Internal/ActionModal'
 import FeedbackForm from '../FeedbackForm'
 import sx from './sx'
 

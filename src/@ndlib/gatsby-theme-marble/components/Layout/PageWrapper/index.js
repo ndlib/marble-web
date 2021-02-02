@@ -4,17 +4,17 @@ import SkipToMain from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWra
 import BrandingHeader from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWrapper/BrandingHeader'
 import NavigationHeader from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWrapper/NavigationHeader'
 import Footer from './Footer'
-import FeedbackModal from '../../Internal/FeedbackForm'
+import FeedbackModal from '../../Internal/FeedbackModal'
 
 const PageWrapper = ({ children, location }) => {
   return (
     <>
       <SkipToMain />
       <BrandingHeader />
-      <FeedbackModal />
       <NavigationHeader location={location} />
       {children}
       <Footer />
+      <FeedbackModal />
     </>
   )
 }

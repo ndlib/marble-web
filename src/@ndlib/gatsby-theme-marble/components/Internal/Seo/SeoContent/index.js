@@ -46,7 +46,7 @@ export const SeoContent = ({
       <CanonicalLink base={siteUrl} pathname={pathname} />
       <MetaTagGroup tags={openGraph} />
       <MetaTagGroup tags={twitter} />
-      <DataLayer title description author image url />
+      <DataLayer title={title} description={description} author={author} image={image} url={url} />
       {indexable}
     </React.Fragment>
   )

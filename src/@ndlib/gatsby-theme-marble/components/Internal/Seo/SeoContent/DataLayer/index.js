@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types'
 
 const DataLayer = ({ title, description, author, image, url }) => {
-  if (window) {
-    window.dataLayer.push({
-      'name': title,
-      'description': description,
-      'creator': author,
-      'image': image,
-      'url': url,
-    })
-  }
+  let dataLayer = []
+  dataLayer.push({
+    'name': title,
+    'description': description,
+    'creator': author,
+    'image': image,
+    'url': url,
+  })
   return null
 }
 

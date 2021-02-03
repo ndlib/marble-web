@@ -123,6 +123,14 @@ const Browse = ({ location }) => {
       label: 'Snite Museum of Art',
       target: '/search?campuslocation[0]=Snite%20Museum%20of%20Art',
     },
+    {
+      label: 'University Archives',
+      target: '/search?campuslocation[0]=University%20Archives',
+    },
+    {
+      label: 'General Collection, Hesburgh Libraries',
+      target: '/search?campuslocation[0]=General%20Collection%2C%20Hesburgh%20Libraries',
+    },
   ]
   return (
     <React.Fragment>

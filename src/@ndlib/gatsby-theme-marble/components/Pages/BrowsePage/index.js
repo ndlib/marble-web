@@ -157,7 +157,7 @@ const Browse = ({ location }) => {
         <Column>
           <div id='format'>
             <BaseStyles>
-              <h2>Browse By Format</h2>
+              <h2>Browse By Work Type</h2>
             </BaseStyles>
           </div>
         </Column>

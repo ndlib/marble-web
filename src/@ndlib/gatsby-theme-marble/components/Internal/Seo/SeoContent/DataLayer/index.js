@@ -1,22 +1,15 @@
-import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 
 const DataLayer = ({ title, description, author, image, url }) => {
   let dataLayer = []
-  return (
-    <Helmet>
-      {
-        dataLayer = dataLayer.push({
-          'name': title,
-          'description': description,
-          'creator': author,
-          'image': image,
-          'url': url,
-        })
-      }
-    </Helmet>
-  )
+  dataLayer.push({
+    'name': title,
+    'description': description,
+    'creator': author,
+    'image': image,
+    'url': url,
+  })
+  return null
 }
 
 DataLayer.propTypes = {

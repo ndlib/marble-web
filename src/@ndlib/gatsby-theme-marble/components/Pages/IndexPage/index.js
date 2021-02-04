@@ -72,7 +72,7 @@ const IndexPage = ({ location }) => {
         </Column>
         <Column>
           <BrowseBar
-            label='Format'
+            label='Work Type'
             target='/browse?scrollto=format'
             image={formatImage}
           />

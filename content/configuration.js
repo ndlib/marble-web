@@ -54,6 +54,14 @@ module.exports = {
       clientId: authClientClientId,
       issuer: authClientIssuer,
     },
+  //pageMetadata for dataLayer
+  pageMetadata: {
+    title: title,
+    author: author,
+    description: description,
+    image: image,
+    url: url,
+  },
     userContentPath: userContentPath,
     pruneMetadataWithNoImages: true,
     allowRobots: allowRobots,

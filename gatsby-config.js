@@ -3,6 +3,7 @@ const s3BucketName = process.env.S3_DEST_BUCKET || ''
 
 module.exports = {
   siteMetadata: configuration.siteMetadata,
+  pageMetadata: configuration.pageMetadata,
   plugins: [
     {
       resolve: '@ndlib/gatsby-theme-marble',
@@ -45,7 +46,16 @@ module.exports = {
       resolve: 'gatsby-plugin-google-tagmanager',
       options: {
         id: 'GTM-W3LR65V',
-        defaultDataLayer: { platform: 'gatsby' },
+        defaultDataLayer: function () {
+          return {
+            platform: 'gatsby',
+            title: configuration.pageMetadata.title,
+            author: configuration.pageMetadata.author,
+            description: configuration.pageMetadata.description,
+            image: configuration.pageMetadata.image,
+            url: configuration.pageMetadata.url,
+          }
+        },
         dataLayerName: 'schema',
       },
     },

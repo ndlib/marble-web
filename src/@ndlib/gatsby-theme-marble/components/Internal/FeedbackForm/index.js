@@ -121,7 +121,7 @@ export const FeedbackForm = ({ closeFunc }) => {
           />
           <TextArea
             id='feedback'
-            label='Tell us about your experience, ideas, questions, or issues related to the site. Alternatively, take our survey!'
+            label='Tell us about your experience, ideas, questions, or issues related to the site.'
             defaultValue=''
             onChange={(event) => {
               changeFeedback(event.target.value)

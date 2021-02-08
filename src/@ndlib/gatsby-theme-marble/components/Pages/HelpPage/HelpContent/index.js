@@ -8,13 +8,13 @@ import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import Menu from 'components/Shared/Menu'
 import FeedbackForm from 'components/Internal/FeedbackForm'
+import { navigate } from 'gatsby'
 
 const HelpContent = ({ location }) => {
   const { t } = useTranslation()
   const page = getPageName(location)
-  console.log(page)
   const feedbackForm = page === 'contactUs' ? (
-    <FeedbackForm /> ) : null
+    <FeedbackForm closeFunc={() => navigate(`/help`)} /> ) : null
   return (
     <Layout
       title={t(`text:helpPage.${page}.title`)}

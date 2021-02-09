@@ -7,6 +7,9 @@ import Footer from './Footer'
 import FeedbackModal from '../../Internal/FeedbackModal'
 
 const PageWrapper = ({ children, location }) => {
+  const noFeedbackModal = ['/help/contact-us']
+  const feedback = noFeedbackModal.includes(location.pathname) ? (
+    null) : <FeedbackModal />
   return (
     <>
       <SkipToMain />
@@ -14,7 +17,7 @@ const PageWrapper = ({ children, location }) => {
       <NavigationHeader location={location} />
       {children}
       <Footer />
-      <FeedbackModal />
+      {feedback}
     </>
   )
 }

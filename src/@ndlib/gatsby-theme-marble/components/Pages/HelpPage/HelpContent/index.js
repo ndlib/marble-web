@@ -7,10 +7,14 @@ import Seo from 'components/Internal/Seo'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import Menu from 'components/Shared/Menu'
+import FeedbackForm from 'components/Internal/FeedbackForm'
+import { navigate } from 'gatsby'
 
 const HelpContent = ({ location }) => {
   const { t } = useTranslation()
   const page = getPageName(location)
+  const feedbackForm = page === 'contactUs' ? (
+    <FeedbackForm closeFunc={() => navigate(`/help`)} /> ) : null
   return (
     <Layout
       title={t(`text:helpPage.${page}.title`)}
@@ -27,6 +31,7 @@ const HelpContent = ({ location }) => {
           </Column>
           <Column colSpan='4'>
             <div dangerouslySetInnerHTML={{ __html: t(`text:helpPage.${page}.text`) }} />
+            {feedbackForm}
           </Column>
         </MultiColumn>
       </BaseStyles>

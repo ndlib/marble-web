@@ -2,7 +2,8 @@ import merge from 'lodash.merge'
 import { theme } from '@ndlib/gatsby-theme-marble/src/gatsby-plugin-theme-ui'
 export default merge({}, theme, {
   colors: {
-    primary: ['#adc8ce', '#337684'],
+    primary: '#337684',
+    primaryWithOpacity: '#adc8ce',
     secondary: '#575656',
     attention: '#aa272f',
     highlight: '#fff190',

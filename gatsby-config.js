@@ -4,6 +4,14 @@ const s3BucketName = process.env.S3_DEST_BUCKET || ''
 module.exports = {
   siteMetadata: configuration.siteMetadata,
   plugins: [
+    'gatsby-transformer-marbleitem',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'standard',
+        path: 'content/json/standard',
+      },
+    },
     {
       resolve: '@ndlib/gatsby-theme-marble',
       options: {

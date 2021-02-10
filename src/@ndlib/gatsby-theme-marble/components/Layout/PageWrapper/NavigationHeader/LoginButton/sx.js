@@ -14,7 +14,7 @@ module.exports = {
     width: ['auto', 'auto', 'auto'],
   },
   link: {
-    color: 'primaryWhiteText',
+    color: 'primaryLightText',
     display: 'inline-block',
     fontFamily: 'menu',
     fontSize: ['20px', '18px', '18px'],
@@ -24,7 +24,7 @@ module.exports = {
     textDecoration: 'none',
   },
   imageLink: {
-    color: 'primaryWhiteText',
+    color: 'primaryLightText',
     display: 'inline-block',
     fontFamily: 'menu',
     fontSize: '20px',
@@ -48,7 +48,7 @@ module.exports = {
       borderTop: 'none',
     },
     backgroundColor: '#0C2340ee',
-    color: 'primaryWhiteText',
+    color: 'primaryLightText',
     borderTop: '1px solid',
     borderColor: 'primaryText',
     cursor: 'pointer',

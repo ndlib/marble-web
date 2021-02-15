@@ -25,6 +25,7 @@ const IndexPage = ({ location }) => {
       query {
         allMarbleItem(filter: {marbleId: {in: [
         "005096943",
+        "BPP1001_EAD",
         "1951.004.015",
         "002097132",
         "2008.039.002",
@@ -56,7 +57,6 @@ const IndexPage = ({ location }) => {
     `,
   )
   const { nodes } = allMarbleItem
-
   return (
     <React.Fragment>
       <BaseStyles>

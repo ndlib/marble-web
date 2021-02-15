@@ -12,6 +12,13 @@ module.exports = {
         path: 'content/json/standard',
       },
     },
+    // {
+    //   resolve: 'gatsby-source-appsync-marble-standard',
+    //   options: {
+    //     url: 'XXXXXX',
+    //     key: 'XXXXXX',
+    //   },
+    // },
     {
       resolve: '@ndlib/gatsby-theme-marble',
       options: {
@@ -22,7 +29,7 @@ module.exports = {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: configuration.siteMetadata.siteUrl,
-        sitemap: `${configuration.siteMetadata.siteUrl}/sitemap.xml`,
+        sitemap: configuration.siteMetadata.siteUrl + '/sitemap.xml',
         env: {
           development: {
             policy: [
@@ -40,11 +47,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: configuration.manifest,
     },
     {
-      resolve: `gatsby-plugin-s3`,
+      resolve: 'gatsby-plugin-s3',
       options: {
         bucketName: s3BucketName,
       },

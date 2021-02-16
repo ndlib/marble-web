@@ -6,7 +6,7 @@ export const createData = ({ body, successFunc, errorFunc }) => {
     (url),
     {
       method: 'POST',
-      mode: 'cors',
+      mode: 'no-cors',
       body: JSON.stringify(body),
     })
     .then(result => {

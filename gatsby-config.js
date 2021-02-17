@@ -1,5 +1,6 @@
 const configuration = require('./content/configuration')
 const s3BucketName = process.env.S3_DEST_BUCKET || ''
+const contentPath = 'content'
 
 module.exports = {
   siteMetadata: configuration.siteMetadata,
@@ -10,6 +11,14 @@ module.exports = {
       options: {
         name: 'standard',
         path: 'content/json/standard',
+      },
+    },
+    'gatsby-transformer-json',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'menu',
+        path: `${contentPath}/json/menus`,
       },
     },
     // {

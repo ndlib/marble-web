@@ -12,6 +12,14 @@ module.exports = {
         path: 'content/json/standard',
       },
     },
+    'gatsby-transformer-json',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'menu',
+        path: `${contentPath}/json/menus`,
+      },
+    },
     // {
     //   resolve: 'gatsby-source-appsync-marble-standard',
     //   options: {

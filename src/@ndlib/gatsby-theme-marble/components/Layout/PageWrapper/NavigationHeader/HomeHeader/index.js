@@ -10,7 +10,7 @@ import ndLogo from '@ndlib/gatsby-theme-marble/src/assets/logos/ND_mark_white.sv
 import marbleLogo from '@ndlib/gatsby-theme-marble/src/assets/logos/Marble.Logo.svg'
 import sx from './sx'
 import HeroBackground from '../HeroBackground'
-import WordMark from '../WordMark'
+import WordMark from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWrapper/NavigationHeader/WordMark'
 
 export const HomeHeader = ({ location }) => {
   return (

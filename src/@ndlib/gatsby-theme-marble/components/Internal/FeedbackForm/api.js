@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-const url = 'https://nddev.service-now.com/api/uond/anonymous_incident'
+const url = 'https://nd.service-now.com/api/uond/anonymous_incident'
 
 export const createData = ({ body, successFunc, errorFunc }) => {
   fetch(

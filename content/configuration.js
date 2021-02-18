@@ -31,12 +31,6 @@ console.table([
   { variable: 'ALLOW_ROBOTS', value: allowRobots },
 ])
 
-const themeColor = '#0A233F'
-const languages = {
-  default: 'en',
-  allowed: ['en'],
-}
-
 module.exports = {
   // siteMetadata
   siteMetadata: {
@@ -58,19 +52,9 @@ module.exports = {
     pruneMetadataWithNoImages: true,
     allowRobots: allowRobots,
     //
-    languages: languages,
+    languages: {
+      default: 'en',
+      allowed: ['en'],
+    },
   },
-
-  // manifest
-  manifest: {
-    name: 'Digital Collections',
-    short_name: 'Digital Collections',
-    start_url: '/',
-    background_color: themeColor,
-    theme_color: themeColor,
-    display: 'minimal-ui',
-    icon: 'content/images/manifestLogo.png',
-  },
-
-  // layouts
 }

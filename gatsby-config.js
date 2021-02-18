@@ -6,13 +6,6 @@ module.exports = {
   siteMetadata: configuration.siteMetadata,
   plugins: [
     'gatsby-transformer-marbleitem',
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'standard',
-        path: 'content/json/standard',
-      },
-    },
     'gatsby-transformer-json',
     {
       resolve: 'gatsby-source-filesystem',
@@ -21,13 +14,13 @@ module.exports = {
         path: `${contentPath}/json/menus`,
       },
     },
-    // {
-    //   resolve: 'gatsby-source-appsync-marble-standard',
-    //   options: {
-    //     url: 'XXXXXX',
-    //     key: 'XXXXXX',
-    //   },
-    // },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'standard',
+        path: 'content/json/standard',
+      },
+    },
     {
       resolve: '@ndlib/gatsby-theme-marble',
       options: {
@@ -47,7 +40,7 @@ module.exports = {
           },
           production: {
             policy: configuration.siteMetadata.allowRobots === 'true' ? [
-              { userAgent: '*', disallow: ['/search', '/user', '/item/*/mirador'] },
+              { userAgent: '*', disallow: ['/search', '/user'] },
             ] : [
               { userAgent: '*', disallow: ['/'] },
             ],
@@ -57,7 +50,15 @@ module.exports = {
     },
     {
       resolve: 'gatsby-plugin-manifest',
-      options: configuration.manifest,
+      options: {
+        name: 'Digital Collections',
+        short_name: 'Digital Collections',
+        start_url: '/',
+        background_color: '#0A233F',
+        theme_color: '#0A233F',
+        display: 'minimal-ui',
+        icon: 'content/images/manifestLogo.png',
+      },
     },
     {
       resolve: 'gatsby-plugin-s3',

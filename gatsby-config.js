@@ -57,7 +57,7 @@ module.exports = {
         background_color: '#0A233F',
         theme_color: '#0A233F',
         display: 'minimal-ui',
-        icon: 'content/images/manifestLogo.png',
+        // icon: 'content/images/manifestLogo.png',
       },
     },
     {

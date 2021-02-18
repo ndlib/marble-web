@@ -69,6 +69,7 @@ module.exports = {
     background_color: themeColor,
     theme_color: themeColor,
     display: 'minimal-ui',
+    icon: 'content/images/manifestLogo.png',
   },
 
   // layouts

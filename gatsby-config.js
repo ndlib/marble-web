@@ -48,18 +48,18 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        name: 'Digital Collections',
-        short_name: 'Digital Collections',
-        start_url: '/',
-        background_color: '#0A233F',
-        theme_color: '#0A233F',
-        display: 'minimal-ui',
-        // icon: 'content/images/manifestLogo.png',
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-manifest',
+    //   options: {
+    //     name: 'Digital Collections',
+    //     short_name: 'Digital Collections',
+    //     start_url: '/',
+    //     background_color: '#0A233F',
+    //     theme_color: '#0A233F',
+    //     display: 'minimal-ui',
+    //     icon: 'content/images/manifestLogo.png',
+    //   },
+    // },
     {
       resolve: 'gatsby-plugin-s3',
       options: {

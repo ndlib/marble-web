@@ -93,5 +93,8 @@
       "node_modules",
       "src"
     ]
+  },
+  "peerDependencies": {
+    "graphql": "^15.5.0"
   }
 }

@@ -1,6 +1,5 @@
 const configuration = require('./content/configuration')
 const s3BucketName = process.env.S3_DEST_BUCKET || ''
-const contentPath = 'content'
 
 module.exports = {
   siteMetadata: configuration.siteMetadata,
@@ -11,7 +10,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'menu',
-        path: `${contentPath}/json/menus`,
+        path: 'content/json/menus',
       },
     },
     {
@@ -48,18 +47,18 @@ module.exports = {
         },
       },
     },
-    // {
-    //   resolve: 'gatsby-plugin-manifest',
-    //   options: {
-    //     name: 'Digital Collections',
-    //     short_name: 'Digital Collections',
-    //     start_url: '/',
-    //     background_color: '#0A233F',
-    //     theme_color: '#0A233F',
-    //     display: 'minimal-ui',
-    //     icon: 'content/images/manifestLogo.png',
-    //   },
-    // },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Digital Collections',
+        short_name: 'Digital Collections',
+        start_url: '/',
+        background_color: '#0A233F',
+        theme_color: '#0A233F',
+        display: 'minimal-ui',
+        icon: path.join(__dirname, 'content/images/manifestLogo.png'),
+      },
+    },
     {
       resolve: 'gatsby-plugin-s3',
       options: {

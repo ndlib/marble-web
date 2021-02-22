@@ -32,6 +32,7 @@ const BetaModal = () => {
           </p>
           <input name='notAgain' type='checkbox' checked={localStorage.getItem('seenWarning')} onChange={e => handleChange(e)} /><label>Do not show this again</label>
         </div>
+        <div>&nbsp;</div>
         <MaterialButton
           onClick={() => {
             handleCloseModal()

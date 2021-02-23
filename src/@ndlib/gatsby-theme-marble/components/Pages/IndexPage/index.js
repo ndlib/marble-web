@@ -59,6 +59,7 @@ const IndexPage = ({ location }) => {
   const { nodes } = allMarbleItem
   return (
     <React.Fragment>
+      <p dangerouslySetInnerHTML={{__html: t('common:hompageDescriptive')}} />
       <BaseStyles>
         <h2>{t('common:search.browseBy')}</h2>
       </BaseStyles>

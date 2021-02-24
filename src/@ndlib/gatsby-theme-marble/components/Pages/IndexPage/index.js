@@ -60,6 +60,7 @@ const IndexPage = ({ location }) => {
   return (
     <React.Fragment>
       <BaseStyles>
+        <p dangerouslySetInnerHTML={{ __html: t('common:hompageDescriptive')}} />
         <h2>{t('common:search.browseBy')}</h2>
       </BaseStyles>
       <MultiColumn columns='4'>

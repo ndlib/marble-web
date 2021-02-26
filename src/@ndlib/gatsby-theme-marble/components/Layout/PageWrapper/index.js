@@ -10,7 +10,7 @@ const PageWrapper = ({ children, location }) => {
   const noFeedbackModal = ['/help/contact-us']
   const feedback = noFeedbackModal.includes(location.pathname) ? (
     null) : <FeedbackModal />
-  let seenWarning
+  let seenWarning = true
   if (typeof window !== 'undefined' && location.pathname === '/') {
     seenWarning = localStorage.getItem('seenWarning')
   }

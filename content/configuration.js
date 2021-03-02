@@ -55,6 +55,8 @@ module.exports = {
     userContentPath: userContentPath,
     pruneMetadataWithNoImages: true,
     allowRobots: allowRobots,
+    sourceGraphQlUrl: sourceGraphQlUrl,
+    graphQlKey: graphQlKey,
     //
     languages: {
       default: 'en',

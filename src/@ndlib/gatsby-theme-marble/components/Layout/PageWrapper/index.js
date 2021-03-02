@@ -13,6 +13,8 @@ const PageWrapper = ({ children, location }) => {
   let seenWarning
   if (typeof window !== 'undefined' && location.pathname === '/') {
     seenWarning = localStorage.getItem('seenWarning')
+  } else {
+    seenWarning = true
   }
   const betaPopup = seenWarning ? (
     null) : <BetaModal />

@@ -8,11 +8,19 @@ import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Internal/M
 const BetaModal = () => {
   const [settingsOpen, setSettingsOpen] = useState(true)
   const handleChange = (e) => {
-    localStorage.setItem('seenWarning', e)
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('seenWarning', e)
+    }
   }
   const handleCloseModal = () => {
     setSettingsOpen(false)
+  }
 
+  const checkSeenWarning = () => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('seenWarning')
+    }
+    return false
   }
 
   return (
@@ -30,7 +38,7 @@ const BetaModal = () => {
             The project team will be refining and actively improving this site until our launch in the summer of 2021. <Link to='/about'>Please let us know what you think about the Marble site</Link> and <Link to='/help/contact-us'> how we can improve it by filling out our contact form.</Link>
             We will be adding more content - check back for new additions!
           </p>
-          <input name='notAgain' type='checkbox' checked={localStorage.getItem('seenWarning')} onChange={e => handleChange(e)} /><label>Do not show this again</label>
+          <input name='notAgain' type='checkbox' checked={checkSeenWarning()} onChange={e => handleChange(e)} /><label>Do not show this again</label>
         </div>
         <div>&nbsp;</div>
         <MaterialButton

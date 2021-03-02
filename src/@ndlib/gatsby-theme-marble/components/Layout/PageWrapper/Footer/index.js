@@ -2,16 +2,18 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { Link } from 'gatsby'
-import { Footer as ThemeFooter, jsx } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
 import marbleLogo from 'assets/svg/Marble.Logo.svg'
 import sniteLogo from 'assets/svg/Snite.One.Line.W.svg'
 import libraryLogo from 'assets/images/hesburgh_mark_H2_white.svg'
 import ndLogo from 'assets/images/ND_mark_white.svg'
 import sx from './sx'
+import theme from 'gatsby-plugin-theme-ui'
+
 export const Footer = () => {
   return (
-    <ThemeFooter>
+    <footer sx={theme.styles.Footer}>
       <div sx={sx.flexWrapper}>
         <div sx={sx.footerLeftColumn}>
           <Link to='/'>
@@ -71,7 +73,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-    </ThemeFooter>
+    </footer>
   )
 }
 

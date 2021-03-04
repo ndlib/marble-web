@@ -86,4 +86,10 @@ export default merge({}, theme, {
       sans-serif
     `,
   },
+  styles: {
+    a: {
+      color: 'primary',
+      wordBreak: 'break-word',
+    },
+  },
 })

@@ -2,7 +2,7 @@ import React from 'react'
 // import nock from 'nock'
 import { shallow } from 'enzyme'
 import { FeedbackForm } from './'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Internal/MaterialButton'
+import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import TextField from '@ndlib/gatsby-theme-marble/src/components/App/FormElements/TextField'
 // import { createData, successFunc, errorFunc } from './api'
 

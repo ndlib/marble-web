@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from 'components/Layout'
-import Seo from 'components/Internal/Seo'
+import Seo from 'components/Shared/Seo'
 import { BaseStyles } from 'theme-ui'
-import Link from 'components/Internal/Link'
+import Link from 'components/Shared/Link'
 
 export const AllPage = ({
   data,

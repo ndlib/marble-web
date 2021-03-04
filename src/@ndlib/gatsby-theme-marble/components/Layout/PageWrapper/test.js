@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import PageWrapper from './'
 import SkipToMain from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWrapper/SkipToMain'
 import NavigationHeader from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWrapper/NavigationHeader'
-import FeedbackModal from '../../Internal/FeedbackModal'
+import FeedbackModal from '../../Shared/FeedbackModal'
 import Footer from '@ndlib/gatsby-theme-marble/components/Layout/PageWrapper/Footer'
 
 test('PageWrapper', () => {

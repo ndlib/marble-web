@@ -3,11 +3,11 @@ import { jsx, BaseStyles } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import Layout from 'components/Layout'
-import Seo from 'components/Internal/Seo'
+import Seo from 'components/Shared/Seo'
 import MultiColumn from 'components/Shared/MultiColumn'
 import Column from 'components/Shared/Column'
 import Menu from 'components/Shared/Menu'
-import FeedbackForm from 'components/Internal/FeedbackForm'
+import FeedbackForm from 'components/Shared/FeedbackForm'
 import { navigate } from 'gatsby'
 
 const HelpContent = ({ location }) => {

@@ -31,8 +31,8 @@ console.table([
   { variable: 'AUTH_CLIENT_ISSUER:', value: authClientIssuer },
   { variable: 'S3_DEST_BUCKET:', value: s3BucketName },
   { variable: 'ALLOW_ROBOTS', value: allowRobots },
-  { variable: 'GRAPHQL_API_URL', value: sourceGraphQlUrl },
-  { variable: 'GRAPHQL_API_KEY', value: graphQlKey },
+  { variable: 'GRAPHQL_API_URL', value: sourceGraphQlUrl ? 'XXXXXX' : '' },
+  { variable: 'GRAPHQL_API_KEY', value: graphQlKey ? 'XXXXXX' : '' },
 ])
 
 module.exports = {

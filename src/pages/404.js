@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { I18nextProvider } from 'react-i18next'
 import i18next from '@ndlib/gatsby-theme-marble/src/i18n'
 import Layout from 'components/Layout'
-import Seo from 'components/Internal/Seo'
+import Seo from 'components/Shared/Seo'
 
 const NotFoundPage = ({ location }) => {
   return (

@@ -2,8 +2,8 @@
 import { jsx } from 'theme-ui'
 import { useState } from 'react'
 import { Link } from 'gatsby'
-import ActionModal from '@ndlib/gatsby-theme-marble/src/components/Internal/ActionModal'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Internal/MaterialButton'
+import ActionModal from '@ndlib/gatsby-theme-marble/src/components/Shared/ActionModal'
+import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 
 const BetaModal = () => {
   const [settingsOpen, setSettingsOpen] = useState(true)

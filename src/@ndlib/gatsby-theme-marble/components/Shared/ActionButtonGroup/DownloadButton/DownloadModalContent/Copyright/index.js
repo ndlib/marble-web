@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { BaseStyles, jsx } from 'theme-ui'
-import Link from '@ndlib/gatsby-theme-marble/src/components/Internal/Link'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import sx from '@ndlib/gatsby-theme-marble/src/components/Shared/ActionButtonGroup/DownloadButton/DownloadModalContent/Copyright/sx'
 import { useTranslation } from 'react-i18next'
 

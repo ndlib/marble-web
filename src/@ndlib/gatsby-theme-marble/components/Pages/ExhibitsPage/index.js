@@ -3,7 +3,7 @@
 import React from 'react'
 import CardGroup from 'components/Shared/CardGroup'
 import Card from 'components/Shared/Card'
-import Link from 'components/Internal/Link'
+import Link from 'components/Shared/Link'
 import typy from 'typy'
 import { BaseStyles, useThemeUI, jsx } from 'theme-ui'
 import image1 from 'assets/images/Home-Graphic-v2e.jpg'

@@ -29,6 +29,7 @@ module.exports = {
         website: 'marble',
       },
     },
+    'gatsby-transformer-marbleitem',
     {
       resolve: 'gatsby-source-graphql',
       options: {

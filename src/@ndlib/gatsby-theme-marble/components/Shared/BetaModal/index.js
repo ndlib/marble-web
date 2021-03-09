@@ -38,7 +38,7 @@ const BetaModal = () => {
             The project team will be refining and actively improving this site until our launch in the summer of 2021. <Link to='/about'>Please let us know what you think about the Marble site</Link> and <Link to='/help/contact-us'> how we can improve it by filling out our contact form.</Link>
             We will be adding more content - check back for new additions!
           </p>
-          <input name='notAgain' type='checkbox' checked={checkSeenWarning()} onChange={e => handleChange(e)} /><label>Do not show this again</label>
+          <label><input name='notAgain' type='checkbox' checked={checkSeenWarning()} onChange={e => handleChange(e)} />Do not show this again</label>
         </div>
         <div>&nbsp;</div>
         <MaterialButton

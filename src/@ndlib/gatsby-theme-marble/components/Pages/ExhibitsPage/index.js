@@ -56,7 +56,7 @@ const ExhibitsPage = () => {
       <div>
         <p>Looking for other ways to explore digital collections at the University of Notre Dame? Take a deeper dive with some of the digital exhibits created by students, faculty, and staff.</p>
       </div>
-      <CardGroup>
+      <CardGroup toggleGroup='exhibits-page' defaultDisplay='grid'>
         {
           exhibits.map(exhibit => {
             return (

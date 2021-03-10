@@ -1,4 +1,7 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { I18nextProvider } from 'react-i18next'
 import i18next from '@ndlib/gatsby-theme-marble/src/i18n'

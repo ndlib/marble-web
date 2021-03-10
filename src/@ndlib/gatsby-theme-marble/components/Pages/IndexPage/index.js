@@ -3,7 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
-import { BaseStyles, jsx } from 'theme-ui'
+import { BaseStyles, jsx, Flex, Box } from 'theme-ui'
 import typy from 'typy'
 import CardGroup from 'components/Shared/CardGroup'
 import BrowseBar from 'components/Shared/BrowseBar'
@@ -60,41 +60,43 @@ const IndexPage = ({ location }) => {
   return (
     <React.Fragment>
       <BaseStyles>
-        <p dangerouslySetInnerHTML={{ __html: t('common:hompageDescriptive')}} />
+        <p dangerouslySetInnerHTML={{ __html: t('common:hompageDescriptive') }} />
         <h2>{t('common:search.browseBy')}</h2>
       </BaseStyles>
-      <MultiColumn columns='4'>
-        <Column>
+      <Flex sx={{ flexWrap: 'wrap' }}>
+        <Box sx={{ width: ['100%', '50%', '25%'], px: '1rem', py: '.5rem' }}>
           <BrowseBar
             label='Date'
             target='/browse?scrollto=date'
             image={dateImage}
           />
-        </Column>
-        <Column>
+        </Box>
+        <Box sx={{ width: ['100%', '50%', '25%'], px: '1rem', py: '.5rem' }}>
           <BrowseBar
             label='Work Type'
             target='/browse?scrollto=format'
             image={formatImage}
           />
-        </Column>
-        <Column>
+        </Box>
+        <Box sx={{ width: ['100%', '50%', '25%'], px: '1rem', py: '.5rem' }}>
           <BrowseBar
             label='Campus Location'
             target='/browse?scrollto=location'
             image={campuslocationImage}
           />
-        </Column>
-        <Column>
+        </Box>
+        <Box sx={{ width: ['100%', '50%', '25%'], px: '1rem', py: '.5rem' }}>
           <BrowseBar
             label='All Items'
             target='/search?q='
             image={allImage}
           />
-        </Column>
-      </MultiColumn>
+        </Box>
+      </Flex>
       <CardGroup
         label={t('common:search.recentAdditions')}
+        toggleGroup='homepage'
+        defaultDisplay='grid'
       >
         {
           nodes.map(item => {

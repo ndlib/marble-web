@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import React from 'react'
-import { jsx, BaseStyles } from 'theme-ui'
-import CardGroup from 'components/Shared/CardGroup'
+import { jsx, BaseStyles, Flex, Box } from 'theme-ui'
 import Column from 'components/Shared/Column'
 import HeroBox from 'components/Shared/HeroBox'
 import MiniCard from 'components/Shared/MiniCard'
@@ -146,19 +145,20 @@ const Browse = ({ location }) => {
           </div>
         </Column>
         <Column colSpan='4'>
-          <CardGroup>
+          <Flex sx={{ flexWrap: 'wrap' }}>
             {
               dates.map(date => {
                 return (
-                  <MiniCard
-                    key={date.label}
-                    label={date.label}
-                    target={date.target}
-                  />
+                  <Box key={date.label} sx={{ width: ['100%', '50%', '33.33%'], px: '1rem', py: '1rem' }}>
+                    <MiniCard
+                      label={date.label}
+                      target={date.target}
+                    />
+                  </Box>
                 )
               })
             }
-          </CardGroup>
+          </Flex>
         </Column>
       </MultiColumn>
       <MultiColumn columns='5'>
@@ -170,19 +170,21 @@ const Browse = ({ location }) => {
           </div>
         </Column>
         <Column colSpan='4'>
-          <CardGroup>
+          <Flex sx={{ flexWrap: 'wrap' }}>
+
             {
               formats.map(format => {
                 return (
-                  <MiniCard
-                    key={format.label}
-                    label={format.label}
-                    target={format.target}
-                  />
+                  <Box key={format.label} sx={{ width: ['100%', '50%', '33.33%'], px: '1rem', py: '1rem' }}>
+                    <MiniCard
+                      label={format.label}
+                      target={format.target}
+                    />
+                  </Box>
                 )
               })
             }
-          </CardGroup>
+          </Flex>
         </Column>
       </MultiColumn>
       <MultiColumn columns='5'>
@@ -194,19 +196,20 @@ const Browse = ({ location }) => {
           </div>
         </Column>
         <Column colSpan='4'>
-          <CardGroup>
+          <Flex sx={{ flexWrap: 'wrap' }}>
             {
               locations.map(location => {
                 return (
-                  <MiniCard
-                    key={location.label}
-                    label={location.label}
-                    target={location.target}
-                  />
+                  <Box key={location.label} sx={{ width: ['100%', '50%', '33.33%'], px: '1rem', py: '1rem' }}>
+                    <MiniCard
+                      label={location.label}
+                      target={location.target}
+                    />
+                  </Box>
                 )
               })
             }
-          </CardGroup>
+          </Flex>
         </Column>
       </MultiColumn>
     </React.Fragment>

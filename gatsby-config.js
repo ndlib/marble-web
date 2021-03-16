@@ -27,6 +27,8 @@ module.exports = {
         url: configuration.siteMetadata.sourceGraphQlUrl,
         key: configuration.siteMetadata.graphQlKey,
         website: 'marble',
+        // useFixtures: true,
+        // generateFixtures: true,
       },
     },
     'gatsby-transformer-marbleitem',

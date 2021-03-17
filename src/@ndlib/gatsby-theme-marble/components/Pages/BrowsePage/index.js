@@ -1,10 +1,8 @@
 /** @jsx jsx */
 import React from 'react'
 import { jsx, BaseStyles, Flex, Box } from 'theme-ui'
-import Column from 'components/Shared/Column'
-import HeroBox from 'components/Shared/HeroBox'
 import MiniCard from 'components/Shared/MiniCard'
-import MultiColumn from 'components/Shared/MultiColumn'
+import HeroBox from 'components/Shared/HeroBox'
 import SearchBox from 'components/Shared/SearchBox'
 
 const Browse = ({ location }) => {
@@ -136,15 +134,15 @@ const Browse = ({ location }) => {
       <HeroBox backgroundColor='gray.0'>
         <SearchBox location={location} />
       </HeroBox>
-      <MultiColumn columns='5'>
-        <Column>
+      <Flex sx={{ flexWrap: 'wrap' }}>
+        <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
           <div id='date'>
             <BaseStyles>
               <h2>Browse By Date</h2>
             </BaseStyles>
           </div>
-        </Column>
-        <Column colSpan='4'>
+        </Box>
+        <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
           <Flex sx={{ flexWrap: 'wrap' }}>
             {
               dates.map(date => {
@@ -159,19 +157,18 @@ const Browse = ({ location }) => {
               })
             }
           </Flex>
-        </Column>
-      </MultiColumn>
-      <MultiColumn columns='5'>
-        <Column>
+        </Box>
+      </Flex>
+      <Flex sx={{ flexWrap: 'wrap' }}>
+        <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
           <div id='format'>
             <BaseStyles>
               <h2>Browse By Work Type</h2>
             </BaseStyles>
           </div>
-        </Column>
-        <Column colSpan='4'>
+        </Box>
+        <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
           <Flex sx={{ flexWrap: 'wrap' }}>
-
             {
               formats.map(format => {
                 return (
@@ -185,17 +182,17 @@ const Browse = ({ location }) => {
               })
             }
           </Flex>
-        </Column>
-      </MultiColumn>
-      <MultiColumn columns='5'>
-        <Column>
+        </Box>
+      </Flex>
+      <Flex sx={{ flexWrap: 'wrap' }}>
+        <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
           <div id='location'>
             <BaseStyles>
               <h2>Browse By Location</h2>
             </BaseStyles>
           </div>
-        </Column>
-        <Column colSpan='4'>
+        </Box>
+        <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
           <Flex sx={{ flexWrap: 'wrap' }}>
             {
               locations.map(location => {
@@ -210,8 +207,8 @@ const Browse = ({ location }) => {
               })
             }
           </Flex>
-        </Column>
-      </MultiColumn>
+        </Box>
+      </Flex>
     </React.Fragment>
   )
 }

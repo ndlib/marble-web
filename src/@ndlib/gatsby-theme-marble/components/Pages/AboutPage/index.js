@@ -1,8 +1,6 @@
 /** @jsx jsx */
-import { BaseStyles, jsx } from 'theme-ui'
+import { BaseStyles, jsx, Flex, Box } from 'theme-ui'
 import { useTranslation } from 'react-i18next'
-import MultiColumn from 'components/Shared/MultiColumn'
-import Column from 'components/Shared/Column'
 import Image from 'components/Shared/Image'
 import sniteImage from 'assets/images/02.jpg'
 import rbImage from 'assets/images/03.jpg'
@@ -13,23 +11,23 @@ const AboutPage = () => {
   return (
     <BaseStyles>
       <div dangerouslySetInnerHTML={{ __html: t('text:aboutPage.text') }} />
-      <MultiColumn>
-        <Column>
+      <Flex sx={{ flexWrap: 'wrap' }}>
+        <Box sx={{ width: ['100%', '33%'], px: '1rem', py: '1rem' }}>
           <h2>{t('text:aboutPage.snite.title')}</h2>
           <Image src={sniteImage} alt='' />
           <div dangerouslySetInnerHTML={{ __html: t('text:aboutPage.snite.text') }} />
-        </Column>
-        <Column>
+        </Box>
+        <Box sx={{ width: ['100%', '33%'], px: '1rem', py: '1rem' }}>
           <h2>{t('text:aboutPage.rb.title')}</h2>
           <Image src={rbImage} alt='' />
           <div dangerouslySetInnerHTML={{ __html: t('text:aboutPage.rb.text') }} />
-        </Column>
-        <Column>
+        </Box>
+        <Box sx={{ width: ['100%', '33%'], px: '1rem', py: '1rem' }}>
           <h2>{t('text:aboutPage.archives.title')}</h2>
           <Image src={archivesImage} alt='' />
           <div dangerouslySetInnerHTML={{ __html: t('text:aboutPage.archives.text') }} />
-        </Column>
-      </MultiColumn>
+        </Box>
+      </Flex>
     </BaseStyles>
   )
 }

@@ -1,11 +1,9 @@
 /** @jsx jsx */
-import { jsx, BaseStyles } from 'theme-ui'
+import { jsx, BaseStyles, Flex, Box } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import Layout from 'components/Layout'
 import Seo from 'components/Shared/Seo'
-import MultiColumn from 'components/Shared/MultiColumn'
-import Column from 'components/Shared/Column'
 import Menu from 'components/Shared/Menu'
 import FeedbackForm from 'components/Shared/FeedbackForm'
 import { navigate } from 'gatsby'
@@ -14,7 +12,7 @@ const HelpContent = ({ location }) => {
   const { t } = useTranslation()
   const page = getPageName(location)
   const feedbackForm = page === 'contactUs' ? (
-    <FeedbackForm closeFunc={() => navigate(`/help`)} /> ) : null
+    <FeedbackForm closeFunc={() => navigate(`/help`)} />) : null
   return (
     <Layout
       title={t(`text:helpPage.${page}.title`)}
@@ -25,15 +23,15 @@ const HelpContent = ({ location }) => {
         location={location}
       />
       <BaseStyles>
-        <MultiColumn columns='5'>
-          <Column>
+        <Flex sx={{ flexWrap: 'wrap' }}>
+          <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
             <Menu navClass='verticalMenu' menu='help' />
-          </Column>
-          <Column colSpan='4'>
+          </Box>
+          <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
             <div dangerouslySetInnerHTML={{ __html: t(`text:helpPage.${page}.text`) }} />
             {feedbackForm}
-          </Column>
-        </MultiColumn>
+          </Box>
+        </Flex>
       </BaseStyles>
     </Layout>
   )

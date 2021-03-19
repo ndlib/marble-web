@@ -32,17 +32,17 @@ module.exports = {
       },
     },
     'gatsby-transformer-marbleitem',
-    {
-      resolve: 'gatsby-source-graphql',
-      options: {
-        typeName: 'notHelpfulGraphQL',
-        fieldName: 'notHelpfulGraphQL',
-        url: configuration.siteMetadata.sourceGraphQlUrl,
-        headers: {
-          'x-api-key': configuration.siteMetadata.graphQlKey,
-        },
-      },
-    },
+    // {
+    //   resolve: 'gatsby-source-graphql',
+    //   options: {
+    //     typeName: 'notHelpfulGraphQL',
+    //     fieldName: 'notHelpfulGraphQL',
+    //     url: configuration.siteMetadata.sourceGraphQlUrl,
+    //     headers: {
+    //       'x-api-key': configuration.siteMetadata.graphQlKey,
+    //     },
+    //   },
+    // },
     {
       resolve: '@ndlib/gatsby-theme-marble',
       options: {

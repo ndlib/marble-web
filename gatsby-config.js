@@ -14,35 +14,27 @@ module.exports = {
         path: 'content/json/menus',
       },
     },
-    // {
-    //   resolve: 'gatsby-source-filesystem',
-    //   options: {
-    //     name: 'standard',
-    //     path: 'content/json/standard',
-    //   },
-    // },
     {
-      resolve: 'gatsby-source-appsync-marble-standard',
+      resolve: '@ndlib/gatsby-source-appsync-marble',
       options: {
         url: configuration.siteMetadata.sourceGraphQlUrl,
         key: configuration.siteMetadata.graphQlKey,
         website: 'marble',
         // useFixtures: true,
-        // generateFixtures: true,
+        // debug: true,
       },
     },
-    'gatsby-transformer-marbleitem',
-    // {
-    //   resolve: 'gatsby-source-graphql',
-    //   options: {
-    //     typeName: 'notHelpfulGraphQL',
-    //     fieldName: 'notHelpfulGraphQL',
-    //     url: configuration.siteMetadata.sourceGraphQlUrl,
-    //     headers: {
-    //       'x-api-key': configuration.siteMetadata.graphQlKey,
-    //     },
-    //   },
-    // },
+    {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'notHelpfulGraphQL',
+        fieldName: 'notHelpfulGraphQL',
+        url: configuration.siteMetadata.sourceGraphQlUrl,
+        headers: {
+          'x-api-key': configuration.siteMetadata.graphQlKey,
+        },
+      },
+    },
     {
       resolve: '@ndlib/gatsby-theme-marble',
       options: {

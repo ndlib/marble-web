@@ -22,6 +22,7 @@
     "lodash.merge": "^4.6.2",
     "react": "16.11",
     "react-dom": "16.11",
+    "schema-dts": "^0.8.2",
     "typography": "^0.16.19"
   },
   "devDependencies": {

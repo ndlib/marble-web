@@ -11,7 +11,7 @@ module.exports = {
     color: '#FFFFFF',
     backgroundColor: '#002a43',
     display: 'inline-block',
-    fontFamily: 'Arial, Helvetica, sans-serif',
+    fontFamily: 'heading',
     fontSize: '1.5rem',
     lineHeight: '1.5rem',
     margin: '0',
@@ -19,6 +19,8 @@ module.exports = {
     overflow: 'hidden',
     padding: '1rem',
     position: 'fixed',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
   },
   button: {
     backgroundColor: '#002a43',

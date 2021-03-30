@@ -35,7 +35,8 @@ const BetaModal = () => {
         <div>
           <p> Welcome to the Beta version of the Marble website - a platform for discovering digitized rare and unique materials from the Snite Museum of Art and Hesburgh Libraries.
             You will find that some of the pages, icons, and buttons on this site do not function as expected and you might notice occasional outages or changes.
-            The project team will be refining and actively improving this site until our launch in the summer of 2021. <Link to='/about'>Please let us know what you think about the Marble site</Link> and <Link to='/help/contact-us'> how we can improve it by filling out our contact form.</Link>
+            The project team will be refining and actively improving this site until our launch in the summer of 2021.
+            You can learn more about the Marble project on our <Link to='/about'>About page</Link>, and let us know how we can improve it by filling out our <Link to='/help/contact-us'>contact form</Link>.
             We will be adding more content - check back for new additions!
           </p>
           <label><input name='notAgain' type='checkbox' checked={checkSeenWarning()} onChange={e => handleChange(e)} />Do not show this again</label>

@@ -59,7 +59,7 @@
     "test": "jest",
     "watch": "jest --watchAll --coverage",
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "pushd .; cd ../..; ./scripts/preload-env.sh; popd; gatsby develop",
     "clean": "gatsby clean",
     "serve": "gatsby serve",
     "deploy": "gatsby-plugin-s3 deploy --yes"

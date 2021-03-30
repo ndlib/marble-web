@@ -15,10 +15,24 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: '@ndlib/gatsby-source-appsync-marble',
       options: {
-        name: 'standard',
-        path: 'content/json/standard',
+        url: configuration.siteMetadata.sourceGraphQlUrl,
+        key: configuration.siteMetadata.graphQlKey,
+        website: 'marble',
+        // useFixtures: true,
+        // debug: true,
+      },
+    },
+    {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'notHelpfulGraphQL',
+        fieldName: 'notHelpfulGraphQL',
+        url: configuration.siteMetadata.sourceGraphQlUrl,
+        headers: {
+          'x-api-key': configuration.siteMetadata.graphQlKey,
+        },
       },
     },
     {

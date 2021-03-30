@@ -17,6 +17,8 @@ const searchIndex = process.env.SEARCH_INDEX || ''
 const s3BucketName = process.env.S3_DEST_BUCKET || ''
 const allowRobots = process.env.ALLOW_ROBOTS || 'false'
 const iiifViewerUrl = process.env.IIIF_VIEWER_URL || ''
+const sourceGraphQlUrl = process.env.GRAPHQL_API_URL || ''
+const graphQlKey = process.env.GRAPHQL_API_KEY || ''
 
 console.table([
   { variable: 'SEARCH_INDEX:', value: searchIndex },
@@ -29,6 +31,8 @@ console.table([
   { variable: 'AUTH_CLIENT_ISSUER:', value: authClientIssuer },
   { variable: 'S3_DEST_BUCKET:', value: s3BucketName },
   { variable: 'ALLOW_ROBOTS', value: allowRobots },
+  { variable: 'GRAPHQL_API_URL', value: sourceGraphQlUrl ? 'XXXXXX' : '' },
+  { variable: 'GRAPHQL_API_KEY', value: graphQlKey ? 'XXXXXX' : '' },
 ])
 
 module.exports = {
@@ -51,6 +55,8 @@ module.exports = {
     userContentPath: userContentPath,
     pruneMetadataWithNoImages: true,
     allowRobots: allowRobots,
+    sourceGraphQlUrl: sourceGraphQlUrl,
+    graphQlKey: graphQlKey,
     //
     languages: {
       default: 'en',

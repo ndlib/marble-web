@@ -8,6 +8,19 @@ export default merge({}, theme, {
     attention: '#aa272f',
     highlight: '#fff190',
   },
+  links: {
+    footer: {
+      textAlign: 'left',
+      '& a': {
+        display: 'block',
+        color: 'white',
+        px: '50px',
+        py: '5px',
+        textDecoration: 'none',
+        fontFamily: 'heading',
+      },
+    },
+  },
   flexD: ['row', 'column'],
   fonts: {
     body: `

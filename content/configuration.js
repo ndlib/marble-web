@@ -8,7 +8,6 @@ const eV = '.env.' + activeEnv
 require('dotenv').config({
   path: eV,
 })
-console.log(process.env)
 
 const googleMapKey = process.env.GOOGLE_MAP_KEY || ''
 const userContentPath = process.env.USER_CONTENT_PATH || ''

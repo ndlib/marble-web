@@ -3,6 +3,10 @@ const configuration = require('./content/configuration')
 const s3BucketName = process.env.S3_DEST_BUCKET || ''
 
 module.exports = {
+  flags: {
+    DEV_SSR: true,
+    PRESERVE_WEBPACK_CACHE: true,
+  },
   siteMetadata: configuration.siteMetadata,
   plugins: [
     'gatsby-transformer-json',
@@ -22,19 +26,15 @@ module.exports = {
         website: 'marble',
         // useFixtures: true,
         // debug: true,
+        // logIds: true,
+        mergeItems: [
+          {
+            parentId: 'CJF_EAD',
+            childId: 'aspace_0d7c59e17cb4e513ffd55cabdd751059',
+          },
+        ],
       },
     },
-    // {
-    //   resolve: 'gatsby-source-graphql',
-    //   options: {
-    //     typeName: 'notHelpfulGraphQL',
-    //     fieldName: 'notHelpfulGraphQL',
-    //     url: configuration.siteMetadata.sourceGraphQlUrl,
-    //     headers: {
-    //       'x-api-key': configuration.siteMetadata.graphQlKey,
-    //     },
-    //   },
-    // },
     {
       resolve: '@ndlib/gatsby-theme-marble',
       options: {

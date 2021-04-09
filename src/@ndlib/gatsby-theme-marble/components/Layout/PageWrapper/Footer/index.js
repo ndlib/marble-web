@@ -1,8 +1,9 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
-import { Link } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import { jsx } from 'theme-ui'
+import typy from 'typy'
 import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
 import marbleLogo from 'assets/svg/Marble.Logo.svg'
 import sniteLogo from 'assets/svg/Snite.One.Line.W.svg'
@@ -11,7 +12,24 @@ import ndLogo from 'assets/images/ND_mark_white.svg'
 import sx from './sx'
 import theme from 'gatsby-plugin-theme-ui'
 
+export const menuQuery = graphql`
+  query {
+    menusJson(id: {eq: "footer"}) {
+      id
+      label
+      items {
+        id
+        label
+        link
+      }
+    }
+  }
+`
+
 export const Footer = () => {
+  const { menusJson } = useStaticQuery(menuQuery)
+  const menu = typy(menusJson, 'items').safeArray
+
   return (
     <footer sx={theme.styles.Footer}>
       <div sx={sx.flexWrapper}>
@@ -68,7 +86,7 @@ export const Footer = () => {
               <img src={ndLogo} width='250' height='60' alt='University of Notre Dame' property='url' />
             </a>
             <div sx={sx.menuWrapper}>
-              <Menu menu='footer' />
+              <Menu variant='footer' items={menu} />
             </div>
           </div>
         </div>

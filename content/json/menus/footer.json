@@ -31,6 +31,16 @@
       "id": "accessibility",
       "label": "Accessibility",
       "link": "https://www.nd.edu/about/accessibility/"
+    },
+    {
+      "id": "privacy-policy",
+      "label": "Privacy Policy",
+      "link": "/privacypolicy"
+    },
+    {
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "link": "/disclaimer"
     }
   ]
 }

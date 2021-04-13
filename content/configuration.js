@@ -19,6 +19,7 @@ const allowRobots = process.env.ALLOW_ROBOTS || 'false'
 const iiifViewerUrl = process.env.IIIF_VIEWER_URL || ''
 const sourceGraphQlUrl = process.env.GRAPHQL_API_URL || ''
 const graphQlKey = process.env.GRAPHQL_API_KEY || ''
+const useFixtures = process.env.USE_FIXTURES || 'false'
 
 console.table([
   { variable: 'SEARCH_INDEX:', value: searchIndex },
@@ -31,6 +32,7 @@ console.table([
   { variable: 'AUTH_CLIENT_ISSUER:', value: authClientIssuer },
   { variable: 'S3_DEST_BUCKET:', value: s3BucketName },
   { variable: 'ALLOW_ROBOTS', value: allowRobots },
+  { variable: 'USE_FIXTURES', value: useFixtures },
   { variable: 'GRAPHQL_API_URL', value: sourceGraphQlUrl ? 'XXXXXX' : '' },
   { variable: 'GRAPHQL_API_KEY', value: graphQlKey ? 'XXXXXX' : '' },
 ])
@@ -55,6 +57,7 @@ module.exports = {
     userContentPath: userContentPath,
     pruneMetadataWithNoImages: true,
     allowRobots: allowRobots,
+    useFixtures: useFixtures === 'true',
     sourceGraphQlUrl: sourceGraphQlUrl,
     graphQlKey: graphQlKey,
     //

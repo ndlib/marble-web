@@ -5,7 +5,7 @@ const s3BucketName = process.env.S3_DEST_BUCKET || ''
 module.exports = {
   flags: {
     DEV_SSR: true,
-    PRESERVE_WEBPACK_CACHE: true,
+    PRESERVE_WEBPACK_CACHE: false,
   },
   siteMetadata: configuration.siteMetadata,
   plugins: [
@@ -24,7 +24,8 @@ module.exports = {
         url: configuration.siteMetadata.sourceGraphQlUrl,
         key: configuration.siteMetadata.graphQlKey,
         website: 'marble',
-        // useFixtures: true,
+        // updateFixtures: true,
+        useFixtures: configuration.siteMetadata.useFixtures,
         // debug: true,
         // logIds: true,
         mergeItems: [

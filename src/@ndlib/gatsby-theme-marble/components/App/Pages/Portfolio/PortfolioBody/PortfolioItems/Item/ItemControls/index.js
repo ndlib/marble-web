@@ -2,7 +2,7 @@
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import DeleteItemButton from './DeleteItemButton'
-import EditButton from 'components/App/Pages/Portfolio/PortfolioBody/EditButton'
+import EditButton from '../../../EditButton'
 import sx from './sx'
 
 const ItemControls = ({ item, isOwner, setEditFunc }) => {

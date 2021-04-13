@@ -9,7 +9,7 @@ import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
 import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import SortableItem from './SortableItem'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
-import { getData } from 'utils/api'
+import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import sx from './sx'
 
 const EditList = ({ items, closeFunc, loginReducer }) => {

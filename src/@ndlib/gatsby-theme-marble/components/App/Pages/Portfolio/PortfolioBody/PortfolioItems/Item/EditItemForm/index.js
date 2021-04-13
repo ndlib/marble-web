@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { jsx } from 'theme-ui'
 import EditItemFormContent from './EditItemFormContent'
 import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
-import { getData } from 'utils/api'
+import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 
 export const EditItemForm = ({ uuid, closeFunc, loginReducer }) => {
   const [content, setContent] = useState(<Loading />)

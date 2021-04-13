@@ -5,7 +5,7 @@ import typy from 'typy'
 import PortfolioBody from './PortfolioBody'
 import PortfolioUnavailable from './PortfolioUnavailable'
 import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
-import { getData } from 'utils/api'
+import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import { ownsPage } from '@ndlib/gatsby-theme-marble/src/utils/auth'
 
 export const Portfolio = ({ portfolioId, location, loginReducer }) => {

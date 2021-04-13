@@ -4,7 +4,7 @@ import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
-import { patchData } from 'utils/api'
+import { patchData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import sx from './sx'
 

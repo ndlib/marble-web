@@ -2,9 +2,9 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import AppRouter from './'
 import { Router } from '@reach/router'
-import UserBasePath from 'components/App/Pages/User/UserBasePath'
-import User from 'components/App/Pages/User'
-import Portfolio from 'components/App/Pages/Portfolio'
+import UserBasePath from '../Pages/User/UserBasePath'
+import User from '../Pages/User'
+import Portfolio from '../Pages/Portfolio'
 describe('AppRouter', () => {
   test('AppRouter', () => {
     const props = {

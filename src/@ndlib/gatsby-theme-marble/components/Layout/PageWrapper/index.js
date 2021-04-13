@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import SkipToMain from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWrapper/SkipToMain'
+import SkipToMain from '@ndlib/gatsby-theme-marble/src/components/Shared/SkipToMain'
 import NavigationHeader from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWrapper/NavigationHeader'
 import Footer from './Footer'
 import FeedbackModal from '../../Shared/FeedbackModal'

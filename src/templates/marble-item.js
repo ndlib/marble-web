@@ -1,24 +1,53 @@
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import MarbleItem from 'components/Pages/MarbleItem'
 import queryString from 'query-string'
+import Layout from 'components/Layout'
+import Seo from 'components/Shared/Seo'
+import CollectionLayout from '@ndlib/gatsby-theme-marble/src/components/Shared/MarbleItem/CollectionLayout'
+import ItemLayout from '@ndlib/gatsby-theme-marble/src/components/Shared/MarbleItem/ItemLayout'
+import RelatedItemsFromSearch from '@ndlib/gatsby-theme-marble/src/components/Shared/MarbleItem/RelatedItemsFromSearch'
 
 export const MarbleItemPage = ({ data, location }) => {
+  const { marbleItem, allMarbleFile } = data
+
   // use ?debug=true to render graphQL data at end of page
   const { debug } = queryString.parse(location.search)
   return (
-    <>
-      <MarbleItem
+    <Layout
+      title={marbleItem.title}
+      location={location}
+    >
+      <Seo
         data={data}
         location={location}
       />
+
+      {
+        marbleItem.display === 'collection' ? (
+          <CollectionLayout
+            location={location}
+            marbleItem={marbleItem}
+          />
+        ) : (
+          <ItemLayout
+            location={location}
+            marbleItem={marbleItem}
+            allMarbleFile={allMarbleFile}
+          />
+        )
+      }
+      <RelatedItemsFromSearch marbleItem={marbleItem} />
       {
         debug ? (
           <pre>{JSON.stringify(data, null, 2)}</pre>
         ) : null
       }
-    </>
+    </Layout>
+
   )
 }
 MarbleItemPage.propTypes = {

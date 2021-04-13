@@ -106,5 +106,11 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    {
+      resolve : 'gatsby-plugin-page-creator',
+      options: {
+        path: path.join(__dirname, 'src/pages/app'),
+      },
+    },
   ],
 }

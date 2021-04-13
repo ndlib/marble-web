@@ -3,10 +3,14 @@ const configuration = require('./content/configuration')
 const s3BucketName = process.env.S3_DEST_BUCKET || ''
 
 module.exports = {
+  flags: {
+    DEV_SSR: true,
+    PRESERVE_WEBPACK_CACHE: false,
+  },
   siteMetadata: configuration.siteMetadata,
   plugins: [
-    'gatsby-transformer-marbleitem',
     'gatsby-transformer-json',
+    'gatsby-transformer-marbleitem',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -15,10 +19,21 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: '@ndlib/gatsby-source-appsync-marble',
       options: {
-        name: 'standard',
-        path: 'content/json/standard',
+        url: configuration.siteMetadata.sourceGraphQlUrl,
+        key: configuration.siteMetadata.graphQlKey,
+        website: 'marble',
+        // updateFixtures: true,
+        useFixtures: configuration.siteMetadata.useFixtures,
+        // debug: true,
+        // logIds: true,
+        mergeItems: [
+          {
+            parentId: 'CJF_EAD',
+            childId: 'aspace_0d7c59e17cb4e513ffd55cabdd751059',
+          },
+        ],
       },
     },
     {
@@ -87,7 +102,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: path.join(__dirname, `content`, `images`),
+        path: path.join(__dirname, 'content', 'images'),
       },
     },
     'gatsby-transformer-sharp',

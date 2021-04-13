@@ -14,11 +14,11 @@ module.exports = {
     display: 'inline-block',
   },
   imageWrapper: {
-    flexBasis: ['100%', '35%', '35%'],
+    flexBasis: ['100%', '50%', '35%'],
     textAlign: 1,
   },
   image: {
-    margin: '40px 40px 0 !important',
+    margin: ['40px 40px 0 !important', '80px 40px 0 !important', '40px 40px 0 !important'],
     maxWidth: 'calc(100% - 80px)',
   },
   menuWrapper: {

@@ -3,13 +3,13 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import sx from './sx'
-import SearchBox from 'components/Shared/SearchBox'
+import SearchBox from '@ndlib/gatsby-theme-marble/src/components/Shared/SearchBox'
 import PortfolioTitle from './PortfolioTitle'
 import PortfolioDescription from './PortfolioDescription'
 import PortfolioItems from './PortfolioItems'
-import Seo from 'components/Shared/Seo'
+import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import Ownership from './Ownership'
-import PortfolioContext, { initialContext } from 'context/PortfolioContext'
+import PortfolioContext, { initialContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 
 const PortfolioBody = ({ portfolio, location, isOwner }) => {
   const updatePortfolio = (portfolio) => {

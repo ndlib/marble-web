@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
 import WelcomeMessage from './WelcomeMessage'
-import MaterialButton from 'components/Shared/MaterialButton'
-import TextField from 'components/App/FormElements/TextField'
-import TextArea from 'components/App/FormElements/TextArea'
-import { createNewUser } from 'store/actions/loginActions'
-import style from 'components/App/FormElements/style.module.css'
+import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
+import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
+import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
+import { createNewUser } from '@ndlib/gatsby-theme-marble/src/store/actions/loginActions'
+import style from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/style.module.css'
 
 const CreateAccount = ({ loginReducer, dispatch }) => {
   const claims = typy(loginReducer, 'token.claims').safeObject

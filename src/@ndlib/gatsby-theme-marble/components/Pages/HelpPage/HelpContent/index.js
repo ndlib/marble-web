@@ -3,9 +3,9 @@ import { jsx, BaseStyles, Flex, Box } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import Layout from 'components/Layout'
-import Seo from 'components/Shared/Seo'
-import Menu from 'components/Shared/Menu'
-import FeedbackForm from 'components/Shared/FeedbackForm'
+import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
+import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
+import FeedbackForm from '@ndlib/gatsby-theme-marble/src/components/Shared/FeedbackForm'
 import { navigate } from 'gatsby'
 
 const HelpContent = ({ location }) => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import UserTopMenu from './'
-import HorizontalSubmenu from 'components/Shared/HorizontalSubmenu'
+import HorizontalSubmenu from '@ndlib/gatsby-theme-marble/src/components/Shared/HorizontalSubmenu'
 
 test('UserTopMenu', () => {
   const props = {

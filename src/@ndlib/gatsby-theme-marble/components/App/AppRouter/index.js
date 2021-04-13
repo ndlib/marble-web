@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Router } from '@reach/router'
-import Layout from 'components/Layout'
-import UserBasePath from 'components/App/Pages/User/UserBasePath'
-import User from 'components/App/Pages/User'
-import LogOut from 'components/App/Pages/User/LogOut'
-import Portfolio from 'components/App/Pages/Portfolio'
+import Layout from '../../Layout'
+import UserBasePath from '../Pages/User/UserBasePath'
+import User from '../Pages/User'
+import LogOut from '../Pages/User/LogOut'
+import Portfolio from '../Pages/Portfolio'
 
 export const AppRouter = (props) => {
   return (

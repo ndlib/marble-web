@@ -1,9 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import PortfolioEditSettings from './'
-import * as PortfolioContext from 'context/PortfolioContext'
-import MaterialButton from 'components/Shared/MaterialButton'
-import ActionModal from 'components/Shared/ActionModal'
+import * as PortfolioContext from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
+import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
+import ActionModal from '@ndlib/gatsby-theme-marble/src/components/Shared/ActionModal'
 
 test('PortfolioEditSettings', () => {
   jest.spyOn(PortfolioContext, 'usePortfolioContext').mockImplementationOnce(() => {

@@ -3,9 +3,9 @@ import { useState } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import MaterialButton from 'components/Shared/MaterialButton'
+import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import { patchData } from 'utils/api'
-import { usePortfolioContext } from 'context/PortfolioContext'
+import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import sx from './sx'
 
 const SetPortfolioImage = ({ item, loginReducer }) => {

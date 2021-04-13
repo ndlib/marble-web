@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import VisibilitySettings from './'
-import RadioList from 'components/App/FormElements/RadioList'
+import RadioList from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/RadioList'
 import i18n from '@ndlib/gatsby-theme-marble/src/i18n/i18nextForTest'
 
 test('VisibilitySettings', () => {

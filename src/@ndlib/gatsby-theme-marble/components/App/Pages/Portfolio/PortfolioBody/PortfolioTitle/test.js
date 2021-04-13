@@ -3,8 +3,8 @@ import { shallow } from 'enzyme'
 import { act } from 'react-dom/test-utils'
 import PortfolioTitle from './'
 import TitleEdit from './TitleEdit'
-import * as PortfolioContext from 'context/PortfolioContext'
-import EditButton from 'components/App/Pages/Portfolio/PortfolioBody/EditButton'
+import * as PortfolioContext from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
+import EditButton from '../EditButton'
 
 test('PortfolioTitle', () => {
   jest.spyOn(PortfolioContext, 'usePortfolioContext').mockImplementationOnce(() => {

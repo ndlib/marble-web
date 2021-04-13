@@ -1,9 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { UserLayout } from './'
-import * as Auth from 'utils/auth'
-import Seo from 'components/Shared/Seo'
-import Gravatar from 'components/Shared/Gravatar'
+import * as Auth from '@ndlib/gatsby-theme-marble/src/utils/auth'
+import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
+import Gravatar from '@ndlib/gatsby-theme-marble/src/components/Shared/Gravatar'
 import EditUserButton from './EditUserButton'
 
 describe('UserLayout', () => {

@@ -3,8 +3,9 @@ import { shallow } from 'enzyme'
 import { navigate } from 'gatsby'
 import { UserBasePathContent } from './'
 import LoginArea from './LoginArea'
+import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
+import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
 import CreateAccount from './CreateAccount'
-import Loading from 'components/Shared/Loading'
 
 describe('UserBasePathContent', () => {
   test('STATUS_NOT_LOGGED_IN', () => {

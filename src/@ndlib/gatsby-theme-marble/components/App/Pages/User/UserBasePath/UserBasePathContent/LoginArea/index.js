@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import { isLoggedIn } from 'utils/auth'
+import { isLoggedIn } from '@ndlib/gatsby-theme-marble/src/utils/auth'
 import OktaLogin from './OktaLogin'
 import LogOut from './LogOut'
 

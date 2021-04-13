@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginArea it renders the log out button when the user is logged in 1`] = `
+<div>
+  <form
+    className="css-4cm5f9-LoginArea"
+  >
+    <p>
+      <button
+        className="materialButton css-1k9l1ph-MaterialButton"
+        disabled={false}
+        id="okta"
+        onClick={[Function]}
+      >
+        loginMenu.logout
+      </button>
+    </p>
+  </form>
+</div>
+`;
+
+exports[`LoginArea it renders the login form when the user is not logged in 1`] = `null`;

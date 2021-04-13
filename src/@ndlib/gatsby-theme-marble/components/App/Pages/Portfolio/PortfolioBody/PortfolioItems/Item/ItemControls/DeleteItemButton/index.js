@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { jsx } from 'theme-ui'
 import { deleteData, getData } from 'utils/api'
-import { usePortfolioContext } from 'context/PortfolioContext'
+import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import deleteIcon from 'assets/icons/svg/baseline-delete_forever-24px.svg'
 import sx from './sx'
 

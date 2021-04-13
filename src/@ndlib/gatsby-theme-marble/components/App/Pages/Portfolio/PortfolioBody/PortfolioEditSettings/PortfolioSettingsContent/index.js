@@ -5,8 +5,8 @@ import { BaseStyles, jsx, Flex, Box } from 'theme-ui'
 import VisibilitySettings from './VisibilitySettings'
 import LayoutSettings from './LayoutSettings'
 import DangerDelete from './DangerDelete'
-import { usePortfolioContext } from 'context/PortfolioContext'
-import SaveOrCancelButtons from 'components/App/Pages/Portfolio/PortfolioBody/SaveOrCancelButtons'
+import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
+import SaveOrCancelButtons from '../../SaveOrCancelButtons'
 import sx from './sx'
 
 const PortfolioSettingsContent = ({ callBack }) => {

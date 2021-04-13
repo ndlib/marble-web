@@ -4,7 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import typy from 'typy'
-import { findNavInData } from 'components/Shared/Menu'
+import { findNavInData } from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
 import { jsx } from 'theme-ui'
 import hamburgerIcon from 'assets/icons/svg/baseline-menu-24px-white.svg'
 export const menuQuery = graphql`

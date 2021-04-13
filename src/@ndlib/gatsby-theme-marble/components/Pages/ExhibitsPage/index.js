@@ -1,9 +1,9 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
-import CardGroup from 'components/Shared/CardGroup'
-import Card from 'components/Shared/Card'
-import Link from 'components/Shared/Link'
+import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/CardGroup'
+import Card from '@ndlib/gatsby-theme-marble/src/components/Shared/Card'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import typy from 'typy'
 import { BaseStyles, useThemeUI, jsx } from 'theme-ui'
 import image1 from 'assets/images/Home-Graphic-v2e.jpg'

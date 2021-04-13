@@ -3,7 +3,7 @@ import { mount } from 'enzyme'
 import { useStaticQuery } from 'gatsby'
 import SiteLogo from './'
 import siteLogo from './siteLogo.png'
-import Link from 'components/Shared/Link'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 
 console.error = jest.fn()
 test('SiteLogo', () => {

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
 import { useTranslation } from 'react-i18next'
-import MaterialButton from 'components/Shared/MaterialButton'
-import { createData } from 'utils/api'
+import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
+import { createData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 
 export const NewPortfolioButton = ({ portfolios, addFunc, loginReducer }) => {
   const { t } = useTranslation()

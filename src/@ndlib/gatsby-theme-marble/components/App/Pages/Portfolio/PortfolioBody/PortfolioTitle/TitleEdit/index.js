@@ -2,8 +2,8 @@
 import { useState } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import { usePortfolioContext } from 'context/PortfolioContext'
-import SaveOrCancelButtons from 'components/App/Pages/Portfolio/PortfolioBody/SaveOrCancelButtons'
+import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
+import SaveOrCancelButtons from '../../SaveOrCancelButtons'
 import sx from './sx'
 
 // eslint-disable-next-line complexity

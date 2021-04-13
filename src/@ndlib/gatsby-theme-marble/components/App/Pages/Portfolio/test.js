@@ -4,7 +4,7 @@
 // import PortfolioLayout from './PortfolioLayout'
 // import PortfolioBody from './PortfolioBody'
 // import PortfolioUnavailable from './PortfolioUnavailable'
-// import * as Auth from 'utils/auth'
+// import * as Auth from '@ndlib/gatsby-theme-marble/src/utils/auth'
 
 describe('Portfolio', () => {
   test.skip('unavailable', () => {})

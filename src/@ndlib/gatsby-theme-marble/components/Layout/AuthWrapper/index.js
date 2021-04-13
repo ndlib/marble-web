@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import {
   putAuthSettingsInStore,
   getTokenAndPutInStore,
-} from 'store/actions/loginActions'
+} from '@ndlib/gatsby-theme-marble/src/store/actions/loginActions'
 
 export const AuthWrapper = ({ children, location, loginReducer, dispatch }) => {
   if (process.env.AUTH_CLIENT_ID && process.env.AUTH_CLIENT_ISSUER && process.env.AUTH_CLIENT_URL) {

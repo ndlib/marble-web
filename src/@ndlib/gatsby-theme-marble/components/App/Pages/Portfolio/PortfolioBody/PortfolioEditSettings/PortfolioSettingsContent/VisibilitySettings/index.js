@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import RadioList from 'components/App/FormElements/RadioList'
+import RadioList from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/RadioList'
 import FormattedLabel from './FormattedLabel'
 import { useTranslation } from 'react-i18next'
 

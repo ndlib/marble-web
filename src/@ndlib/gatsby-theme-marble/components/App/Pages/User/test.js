@@ -3,6 +3,6 @@
 // import UserIndex from './'
 // import UserLayout from '../UserLayout'
 // import PortfolioList from './PortfolioList'
-// import * as Auth from 'utils/auth'
+// import * as Auth from '@ndlib/gatsby-theme-marble/src/utils/auth'
 
 test.skip('User', () => {})

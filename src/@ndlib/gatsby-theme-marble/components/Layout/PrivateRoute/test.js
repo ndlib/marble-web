@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { PrivateRoute } from './'
 import * as Gatsby from 'gatsby'
-import * as auth from 'utils/auth'
+import * as auth from '@ndlib/gatsby-theme-marble/src/utils/auth'
 
 describe('PrivateRoute', () => {
   test('it renders the page if we are not testing login', () => {

@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import FollowButton from './'
-import Link from 'components/Shared/Link'
-import MaterialButton from 'components/Shared/MaterialButton'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
+import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import i18n from '@ndlib/gatsby-theme-marble/src/i18n/i18nextForTest'
 
 describe('FollowButton', () => {

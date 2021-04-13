@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import UserLayout from './UserLayout'
 import UserBody from './UserBody'
 import NoUser from './NoUser'
-import Loading from 'components/Shared/Loading'
-import { getData } from 'utils/api'
+import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
+import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 
 const User = ({ loginReducer, userName, location, edit }) => {
   const [user, setUser] = useState({ userName: userName })

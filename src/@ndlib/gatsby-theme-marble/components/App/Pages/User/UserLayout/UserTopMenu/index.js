@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
-import HorizontalSubmenu from 'components/Shared/HorizontalSubmenu'
+import HorizontalSubmenu from '@ndlib/gatsby-theme-marble/src/components/Shared/HorizontalSubmenu'
 
 const UserTopMenu = ({ userName, location }) => {
   const options = makeOptions([

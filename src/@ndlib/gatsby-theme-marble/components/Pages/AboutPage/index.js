@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { BaseStyles, jsx, Flex, Box } from 'theme-ui'
 import { useTranslation } from 'react-i18next'
-import Image from 'components/Shared/Image'
+import Image from '@ndlib/gatsby-theme-marble/src/components/Shared/Image'
 import sniteImage from 'assets/images/02.jpg'
 import rbImage from 'assets/images/03.jpg'
 import archivesImage from 'assets/images/06.jpg'

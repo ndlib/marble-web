@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import FormattedLabel from './'
-import VisibilityLabel from 'components/Shared/VisibilityLabel'
+import VisibilityLabel from '@ndlib/gatsby-theme-marble/src/components/Shared/VisibilityLabel'
 
 test('FormattedLabel', () => {
   const props = {

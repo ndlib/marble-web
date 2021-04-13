@@ -3,9 +3,9 @@ import React from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { patchData } from 'utils/api'
-import MaterialButton from 'components/Shared/MaterialButton'
-import { usePortfolioContext } from 'context/PortfolioContext'
+import { patchData } from '@ndlib/gatsby-theme-marble/src/utils/api'
+import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
+import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 
 // eslint-disable-next-line complexity
 const SaveOrCancelButtons = ({

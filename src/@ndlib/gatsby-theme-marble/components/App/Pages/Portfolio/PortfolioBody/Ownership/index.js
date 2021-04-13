@@ -1,14 +1,14 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import VisibilityLabel from 'components/Shared/VisibilityLabel'
-import Attribution from 'components/Shared/Attribution'
-import UserCartouche from 'components/Shared/UserCartouche'
+import VisibilityLabel from '@ndlib/gatsby-theme-marble/src/components/Shared/VisibilityLabel'
+import Attribution from '@ndlib/gatsby-theme-marble/src/components/Shared/Attribution'
+import UserCartouche from '@ndlib/gatsby-theme-marble/src/components/Shared/UserCartouche'
 import PortfolioEditSettings from '../PortfolioEditSettings'
-import ShareButton from 'components/Shared/ShareButton'
-import PrintButton from 'components/Shared/PrintButton'
+import ShareButton from '@ndlib/gatsby-theme-marble/src/components/Shared/ShareButton'
+import PrintButton from '@ndlib/gatsby-theme-marble/src/components/Shared/PrintButton'
 
-import { usePortfolioContext } from 'context/PortfolioContext'
+import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import sx from './sx'
 
 export const Ownership = ({ isOwner }) => {

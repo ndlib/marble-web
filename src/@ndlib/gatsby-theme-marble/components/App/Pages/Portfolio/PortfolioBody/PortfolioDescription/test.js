@@ -2,9 +2,9 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { act } from 'react-dom/test-utils'
 import PortfolioDescription from './'
-import MaterialButton from 'components/Shared/MaterialButton'
-import * as PortfolioContext from 'context/PortfolioContext'
-import EditButton from 'components/App/Pages/Portfolio/PortfolioBody/EditButton'
+import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
+import * as PortfolioContext from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
+import EditButton from '../EditButton'
 import EditDescription from './EditDescription'
 describe('PortfolioDescription', () => {
   test('isOwner, blank description', () => {

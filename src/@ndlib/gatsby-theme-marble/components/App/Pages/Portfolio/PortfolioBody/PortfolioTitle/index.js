@@ -2,9 +2,9 @@
 import { useState } from 'react'
 import { BaseStyles, jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import { usePortfolioContext } from 'context/PortfolioContext'
+import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import TitleEdit from './TitleEdit'
-import EditButton from 'components/App/Pages/Portfolio/PortfolioBody/EditButton'
+import EditButton from '../EditButton'
 
 const PortfolioTitle = ({ isOwner }) => {
   const { portfolio } = usePortfolioContext()

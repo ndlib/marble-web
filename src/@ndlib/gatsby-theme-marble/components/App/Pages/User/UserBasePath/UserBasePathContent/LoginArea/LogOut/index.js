@@ -1,7 +1,7 @@
 import React from 'react'
 import { navigate } from 'gatsby'
 import { useTranslation } from 'react-i18next'
-import MaterialButton from 'components/Shared/MaterialButton'
+import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 
 export const LogOut = () => {
   const { t } = useTranslation()

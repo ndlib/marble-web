@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
 import { connect } from 'react-redux'
-import { isLoggedIn } from 'utils/auth'
+import { isLoggedIn } from '@ndlib/gatsby-theme-marble/src/utils/auth'
 
 export const PrivateRoute = ({ children, location, requireLogin, loginReducer }) => {
   checkAndHandleRedirect(loginReducer, requireLogin, location)

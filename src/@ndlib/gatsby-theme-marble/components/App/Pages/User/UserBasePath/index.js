@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Seo from 'components/Shared/Seo'
+import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import UserBasePathContent from './UserBasePathContent'
 import style from './style.module.css'
 

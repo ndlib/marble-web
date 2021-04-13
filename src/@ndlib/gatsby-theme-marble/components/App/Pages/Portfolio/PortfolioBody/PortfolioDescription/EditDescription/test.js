@@ -2,8 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { act } from 'react-dom/test-utils'
 import EditDescription from './'
-import * as PortfolioContext from 'context/PortfolioContext'
-import SaveOrCancelButtons from 'components/App/Pages/Portfolio/PortfolioBody/SaveOrCancelButtons'
+import * as PortfolioContext from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
+import SaveOrCancelButtons from '../../SaveOrCancelButtons'
 
 test('TitleEdit', () => {
   const closeFunc = jest.fn()

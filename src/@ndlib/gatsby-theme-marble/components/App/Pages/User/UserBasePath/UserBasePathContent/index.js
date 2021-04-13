@@ -10,11 +10,11 @@ import {
   STATUS_AUTHENTICATED_TRYING_LOGIN,
   STATUS_AUTHENTICATED_NOT_LOGGED_IN,
   STATUS_LOGGED_IN,
-} from 'store/actions/loginActions'
+} from '@ndlib/gatsby-theme-marble/src/store/actions/loginActions'
 import LoginArea from './LoginArea'
 import CreateAccount from './CreateAccount'
 
-import Loading from 'components/Shared/Loading'
+import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
 import style from '../style.module.css'
 
 // eslint-disable-next-line complexity

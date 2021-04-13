@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import UserBasePath from './'
 import UserBasePathContent from './UserBasePathContent'
-import Seo from 'components/Shared/Seo'
+import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 
 test('UserBasePath', () => {
   const props = {

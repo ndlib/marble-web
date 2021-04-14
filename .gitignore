@@ -3,5 +3,4 @@ public
 node_modules
 .cache
 .DS_Store
-.env.production
 .env.development

@@ -4,13 +4,13 @@ import React from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import LoginButton from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWrapper/NavigationHeader/LoginButton'
-import SearchBox from 'components/Shared/SearchBox'
+import LoginButton from '../LoginButton'
+import SearchBox from '@ndlib/gatsby-theme-marble/src/components/Shared/SearchBox'
 import ndLogo from '@ndlib/gatsby-theme-marble/src/assets/logos/ND_mark_white.svg'
 import marbleLogo from '@ndlib/gatsby-theme-marble/src/assets/logos/Marble.Logo.svg'
 import sx from './sx'
 import HeroBackground from '../HeroBackground'
-import WordMark from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWrapper/NavigationHeader/WordMark'
+import WordMark from '../WordMark'
 
 export const HomeHeader = ({ location }) => {
   return (

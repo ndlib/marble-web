@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { FeedbackForm } from './'
 import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
-import TextField from '@ndlib/gatsby-theme-marble/src/components/App/FormElements/TextField'
+import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
 // import { createData, successFunc, errorFunc } from './api'
 
 describe('FeedbackForm', () => {

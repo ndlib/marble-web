@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import React from 'react'
 import { jsx, BaseStyles, Flex, Box } from 'theme-ui'
-import MiniCard from 'components/Shared/MiniCard'
-import HeroBox from 'components/Shared/HeroBox'
-import SearchBox from 'components/Shared/SearchBox'
+import MiniCard from '@ndlib/gatsby-theme-marble/src/components/Shared/MiniCard'
+import HeroBox from '@ndlib/gatsby-theme-marble/src/components/Shared/HeroBox'
+import SearchBox from '@ndlib/gatsby-theme-marble/src/components/Shared/SearchBox'
 
 const Browse = ({ location }) => {
   const dates = [

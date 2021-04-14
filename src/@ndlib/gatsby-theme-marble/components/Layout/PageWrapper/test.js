@@ -2,8 +2,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import PageWrapper from './'
-import SkipToMain from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWrapper/SkipToMain'
-import NavigationHeader from '@ndlib/gatsby-theme-marble/src/components/Layout/PageWrapper/NavigationHeader'
+import SkipToMain from '@ndlib/gatsby-theme-marble/src/components/Shared/SkipToMain'
+import NavigationHeader from './NavigationHeader'
 import FeedbackModal from '../../Shared/FeedbackModal'
 import Footer from '@ndlib/gatsby-theme-marble/components/Layout/PageWrapper/Footer'
 

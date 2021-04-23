@@ -27,7 +27,7 @@ module.exports = {
         // updateFixtures: true,
         useFixtures: configuration.siteMetadata.useFixtures,
         // debug: true,
-        logIds: true,
+        // logIds: true,
         mergeItems: [
           {
             parentId: 'CJF_EAD',

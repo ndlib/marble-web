@@ -37,6 +37,14 @@ module.exports = {
       },
     },
     {
+      resolve: '@ndlib/gatsby-plugin-marble-elasticsearch',
+      options: {
+        url: process.env.SEARCH_URL,
+        searchIndex: process.env.SEARCH_INDEX,
+        region: 'us-east-1',
+      },
+    },
+    {
       resolve: '@ndlib/gatsby-theme-marble',
       options: {
         useLogin: configuration.siteMetadata.useLogin,

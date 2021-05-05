@@ -23,6 +23,7 @@ module.exports = {
       options: {
         url: configuration.siteMetadata.sourceGraphQlUrl,
         key: configuration.siteMetadata.graphQlKey,
+        iiifRoot: 'https://iiif-manifest.library.nd.edu',
         website: 'marble',
         // updateFixtures: true,
         useFixtures: configuration.siteMetadata.useFixtures,

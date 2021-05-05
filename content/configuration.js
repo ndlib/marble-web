@@ -20,7 +20,7 @@ const allowRobots = process.env.ALLOW_ROBOTS || 'false'
 const iiifViewerUrl = process.env.IIIF_VIEWER_URL || ''
 const sourceGraphQlUrl = process.env.GRAPHQL_API_URL || ''
 const graphQlKey = process.env.GRAPHQL_API_KEY || ''
-const useFixtures = process.env.USE_FIXTURES || 'false'
+const useFixtures = process.env.USE_FIXTURES || !!process.env.GITHUB_ACTIONS || 'false'
 
 console.table([
   { variable: 'SEARCH_INDEX:', value: searchIndex },

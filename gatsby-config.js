@@ -1,13 +1,41 @@
 const path = require('path')
-const configuration = require('./content/configuration')
+const elasticQuery = require('./content/elastic/query')
+const elasticSettings = require('./content/elastic/settings')
+const elasticMappings = require('./content/elastic/mappings')
+const activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development'
+console.log('Using environment config:' + activeEnv)
+
+const eV = '.env.' + activeEnv
+require('dotenv').config({
+  path: eV,
+})
+
+const siteUrl = 'https://marble.nd.edu'
+const siteName = 'Marble: Museums, Archives, Rare Books & Libraries Exploration'
+const searchUrl = process.env.SEARCH_URL || ''
+const searchIndex = process.env.SEARCH_INDEX || ''
 const s3BucketName = process.env.S3_DEST_BUCKET || ''
+const allowRobots = process.env.ALLOW_ROBOTS === 'true' || false
+const sourceGraphQlUrl = process.env.GRAPHQL_API_URL || ''
+const graphQlKey = process.env.GRAPHQL_API_KEY || ''
+const useFixtures = process.env.USE_FIXTURES || !!process.env.GITHUB_ACTIONS || false
 
 module.exports = {
   flags: {
     DEV_SSR: true,
     PRESERVE_WEBPACK_CACHE: false,
   },
-  siteMetadata: configuration.siteMetadata,
+  siteMetadata: {
+    title: siteName,
+    author: 'University of Notre Dame, Hesuburgh Libraries, and Snite Museum of Art',
+    description: 'The Marble site is a collaboration between the Hesburgh Libraries and the Snite Museum of Art at the University of Notre Dame. In this unified discovery space, users have free, public access to a selection of digitized, distinctive cultural heritage materials.',
+    siteUrl: siteUrl,
+    languages: {
+      default: 'en',
+      allowed: ['en'],
+    },
+  },
   plugins: [
     'gatsby-transformer-json',
     'gatsby-transformer-marbleitem',
@@ -21,12 +49,12 @@ module.exports = {
     {
       resolve: '@ndlib/gatsby-source-appsync-marble',
       options: {
-        url: configuration.siteMetadata.sourceGraphQlUrl,
-        key: configuration.siteMetadata.graphQlKey,
-        iiifRoot: 'https://iiif-manifest.library.nd.edu',
+        url: sourceGraphQlUrl,
+        key: graphQlKey,
         website: 'marble',
+        iiifRoot: 'https://iiif-manifest.library.nd.edu',
+        useFixtures: useFixtures,
         // updateFixtures: true,
-        useFixtures: configuration.siteMetadata.useFixtures,
         // debug: true,
         // logIds: true,
         mergeItems: [
@@ -40,22 +68,26 @@ module.exports = {
     {
       resolve: '@ndlib/gatsby-plugin-marble-elasticsearch',
       options: {
-        url: process.env.SEARCH_URL,
-        searchIndex: process.env.SEARCH_INDEX,
+        url: searchUrl,
+        searchIndex: searchIndex,
         region: 'us-east-1',
+        query: elasticQuery,
+        selector: (data) => data.allMarbleItem.nodes.map(node => node.searchData),
+        settings: elasticSettings,
+        mappings: elasticMappings,
       },
     },
     {
       resolve: '@ndlib/gatsby-theme-marble',
       options: {
-        useLogin: configuration.siteMetadata.useLogin,
+        useLogin: true,
       },
     },
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: configuration.siteMetadata.siteUrl,
-        sitemap: configuration.siteMetadata.siteUrl + '/sitemap.xml',
+        host: siteUrl,
+        sitemap: siteUrl + '/sitemap.xml',
         env: {
           development: {
             policy: [
@@ -63,7 +95,7 @@ module.exports = {
             ],
           },
           production: {
-            policy: configuration.siteMetadata.allowRobots === 'true' ? [
+            policy: allowRobots ? [
               { userAgent: '*', disallow: ['/search', '/user'] },
             ] : [
               { userAgent: '*', disallow: ['/'] },
@@ -75,8 +107,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Digital Collections',
-        short_name: 'Digital Collections',
+        name: siteName,
+        short_name: 'Marble',
         start_url: '/',
         background_color: '#0A233F',
         theme_color: '#0A233F',

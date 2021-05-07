@@ -33,12 +33,8 @@ const BetaModal = () => {
         closeFunc={handleCloseModal}
       >
         <div>
-          <p> Welcome to the Beta version of the Marble website - a platform for discovering digitized rare and unique materials from the Snite Museum of Art and Hesburgh Libraries.
-            You will find that some of the pages, icons, and buttons on this site do not function as expected and you might notice occasional outages or changes.
-            The project team will be refining and actively improving this site until our launch in the summer of 2021.
-            You can learn more about the Marble project on our <Link to='/about'>About page</Link>, and let us know how we can improve it by filling out our <Link to='/help/contact-us'>contact form</Link>.
-            We will be adding more content - check back for new additions!
-          </p>
+          <p> Welcome to the Beta version of Marble—a new platform to discover digitized cultural heritage holdings from the Snite Museum of Art and the Hesburgh Libraries at the University of Notre Dame. </p>
+          <p>The project team will be refining the Marble website through the summer of 2021 in preparation for the campus launch in the fall. If you have any suggestions or notice something that does not function as expected, please <a href='https://marble.nd.edu/help/contact-us'>contact us</a> and let us know.</p>
           <label><input name='notAgain' type='checkbox' checked={checkSeenWarning()} onChange={e => handleChange(e)} />Do not show this again</label>
         </div>
         <div>&nbsp;</div>

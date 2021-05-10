@@ -143,7 +143,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'featured',
-        path: path.join(__dirname, 'content','json','featured'),
+        path: path.join(__dirname, 'content', 'json', 'featured'),
       },
     },
     {

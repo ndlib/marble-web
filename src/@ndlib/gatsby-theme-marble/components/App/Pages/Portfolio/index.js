@@ -42,9 +42,9 @@ export const Portfolio = ({ portfolioId, location, loginReducer }) => {
   }, [portfolioId, loginReducer, location])
 
   return (
-    <React.Fragment>
+    <>
       {content}
-    </React.Fragment>
+    </>
   )
 }
 

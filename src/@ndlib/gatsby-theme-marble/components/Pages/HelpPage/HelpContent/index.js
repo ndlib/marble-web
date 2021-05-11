@@ -6,9 +6,26 @@ import Layout from 'components/Layout'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
 import FeedbackForm from '@ndlib/gatsby-theme-marble/src/components/Shared/FeedbackForm'
-import { navigate } from 'gatsby'
+import { useStaticQuery, graphql, Link, navigate } from 'gatsby'
+import typy from 'typy'
+
+export const menuQuery = graphql`
+query {
+  menusJson(id: {eq: "help"}) {
+    id
+    label
+    items {
+      id
+      label
+      link
+    }
+  }
+}
+`
 
 const HelpContent = ({ location }) => {
+const { menusJson } = useStaticQuery(menuQuery)
+const menu = typy(menusJson, 'items').safeArray
   const { t } = useTranslation()
   const page = getPageName(location)
   const feedbackForm = page === 'contactUs' ? (
@@ -25,7 +42,7 @@ const HelpContent = ({ location }) => {
       <BaseStyles>
         <Flex sx={{ flexWrap: 'wrap' }}>
           <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
-            <Menu navClass='verticalMenu' menu='help' />
+            <Menu items={menu} variant='help' />
           </Box>
           <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
             <div dangerouslySetInnerHTML={{ __html: t(`text:helpPage.${page}.text`) }} />

@@ -26,6 +26,36 @@
       "id": "help-contact-us",
       "label": "Contact Us",
       "link": "/help/contact-us"
+    },
+    {
+      "id": "about",
+      "label": "About",
+      "link": "/about"
+    },
+    {
+      "id": "browse",
+      "label": "Browse",
+      "link": "/browse"
+    },
+    {
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "link": "/disclaimer"
+    },
+    {
+      "id": "exhibits",
+      "label": "Exhibits",
+      "link": "/exhibits"
+    },
+    {
+      "id": "learn",
+      "label": "Learn",
+      "link": "/learn"
+    },
+    {
+      "id": "privacy-policy",
+      "label": "Privacy Policy",
+      "link": "/privacy-policy"
     }
   ]
 }

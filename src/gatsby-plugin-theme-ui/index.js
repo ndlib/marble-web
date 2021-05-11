@@ -20,6 +20,12 @@ export default merge({}, theme, {
         fontFamily: 'heading',
       },
     },
+    help: {
+      textAlign: 'left',
+      '& a': {
+        display: 'block',
+      },
+    },
   },
   flexD: ['row', 'column'],
   fonts: {

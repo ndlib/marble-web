@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SkipToMain from '@ndlib/gatsby-theme-marble/src/components/Shared/SkipToMain'
+import NDBrandHeader from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Header'
 import NavigationHeader from './NavigationHeader'
 import Footer from './Footer'
 import FeedbackModal from '../../Shared/FeedbackModal'
@@ -21,7 +22,7 @@ const PageWrapper = ({ children, location }) => {
   return (
     <>
       <SkipToMain />
-      <NavigationHeader location={location} />
+      <NDBrandHeader location={location} />
       {children}
       <Footer />
       {feedback}

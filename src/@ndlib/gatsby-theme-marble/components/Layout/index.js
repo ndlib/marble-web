@@ -42,7 +42,6 @@ export const Layout = ({
           requireLogin={requireLogin}
         >
           <PageWrapper location={location}>
-            <CornerBanner />
             <ContentWrapper
               noPadding={noPadding}
             >

@@ -16,6 +16,7 @@ module.exports = {
     '& > button': {
       marginLeft: '.5rem',
     },
+    display: 'block',
   },
   warning: {
     fontSize: '.7rem',

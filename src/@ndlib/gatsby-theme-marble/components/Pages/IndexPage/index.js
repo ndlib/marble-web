@@ -91,6 +91,9 @@ const IndexPage = ({ location }) => {
           />
         </Box>
       </Flex>
+      <BaseStyles>
+        <h2>{t('common:search.featuredItems')}</h2>
+      </BaseStyles>
       <CardGroup
         label={t('common:search.recentAdditions')}
         toggleGroup='homepage'

@@ -14,7 +14,7 @@ const PageContent = ({
   location,
 }) => {
   return (
-    <main id='mainContent' sx={theme.styles.Main}>
+    <main id='mainContent'>
       <ReturnToSearch location={location} />
       <ParentLink>{children}</ParentLink>
       {title ? <BaseStyles><h1>{title}</h1></BaseStyles> : null}

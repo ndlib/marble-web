@@ -14,13 +14,12 @@ import PageContent from './PageContent'
 /// CONSTRUCTION BANNER
 import CornerBanner from './CornerBanner'
 import theme from 'gatsby-plugin-theme-ui'
-
 export const Layout = ({
   title, // page title to be placed inside main
-  noPadding, // bool used to avoid padding page content
   children,
   requireLogin, // bool to test login
   location,
+  pageHeader,
 }) => {
   const [qs] = useState(queryString.parse(location.search) || {})
   useEffect(() => {
@@ -33,7 +32,7 @@ export const Layout = ({
   })
 
   return (
-    <div sx={theme.styles.Layout}>
+    <>
       <AuthWrapper
         location={location}
       >
@@ -41,27 +40,22 @@ export const Layout = ({
           location={location}
           requireLogin={requireLogin}
         >
-          <PageWrapper location={location}>
-            <ContentWrapper
-              noPadding={noPadding}
+          <PageWrapper location={location} pageHeader={pageHeader}>
+            <PageContent
+              title={title}
+              location={location}
             >
-              <PageContent
-                title={title}
-                location={location}
-              >
-                {children}
-              </PageContent>
-            </ContentWrapper>
+              {children}
+            </PageContent>
           </PageWrapper>
         </PrivateRoute>
       </AuthWrapper>
-    </div>
+    </>
   )
 }
 
 Layout.propTypes = {
   title: PropTypes.node,
-  noPadding: PropTypes.bool,
   children: PropTypes.node.isRequired,
   location: PropTypes.object.isRequired,
   requireLogin: PropTypes.bool,

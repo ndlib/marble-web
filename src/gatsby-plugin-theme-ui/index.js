@@ -1,46 +1,38 @@
 import merge from 'lodash.merge'
-import bootstrapTheme from '@theme-ui/preset-bootstrap'
 
 import { theme } from '@ndlib/gatsby-theme-marble/src/gatsby-plugin-theme-ui'
 
-const light = '#e1e8f2'
-const lightDark = '#c1cddd'
-
-export default merge({}, theme, bootstrapTheme, {
+export default merge({}, theme, {
   colors: {
-    primary: '#0c2340',
-    primaryDark: '#081629',
-    primaryLight: '#143865',
-    primaryBright: '#1c4f8f',
-    secondary: '#ae9142',
-    secondaryDark: '#8c7535',
-    secondaryLight: '#d39f10',
-    light: '#e1e8f2',
-    lightDark: '#c1cddd',
-    lightLight: '#edf2f9',
     primaryWithOpacity: '#adc8ce',
     attention: '#aa272f',
     highlight: '#fff190',
     muted: '',
   },
-  links: {
-    header: {
+  hero: {
+    fullBleed: {
+      '& .lede': {
+        background: 'var(--theme-ui-colors-gray-2)',
+        borderRadius: '0 10px 10px 0',
+      },
+    },
+    navSearch: {
       position: 'relative',
       display: 'flex',
-      margin: '0 0 -2.7rem',
-      justifyContent: 'flex-end',
       '& div': {
         display: 'flex',
         opacity: '1',
         transition: 'all 1s',
         my: '5px',
         background: 'white',
+        border: '1px solid var(--theme-ui-colors-gray-4)',
+        borderRadius: '10px',
       },
       '& input': {
-        width: '300px',
+        width: '400px',
         py: '1.25rem',
       },
-      '& a, button': {
+      '& button': {
         display: 'flex',
         alignItems: 'center',
         position: 'relative',
@@ -50,24 +42,27 @@ export default merge({}, theme, bootstrapTheme, {
         lineHeight: '1.2',
         textDecoration: 'none',
         color: 'text',
+        borderRadius: '10px',
         borderTop: '0.25rem solid transparent',
         borderBottom: '0.25rem solid transparent',
         transition: 'all 325ms ease-in-out',
         bg: 'white',
         '&:hover': {
-          background: light,
-          borderBottom: `0.25rem solid ${lightDark}`,
+          background: 'var(--theme-ui-colors-light)',
+          borderBottom: `0.25rem solid var(--theme-ui-colors-lightDark)`,
           transform: 'none',
           cursor: 'pointer',
         },
         '&.selected': {
-          background: light,
-          borderBottom: `0.25rem solid ${lightDark}`,
+          background: 'var(--theme-ui-colors-light)',
+          borderBottom: `0.25rem solid var(--theme-ui-colors-lightDark)`,
           transform: 'none',
           cursor: 'pointer',
         },
       },
     },
+  },
+  links: {
     footer: {
       textAlign: 'left',
       '& a': {

@@ -41,10 +41,12 @@ module.exports = {
     left: ['auto', '0', '0'],
   },
   footerRightColumn: {
+    bg: 'primaryBright',
     textAlign: 1,
     position: ['relative', 'absolute', 'absolute'],
     right: ['auto', '0', '0'],
     align: 'right',
+    width: '30%',
   },
   copyright: {
     margin: '36px',

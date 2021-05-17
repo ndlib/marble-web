@@ -1,8 +1,9 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
+import PropTypes from 'prop-types'
 import { useStaticQuery, graphql, Link } from 'gatsby'
-import { jsx } from 'theme-ui'
+import { jsx, Box } from 'theme-ui'
 import typy from 'typy'
 import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
 import marbleLogo from 'assets/svg/Marble.Logo.svg'
@@ -10,7 +11,6 @@ import sniteLogo from 'assets/svg/Snite.One.Line.W.svg'
 import libraryLogo from 'assets/images/hesburgh_mark_H2_white.svg'
 import ndLogo from 'assets/images/ND_mark_white.svg'
 import sx from './sx'
-import theme from 'gatsby-plugin-theme-ui'
 
 export const menuQuery = graphql`
   query {
@@ -26,12 +26,27 @@ export const menuQuery = graphql`
   }
 `
 
-export const Footer = () => {
+const footerSx = { bg: 'primary',
+  bottom: 0,
+  color: 'white',
+  left: 0,
+  minHeight: '64px',
+  overflow: 'hidden',
+  position: 'static',
+  a: {
+    color: 'background',
+    textDecoration: 'none',
+  },
+  img: {
+    margin: '40px',
+  },
+}
+export const Footer = (location, variant) => {
   const { menusJson } = useStaticQuery(menuQuery)
   const menu = typy(menusJson, 'items').safeArray
 
   return (
-    <footer sx={theme.styles.Footer}>
+    <Box as='footer' variant={`footer.${variant}`} sx={footerSx}>
       <div sx={sx.flexWrapper}>
         <div sx={sx.footerLeftColumn}>
           <Link to='/'>
@@ -86,13 +101,22 @@ export const Footer = () => {
               <img src={ndLogo} width='250' height='60' alt='University of Notre Dame' property='url' />
             </a>
             <div sx={sx.menuWrapper}>
-              <Menu variant='footer' items={menu} />
+              <Menu variant='footer' location={location} items={menu} />
             </div>
           </div>
         </div>
       </div>
-    </footer>
+    </Box>
   )
+}
+
+Footer.propTypes = {
+  variant: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
+}
+
+Footer.defaultProps = {
+  variant: 'default',
 }
 
 export default Footer

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import { patchData, getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import style from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/style.module.css'
-import { BaseStyles, jsx } from 'theme-ui'
+import { jsx, Heading } from 'theme-ui'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import SetPortfolioImage from './SetPortfolioImage'
 import sx from './sx'
@@ -50,9 +50,7 @@ export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
           Save
         </MaterialButton>
       </div>
-      <BaseStyles>
-        <h2>{item.title}</h2>
-      </BaseStyles>
+      <Heading as='h2'>{item.title}</Heading>
       <label
         htmlFor='annotation'
         className='accessibilityOnly'

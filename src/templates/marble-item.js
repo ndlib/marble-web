@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Heading } from 'theme-ui'
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -10,6 +10,12 @@ import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import CollectionLayout from '@ndlib/gatsby-theme-marble/src/components/Shared/MarbleItem/CollectionLayout'
 import ItemLayout from '@ndlib/gatsby-theme-marble/src/components/Shared/MarbleItem/ItemLayout'
 import RelatedItemsFromSearch from '@ndlib/gatsby-theme-marble/src/components/Shared/MarbleItem/RelatedItemsFromSearch'
+import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
+import NDBrandHeroNoHeader from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Hero/NoHeader'
+import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/breadcrumbs'
+import ReturnToSearch from '@ndlib/gatsby-theme-marble/src/components/Shared/ReturnToSearch'
+import ParentLink from '@ndlib/gatsby-theme-marble/src/components/Shared/ParentLink'
+import UserAnnotation from '@ndlib/gatsby-theme-marble/src/components/Shared/UserAnnotation'
 
 export const MarbleItemPage = ({ data, location }) => {
   const { marbleItem, allMarbleFile } = data
@@ -18,34 +24,39 @@ export const MarbleItemPage = ({ data, location }) => {
   const { debug } = queryString.parse(location.search)
   return (
     <Layout
-      title={marbleItem.title}
+      pageHeader={<NDBrandHeroNoHeader location={location} />}
       location={location}
     >
       <Seo
         data={data}
         location={location}
       />
+      <NDBrandSection variant='fullBleed' sx={{ pt: 0, '& div.sectionContent': { ml: '2rem', maxWidth: '90vw' } }}>
+        <ReturnToSearch location={location} />
+        <Heading as='h1' variant='pageTitle'>{marbleItem.title}</Heading>
+        {
+          marbleItem.display === 'collection' ? (
+            <CollectionLayout
+              location={location}
+              marbleItem={marbleItem}
+            />
+          ) : (
+            <ItemLayout
+              location={location}
+              marbleItem={marbleItem}
+              allMarbleFile={allMarbleFile}
+            />
+          )
+        }
+        <RelatedItemsFromSearch marbleItem={marbleItem} />
+        <UserAnnotation location={location} />
 
-      {
-        marbleItem.display === 'collection' ? (
-          <CollectionLayout
-            location={location}
-            marbleItem={marbleItem}
-          />
-        ) : (
-          <ItemLayout
-            location={location}
-            marbleItem={marbleItem}
-            allMarbleFile={allMarbleFile}
-          />
-        )
-      }
-      <RelatedItemsFromSearch marbleItem={marbleItem} />
-      {
-        debug ? (
-          <pre>{JSON.stringify(data, null, 2)}</pre>
-        ) : null
-      }
+        {
+          debug ? (
+            <pre>{JSON.stringify(data, null, 2)}</pre>
+          ) : null
+        }
+      </NDBrandSection>
     </Layout>
 
   )

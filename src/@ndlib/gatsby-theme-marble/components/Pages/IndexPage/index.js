@@ -3,7 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
-import { BaseStyles, jsx, Flex, Box, Heading } from 'theme-ui'
+import { jsx, Flex, Box, Heading } from 'theme-ui'
 import typy from 'typy'
 import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/CardGroup'
 import BrowseBar from '@ndlib/gatsby-theme-marble/src/components/Shared/BrowseBar'
@@ -16,6 +16,7 @@ import campuslocationImage from 'assets/images/campus_location.jpg'
 import allImage from 'assets/images/all_items.jpg'
 import GoogleVerification from './GoogleVerification'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
+import Html from '@ndlib/gatsby-theme-marble/src/components/Shared/Html'
 
 const IndexPage = ({ location }) => {
   const { t } = useTranslation()
@@ -59,9 +60,11 @@ const IndexPage = ({ location }) => {
   return (
     <React.Fragment>
       <NDBrandSection location={location}>
-        <p dangerouslySetInnerHTML={{ __html: t('common:hompageDescriptive') }} />
+        <Html html={t('common:hompageDescriptive')} />
       </NDBrandSection>
-      <NDBrandSection location={location} variant='fullBleedLight' sx={{ '& div.sectionContent': { maxWidth: 'inherit', minWidth: '90vw' } }} >
+      <NDBrandSection location={location} variant='fullBleedLight'
+        sx={{ '& div.sectionContent': { maxWidth: 'inherit', minWidth: '90vw' } }}
+      >
         <Heading as='h2' variant='sectionTitle'>
           {t('common:search.browseBy')}
         </Heading>

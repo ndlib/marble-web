@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { BaseStyles, Flex, Box } from 'theme-ui'
+import { Flex, Box } from 'theme-ui'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import Gravatar from '@ndlib/gatsby-theme-marble/src/components/Shared/Gravatar'
 import PromptLogin from './PromptLogin'
@@ -20,32 +20,30 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
         title={user.userName}
         noIndex
       />
-      <BaseStyles>
-        <Flex sx={{ flexWrap: 'wrap' }}>
-          <Box sx={{ width: ['100%', '25%', '25%'], px: '1rem', py: '1rem' }}>
-            <Flex sx={{ flexWrap: 'wrap' }}>
-              <Box sx={{ width: ['25%', '100%', '100%'] }}>
-                <Gravatar email={user.email} />
-              </Box>
-              <Box sx={{ width: ['75%', '100%', '100%'], px: '1rem' }}>
-                <h1>{user.fullName}</h1>
-                <h2>{user.userName}</h2>
-              </Box>
-            </Flex>
-            <div id='bio' sx={sx.bio}>{user.bio}</div>
-            <div>
-              {
-                /* Follow or Edit button */
-                isOwner ? <EditUserButton userName={user.userName} /> : <PromptLogin showButton={!loggedIn} />
-              }
-            </div>
+      <Flex sx={{ flexWrap: 'wrap' }}>
+        <Box sx={{ width: ['100%', '25%', '25%'], px: '1rem', py: '1rem' }}>
+          <Flex sx={{ flexWrap: 'wrap' }}>
+            <Box sx={{ width: ['25%', '100%', '100%'] }}>
+              <Gravatar email={user.email} />
+            </Box>
+            <Box sx={{ width: ['75%', '100%', '100%'], px: '1rem' }}>
+              <h1>{user.fullName}</h1>
+              <h2>{user.userName}</h2>
+            </Box>
+          </Flex>
+          <div id='bio' sx={sx.bio}>{user.bio}</div>
+          <div>
+            {
+              /* Follow or Edit button */
+              isOwner ? <EditUserButton userName={user.userName} /> : <PromptLogin showButton={!loggedIn} />
+            }
+          </div>
 
-          </Box>
-          <Box sx={{ width: ['100%', '75%', '75%'], py: '1rem' }}>
-            {children}
-          </Box>
-        </Flex>
-      </BaseStyles>
+        </Box>
+        <Box sx={{ width: ['100%', '75%', '75%'], py: '1rem' }}>
+          {children}
+        </Box>
+      </Flex>
     </>
 
   )

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { BaseStyles, jsx, Flex, Box } from 'theme-ui'
+import { jsx, Flex, Box } from 'theme-ui'
 import VisibilitySettings from './VisibilitySettings'
 import LayoutSettings from './LayoutSettings'
 import DangerDelete from './DangerDelete'
@@ -33,9 +33,7 @@ const PortfolioSettingsContent = ({ callBack }) => {
       <Flex sx={{ flexWrap: 'wrap' }}>
         <Box sx={{ width: ['100%', '66%'], px: '1rem', py: '1rem' }}>
           <label htmlFor='layoutDisplay'>
-            <BaseStyles>
-              <h2>Layout</h2>
-            </BaseStyles>
+            <h2>Layout</h2>
             <LayoutSettings
               portfolio={portfolio}
               onChange={changeLayout}

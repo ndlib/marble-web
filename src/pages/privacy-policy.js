@@ -5,11 +5,13 @@ import i18next from '@ndlib/gatsby-theme-marble/src/i18n'
 import Layout from 'components/Layout'
 import Seo from 'components/Shared/Seo'
 import PrivacyPolicyPage from 'components/Pages/PrivacyPolicyPage'
+import NDBrandHeroNoHeader from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Hero/NoHeader'
 
 const PrivacyPolicy = ({ location }) => {
   return (
     <Layout
       location={location}
+      pageHeader={<NDBrandHeroNoHeader location={location} />}
     >
       <Seo
         data={{}}

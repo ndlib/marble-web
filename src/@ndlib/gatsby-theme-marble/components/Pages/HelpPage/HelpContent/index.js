@@ -1,13 +1,17 @@
 /** @jsx jsx */
-import { jsx, BaseStyles, Flex, Box } from 'theme-ui'
+import { jsx, Flex, Box, Heading } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import Layout from 'components/Layout'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
 import FeedbackForm from '@ndlib/gatsby-theme-marble/src/components/Shared/FeedbackForm'
-import { useStaticQuery, graphql, Link, navigate } from 'gatsby'
+import { useStaticQuery, graphql, navigate } from 'gatsby'
 import typy from 'typy'
+import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
+import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
+import NDBrandHeroNoHeader from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Hero/NoHeader'
+import Html from '@ndlib/gatsby-theme-marble/src/components/Shared/Html'
 
 export const menuQuery = graphql`
 query {
@@ -24,32 +28,41 @@ query {
 `
 
 const HelpContent = ({ location }) => {
-const { menusJson } = useStaticQuery(menuQuery)
-const menu = typy(menusJson, 'items').safeArray
+  const { menusJson } = useStaticQuery(menuQuery)
+  const menu = typy(menusJson, 'items').safeArray
   const { t } = useTranslation()
   const page = getPageName(location)
-  const feedbackForm = page === 'contactUs' ? (
-    <FeedbackForm closeFunc={() => navigate(`/help`)} />) : null
+  const feedbackForm = page === 'contactUs' ? (<FeedbackForm closeFunc={() => navigate(`/help`)} />) : null
+
   return (
     <Layout
       title={t(`text:helpPage.${page}.title`)}
       location={location}
+      pageHeader={<NDBrandHeroNoHeader location={location} />}
     >
       <Seo
         data={{}}
         location={location}
       />
-      <BaseStyles>
+      <NDBrandSection location={location} variant='fullBleed' sx={{ '& div.sectionContent': { maxWidth: 'inherit', minWidth: '90vw' } }}>
+        <NDBrandBreadcrumbs
+          currentPageTitle={t(`text:helpPage.${page}.title`)}
+          breadcrumbs={[
+            { url: '/help', title: 'Help' },
+          ]}
+        />
+
+        <Heading as='h1' variant='pageTitle'>{t(`text:helpPage.${page}.title`)}</Heading>
         <Flex sx={{ flexWrap: 'wrap' }}>
           <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
             <Menu items={menu} variant='help' />
           </Box>
           <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
-            <div dangerouslySetInnerHTML={{ __html: t(`text:helpPage.${page}.text`) }} />
+            <Html html={t(`text:helpPage.${page}.text`)} />
             {feedbackForm}
           </Box>
         </Flex>
-      </BaseStyles>
+      </NDBrandSection>
     </Layout>
   )
 }

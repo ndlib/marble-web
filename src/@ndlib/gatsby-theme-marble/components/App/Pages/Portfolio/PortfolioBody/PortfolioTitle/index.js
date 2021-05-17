@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { useState } from 'react'
-import { BaseStyles, jsx } from 'theme-ui'
+import { jsx, Heading } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import TitleEdit from './TitleEdit'
@@ -15,15 +15,13 @@ const PortfolioTitle = ({ isOwner }) => {
   }
 
   return (
-    <BaseStyles>
-      <h1>
-        {portfolio.title}
-        <EditButton
-          isOwner={isOwner}
-          setEditFunc={() => setEditing(true)}
-        />
-      </h1>
-    </BaseStyles>
+    <Heading as='h1' variant='pageTitle'>
+      {portfolio.title}
+      <EditButton
+        isOwner={isOwner}
+        setEditFunc={() => setEditing(true)}
+      />
+    </Heading>
   )
 }
 

@@ -8,14 +8,11 @@ import { withI18nTranslation } from '@ndlib/gatsby-theme-marble/src/i18n/withI18
 import AuthWrapper from './AuthWrapper'
 import PrivateRoute from './PrivateRoute'
 import PageWrapper from './PageWrapper'
-import ContentWrapper from './ContentWrapper'
-import PageContent from './PageContent'
 
 /// CONSTRUCTION BANNER
 import CornerBanner from './CornerBanner'
-import theme from 'gatsby-plugin-theme-ui'
+
 export const Layout = ({
-  title, // page title to be placed inside main
   children,
   requireLogin, // bool to test login
   location,
@@ -41,12 +38,9 @@ export const Layout = ({
           requireLogin={requireLogin}
         >
           <PageWrapper location={location} pageHeader={pageHeader}>
-            <PageContent
-              title={title}
-              location={location}
-            >
+            <article>
               {children}
-            </PageContent>
+            </article>
           </PageWrapper>
         </PrivateRoute>
       </AuthWrapper>
@@ -55,10 +49,10 @@ export const Layout = ({
 }
 
 Layout.propTypes = {
-  title: PropTypes.node,
   children: PropTypes.node.isRequired,
   location: PropTypes.object.isRequired,
   requireLogin: PropTypes.bool,
+  pageHeader: PropTypes.object.isRequired,
 }
 
 Layout.defaultProps = {

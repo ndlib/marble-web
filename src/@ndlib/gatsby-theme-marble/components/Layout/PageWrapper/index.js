@@ -1,4 +1,7 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import SkipToMain from '@ndlib/gatsby-theme-marble/src/components/Shared/SkipToMain'
 import NDBrandHeader from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Header'
@@ -42,6 +45,7 @@ const PageWrapper = ({ children, location, pageHeader }) => {
 PageWrapper.propTypes = {
   children: PropTypes.node.isRequired,
   location: PropTypes.object.isRequired,
+  pageHeader: PropTypes.object.isRequired,
 }
 
 export default PageWrapper

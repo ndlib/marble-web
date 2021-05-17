@@ -1,18 +1,26 @@
 /** @jsx jsx */
-import { BaseStyles, jsx, Flex, Box } from 'theme-ui'
+import { Heading, jsx, Flex, Box } from 'theme-ui'
 import { useTranslation } from 'react-i18next'
+import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
+import Html from '@ndlib/gatsby-theme-marble/src/components/Shared/Html'
+import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/breadcrumbs'
 
 const PrivacyPolicyPage = () => {
   const { t } = useTranslation()
   return (
-    <BaseStyles>
+    <NDBrandSection variant='fullBleed' sx={{ '& div.sectionContent': { maxWidth: 'inherit', minWidth: '90vw' } }}>
+      <NDBrandBreadcrumbs
+        currentPageTitle={t('text:privacyPolicyPage.title')}
+        breadcrumbs={[]}
+      />
+      <Heading as='h1' variant='pageTitle'>{t('text:privacyPolicyPage.title')}</Heading>
+
       <Flex sx={{ flexWrap: 'wrap' }}>
         <Box sx={{ width: '100%', px: '1rem', py: '1rem' }}>
-          <h2>{t('text:privacyPolicyPage.title')}</h2>
-          <div dangerouslySetInnerHTML={{ __html: t('text:privacyPolicyPage.text') }} />
+          <Html html={t('text:privacyPolicyPage.text')} />
         </Box>
       </Flex>
-    </BaseStyles>
+    </NDBrandSection>
   )
 }
 

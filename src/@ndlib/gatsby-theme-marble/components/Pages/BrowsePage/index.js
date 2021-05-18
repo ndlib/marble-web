@@ -3,6 +3,7 @@ import React from 'react'
 import { jsx, Flex, Box, Heading } from 'theme-ui'
 import MiniCard from '@ndlib/gatsby-theme-marble/src/components/Shared/MiniCard'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
+import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/breadcrumbs'
 
 const Browse = ({ location }) => {
   const dates = [
@@ -131,6 +132,10 @@ const Browse = ({ location }) => {
   return (
     <>
       <NDBrandSection variant='fullBleed' sx={{ '& div.sectionContent': { maxWidth: 'inherit', minWidth: '90vw' } }}>
+        <NDBrandBreadcrumbs
+          currentPageTitle='About'
+          breadcrumbs={[]}
+        />
         <Heading as='h1' variant='pageTitle'>Browse</Heading>
         <Flex sx={{ flexWrap: 'wrap' }}>
           <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>

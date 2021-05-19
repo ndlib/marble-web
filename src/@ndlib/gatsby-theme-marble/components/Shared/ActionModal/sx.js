@@ -21,6 +21,7 @@ module.exports = {
     position: 'fixed',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
+    fontWeight: 'normal',
   },
   button: {
     backgroundColor: '#002a43',

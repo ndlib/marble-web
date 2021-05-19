@@ -5,13 +5,11 @@ import i18next from '@ndlib/gatsby-theme-marble/src/i18n'
 import Layout from 'components/Layout'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import ExhibitsPage from 'components/Pages/ExhibitsPage'
-import NDBrandHeroNoHeader from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Hero/NoHeader'
 
 const Exhibits = ({ location }) => {
   return (
     <Layout
       location={location}
-      pageHeader={<NDBrandHeroNoHeader location={location} />}
     >
       <Seo
         data={{}}

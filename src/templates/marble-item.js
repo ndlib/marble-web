@@ -11,7 +11,6 @@ import CollectionLayout from '@ndlib/gatsby-theme-marble/src/components/Shared/M
 import ItemLayout from '@ndlib/gatsby-theme-marble/src/components/Shared/MarbleItem/ItemLayout'
 import RelatedItemsFromSearch from '@ndlib/gatsby-theme-marble/src/components/Shared/MarbleItem/RelatedItemsFromSearch'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
-import NDBrandHeroNoHeader from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Hero/NoHeader'
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/breadcrumbs'
 import ReturnToSearch from '@ndlib/gatsby-theme-marble/src/components/Shared/ReturnToSearch'
 import ParentLink from '@ndlib/gatsby-theme-marble/src/components/Shared/ParentLink'
@@ -24,7 +23,6 @@ export const MarbleItemPage = ({ data, location }) => {
   const { debug } = queryString.parse(location.search)
   return (
     <Layout
-      pageHeader={<NDBrandHeroNoHeader location={location} />}
       location={location}
     >
       <Seo

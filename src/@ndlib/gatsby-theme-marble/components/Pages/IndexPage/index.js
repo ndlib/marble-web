@@ -62,14 +62,12 @@ const IndexPage = ({ location }) => {
       <NDBrandSection location={location}>
         <Html html={t('common:hompageDescriptive')} />
       </NDBrandSection>
-      <NDBrandSection location={location} variant='fullBleedLight'
-        sx={{ '& div.sectionContent': { maxWidth: 'inherit', minWidth: '90vw' } }}
-      >
+      <NDBrandSection location={location} variant='fullBleedLight'>
         <Heading as='h2' variant='sectionTitle'>
           {t('common:search.browseBy')}
         </Heading>
 
-        <Flex sx={{ flexWrap: 'wrap', width: '100%' }}>
+        <Flex sx={{ flexWrap: 'wrap', width: '100%', minWidth: '90vw' }}>
           <Box sx={{ width: ['100%', '50%', '50%', '25%'], px: '1rem', py: '.5rem' }}>
             <BrowseBar
               label='Date'
@@ -101,7 +99,7 @@ const IndexPage = ({ location }) => {
         </Flex>
 
       </NDBrandSection>
-      <NDBrandSection location={location} variant='fullBleed' sx={{ '& div.sectionContent': { maxWidth: 'inherit' } }} >
+      <NDBrandSection location={location} variant='fullBleed'>
         <Heading as='h2' variant='sectionTitle'>
               Featured Items
         </Heading>

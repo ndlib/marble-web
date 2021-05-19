@@ -8,7 +8,7 @@ import typy from 'typy'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import { jsx } from 'theme-ui'
 import userIcon from 'assets/icons/svg/baseline-person-24px-white.svg'
-import sx from './sx.js'
+// import sx from './sx.js'
 
 // eslint-disable-next-line complexity
 export const LoginButton = ({ location, loginReducer }) => {
@@ -17,6 +17,7 @@ export const LoginButton = ({ location, loginReducer }) => {
   if (!process.env.AUTH_CLIENT_ID || !process.env.AUTH_CLIENT_ISSUER || !process.env.AUTH_CLIENT_URL) {
     return null
   }
+  const sx = {}
   if (loginReducer.status === 'STATUS_LOGGED_IN') {
     return (
       <div>

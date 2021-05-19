@@ -131,7 +131,7 @@ const Browse = ({ location }) => {
   ]
   return (
     <>
-      <NDBrandSection variant='fullBleed' sx={{ '& div.sectionContent': { maxWidth: 'inherit', minWidth: '90vw' } }}>
+      <NDBrandSection variant='fullBleed'>
         <NDBrandBreadcrumbs
           currentPageTitle='About'
           breadcrumbs={[]}

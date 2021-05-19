@@ -1,23 +1,31 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import { jsx, Box, Heading } from 'theme-ui'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
+import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
+import NDBrandSectionLeftNav from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section/LeftNav'
+
 import UserBasePathContent from './UserBasePathContent'
-import style from './style.module.css'
 
 const UserBasePath = ({ location }) => {
   return (
-    <React.Fragment>
+    <>
       <Seo
         data={{}}
         location={location}
         title={`Login`}
         noIndex
       />
-      <div className={style.contentBody}>
-        <UserBasePathContent />
-      </div>
-    </React.Fragment>
+      <NDBrandSectionLeftNav>
+        <Box />
+        <NDBrandSection variant='defaultWithSidebar' location={location} sx={{ justifyContent: 'center' }}>
+          <Heading variant='pageTitle' as='h1'>Finalize Account</Heading>
+          <UserBasePathContent />
+        </NDBrandSection>
+      </NDBrandSectionLeftNav>
+    </>
   )
 }
 UserBasePath.propTypes = {

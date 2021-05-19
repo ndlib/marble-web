@@ -10,7 +10,6 @@ import { useStaticQuery, graphql, navigate } from 'gatsby'
 import typy from 'typy'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
-import NDBrandHeroNoHeader from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Hero/NoHeader'
 import Html from '@ndlib/gatsby-theme-marble/src/components/Shared/Html'
 
 export const menuQuery = graphql`
@@ -38,13 +37,12 @@ const HelpContent = ({ location }) => {
     <Layout
       title={t(`text:helpPage.${page}.title`)}
       location={location}
-      pageHeader={<NDBrandHeroNoHeader location={location} />}
     >
       <Seo
         data={{}}
         location={location}
       />
-      <NDBrandSection location={location} variant='fullBleed' sx={{ '& div.sectionContent': { maxWidth: 'inherit', minWidth: '90vw' } }}>
+      <NDBrandSection location={location} variant='fullBleed'>
         <NDBrandBreadcrumbs
           currentPageTitle={t(`text:helpPage.${page}.title`)}
           breadcrumbs={[

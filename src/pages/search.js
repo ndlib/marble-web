@@ -10,7 +10,6 @@ import SearchFilterBox from '@ndlib/gatsby-theme-marble/src/components/Shared/Se
 import SearchResults from '@ndlib/gatsby-theme-marble/src/components/Shared/SearchTools/SearchResults'
 import SearchRefinementListFilter from '@ndlib/gatsby-theme-marble/src/components/Shared/SearchTools/SearchRefinementListFilter'
 import { TagFilterConfig } from 'searchkit'
-import NDBrandHeroNoHeader from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Hero/NoHeader'
 import NDBrandSectionLeftNav from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section/LeftNav'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/breadcrumbs'
@@ -19,7 +18,6 @@ const SearchPage = ({ location }) => {
   return (
     <Layout
       location={location}
-      pageHeader={<NDBrandHeroNoHeader location={location} />}
     >
       <Seo
         data={{}}

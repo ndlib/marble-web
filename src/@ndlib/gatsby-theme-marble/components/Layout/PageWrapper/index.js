@@ -10,11 +10,10 @@ import ClickableMarbleLogoMono from '@ndlib/gatsby-theme-marble/src/components/S
 import Footer from './Footer'
 import FeedbackModal from '../../Shared/FeedbackModal'
 import BetaModal from '../../Shared/BetaModal'
+import LoginButton from './NavigationHeader/LoginButton'
+import NDBrandHeroBackgroundOnly from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Hero/BackgroundOnly'
 
 const PageWrapper = ({ children, location, pageHeader }) => {
-  const noFeedbackModal = ['/help/contact-us']
-  const feedback = noFeedbackModal.includes(location.pathname) ? (
-    null) : <FeedbackModal />
   let seenWarning = true
   if (typeof window !== 'undefined' && location.pathname === '/') {
     seenWarning = localStorage.getItem('seenWarning')
@@ -24,19 +23,28 @@ const PageWrapper = ({ children, location, pageHeader }) => {
   const betaPopup = seenWarning ? (
     null) : <BetaModal />
 
-  console.log('wrapper', pageHeader)
+  if (!pageHeader) {
+    pageHeader = (<NDBrandHeroBackgroundOnly location={location} />)
+  }
 
+  const brandHeader = (
+    <NDBrandHeader
+      location={location}
+      titleOverride={<ClickableMarbleLogoMono />}
+      additionalNavButtons={<LoginButton location={location} />}
+    />
+  )
   return (
     <>
       <SkipToMain />
       <NDBrandLayout
-        siteHeader={<NDBrandHeader location={location} titleOverride={<ClickableMarbleLogoMono />} />}
+        siteHeader={brandHeader}
         siteFooter={<Footer location={location} />}
         pageHeader={pageHeader}
       >
         {children}
       </NDBrandLayout>
-      {feedback}
+      <FeedbackModal location={location} />
       {betaPopup}
     </>
   )

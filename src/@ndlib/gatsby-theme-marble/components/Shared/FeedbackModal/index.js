@@ -1,11 +1,13 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
+import PropTypes from 'prop-types'
 import { useState } from 'react'
 import ActionModal from '@ndlib/gatsby-theme-marble/src/components/Shared/ActionModal'
 import FeedbackForm from '../FeedbackForm'
 import sx from './sx'
 
-const FeedbackModal = () => {
+const FeedbackModal = ({ location }) => {
+  const noFeedbackModal = ['/help/contact-us']
   const [settingsOpen, setSettingsOpen] = useState(false)
 
   const handleOpenModal = () => {
@@ -13,6 +15,10 @@ const FeedbackModal = () => {
   }
   const handleCloseModal = () => {
     setSettingsOpen(false)
+  }
+
+  if (noFeedbackModal.includes(location.pathname)) {
+    return null
   }
 
   return (
@@ -33,6 +39,10 @@ const FeedbackModal = () => {
       </ActionModal>
     </div>
   )
+}
+
+FeedbackModal.propTypes = {
+  location: PropTypes.object.isRequired,
 }
 
 export default FeedbackModal

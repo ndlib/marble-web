@@ -44,7 +44,7 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
         <NDBrandSection variant='fullBleedWithSidebar'>
           {children}
         </NDBrandSection>
-      </NDBrandSectionLeftNav location={location}>
+      </NDBrandSectionLeftNav>
     </>
 
   )

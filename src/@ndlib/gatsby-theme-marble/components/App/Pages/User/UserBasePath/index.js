@@ -23,7 +23,7 @@ const UserBasePath = ({ location }) => {
         <NDBrandSection variant='defaultWithSidebar' location={location}>
           <UserBasePathContent />
         </NDBrandSection>
-      </NDBrandSectionLeftNav location={location}>
+      </NDBrandSectionLeftNav>
     </>
   )
 }

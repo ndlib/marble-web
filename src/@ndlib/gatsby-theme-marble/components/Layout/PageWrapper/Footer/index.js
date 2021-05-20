@@ -88,7 +88,7 @@ export const Footer = (location, variant) => {
             <div className='footer-phone' property='telephone' content='+1 574-631-6679'>Phone <Link variant='footer' to='tel:574-631-6679'>(574) 631–6679</Link></div>
             <div className='footer-email' property='email'><Link variant='footer' rel='noopener' to='mailto:asklib@nd.edu'>asklib@nd.edu</Link></div>
           </div>
-          <div sx={sx.copyright} className='copyright'><Link variant='footer' to='https://www.nd.edu/copyright/'>&copy; 2020</Link> <Link variant='footer' to='https://www.nd.edu'>University of Notre Dame</Link></div>
+          <div sx={sx.copyright} className='copyright'><Link variant='footer' to='https://www.nd.edu/copyright/'>&copy; {new Date().getFullYear()}</Link> <Link variant='footer' to='https://www.nd.edu'>University of Notre Dame</Link></div>
         </Box>
         <Box sx={{
           width: ['100%', '50%', '34%'],

@@ -62,7 +62,7 @@ export const query = graphql`
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.
         gatsbyImageData(
-          width: 4000
+          width: 2200
           placeholder: DOMINANT_COLOR
           formats: [AUTO, WEBP, AVIF]
         )      }

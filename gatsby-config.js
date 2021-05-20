@@ -20,9 +20,9 @@ const allowRobots = process.env.ALLOW_ROBOTS === 'true' || false
 const sourceGraphQlUrl = process.env.GRAPHQL_API_URL || ''
 const graphQlKey = process.env.GRAPHQL_API_KEY || ''
 const useFixtures = process.env.USE_FIXTURES || !!process.env.GITHUB_ACTIONS || false
-const fmpHost = process.env.FMP_HOST || 'dev',
-const fmpDatabase = process.env.FMP_DATABASE || 'dev',
-const fmpUsername = process.env.FMP_USERNAME || 'dev',
+const fmpHost = process.env.FMP_HOST || 'dev'
+const fmpDatabase = process.env.FMP_DATABASE || 'dev'
+const fmpUsername = process.env.FMP_USERNAME || 'dev'
 const fmpPassword = process.env.FMP_PASSWORD || 'dev'
 
 module.exports = {

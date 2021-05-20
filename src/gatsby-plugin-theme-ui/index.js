@@ -64,14 +64,17 @@ export default merge({}, theme, {
   },
   links: {
     footer: {
-      textAlign: 'left',
+      color: 'white',
+      textDecoration: 'none',
+    },
+    menuFooter: {
+      '& div': {
+        display: 'flex',
+        flexWrap: 'wrap',
+      },
       '& a': {
-        display: 'block',
         color: 'white',
-        px: '50px',
-        py: '5px',
-        textDecoration: 'none',
-        fontFamily: 'heading',
+        flex: '50%',
       },
     },
     help: {
@@ -90,7 +93,6 @@ export default merge({}, theme, {
       color: 'text',
     },
   },
-  flexD: ['row', 'column'],
   fonts: {
     body: `
       GPBook,

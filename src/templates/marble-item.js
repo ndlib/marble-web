@@ -11,7 +11,7 @@ import CollectionLayout from '@ndlib/gatsby-theme-marble/src/components/Shared/M
 import ItemLayout from '@ndlib/gatsby-theme-marble/src/components/Shared/MarbleItem/ItemLayout'
 import RelatedItemsFromSearch from '@ndlib/gatsby-theme-marble/src/components/Shared/MarbleItem/RelatedItemsFromSearch'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
-import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/breadcrumbs'
+import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 import ReturnToSearch from '@ndlib/gatsby-theme-marble/src/components/Shared/ReturnToSearch'
 import ParentLink from '@ndlib/gatsby-theme-marble/src/components/Shared/ParentLink'
 import UserAnnotation from '@ndlib/gatsby-theme-marble/src/components/Shared/UserAnnotation'
@@ -29,7 +29,7 @@ export const MarbleItemPage = ({ data, location }) => {
         data={data}
         location={location}
       />
-      <NDBrandSection variant='fullBleed' sx={{ pt: 0, '& div.sectionContent': { ml: '2rem', maxWidth: '90vw' } }}>
+      <NDBrandSection variant='fullBleed'>
         <ReturnToSearch location={location} />
         <Heading as='h1' variant='pageTitle'>{marbleItem.title}</Heading>
         {

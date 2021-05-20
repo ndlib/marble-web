@@ -2,8 +2,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
-import sx from './sx'
-import SearchBox from '@ndlib/gatsby-theme-marble/src/components/Shared/SearchBox'
 import PortfolioTitle from './PortfolioTitle'
 import PortfolioDescription from './PortfolioDescription'
 import PortfolioItems from './PortfolioItems'
@@ -29,9 +27,6 @@ const PortfolioBody = ({ portfolio, location, isOwner }) => {
         data={{}}
         noIndex // = {portfolio.privacy !== 'public'}
       />
-      <div sx={sx.searchBoxBG}>
-        <SearchBox boxLabel='Search the Collections' location={location} />
-      </div>
       <PortfolioTitle
         isOwner={isOwner}
       />

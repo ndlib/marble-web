@@ -1,5 +1,8 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { jsx, Heading } from 'theme-ui'
 import { connect } from 'react-redux'
 import typy from 'typy'
 import WelcomeMessage from './WelcomeMessage'
@@ -19,6 +22,7 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
 
   return (
     <form className={style.loginArea}>
+      <Heading as='h1' variant='pageTitle'>Finalize Account</Heading>
       <WelcomeMessage />
       <TextField
         id='profileName'

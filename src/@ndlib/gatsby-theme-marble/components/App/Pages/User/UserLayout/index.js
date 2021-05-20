@@ -7,6 +7,8 @@ import Gravatar from '@ndlib/gatsby-theme-marble/src/components/Shared/Gravatar'
 import PromptLogin from './PromptLogin'
 import EditUserButton from './EditUserButton'
 import { isLoggedIn, ownsPage } from '@ndlib/gatsby-theme-marble/src/utils/auth'
+import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
+import NDBrandSectionLeftNav from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section/LeftNav'
 import sx from './sx'
 
 export const UserLayout = ({ user, children, location, loginReducer }) => {
@@ -20,8 +22,8 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
         title={user.userName}
         noIndex
       />
-      <Flex sx={{ flexWrap: 'wrap' }}>
-        <Box sx={{ width: ['100%', '25%', '25%'], px: '1rem', py: '1rem' }}>
+      <NDBrandSectionLeftNav>
+        <NDBrandSection variant='sidebar'>
           <Flex sx={{ flexWrap: 'wrap' }}>
             <Box sx={{ width: ['25%', '100%', '100%'] }}>
               <Gravatar email={user.email} />
@@ -38,12 +40,11 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
               isOwner ? <EditUserButton userName={user.userName} /> : <PromptLogin showButton={!loggedIn} />
             }
           </div>
-
-        </Box>
-        <Box sx={{ width: ['100%', '75%', '75%'], py: '1rem' }}>
+        </NDBrandSection>
+        <NDBrandSection variant='fullBleedWithSidebar'>
           {children}
-        </Box>
-      </Flex>
+        </NDBrandSection>
+      </NDBrandSectionLeftNav>
     </>
 
   )

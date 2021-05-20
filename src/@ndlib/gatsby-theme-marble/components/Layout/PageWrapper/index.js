@@ -30,7 +30,7 @@ const PageWrapper = ({ children, location, pageHeader }) => {
   const brandHeader = (
     <NDBrandHeader
       location={location}
-      titleOverride={<ClickableMarbleLogoMono />}
+      titleOverride={<ClickableMarbleLogoMono url='/' />}
       additionalNavButtons={<LoginButton location={location} />}
     />
   )

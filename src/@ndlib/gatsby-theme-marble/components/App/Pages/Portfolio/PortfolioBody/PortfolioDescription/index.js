@@ -21,6 +21,7 @@ const PortfolioDescription = ({ isOwner }) => {
       return (
         <MaterialButton
           wide
+          inverse
           onClick={() => {
             setEditing(true)
           }}

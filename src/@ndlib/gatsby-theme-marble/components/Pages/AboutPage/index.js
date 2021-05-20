@@ -6,7 +6,7 @@ import sniteImage from 'assets/images/02.jpg'
 import rbImage from 'assets/images/03.jpg'
 import archivesImage from 'assets/images/06.jpg'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
-import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/breadcrumbs'
+import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 import Html from '@ndlib/gatsby-theme-marble/src/components/Shared/Html'
 
 const AboutPage = ({ location }) => {

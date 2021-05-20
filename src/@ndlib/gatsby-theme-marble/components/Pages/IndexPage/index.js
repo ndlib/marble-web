@@ -59,7 +59,7 @@ const IndexPage = ({ location }) => {
   const { nodes } = allMarbleItem
   return (
     <React.Fragment>
-      <NDBrandSection location={location}>
+      <NDBrandSection variant='fullBleed' location={location} sx={{ justifyContent: 'center' }}>
         <Html html={t('common:hompageDescriptive')} />
       </NDBrandSection>
       <NDBrandSection location={location} variant='fullBleedLight'>
@@ -99,7 +99,11 @@ const IndexPage = ({ location }) => {
         </Flex>
 
       </NDBrandSection>
-      <NDBrandSection location={location} variant='fullBleed'>
+      <NDBrandSection
+        location={location}
+        variant='fullBleed'
+        sx={{ px: 0 }}
+      >
         <Heading as='h2' variant='sectionTitle'>
               Featured Items
         </Heading>

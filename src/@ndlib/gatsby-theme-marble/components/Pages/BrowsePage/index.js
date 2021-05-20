@@ -3,7 +3,7 @@ import React from 'react'
 import { jsx, Flex, Box, Heading } from 'theme-ui'
 import MiniCard from '@ndlib/gatsby-theme-marble/src/components/Shared/MiniCard'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
-import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/breadcrumbs'
+import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 
 const Browse = ({ location }) => {
   const dates = [

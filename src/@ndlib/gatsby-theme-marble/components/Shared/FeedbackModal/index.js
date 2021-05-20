@@ -23,7 +23,7 @@ const FeedbackModal = ({ location }) => {
 
   return (
     <div>
-      <button id='feedbackButton' onClick={handleOpenModal} sx={sx.feedbackButton}>FEEDBACK</button>
+      <button id='feedbackButton' onClick={handleOpenModal} sx={sx.feedbackButton}>Feedback</button>
       <ActionModal
         isOpen={settingsOpen}
         contentLabel='Marble Feedback'

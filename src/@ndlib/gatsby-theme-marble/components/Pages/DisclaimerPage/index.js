@@ -3,7 +3,7 @@ import { Heading, jsx, Flex, Box } from 'theme-ui'
 import { useTranslation } from 'react-i18next'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import Html from '@ndlib/gatsby-theme-marble/src/components/Shared/Html'
-import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/breadcrumbs'
+import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 
 const DisclaimerPage = () => {
   const { t } = useTranslation()

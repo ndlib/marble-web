@@ -5,7 +5,7 @@ import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/CardGrou
 import Card from '@ndlib/gatsby-theme-marble/src/components/Shared/Card'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
-import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/breadcrumbs'
+import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 import typy from 'typy'
 import { useThemeUI, jsx, Heading } from 'theme-ui'
 import image1 from 'assets/images/Home-Graphic-v2e.jpg'

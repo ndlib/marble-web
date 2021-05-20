@@ -12,7 +12,7 @@ import SearchRefinementListFilter from '@ndlib/gatsby-theme-marble/src/component
 import { TagFilterConfig } from 'searchkit'
 import NDBrandSectionLeftNav from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section/LeftNav'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
-import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/breadcrumbs'
+import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 
 const SearchPage = ({ location }) => {
   return (
@@ -26,7 +26,7 @@ const SearchPage = ({ location }) => {
       <SearchBase>
 
         <NDBrandSectionLeftNav location={location}>
-          <Box sx={{ mt: '5rem' }}>
+          <NDBrandSection location={location} variant='sidebar'>
             <TagFilterConfig field='creator.keyword' title='Creator' id='creator' />
             <TagFilterConfig field='collection.keyword' title='Collection' id='collection' />
 
@@ -60,8 +60,8 @@ const SearchPage = ({ location }) => {
               sort='default'
               size='4'
             />
-          </Box>
-          <NDBrandSection sx={{ pl: '2rem', minWidth: '60vw', '&.sectionContent': { minWidth: '60vw' } }}>
+          </NDBrandSection>
+          <NDBrandSection location={location} variant='fullBleedWithSidebar'>
 
             <NDBrandBreadcrumbs
               currentPageTitle='Search'
@@ -74,9 +74,7 @@ const SearchPage = ({ location }) => {
           </NDBrandSection>
         </NDBrandSectionLeftNav>
       </SearchBase>
-
     </Layout>
-
   )
 }
 

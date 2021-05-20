@@ -5,8 +5,7 @@ import { connect } from 'react-redux'
 import { jsx } from 'theme-ui'
 import { deleteData, getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
-import deleteIcon from 'assets/icons/svg/baseline-delete_forever-24px.svg'
-import sx from './sx'
+import MaterialButton from 'components/Shared/MaterialButton'
 
 const DeleteItemButton = ({ item, loginReducer }) => {
   const { portfolio, updatePortfolio } = usePortfolioContext()
@@ -25,18 +24,14 @@ const DeleteItemButton = ({ item, loginReducer }) => {
     })
   }
   return (
-    <button
+    <MaterialButton
       disabled={patching}
       onClick={(e) => {
         deleteItem(e, loginReducer, item.uuid, setPatching, callBack)
       }}
-      sx={sx.deleteButton}
     >
-      <img
-        src={deleteIcon}
-        alt='delete'
-      />
-    </button>
+      Delete
+    </MaterialButton>
   )
 }
 

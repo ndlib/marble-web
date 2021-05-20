@@ -8,6 +8,7 @@ import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
 import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
 import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import { createData } from './api'
 import { connect } from 'react-redux'
 import typy from 'typy'
@@ -69,18 +70,10 @@ export const FeedbackForm = ({ closeFunc }) => {
       return (
         <div>
           <form>
-            <p id='thankYou'>Thank you for your feedback</p>
+            <p id='thankYou'>Thank you for your feedback! You will receive an automated email from ND Service Desk.</p>
             <p>Your ServiceNow ticket number is: #{typy(response.result, 'number').safeString}</p>
+            <p>You can submit <Link to='/help/contact-us'>another response</Link>.</p>
             <div sx={sx.buttonGroup}>
-              <MaterialButton
-                onClick={() => {
-                  changeFeedback('')
-                  setResponse(false)
-                }}
-                id='submitAnother'
-                primary
-              >Another?
-              </MaterialButton>
               <MaterialButton
                 onClick={() => {
                   closeFunc()
@@ -106,7 +99,7 @@ export const FeedbackForm = ({ closeFunc }) => {
             }}
             disabled={patching}
             valid={name !== ''}
-            warning='Name cannot be blank.'
+            warning='Required'
           />
           <TextField
             id='email'
@@ -121,7 +114,7 @@ export const FeedbackForm = ({ closeFunc }) => {
           />
           <TextArea
             id='feedback'
-            label='Tell us about your experience, ideas, questions, or issues related to the site.'
+            label='Tell us about your experience, ideas, or questions related to the site.'
             defaultValue=''
             onChange={(event) => {
               changeFeedback(event.target.value)

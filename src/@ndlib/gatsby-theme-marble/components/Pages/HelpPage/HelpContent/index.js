@@ -75,6 +75,9 @@ export const getPageName = (location) => {
   if (pathname[0] === '/') {
     pathname = pathname.slice(1)
   }
+  if (pathname.endsWith('/')) {
+    pathname = pathname.slice(0, -1)
+  }
   if (pathname.startsWith('help/')) {
     pathname = pathname
       .replace('help/', '')

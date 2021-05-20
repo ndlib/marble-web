@@ -9,7 +9,7 @@ import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import sniteLogo from 'assets/svg/Snite.One.Line.W.svg'
 import libraryLogo from 'assets/images/hesburgh_mark_H2_white.svg'
-import ClickableMarbleLogoMono from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/logos/ClickableMarbleLogoMono'
+import ClickableMarbleLogoMono from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Logos/ClickableMarbleLogoMono'
 import sx from './sx'
 
 export const menuQuery = graphql`

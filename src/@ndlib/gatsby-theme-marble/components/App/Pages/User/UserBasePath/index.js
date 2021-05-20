@@ -18,12 +18,12 @@ const UserBasePath = ({ location }) => {
         title={`Login`}
         noIndex
       />
-      <NDBrandSectionLeftNav>
+      <NDBrandSectionLeftNav location={location}>
         <Box />
         <NDBrandSection variant='defaultWithSidebar' location={location}>
           <UserBasePathContent />
         </NDBrandSection>
-      </NDBrandSectionLeftNav>
+      </NDBrandSectionLeftNav location={location}>
     </>
   )
 }

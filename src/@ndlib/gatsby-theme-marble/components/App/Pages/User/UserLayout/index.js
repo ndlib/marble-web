@@ -22,7 +22,7 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
         title={user.userName}
         noIndex
       />
-      <NDBrandSectionLeftNav>
+      <NDBrandSectionLeftNav location={location}>
         <NDBrandSection variant='sidebar'>
           <Flex sx={{ flexWrap: 'wrap' }}>
             <Box sx={{ width: ['25%', '100%', '100%'] }}>
@@ -44,7 +44,7 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
         <NDBrandSection variant='fullBleedWithSidebar'>
           {children}
         </NDBrandSection>
-      </NDBrandSectionLeftNav>
+      </NDBrandSectionLeftNav location={location}>
     </>
 
   )

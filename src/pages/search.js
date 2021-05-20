@@ -72,7 +72,7 @@ const SearchPage = ({ location }) => {
             <SearchResults defaultDisplay='list' />
 
           </NDBrandSection>
-        </NDBrandSectionLeftNav>
+        </NDBrandSectionLeftNav location={location}>
       </SearchBase>
     </Layout>
   )

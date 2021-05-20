@@ -10,7 +10,7 @@ import ClickableMarbleLogoMono from '@ndlib/gatsby-theme-marble/src/components/S
 import Footer from './Footer'
 import FeedbackModal from '../../Shared/FeedbackModal'
 import BetaModal from '../../Shared/BetaModal'
-import LoginButton from './NavigationHeader/LoginButton'
+import LoginButton from './LoginButton'
 import NDBrandHeroBackgroundOnly from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Hero/BackgroundOnly'
 
 const PageWrapper = ({ children, location, pageHeader }) => {

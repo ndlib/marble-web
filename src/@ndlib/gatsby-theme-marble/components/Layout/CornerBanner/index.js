@@ -8,7 +8,7 @@ const CornerBanner = () => {
       className={style.constructionBanner}
     >
       <div className={style.constructionStripes} />
-      <div className={style.versionText}>This is a beta preview of the MARBLE website.</div>
+      <div className={style.versionText}>This is a beta preview of the Marble website.</div>
       <div className={style.constructionStripes} />
     </a>
   )

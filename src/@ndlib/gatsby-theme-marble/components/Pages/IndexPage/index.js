@@ -3,7 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
-import { BaseStyles, jsx, Flex, Box } from 'theme-ui'
+import { jsx, Flex, Box, Heading } from 'theme-ui'
 import typy from 'typy'
 import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/CardGroup'
 import BrowseBar from '@ndlib/gatsby-theme-marble/src/components/Shared/BrowseBar'
@@ -15,6 +15,8 @@ import formatImage from 'assets/images/format.jpg'
 import campuslocationImage from 'assets/images/campus_location.jpg'
 import allImage from 'assets/images/all_items.jpg'
 import GoogleVerification from './GoogleVerification'
+import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
+import Html from '@ndlib/gatsby-theme-marble/src/components/Shared/Html'
 
 const IndexPage = ({ location }) => {
   const { t } = useTranslation()
@@ -57,65 +59,78 @@ const IndexPage = ({ location }) => {
   const { nodes } = allMarbleItem
   return (
     <React.Fragment>
-      <BaseStyles>
-        <p sx={{ maxWidth: ['100%', '80rem', '80rem'] }} dangerouslySetInnerHTML={{ __html: t('common:hompageDescriptive') }} />
-        <h2>{t('common:search.browseBy')}</h2>
-      </BaseStyles>
-      <Flex sx={{ flexWrap: 'wrap' }}>
-        <Box sx={{ width: ['100%', '50%', '25%'], px: '1rem', py: '.5rem' }}>
-          <BrowseBar
-            label='Date'
-            target='/browse?scrollto=date'
-            image={dateImage}
-          />
-        </Box>
-        <Box sx={{ width: ['100%', '50%', '25%'], px: '1rem', py: '.5rem' }}>
-          <BrowseBar
-            label='Work Type'
-            target='/browse?scrollto=format'
-            image={formatImage}
-          />
-        </Box>
-        <Box sx={{ width: ['100%', '50%', '25%'], px: '1rem', py: '.5rem' }}>
-          <BrowseBar
-            label='Campus Location'
-            target='/browse?scrollto=location'
-            image={campuslocationImage}
-          />
-        </Box>
-        <Box sx={{ width: ['100%', '50%', '25%'], px: '1rem', py: '.5rem' }}>
-          <BrowseBar
-            label='All Items'
-            target='/search?q='
-            image={allImage}
-          />
-        </Box>
-      </Flex>
-      <BaseStyles>
-        <h2>{t('common:search.featuredItems')}</h2>
-      </BaseStyles>
-      <CardGroup
-        label={t('common:search.recentAdditions')}
-        toggleGroup='homepage'
-        defaultDisplay='grid'
-      >
-        {
-          nodes.map(item => {
-            return (
-              <ManifestCard
-                key={item}
-                label={item.title}
-                target={item.slug}
-                image={typy(item, 'childrenMarbleFile[0].iiif.thumbnail').safeString}
-                type={item.display}
-                creator={findMetadata(item, ['creator'])}
-                date={findMetadata(item, ['date', 'dates'])}
-              />
-            )
-          })
+      <NDBrandSection variant='fullBleed' location={location} sx={{ justifyContent: 'center' }}>
+        <Html html={t('common:hompageDescriptive')} />
+      </NDBrandSection>
+      <NDBrandSection location={location} variant='fullBleedLight'>
+        <Heading as='h2' variant='sectionTitle'>
+          {t('common:search.browseBy')}
+        </Heading>
 
-        }
-      </CardGroup>
+        <Flex sx={{ flexWrap: 'wrap', width: '100%', minWidth: '90vw' }}>
+          <Box sx={{ width: ['100%', '50%', '50%', '25%'], px: '1rem', py: '.5rem' }}>
+            <BrowseBar
+              label='Date'
+              target='/browse?scrollto=date'
+              image={dateImage}
+            />
+          </Box>
+          <Box sx={{ width: ['100%', '50%', '50%', '25%'], px: '1rem', py: '.5rem' }}>
+            <BrowseBar
+              label='Work Type'
+              target='/browse?scrollto=format'
+              image={formatImage}
+            />
+          </Box>
+          <Box sx={{ width: ['100%', '50%', '50%', '25%'], px: '1rem', py: '.5rem' }}>
+            <BrowseBar
+              label='Campus Location'
+              target='/browse?scrollto=location'
+              image={campuslocationImage}
+            />
+          </Box>
+          <Box sx={{ width: ['100%', '50%', '50%', '25%'], px: '1rem', py: '.5rem' }}>
+            <BrowseBar
+              label='All Items'
+              target='/search?q='
+              image={allImage}
+            />
+          </Box>
+        </Flex>
+
+      </NDBrandSection>
+      <NDBrandSection
+        location={location}
+        variant='fullBleed'
+        sx={{ px: 0 }}
+      >
+        <Heading as='h2' variant='sectionTitle'>
+              Featured Items
+        </Heading>
+
+        <CardGroup
+          label={t('common:search.recentAdditions')}
+          toggleGroup='homepage'
+          defaultDisplay='grid'
+        >
+          {
+            nodes.map(item => {
+              return (
+                <ManifestCard
+                  key={item}
+                  label={item.title}
+                  target={item.slug}
+                  image={typy(item, 'childrenMarbleFile[0].iiif.thumbnail').safeString}
+                  type={item.display}
+                  creator={findMetadata(item, ['creator'])}
+                  date={findMetadata(item, ['date', 'dates'])}
+                />
+              )
+            })
+
+          }
+        </CardGroup>
+      </NDBrandSection>
       <GoogleVerification />
     </React.Fragment>
   )

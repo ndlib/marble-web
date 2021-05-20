@@ -24,7 +24,5 @@ test('Footer', () => {
   })
 
   const wrapper = shallow(<Footer />)
-  expect(wrapper.find('.footer-email').at(0).text()).toEqual('sniteart@nd.edu')
-  expect(wrapper.find('.footer-email').at(1).text()).toEqual('asklib@nd.edu')
-  expect(wrapper.find(Menu).props().variant).toEqual('footer')
+  expect(wrapper.find(Menu).props().variant).toEqual('menuFooter')
 })

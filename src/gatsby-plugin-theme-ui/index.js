@@ -1,23 +1,80 @@
 import merge from 'lodash.merge'
+
 import { theme } from '@ndlib/gatsby-theme-marble/src/gatsby-plugin-theme-ui'
+
 export default merge({}, theme, {
   colors: {
-    primary: '#337684',
     primaryWithOpacity: '#adc8ce',
-    secondary: '#575656',
     attention: '#aa272f',
     highlight: '#fff190',
+    muted: '',
+  },
+  hero: {
+    fullBleed: {
+      '& .lede': {
+        background: 'var(--theme-ui-colors-gray-2)',
+        borderRadius: '0 10px 10px 0',
+      },
+    },
+    navSearch: {
+      position: 'relative',
+      display: 'flex',
+      '& div': {
+        display: 'flex',
+        opacity: '1',
+        transition: 'all 1s',
+        my: '5px',
+        background: 'white',
+        border: '1px solid var(--theme-ui-colors-gray-4)',
+        borderRadius: '10px',
+      },
+      '& input': {
+        width: '400px',
+        py: '1.25rem',
+      },
+      '& button': {
+        display: 'flex',
+        alignItems: 'center',
+        position: 'relative',
+        height: '100%',
+        padding: '1.25rem 1.375rem',
+        opacity: '1',
+        lineHeight: '1.2',
+        textDecoration: 'none',
+        color: 'text',
+        borderRadius: '10px',
+        borderTop: '0.25rem solid transparent',
+        borderBottom: '0.25rem solid transparent',
+        transition: 'all 325ms ease-in-out',
+        bg: 'white',
+        '&:hover': {
+          background: 'var(--theme-ui-colors-light)',
+          borderBottom: `0.25rem solid var(--theme-ui-colors-lightDark)`,
+          transform: 'none',
+          cursor: 'pointer',
+        },
+        '&.selected': {
+          background: 'var(--theme-ui-colors-light)',
+          borderBottom: `0.25rem solid var(--theme-ui-colors-lightDark)`,
+          transform: 'none',
+          cursor: 'pointer',
+        },
+      },
+    },
   },
   links: {
     footer: {
-      textAlign: 'left',
+      color: 'white',
+      textDecoration: 'none',
+    },
+    menuFooter: {
+      '& div': {
+        display: 'flex',
+        flexWrap: 'wrap',
+      },
       '& a': {
-        display: 'block',
         color: 'white',
-        px: '50px',
-        py: '5px',
-        textDecoration: 'none',
-        fontFamily: 'heading',
+        flex: '50%',
       },
     },
     help: {
@@ -27,7 +84,15 @@ export default merge({}, theme, {
       },
     },
   },
-  flexD: ['row', 'column'],
+  text: {
+    default: {
+      fontFamily: 'body',
+      fontSize: 3,
+      lineHeight: 'body',
+      fontWeight: 'body',
+      color: 'text',
+    },
+  },
   fonts: {
     body: `
       GPBook,
@@ -104,11 +169,5 @@ export default merge({}, theme, {
       'Helvetica Neue',
       sans-serif
     `,
-  },
-  styles: {
-    a: {
-      color: 'primary',
-      wordBreak: 'break-word',
-    },
   },
 })

@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import React from 'react'
-import { jsx, BaseStyles, Flex, Box } from 'theme-ui'
+import { jsx, Flex, Box, Heading } from 'theme-ui'
 import MiniCard from '@ndlib/gatsby-theme-marble/src/components/Shared/MiniCard'
-import HeroBox from '@ndlib/gatsby-theme-marble/src/components/Shared/HeroBox'
-import SearchBox from '@ndlib/gatsby-theme-marble/src/components/Shared/SearchBox'
+import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
+import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 
 const Browse = ({ location }) => {
   const dates = [
@@ -130,86 +130,84 @@ const Browse = ({ location }) => {
     },
   ]
   return (
-    <React.Fragment>
-      <HeroBox backgroundColor='gray.0'>
-        <SearchBox location={location} />
-      </HeroBox>
-      <Flex sx={{ flexWrap: 'wrap' }}>
-        <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
-          <div id='date'>
-            <BaseStyles>
-              <h2>Browse By Date</h2>
-            </BaseStyles>
-          </div>
-        </Box>
-        <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
-          <Flex sx={{ flexWrap: 'wrap' }}>
-            {
-              dates.map(date => {
-                return (
-                  <Box key={date.label} sx={{ width: ['100%', '50%', '33.33%'], px: '1rem', py: '1rem' }}>
-                    <MiniCard
-                      label={date.label}
-                      target={date.target}
-                    />
-                  </Box>
-                )
-              })
-            }
-          </Flex>
-        </Box>
-      </Flex>
-      <Flex sx={{ flexWrap: 'wrap' }}>
-        <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
-          <div id='format'>
-            <BaseStyles>
-              <h2>Browse By Work Type</h2>
-            </BaseStyles>
-          </div>
-        </Box>
-        <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
-          <Flex sx={{ flexWrap: 'wrap' }}>
-            {
-              formats.map(format => {
-                return (
-                  <Box key={format.label} sx={{ width: ['100%', '50%', '33.33%'], px: '1rem', py: '1rem' }}>
-                    <MiniCard
-                      label={format.label}
-                      target={format.target}
-                    />
-                  </Box>
-                )
-              })
-            }
-          </Flex>
-        </Box>
-      </Flex>
-      <Flex sx={{ flexWrap: 'wrap' }}>
-        <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
-          <div id='location'>
-            <BaseStyles>
-              <h2>Browse By Location</h2>
-            </BaseStyles>
-          </div>
-        </Box>
-        <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
-          <Flex sx={{ flexWrap: 'wrap' }}>
-            {
-              locations.map(location => {
-                return (
-                  <Box key={location.label} sx={{ width: ['100%', '50%', '33.33%'], px: '1rem', py: '1rem' }}>
-                    <MiniCard
-                      label={location.label}
-                      target={location.target}
-                    />
-                  </Box>
-                )
-              })
-            }
-          </Flex>
-        </Box>
-      </Flex>
-    </React.Fragment>
+    <>
+      <NDBrandSection variant='fullBleed'>
+        <NDBrandBreadcrumbs
+          currentPageTitle='About'
+          breadcrumbs={[]}
+        />
+        <Heading as='h1' variant='pageTitle'>Browse</Heading>
+        <Flex sx={{ flexWrap: 'wrap' }}>
+          <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
+            <div id='date'>
+              <Heading as='h1'>Browse By Date</Heading>
+            </div>
+          </Box>
+          <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
+            <Flex sx={{ flexWrap: 'wrap' }}>
+              {
+                dates.map(date => {
+                  return (
+                    <Box key={date.label} sx={{ width: ['100%', '50%', '33.33%'], px: '1rem', py: '1rem' }}>
+                      <MiniCard
+                        label={date.label}
+                        target={date.target}
+                      />
+                    </Box>
+                  )
+                })
+              }
+            </Flex>
+          </Box>
+        </Flex>
+        <Flex sx={{ flexWrap: 'wrap' }}>
+          <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
+            <div id='format'>
+              <Heading as='h1'>Browse By Work Type</Heading>
+            </div>
+          </Box>
+          <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
+            <Flex sx={{ flexWrap: 'wrap' }}>
+              {
+                formats.map(format => {
+                  return (
+                    <Box key={format.label} sx={{ width: ['100%', '50%', '33.33%'], px: '1rem', py: '1rem' }}>
+                      <MiniCard
+                        label={format.label}
+                        target={format.target}
+                      />
+                    </Box>
+                  )
+                })
+              }
+            </Flex>
+          </Box>
+        </Flex>
+        <Flex sx={{ flexWrap: 'wrap' }}>
+          <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
+            <div id='location'>
+              <Heading as='h1'>Browse By Location</Heading>
+            </div>
+          </Box>
+          <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
+            <Flex sx={{ flexWrap: 'wrap' }}>
+              {
+                locations.map(location => {
+                  return (
+                    <Box key={location.label} sx={{ width: ['100%', '50%', '33.33%'], px: '1rem', py: '1rem' }}>
+                      <MiniCard
+                        label={location.label}
+                        target={location.target}
+                      />
+                    </Box>
+                  )
+                })
+              }
+            </Flex>
+          </Box>
+        </Flex>
+      </NDBrandSection>
+    </>
   )
 }
 

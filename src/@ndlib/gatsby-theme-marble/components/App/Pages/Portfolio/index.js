@@ -7,6 +7,7 @@ import PortfolioUnavailable from './PortfolioUnavailable'
 import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
 import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import { ownsPage } from '@ndlib/gatsby-theme-marble/src/utils/auth'
+import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 
 export const Portfolio = ({ portfolioId, location, loginReducer }) => {
   const [content, setContent] = useState(<Loading />)
@@ -42,9 +43,9 @@ export const Portfolio = ({ portfolioId, location, loginReducer }) => {
   }, [portfolioId, loginReducer, location])
 
   return (
-    <>
+    <NDBrandSection variant='fullBleed'>
       {content}
-    </>
+    </NDBrandSection>
   )
 }
 

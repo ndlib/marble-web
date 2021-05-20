@@ -1,9 +1,10 @@
+/** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from 'components/Layout'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
-import { BaseStyles } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 
 export const AllPage = ({
@@ -25,13 +26,11 @@ export const AllPage = ({
     .map(edge => {
       return (
         <li key={edge.node.slug}>
-          <BaseStyles>
-            <Link
-              to={`${edge.node.slug}`}
-            >
-              {edge.node.title}
-            </Link>
-          </BaseStyles>
+          <Link
+            to={`${edge.node.slug}`}
+          >
+            {edge.node.title}
+          </Link>
           <span>&nbsp;</span>
         </li>
       )

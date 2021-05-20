@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { jsx, Flex, Box } from 'theme-ui'
+import { jsx, Box } from 'theme-ui'
 import Layout from 'components/Layout'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import SearchBase from '@ndlib/gatsby-theme-marble/src/components/Shared/SearchBase'
@@ -10,6 +10,9 @@ import SearchFilterBox from '@ndlib/gatsby-theme-marble/src/components/Shared/Se
 import SearchResults from '@ndlib/gatsby-theme-marble/src/components/Shared/SearchTools/SearchResults'
 import SearchRefinementListFilter from '@ndlib/gatsby-theme-marble/src/components/Shared/SearchTools/SearchRefinementListFilter'
 import { TagFilterConfig } from 'searchkit'
+import NDBrandSectionLeftNav from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section/LeftNav'
+import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
+import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 
 const SearchPage = ({ location }) => {
   return (
@@ -20,11 +23,10 @@ const SearchPage = ({ location }) => {
         data={{}}
         location={location}
       />
-
       <SearchBase>
-        <SearchFilterBox />
-        <Flex sx={{ flexWrap: 'wrap' }}>
-          <Box sx={{ width: ['100%', '25%'], px: '1rem', py: '1rem' }}>
+
+        <NDBrandSectionLeftNav location={location}>
+          <NDBrandSection location={location} variant='sidebar'>
             <TagFilterConfig field='creator.keyword' title='Creator' id='creator' />
             <TagFilterConfig field='collection.keyword' title='Collection' id='collection' />
 
@@ -58,15 +60,21 @@ const SearchPage = ({ location }) => {
               sort='default'
               size='4'
             />
-          </Box>
-          <Box sx={{ width: ['100%', '75%'], px: '1rem', py: '1rem' }}>
+          </NDBrandSection>
+          <NDBrandSection location={location} variant='fullBleedWithSidebar'>
+
+            <NDBrandBreadcrumbs
+              currentPageTitle='Search'
+              breadcrumbs={[]}
+            />
+            <SearchFilterBox />
+
             <SearchResults defaultDisplay='list' />
-          </Box>
-        </Flex>
+
+          </NDBrandSection>
+        </NDBrandSectionLeftNav>
       </SearchBase>
-
     </Layout>
-
   )
 }
 

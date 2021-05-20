@@ -1,7 +1,13 @@
 {
-  "id": "top",
+  "id": "header",
   "label": "",
   "items": [
+    {
+      "id": "top-home",
+      "label": "Home",
+      "link": "/",
+      "icon": "home"
+    },
     {
       "id": "top-browse",
       "label": "Browse",

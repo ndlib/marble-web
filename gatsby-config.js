@@ -28,6 +28,7 @@ module.exports = {
   },
   siteMetadata: {
     title: siteName,
+    subTitle: '',
     author: 'University of Notre Dame, Hesuburgh Libraries, and Snite Museum of Art',
     description: 'The Marble site is a collaboration between the Hesburgh Libraries and the Snite Museum of Art at the University of Notre Dame. In this unified discovery space, users have free, public access to a selection of digitized, distinctive cultural heritage materials.',
     siteUrl: siteUrl,
@@ -147,14 +148,15 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'images',
-        path: path.join(__dirname, 'content', 'images'),
+        name: `images`,
+        path: path.join(__dirname, `content`, `images`),
       },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve : 'gatsby-plugin-page-creator',
       options: {

@@ -11,7 +11,9 @@ import BrowsePage from 'components/Pages/BrowsePage'
 
 const Browse = ({ location }) => {
   return (
-    <Layout location={location}>
+    <Layout
+      location={location}
+    >
       <Seo
         data={{}}
         location={location}

@@ -27,11 +27,9 @@ describe('LoginButton', () => {
       },
     }
     const wrapper = mount(<LoginButton loginReducer={loginReducer} i18n={i18n} />)
-    expect(wrapper.find('img').props().src).toEqual(userIcon)
-    expect(wrapper.find(Link).length).toEqual(3)
+    expect(wrapper.find(Link).length).toEqual(2)
     expect(wrapper.find(Link).at(0).props().to).toEqual('/user/jloggedin')
-    expect(wrapper.find(Link).at(1).props().to).toEqual('/user/jloggedin/edit')
-    expect(wrapper.find(Link).at(2).props().to).toEqual('/user/logout')
+    expect(wrapper.find(Link).at(1).props().to).toEqual('/user/logout')
   })
 
   test('not logged in', () => {
@@ -40,7 +38,7 @@ describe('LoginButton', () => {
     process.env.AUTH_CLIENT_URL = 'ghi'
     const loginReducer = { status: 'STATUS NOT LOGGED IN' }
     const wrapper = mount(<LoginButton loginReducer={loginReducer} i18n={i18n} />)
-    expect(wrapper.find(Link).props().to).toEqual('/user')
-    expect(wrapper.find(Link).props().children).toEqual('loginMenu.login')
+    expect(wrapper.find(Link).at(1).props().to).toEqual('/user')
+    expect(wrapper.find(Link).at(0).props().to).toEqual('/user')
   })
 })

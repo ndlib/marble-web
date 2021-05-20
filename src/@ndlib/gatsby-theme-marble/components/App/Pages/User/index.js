@@ -40,7 +40,6 @@ const User = ({ loginReducer, userName, location, edit }) => {
     >
       {content}
     </UserLayout>
-
   )
 }
 User.propTypes = {

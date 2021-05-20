@@ -8,19 +8,15 @@ import { withI18nTranslation } from '@ndlib/gatsby-theme-marble/src/i18n/withI18
 import AuthWrapper from './AuthWrapper'
 import PrivateRoute from './PrivateRoute'
 import PageWrapper from './PageWrapper'
-import ContentWrapper from './ContentWrapper'
-import PageContent from './PageContent'
 
 /// CONSTRUCTION BANNER
 import CornerBanner from './CornerBanner'
-import theme from 'gatsby-plugin-theme-ui'
 
 export const Layout = ({
-  title, // page title to be placed inside main
-  noPadding, // bool used to avoid padding page content
   children,
   requireLogin, // bool to test login
   location,
+  pageHeader,
 }) => {
   const [qs] = useState(queryString.parse(location.search) || {})
   useEffect(() => {
@@ -33,7 +29,7 @@ export const Layout = ({
   })
 
   return (
-    <div sx={theme.styles.Layout}>
+    <>
       <AuthWrapper
         location={location}
       >
@@ -41,31 +37,23 @@ export const Layout = ({
           location={location}
           requireLogin={requireLogin}
         >
-          <PageWrapper location={location}>
-            <CornerBanner />
-            <ContentWrapper
-              noPadding={noPadding}
-            >
-              <PageContent
-                title={title}
-                location={location}
-              >
-                {children}
-              </PageContent>
-            </ContentWrapper>
+          <PageWrapper location={location} pageHeader={pageHeader}>
+            <article>
+              {children}
+            </article>
           </PageWrapper>
         </PrivateRoute>
       </AuthWrapper>
-    </div>
+      <CornerBanner />
+    </>
   )
 }
 
 Layout.propTypes = {
-  title: PropTypes.node,
-  noPadding: PropTypes.bool,
   children: PropTypes.node.isRequired,
   location: PropTypes.object.isRequired,
   requireLogin: PropTypes.bool,
+  pageHeader: PropTypes.object.isRequired,
 }
 
 Layout.defaultProps = {

@@ -17,11 +17,12 @@ const sx = {
 
 const CornerBanner = () => {
   return (
+
     <Link
       sx={sx}
       to='https://innovation.library.nd.edu/marble/'
     >
-      This is a beta preview of the Marble website.
+      <div>This is a beta preview of the Marble website.</div>
     </Link>
   )
 }

@@ -18,11 +18,13 @@ const sq = {
   },
 }
 
+const location = {}
+
 test('Footer', () => {
   useStaticQuery.mockImplementationOnce(() => {
     return sq
   })
 
-  const wrapper = shallow(<Footer />)
+  const wrapper = shallow(<Footer location={location} />)
   expect(wrapper.find(Menu).props().variant).toEqual('menuFooter')
 })

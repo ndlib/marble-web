@@ -38,6 +38,7 @@ const PageWrapper = ({ children, location, pageHeader }) => {
     <>
       <SkipToMain />
       <NDBrandLayout
+        location={location}
         siteHeader={brandHeader}
         siteFooter={<Footer location={location} />}
         pageHeader={pageHeader}

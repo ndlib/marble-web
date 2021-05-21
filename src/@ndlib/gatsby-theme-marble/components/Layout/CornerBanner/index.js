@@ -1,16 +1,28 @@
 import React from 'react'
-import style from './style.module.css'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
+
+const sx = {
+  bg: '#009845',
+  boxShadow: '0px 3px 6px 2px #0000006b',
+  color: 'white',
+  position: 'fixed',
+  bottom: '0',
+  display: 'inline',
+  textAlign: 'center',
+  textDecoration: 'none',
+  padding: '10px',
+  marginLeft: '50px',
+  borderadius: '5px 5px 0px 0px',
+}
 
 const CornerBanner = () => {
   return (
-    <a
-      href='https://innovation.library.nd.edu/marble/'
-      className={style.constructionBanner}
+    <Link
+      sx={sx}
+      to='https://innovation.library.nd.edu/marble/'
     >
-      <div className={style.constructionStripes} />
-      <div className={style.versionText}>This is a beta preview of the Marble website.</div>
-      <div className={style.constructionStripes} />
-    </a>
+      This is a beta preview of the Marble website.
+    </Link>
   )
 }
 

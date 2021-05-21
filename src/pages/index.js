@@ -26,7 +26,7 @@ const Home = ({ data, location }) => {
           title=''
           lede={<Heading as='h2'>Explore distinctive cultural heritage materials from Hesburgh Libraries and the Snite Museum of Art.</Heading>}
           image={(<GatsbyImage image={image} alt='' width='100%' height='100%' objectFit='cover' loading='eager' />)}
-          button={(<NDBrandNavSearch location={location} variant='hero.navSearch' searchPath='/search' setShowSearch={false} />)}
+          button={(<NDBrandNavSearch location={location} variant='hero.navSearch' searchPath='/search' />)}
         />
       }
     >

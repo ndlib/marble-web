@@ -14,7 +14,7 @@ export const PromptLogin = ({ showButton }) => {
     <div
       sx={{
         border: '1px solid',
-        borderColor: 'gray.1',
+        borderColor: 'gray.4',
         padding: '.5rem',
       }}
     >

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import HelpPage from 'components/Pages/HelpPage'
+import HelpPage from '../../components/Pages/HelpPage'
 
 const Help = ({ location }) => {
   return (

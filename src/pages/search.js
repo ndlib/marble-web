@@ -3,7 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Box } from 'theme-ui'
-import Layout from 'components/Layout'
+import Layout from '../components/Layout'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import SearchBase from '@ndlib/gatsby-theme-marble/src/components/Shared/SearchBase'
 import SearchFilterBox from '@ndlib/gatsby-theme-marble/src/components/Shared/SearchTools/SearchFilterBox'

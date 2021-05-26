@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { I18nextProvider } from 'react-i18next'
 import i18next from '@ndlib/gatsby-theme-marble/src/i18n'
-import Layout from 'components/Layout'
-import Seo from 'components/Shared/Seo'
-import DisclaimerPage from 'components/Pages/DisclaimerPage'
+import Layout from '../components/Layout'
+import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
+import DisclaimerPage from '../components/Pages/DisclaimerPage'
 
 const Disclaimer = ({ location }) => {
   return (

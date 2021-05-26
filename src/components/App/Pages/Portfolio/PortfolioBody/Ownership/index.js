@@ -1,10 +1,13 @@
 /** @jsx jsx */
+import { useState } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import VisibilityLabel from '@ndlib/gatsby-theme-marble/src/components/Shared/VisibilityLabel'
 import Attribution from '@ndlib/gatsby-theme-marble/src/components/Shared/Attribution'
 import UserCartouche from '@ndlib/gatsby-theme-marble/src/components/Shared/UserCartouche'
 import PortfolioEditSettings from '../PortfolioEditSettings'
+import ActionModal from '@ndlib/gatsby-theme-marble/src/components/Shared/ActionModal'
+import PrivacyEditSettings from './PrivacyEditSettings'
 import ShareButton from '@ndlib/gatsby-theme-marble/src/components/Shared/ShareButton'
 import PrintButton from '@ndlib/gatsby-theme-marble/src/components/Shared/PrintButton'
 
@@ -13,12 +16,27 @@ import sx from './sx'
 
 export const Ownership = ({ isOwner }) => {
   const { portfolio } = usePortfolioContext()
+  const [settingsOpen, setSettingsOpen] = useState(false)
   const { privacy, userId, uuid } = portfolio
   if (isOwner) {
     return (
       <div sx={sx.wrapper}>
         <div sx={sx.visibilityWrapper}>
-          This is your <VisibilityLabel visibility={privacy} /> portfolio.
+        This is your <button sx={sx.button}
+        onClick={() => setSettingsOpen(true)}
+      ><VisibilityLabel visibility={privacy} /></button> portfolio.
+      <ActionModal
+        isOpen={settingsOpen}
+        contentLabel={`Settings for <i>${portfolio.title}</i>`}
+        closeFunc={() => setSettingsOpen(false)}
+        fullscreen
+      >
+        <PrivacyEditSettings
+          callBack={() => {
+            setSettingsOpen(false)
+          }}
+        />
+      </ActionModal>
         </div>
         <div sx={sx.shareWrapper}>
           <ShareButton path={`myportfolio/${uuid}`} />

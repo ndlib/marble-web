@@ -20,6 +20,7 @@ const allowRobots = process.env.ALLOW_ROBOTS === 'true' || false
 const sourceGraphQlUrl = process.env.GRAPHQL_API_URL || ''
 const graphQlKey = process.env.GRAPHQL_API_KEY || ''
 const useFixtures = process.env.USE_FIXTURES || !!process.env.GITHUB_ACTIONS || false
+const iiifViewerUrl = process.env.IIIF_VIEWER_URL || null
 
 module.exports = {
   flags: {
@@ -39,7 +40,6 @@ module.exports = {
   },
   plugins: [
     'gatsby-transformer-json',
-    'gatsby-transformer-marbleitem',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -81,7 +81,9 @@ module.exports = {
     {
       resolve: '@ndlib/gatsby-theme-marble',
       options: {
-        useLogin: true,
+        iiifViewerUrl: iiifViewerUrl,
+        searchUrl: searchUrl,
+        searchIndex: searchIndex,
       },
     },
     {

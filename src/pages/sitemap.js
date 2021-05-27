@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Layout from 'components/Layout'
+import Layout from '../components/Layout'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import { jsx } from 'theme-ui'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'

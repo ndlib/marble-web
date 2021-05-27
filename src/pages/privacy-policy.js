@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { I18nextProvider } from 'react-i18next'
 import i18next from '@ndlib/gatsby-theme-marble/src/i18n'
-import Layout from 'components/Layout'
+import Layout from '../components/Layout'
 import Seo from 'components/Shared/Seo'
-import PrivacyPolicyPage from 'components/Pages/PrivacyPolicyPage'
+import PrivacyPolicyPage from '../components/Pages/PrivacyPolicyPage'
 
 const PrivacyPolicy = ({ location }) => {
   return (

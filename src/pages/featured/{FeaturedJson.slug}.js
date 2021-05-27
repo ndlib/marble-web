@@ -4,9 +4,9 @@ import { jsx } from 'theme-ui'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Layout from 'components/Layout'
+import Layout from '../../components/Layout'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
-import PortfolioFeature from '@ndlib/gatsby-theme-marble/src/components/App/Pages/Portfolio/PortfolioFeature'
+import PortfolioFeature from '../../components/App/Pages/Portfolio/PortfolioFeature'
 
 export const FeaturedPage = ({ data, location }) => {
   const { featuredJson } = data

@@ -14,7 +14,7 @@ export const FollowButton = ({ userName, showButton, following = false }) => {
       <div
         sx={{
           border: '1px solid',
-          borderColor: 'gray.1',
+          borderColor: 'gray.4',
           padding: '.5rem',
         }}
       >

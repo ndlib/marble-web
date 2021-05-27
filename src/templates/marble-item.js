@@ -15,9 +15,21 @@ import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared
 import ReturnToSearch from '@ndlib/gatsby-theme-marble/src/components/Shared/ReturnToSearch'
 import ParentLink from '@ndlib/gatsby-theme-marble/src/components/Shared/ParentLink'
 import UserAnnotation from '@ndlib/gatsby-theme-marble/src/components/Shared/UserAnnotation'
+import { useTranslation } from 'react-i18next'
+import typy from 'typy'
 
 export const MarbleItemPage = ({ data, location }) => {
   const { marbleItem, allMarbleFile } = data
+
+  let breadcrumbs = null
+  if (typy(location, 'state.referal.type').safeString === 'search') {
+    breadcrumbs = (<ReturnToSearch location={location} />)
+  } else {
+    breadcrumbs = (<NDBrandBreadcrumbs
+      breadcrumbs={getBreadcrumbs(marbleItem)}
+      currentPageTitle={marbleItem.title}
+    />)
+  }
 
   // use ?debug=true to render graphQL data at end of page
   const { debug } = queryString.parse(location.search)
@@ -30,7 +42,7 @@ export const MarbleItemPage = ({ data, location }) => {
         location={location}
       />
       <NDBrandSection variant='fullBleed'>
-        <ReturnToSearch location={location} />
+        {breadcrumbs}
         <Heading as='h1' variant='pageTitle'>{marbleItem.title}</Heading>
         {
           marbleItem.display === 'collection' ? (
@@ -66,6 +78,17 @@ MarbleItemPage.propTypes = {
 
 export default MarbleItemPage
 
+const getBreadcrumbs = (item, breadcrumbs = []) => {
+  if (item.marbleParent) {
+    getBreadcrumbs(item.marbleParent, breadcrumbs)
+    breadcrumbs.push({
+      url: item.marbleParent.slug,
+      title: item.marbleParent.title,
+    })
+  }
+  return breadcrumbs
+}
+
 export const query = graphql`
   query($slug: String!) {
     marbleItem( slug: { eq: $slug } ) {
@@ -95,6 +118,10 @@ export const query = graphql`
               thumbnail
             }
           }
+        }
+        marbleParent {
+          title
+          slug
         }
       }
       childrenMarbleItem {

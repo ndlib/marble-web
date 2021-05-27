@@ -59,7 +59,7 @@ const IndexPage = ({ location }) => {
   const { nodes } = allMarbleItem
   return (
     <React.Fragment>
-      <NDBrandSection variant='fullBleed' location={location} sx={{ justifyContent: 'center' }}>
+      <NDBrandSection variant='default' location={location} sx={{ justifyContent: 'center', mx: 'auto' }}>
         <Html html={t('common:hompageDescriptive')} />
       </NDBrandSection>
       <NDBrandSection location={location} variant='fullBleedLight'>

@@ -5,6 +5,5 @@ import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 
 test('CornerBanner', () => {
   const wrapper = shallow(<CornerBanner />)
-  console.log(wrapper.debug())
   expect(wrapper.find('div').text()).toEqual('This is a beta preview of the Marble website.')
 })

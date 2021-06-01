@@ -1,14 +1,28 @@
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import React from 'react'
 import PropTypes from 'prop-types'
 import VisibilityLabel from '@ndlib/gatsby-theme-marble/src/components/Shared/VisibilityLabel'
-import * as style from './style.module.css'
+
 export const FormattedLabel = ({ value, description }) => {
   return (
     <React.Fragment>
-      <span className={style.visibilityLabel}>
+      <span
+        className='visibilityLabel'
+        sx={{
+          display: 'inline-block',
+          width: '90px',
+        }}>
         <VisibilityLabel visibility={value} />
       </span>
-      <span className={style.description}>
+      <span
+        className='description'
+        sx={{
+          display: 'inline-block',
+          padding: '0 0 0 2rem,',
+          verticalAlign: 'top',
+          width: 'calc(100% - 90px)',
+        }}>
         {description}
       </span>
     </React.Fragment>

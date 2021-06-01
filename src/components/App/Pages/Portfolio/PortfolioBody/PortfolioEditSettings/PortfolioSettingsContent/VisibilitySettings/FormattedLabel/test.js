@@ -9,6 +9,7 @@ test('FormattedLabel', () => {
     description: 'my description',
   }
   const wrapper = shallow(<FormattedLabel {...props} />)
+  console.log(wrapper.debug())
   expect(wrapper.find(VisibilityLabel).props().visibility).toEqual('private')
   expect(wrapper.find('.description').html()).toContain('my description')
 })

@@ -170,4 +170,10 @@ export default merge({}, theme, {
       sans-serif
     `,
   },
+  header: {
+    default: {
+      padding: '2rem 0 0 !important',
+      gridTemplateRows: '[title-start] 3.5rem [title-end nav-header-start] auto [nav-header-end nav-mobile-start] auto [nav-mobile-end] !important',
+    },
+  },
 })

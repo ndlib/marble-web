@@ -5,6 +5,7 @@ import { jsx, Flex, Box, Divider } from 'theme-ui'
 import PortfolioItems from '../PortfolioBody/PortfolioItems'
 import ManifestImageGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/ManifestImageGroup'
 import PortfolioContext, { initialContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
+import Html from '@ndlib/gatsby-theme-marble/src/components/Shared/Html'
 
 const PortfolioFeature = ({ location, featuredJson }) => {
   // This is a hack for proof of concept
@@ -26,21 +27,20 @@ const PortfolioFeature = ({ location, featuredJson }) => {
   const description = featuredJson.description
   return (
     <div>
-      <Flex>
+      <Flex sx={{
+        flexWrap: 'wrap',
+        width: '100%',
+        midWidth: '90vw',
+      }}>
         <Box sx={{
-          width: '30vw',
-          marginRight: '32px',
+          width: ['100%', '34%'],
+          marginRight: '3rem',
         }}
         >
-          <div
-            sx={{
-              wordBreak: 'break-word',
-            }}
-            dangerouslySetInnerHTML={{ __html: description }}
-          />
+          <Html html={description} />
         </Box>
         <Box sx={{
-          width: '55vw',
+          width: ['100%', '66%'],
         }}
         >
           <ManifestImageGroup
@@ -83,3 +83,4 @@ PortfolioFeature.propTypes = {
 }
 
 export default PortfolioFeature
+

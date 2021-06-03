@@ -17,10 +17,12 @@ export const LoginButton = ({ location, loginReducer }) => {
     return (
       <>
         <Link
+          variant='navTop'
           to={`/user/${loginReducer.user.userName}`}
         >{t('common:loginMenu.userPage')}
         </Link>
         <Link
+          variant='navTop'
           to='/user/logout'
         >{t('common:loginMenu.logout')}
         </Link>
@@ -30,10 +32,12 @@ export const LoginButton = ({ location, loginReducer }) => {
   return (
     <>
       <Link
+        variant='navTop'
         to={`/user`}
       >{t('common:loginMenu.userPage')}
       </Link>
       <Link
+        variant='navTop'
         to='/user'
       >{t('common:loginMenu.login')}
       </Link>

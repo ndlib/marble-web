@@ -13,7 +13,6 @@ import RelatedItemsFromSearch from '@ndlib/gatsby-theme-marble/src/components/Sh
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 import ReturnToSearch from '@ndlib/gatsby-theme-marble/src/components/Shared/ReturnToSearch'
-import ParentLink from '@ndlib/gatsby-theme-marble/src/components/Shared/ParentLink'
 import UserAnnotation from '@ndlib/gatsby-theme-marble/src/components/Shared/UserAnnotation'
 import { useTranslation } from 'react-i18next'
 import typy from 'typy'

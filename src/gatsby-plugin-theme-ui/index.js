@@ -68,20 +68,22 @@ export default merge({}, theme, {
       textDecoration: 'none',
     },
     menuFooter: {
-      '& div': {
-        display: 'flex',
-        flexWrap: 'wrap',
-      },
-      '& a': {
-        color: 'white',
-        flex: '50%',
-      },
+      color: 'white',
+      flex: '50%',
+      textDecoration: 'none',
+      display: 'block',
     },
     help: {
       textAlign: 'left',
       '& a': {
         display: 'block',
       },
+    },
+  },
+  menus: {
+    '& div': {
+      display: 'flex',
+      flexWrap: 'wrap',
     },
   },
   text: {

@@ -12,7 +12,7 @@ const PrivacyEditSettings = ({ callBack }) => {
   const [patching, setPatching] = useState(false)
 
   return (
-    <React.Fragment>
+    <>
       <div sx={{textAlign: 'right', '& > button': {marginLeft: '.5rem'}}}>
         <SaveOrCancelButtons
           closeFunc={callBack}
@@ -37,7 +37,7 @@ const PrivacyEditSettings = ({ callBack }) => {
         </Box>
       </Flex>
 
-    </React.Fragment>
+    </>
   )
 }
 

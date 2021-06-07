@@ -18,4 +18,9 @@ module.exports = {
       float: 'left',
     },
   },
+  button: {
+    border: '0px',
+    margin: '0px',
+    backgroundColor: 'background'
+  }
 }

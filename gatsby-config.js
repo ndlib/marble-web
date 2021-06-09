@@ -2,6 +2,7 @@ const path = require('path')
 const elasticQuery = require('./content/elastic/query')
 const elasticSettings = require('./content/elastic/settings')
 const elasticMappings = require('./content/elastic/mappings')
+const elasticSelector = require('./content/elastic/selector')
 const activeEnv =
   process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development'
 console.log('Using environment config:' + activeEnv)
@@ -73,7 +74,7 @@ module.exports = {
         searchIndex: searchIndex,
         region: 'us-east-1',
         query: elasticQuery,
-        selector: (data) => data.allMarbleItem.nodes.map(node => node.searchData),
+        selector: elasticSelector,
         settings: elasticSettings,
         mappings: elasticMappings,
       },

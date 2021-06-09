@@ -27,19 +27,12 @@ const PageWrapper = ({ children, location, pageHeader }) => {
     pageHeader = (<NDBrandHeroBackgroundOnly location={location} />)
   }
 
-  const brandHeader = (
-    <NDBrandHeader
-      location={location}
-      titleOverride={<ClickableMarbleLogoMono width='300' url='/' />}
-      additionalNavButtons={<LoginButton location={location} />}
-    />
-  )
   return (
     <>
       <SkipToMain />
       <NDBrandLayout
         location={location}
-        siteHeader={brandHeader}
+        titleOverride={<ClickableMarbleLogoMono width='300' url='/' />}
         siteFooter={<Footer location={location} />}
         pageHeader={pageHeader}
       >

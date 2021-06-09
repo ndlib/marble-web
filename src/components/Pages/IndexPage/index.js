@@ -59,7 +59,9 @@ const IndexPage = ({ location }) => {
   const { nodes } = allMarbleItem
   return (
     <React.Fragment>
-      <NDBrandSection variant='default' location={location} sx={{ justifyContent: 'center', mx: 'auto' }}>
+      <NDBrandSection variant='default' location={location} sx={{ justifyContent: 'center', mx: ['5vw', '5vw', '5vw', '5vw', 'auto'] }}>
+        <Heading as='h2' sx={{ display: ['block', 'block', 'block', 'none'] }} variant='pageTitle'>Explore distinctive cultural heritage materials from the Hesburgh Libraries and the Snite Museum of Art.</Heading>
+
         <Html html={t('common:hompageDescriptive')} />
       </NDBrandSection>
       <NDBrandSection location={location} variant='fullBleedLight'>
@@ -68,28 +70,28 @@ const IndexPage = ({ location }) => {
         </Heading>
 
         <Flex sx={{ flexWrap: 'wrap', width: '100%', minWidth: '90vw' }}>
-          <Box sx={{ width: ['100%', '50%', '50%', '25%'], px: '1rem', py: '.5rem' }}>
+          <Box sx={{ width: ['100%', '50%'], px: '1rem', py: '.5rem' }}>
             <BrowseBar
               label='Date'
               target='/browse?scrollto=date'
               image={dateImage}
             />
           </Box>
-          <Box sx={{ width: ['100%', '50%', '50%', '25%'], px: '1rem', py: '.5rem' }}>
+          <Box sx={{ width: ['100%', '50%'], px: '1rem', py: '.5rem' }}>
             <BrowseBar
               label='Work Type'
               target='/browse?scrollto=format'
               image={formatImage}
             />
           </Box>
-          <Box sx={{ width: ['100%', '50%', '50%', '25%'], px: '1rem', py: '.5rem' }}>
+          <Box sx={{ width: ['100%', '50%'], px: '1rem', py: '.5rem' }}>
             <BrowseBar
               label='Campus Location'
               target='/browse?scrollto=location'
               image={campuslocationImage}
             />
           </Box>
-          <Box sx={{ width: ['100%', '50%', '50%', '25%'], px: '1rem', py: '.5rem' }}>
+          <Box sx={{ width: ['100%', '50%'], px: '1rem', py: '.5rem' }}>
             <BrowseBar
               label='All Items'
               target='/search?q='

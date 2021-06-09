@@ -22,17 +22,17 @@ const AboutPage = ({ location }) => {
       <Html html={t('text:aboutPage.text')} />
 
       <Flex sx={{ flexWrap: 'wrap' }}>
-        <Box sx={{ width: ['100%', '33%'], px: '1rem', py: '1rem' }}>
+        <Box sx={{ width: ['100%', '100%', '100%', '33%'], px: '1rem', py: '1rem' }}>
           <h2>{t('text:aboutPage.snite.title')}</h2>
           <Image src={sniteImage} alt='' />
           <Html html={t('text:aboutPage.snite.text')} />
         </Box>
-        <Box sx={{ width: ['100%', '33%'], px: '1rem', py: '1rem' }}>
+        <Box sx={{ width: ['100%', '100%', '100%', '33%'], px: '1rem', py: '1rem' }}>
           <h2>{t('text:aboutPage.rb.title')}</h2>
           <Image src={rbImage} alt='' />
           <Html html={t('text:aboutPage.rb.text')} />
         </Box>
-        <Box sx={{ width: ['100%', '33%'], px: '1rem', py: '1rem' }}>
+        <Box sx={{ width: ['100%', '100%', '100%', '33%'], px: '1rem', py: '1rem' }}>
           <h2>{t('text:aboutPage.archives.title')}</h2>
           <Image src={archivesImage} alt='' />
           <Html html={t('text:aboutPage.archives.text')} />

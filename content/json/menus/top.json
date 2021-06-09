@@ -3,12 +3,6 @@
   "label": "",
   "items": [
     {
-      "id": "top-home",
-      "label": "Home",
-      "link": "/",
-      "icon": "home"
-    },
-    {
       "id": "top-browse",
       "label": "Browse",
       "link": "/browse"
@@ -17,6 +11,11 @@
       "id": "top-exhibits",
       "label": "Exhibits",
       "link": "/exhibits"
+    },
+    {
+      "id": "top-my-protfolios",
+      "label": "My Portfolios",
+      "link": "/user"
     }
   ]
 }

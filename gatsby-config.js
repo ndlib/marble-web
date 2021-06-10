@@ -99,7 +99,7 @@ module.exports = {
           },
           production: {
             policy: allowRobots ? [
-              { userAgent: '*', disallow: ['/search', '/user'] },
+              { userAgent: '*', disallow: ['/search', '/user', '/stats'] },
             ] : [
               { userAgent: '*', disallow: ['/'] },
             ],

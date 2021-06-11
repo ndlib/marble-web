@@ -53,7 +53,7 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
   location: PropTypes.object.isRequired,
   requireLogin: PropTypes.bool,
-  pageHeader: PropTypes.object.isRequired,
+  pageHeader: PropTypes.object,
 }
 
 Layout.defaultProps = {

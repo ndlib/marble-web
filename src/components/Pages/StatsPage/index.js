@@ -2,7 +2,6 @@
 import { Heading, jsx, Flex, Box, Button } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
 import { useState } from 'react'
-import PropTypes from 'prop-types'
 import typy from 'typy'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
@@ -40,7 +39,7 @@ export const query = graphql`
   }
 `
 
-const StatsPage = ({ location }) => {
+const StatsPage = () => {
   const [modalProps, setModalProps] = useState({ marbleItems: [], headerLabel: '' })
   const { allMarbleItem } = useStaticQuery(query)
   const itemCount = allMarbleItem.totalCount
@@ -89,7 +88,6 @@ const StatsPage = ({ location }) => {
       <NDBrandBreadcrumbs
         currentPageTitle={pageTitle}
         breadcrumbs={[]}
-        location={location}
       />
       <Heading as='h1' variant='pageTitle'>{pageTitle}</Heading>
       <Flex sx={{ flexWrap: 'wrap' }}>
@@ -142,10 +140,6 @@ const StatsPage = ({ location }) => {
       )}
     </NDBrandSection>
   )
-}
-
-StatsPage.propTypes = {
-  location: PropTypes.object.isRequired,
 }
 
 export default StatsPage

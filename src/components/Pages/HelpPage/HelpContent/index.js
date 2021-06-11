@@ -8,6 +8,7 @@ import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
 import FeedbackForm from '../../../Shared/FeedbackForm'
 import { useStaticQuery, graphql, navigate } from 'gatsby'
 import typy from 'typy'
+import NDBrandSectionLeftNav from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section/LeftNav'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 import Html from '@ndlib/gatsby-theme-marble/src/components/Shared/Html'
@@ -42,25 +43,26 @@ const HelpContent = ({ location }) => {
         data={{}}
         location={location}
       />
-      <NDBrandSection location={location} variant='fullBleed'>
-        <NDBrandBreadcrumbs
-          currentPageTitle={t(`text:helpPage.${page}.title`)}
-          breadcrumbs={[
-            { url: '/help', title: 'Help' },
-          ]}
-        />
 
-        <Heading as='h1' variant='pageTitle'>{t(`text:helpPage.${page}.title`)}</Heading>
-        <Flex sx={{ flexWrap: 'wrap' }}>
-          <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
-            <Menu items={menu} variant='help' />
-          </Box>
-          <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
-            <Html html={t(`text:helpPage.${page}.text`)} />
-            {feedbackForm}
-          </Box>
-        </Flex>
-      </NDBrandSection>
+      <NDBrandSectionLeftNav location={location}>
+        <NDBrandSection variant='sidebar'>
+          <Menu items={menu} variant='navLeft' />
+        </NDBrandSection>
+
+        <NDBrandSection location={location} variant='fullBleedWithSidebar'>
+          <NDBrandBreadcrumbs
+            currentPageTitle={t(`text:helpPage.${page}.title`)}
+            breadcrumbs={[
+              { url: '/help', title: 'Help' },
+            ]}
+          />
+
+          <Heading as='h1' variant='pageTitle'>{t(`text:helpPage.${page}.title`)}</Heading>
+
+          <Html html={t(`text:helpPage.${page}.text`)} />
+          {feedbackForm}
+        </NDBrandSection>
+      </NDBrandSectionLeftNav>
     </Layout>
   )
 }

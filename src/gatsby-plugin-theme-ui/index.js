@@ -29,7 +29,7 @@ export default merge({}, theme, {
         borderRadius: '10px',
       },
       '& input': {
-        width: '400px',
+        width: '35vw',
         py: '1.25rem',
       },
       '& button': {

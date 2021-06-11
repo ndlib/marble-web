@@ -62,7 +62,6 @@ const SearchPage = ({ location }) => {
             />
           </NDBrandSection>
           <NDBrandSection location={location} variant='fullBleedWithSidebar'>
-
             <NDBrandBreadcrumbs
               currentPageTitle='Search'
               breadcrumbs={[]}

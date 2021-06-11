@@ -70,28 +70,28 @@ const IndexPage = ({ location }) => {
         </Heading>
 
         <Flex sx={{ flexWrap: 'wrap', width: '100%', minWidth: '90vw' }}>
-          <Box sx={{ width: ['100%', '50%'], px: '1rem', py: '.5rem' }}>
+          <Box sx={{ width: ['100%', '100%', '50%'], px: '1rem', py: '.5rem' }}>
             <BrowseBar
               label='Date'
               target='/browse?scrollto=date'
               image={dateImage}
             />
           </Box>
-          <Box sx={{ width: ['100%', '50%'], px: '1rem', py: '.5rem' }}>
+          <Box sx={{ width: ['100%', '100%', '50%'], px: '1rem', py: '.5rem' }}>
             <BrowseBar
               label='Work Type'
               target='/browse?scrollto=format'
               image={formatImage}
             />
           </Box>
-          <Box sx={{ width: ['100%', '50%'], px: '1rem', py: '.5rem' }}>
+          <Box sx={{ width: ['100%', '100%', '50%'], px: '1rem', py: '.5rem' }}>
             <BrowseBar
               label='Campus Location'
               target='/browse?scrollto=location'
               image={campuslocationImage}
             />
           </Box>
-          <Box sx={{ width: ['100%', '50%'], px: '1rem', py: '.5rem' }}>
+          <Box sx={{ width: ['100%', '100%', '50%'], px: '1rem', py: '.5rem' }}>
             <BrowseBar
               label='All Items'
               target='/search?q='

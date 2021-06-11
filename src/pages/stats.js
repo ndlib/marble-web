@@ -9,7 +9,7 @@ const Stats = ({ location }) => {
   return (
     <Layout location={location}>
       <I18nextProvider i18n={i18next}>
-        <StatsPage />
+        <StatsPage location={location} />
       </I18nextProvider>
     </Layout>
   )

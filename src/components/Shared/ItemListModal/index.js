@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { jsx, Box, Container } from 'theme-ui'
 import { useState } from 'react'
-import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import ActionModal from '@ndlib/gatsby-theme-marble/src/components/Shared/ActionModal'
 import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import ExportCsv from './ExportCsv'
 
 import sx from './sx'
@@ -36,7 +36,7 @@ const ItemListModal = ({ marbleItems, headerLabel, onClose }) => {
     >
       <Container>
         {marbleItems.map(item => (
-          <Box sx={sx.listItem} key={item.id}>
+          <Box sx={sx.listItem} key={item.marbleId}>
             <Link to={'/' + item.slug} sx={sx.itemLink}>{item.title}</Link>
           </Box>
         ))}
@@ -47,7 +47,7 @@ const ItemListModal = ({ marbleItems, headerLabel, onClose }) => {
 
 ItemListModal.propTypes = {
   marbleItems: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    marbleId: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
   })).isRequired,

@@ -54,7 +54,7 @@ const PageWrapper = ({ children, location, pageHeader }) => {
 PageWrapper.propTypes = {
   children: PropTypes.node.isRequired,
   location: PropTypes.object.isRequired,
-  pageHeader: PropTypes.object.isRequired,
+  pageHeader: PropTypes.object,
 }
 
 export default PageWrapper

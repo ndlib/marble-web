@@ -148,7 +148,7 @@ const Browse = ({ location }) => {
               {
                 dates.map(date => {
                   return (
-                    <Box key={date.label} sx={{ width: ['100%', '50%', '50%', '33.33%'], px: '1rem', py: '1rem' }}>
+                    <Box key={date.label} sx={{ width: ['100%', '50%', '50%', '33.33%'], px: '1rem', pb: '2rem' }}>
                       <MiniCard
                         label={date.label}
                         target={date.target}
@@ -171,7 +171,7 @@ const Browse = ({ location }) => {
               {
                 formats.map(format => {
                   return (
-                    <Box key={format.label} sx={{ width: ['100%', '50%', '50%', '33.33%'], px: '1rem', py: '1rem' }}>
+                    <Box key={format.label} sx={{ width: ['100%', '50%', '50%', '33.33%'], px: '1rem', pb: '2rem' }}>
                       <MiniCard
                         label={format.label}
                         target={format.target}
@@ -194,7 +194,7 @@ const Browse = ({ location }) => {
               {
                 locations.map(location => {
                   return (
-                    <Box key={location.label} sx={{ width: ['100%', '50%', '50%', '33.33%'], px: '1rem', py: '1rem' }}>
+                    <Box key={location.label} sx={{ width: ['100%', '50%', '50%', '33.33%'], px: '1rem', pb: '2rem' }}>
                       <MiniCard
                         label={location.label}
                         target={location.target}

@@ -7,7 +7,7 @@ const sx = {
   color: 'white',
   position: 'fixed',
   bottom: '0',
-  display: 'inline',
+  display: ['none', 'none', 'inline'],
   textAlign: 'center',
   textDecoration: 'none',
   padding: '10px',

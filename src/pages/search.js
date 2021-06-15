@@ -45,10 +45,6 @@ const SearchPage = ({ location }) => {
               breadcrumbs={[]}
             />
             <SearchFilterBox />
-            <Button
-              name='Filter'
-              onClick={() => setFacectsOpen(!facectsOpen)}
-            >Filter</Button>
             <div
               className='overlay'
               sx={{
@@ -74,29 +70,50 @@ const SearchPage = ({ location }) => {
               height: '100%',
               width: '14rem',
               background: 'white',
-              overflowX: 'hidden',
-              overflowY: 'scroll',
               bg: 'gray.2',
               borderLeft: '1px solid gray.4',
               boxShadow: '0 0 8px 0 rgb(0 0 0 / 25%)',
               overflowScrolling: 'touch',
-              zIndex: 10,
+              zIndex: 5,
             }}>
-              <MarbleSearchFacets />
-              <div>
+              <div sx={{
+                position: 'relative',
+                height: 'calc(100% - 5rem)',
+                mb: '6rem',
+                overflowX: 'hidden',
+                overflowY: 'scroll',
+                zIndex: 5,
+              }}>
+                <MarbleSearchFacets />
+              </div>
+              <div sx={{
+                position: 'absolute',
+                zIndex: 10,
+                bottom: 0,
+                left: 0,
+                width: '14rem',
+                display: 'flex',
+                justifyContent: 'center',
+                borderTopColor: 'gray.4',
+                borderTopStyle: 'solid',
+                borderTopWidth: '1px',
+                py: '1rem',
+              }}>
                 <Button
-                  sx={{
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                  }}
                   name='Filter'
                   onClick={() => setFacectsOpen(!facectsOpen)}
                 >Close</Button>
               </div>
             </nav>
 
-            <SearchResults defaultDisplay='list' />
+            <SearchResults defaultDisplay='list' extraControls={(<Button
+              sx={{
+                display: ['block', 'block', 'block', 'none'],
+              }}
+              name='Filter'
+              variant='light'
+              onClick={() => setFacectsOpen(!facectsOpen)}
+            >Filter</Button>)} />
 
           </NDBrandSection>
         </NDBrandSectionLeftNav>

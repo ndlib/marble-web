@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Flex, Box, Heading } from 'theme-ui'
+import { jsx, Heading } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import Layout from '../../../Layout'

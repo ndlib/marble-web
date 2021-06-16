@@ -29,7 +29,7 @@ export default merge({}, theme, {
         borderRadius: '10px',
       },
       '& input': {
-        width: '400px',
+        width: '35vw',
         py: '1.25rem',
       },
       '& button': {
@@ -68,20 +68,22 @@ export default merge({}, theme, {
       textDecoration: 'none',
     },
     menuFooter: {
-      '& div': {
-        display: 'flex',
-        flexWrap: 'wrap',
-      },
-      '& a': {
-        color: 'white',
-        flex: '50%',
-      },
+      color: 'white',
+      flex: '50%',
+      textDecoration: 'none',
+      display: 'block',
     },
     help: {
       textAlign: 'left',
       '& a': {
         display: 'block',
       },
+    },
+  },
+  menus: {
+    '& div': {
+      display: 'flex',
+      flexWrap: 'wrap',
     },
   },
   text: {
@@ -172,8 +174,6 @@ export default merge({}, theme, {
   },
   header: {
     default: {
-      padding: '2rem 0 0 !important',
-      gridTemplateRows: '[title-start] 3.5rem [title-end nav-header-start] auto [nav-header-end nav-mobile-start] auto [nav-mobile-end] !important',
     },
   },
 })

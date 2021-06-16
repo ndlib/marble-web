@@ -47,7 +47,7 @@ export const Footer = (location, variant) => {
         width: '100%',
         minWidth: '90vw',
       }}>
-        <Box sx={{ width: ['100%', '50%', '33%'], pl: '5vw', pr: '4rem', py: '4rem' }}>
+        <Box sx={{ width: ['100%', '100%', '100%', '33%'], pl: '5vw', pr: ['5vw', '5vw', '5vw', '4rem'], py: '4rem' }}>
           <Link
             variant='footer'
             to='https://sniteartmuseum.nd.edu/'
@@ -68,7 +68,10 @@ export const Footer = (location, variant) => {
             <div className='footer-email' property='email'><Link variant='footer' rel='noopener' to='mailto:sniteart@nd.edu'>sniteart@nd.edu</Link></div>
           </div>
         </Box>
-        <Box sx={{ width: ['100%', '50%', '33%'], pl: '4rem', pr: '4rem', py: '4rem' }}>
+        <Box sx={{
+          width: ['100%', '100%', '100%', '33%'],
+          px: ['5vw', '5vw', '5vw', '4rem'],
+          py: '4rem' }}>
           <Link
             variant='footer'
             to='https://library.nd.edu'
@@ -91,9 +94,9 @@ export const Footer = (location, variant) => {
           <div sx={sx.copyright} className='copyright'><Link variant='footer' to='https://www.nd.edu/copyright/'>&copy; {new Date().getFullYear()}</Link> <Link variant='footer' to='https://www.nd.edu'>University of Notre Dame</Link></div>
         </Box>
         <Box sx={{
-          width: ['100%', '50%', '34%'],
+          width: ['100%', '100%', '100%', '34%'],
           justifyContent: 'center',
-          pl: '4rem',
+          pl: ['5vw', '5vw', '5vw', '4rem'],
           pr: '5vw',
           py: '4rem',
           bg:'primaryBright',

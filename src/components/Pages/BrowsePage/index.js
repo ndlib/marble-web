@@ -51,7 +51,7 @@ const Browse = ({ location }) => {
     },
     {
       label: 'Maps',
-      target: '/search?format[0]=Cartographic%20material',
+      target: '/search?format[0]=map',
     },
     {
       label: 'Photographs',

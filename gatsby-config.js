@@ -87,6 +87,19 @@ module.exports = {
         searchIndex: searchIndex,
       },
     },
+    // {
+    //   resolve: 'gatsby-plugin-okta-auth',
+    //   options: {
+    //     domain: 'https://okta.nd.edu',
+    //     issuer: 'https://okta.nd.edu/oauth2/ausxosq06SDdaFNMB356',
+    //     clientId: '0oa1f3ut0aKpdwap5357',
+    //     redirectUri: 'http://localhost:8000/user',
+    //     scopes: ['openid', 'email', 'profile', 'netid', 'directory'],
+    //     pkce: false,
+    //     responseType: ['id_token','token'],
+    //     callbackPath: '/user',
+    //   },
+    // },
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {

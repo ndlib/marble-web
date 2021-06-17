@@ -8,11 +8,11 @@ import {
 
 export const AuthWrapper = ({ children, location, loginReducer, dispatch }) => {
   // if (process.env.AUTH_CLIENT_ID && process.env.AUTH_CLIENT_ISSUER && process.env.AUTH_CLIENT_URL) {
-  //   if (!loginReducer.authClientSettings) {
-  //     dispatch(putAuthSettingsInStore(location))
-  //   } else {
-  //     dispatch(getTokenAndPutInStore(loginReducer, location))
-  //   }
+    if (!loginReducer.authClientSettings) {
+      dispatch(putAuthSettingsInStore(location))
+    } else {
+      dispatch(getTokenAndPutInStore(loginReducer, location))
+    }
   // }
   return (
     <>

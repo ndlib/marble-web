@@ -11,7 +11,6 @@ import LogOut from './LogOut'
 
 const sx = {
   loginArea: {
-    border: '1px solid #dedede',
     padding: '1rem',
     textAlign: 'center',
   },

@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { useState } from 'react'
-import { jsx } from 'theme-ui'
+import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import EditButton from '../EditButton'
 import EditDescription from './EditDescription'
@@ -19,13 +18,12 @@ const PortfolioDescription = ({ isOwner }) => {
   if (description === '' || description === null) {
     if (isOwner) {
       return (
-        <MaterialButton
-          wide
-          inverse
+        <Button
+          variant='inverse'
           onClick={() => {
             setEditing(true)
           }}
-        >Add a description</MaterialButton>
+        >Add a description</Button>
       )
     }
     return null

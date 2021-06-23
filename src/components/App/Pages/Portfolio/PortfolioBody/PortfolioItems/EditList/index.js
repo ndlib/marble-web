@@ -1,12 +1,11 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Button } from 'theme-ui'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
 import SortableList from 'react-sortable-dnd-list'
 import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import SortableItem from './SortableItem'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
@@ -24,12 +23,13 @@ const EditList = ({ items, closeFunc, loginReducer }) => {
   return (
     <div sx={sx.wrapper}>
       <div sx={sx.controls}>
-        <MaterialButton
+        <Button
           onClick={() => closeFunc()}
+          variant='light'
         >Cancel
-        </MaterialButton>
-        <MaterialButton
-          primary
+        </Button>
+        <Button
+          variant='primary'
           onClick={() => {
             setSaving(true)
             Promise.all(sortedItems.map((item, index) => fetch(
@@ -66,7 +66,7 @@ const EditList = ({ items, closeFunc, loginReducer }) => {
               .catch(error => console.error(error))
           }}
         >Save
-        </MaterialButton>
+        </Button>
       </div>
       <SortableList
         className='list'

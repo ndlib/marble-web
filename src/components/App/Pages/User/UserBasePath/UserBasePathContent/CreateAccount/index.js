@@ -2,11 +2,10 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { jsx, Heading } from 'theme-ui'
+import { jsx, Heading, Button } from 'theme-ui'
 import { connect } from 'react-redux'
 import typy from 'typy'
 import WelcomeMessage from './WelcomeMessage'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
 import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
 import { createNewUser } from '@ndlib/gatsby-theme-marble/src/store/actions/loginActions'
@@ -62,7 +61,7 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
         disabled={patching}
       />
       <p>
-        <MaterialButton
+        <Button
           id='createAccount'
           onClick={(event) => {
             event.preventDefault()
@@ -79,7 +78,7 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
           primary
           wide
           disabled={patching || !email.match(emailRegex) || fullName === ''}
-        >Create Account</MaterialButton>
+        >Create Account</Button>
       </p>
     </form>
   )

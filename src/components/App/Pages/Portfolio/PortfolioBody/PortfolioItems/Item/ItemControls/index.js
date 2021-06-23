@@ -1,8 +1,7 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
 import DeleteItemButton from './DeleteItemButton'
-import MaterialButton from 'components/Shared/MaterialButton'
 
 import sx from './sx'
 
@@ -10,12 +9,12 @@ const ItemControls = ({ item, isOwner, setEditFunc }) => {
   if (isOwner) {
     return (
       <div sx={sx.wrapper}>
-        <MaterialButton
+        <Button
           isOwner={isOwner}
           setEditFunc={setEditFunc}
           onClick={() => setEditFunc()}
-          primary
-        >Edit</MaterialButton>
+          variant='primary'
+        >Edit</Button>
         <DeleteItemButton item={item} />
       </div>
     )

@@ -1,9 +1,8 @@
 /** @jsx jsx */
-import { jsx, Box, Container } from 'theme-ui'
+import { jsx, Box, Container, Button } from 'theme-ui'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import ActionModal from '@ndlib/gatsby-theme-marble/src/components/Shared/ActionModal'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import ExportCsv from './ExportCsv'
 
@@ -29,7 +28,7 @@ const ItemListModal = ({ marbleItems, headerLabel, onClose }) => {
       fullscreen
       footer={(
         <Box sx={sx.footer}>
-          <MaterialButton onClick={handleCloseModal} primary>Close</MaterialButton>
+          <Button onClick={handleCloseModal} variant='primary' className='close-button'>Close</Button>
           <ExportCsv items={marbleItems} filename={headerLabel} />
         </Box>
       )}

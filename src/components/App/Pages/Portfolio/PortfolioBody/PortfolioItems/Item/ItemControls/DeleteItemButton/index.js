@@ -2,10 +2,9 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { jsx } from 'theme-ui'
+import { jsx, Button } from 'theme-ui'
 import { deleteData, getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
-import MaterialButton from 'components/Shared/MaterialButton'
 
 const DeleteItemButton = ({ item, loginReducer }) => {
   const { portfolio, updatePortfolio } = usePortfolioContext()
@@ -24,14 +23,15 @@ const DeleteItemButton = ({ item, loginReducer }) => {
     })
   }
   return (
-    <MaterialButton
+    <Button
       disabled={patching}
       onClick={(e) => {
         deleteItem(e, loginReducer, item.uuid, setPatching, callBack)
       }}
+      variant='inverse'
     >
       Delete
-    </MaterialButton>
+    </Button>
   )
 }
 

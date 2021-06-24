@@ -4,13 +4,11 @@ import React from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import SkipToMain from '@ndlib/gatsby-theme-marble/src/components/Shared/SkipToMain'
-import NDBrandHeader from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Header'
 import NDBrandLayout from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Layout'
 import MarbleLogoMono from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Logos/MarbleLogoMono'
 import Footer from './Footer'
 import FeedbackModal from '../../../components/Shared/FeedbackModal'
 import BetaModal from '../../../components/Shared/BetaModal'
-import LoginButton from './LoginButton'
 import NDBrandHeroBackgroundOnly from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Hero/BackgroundOnly'
 
 const PageWrapper = ({ children, location, pageHeader }) => {
@@ -26,7 +24,6 @@ const PageWrapper = ({ children, location, pageHeader }) => {
   if (!pageHeader) {
     pageHeader = (<NDBrandHeroBackgroundOnly location={location} />)
   }
-  // {<ClickableMarbleLogoMono width='300' url='/' />}
   return (
     <>
       <SkipToMain />

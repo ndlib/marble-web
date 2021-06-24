@@ -3,8 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
-import { jsx } from 'theme-ui'
+import { jsx, Button } from 'theme-ui'
 import { Trans, useTranslation } from 'react-i18next'
 
 export const FollowButton = ({ userName, showButton, following = false }) => {
@@ -25,21 +24,19 @@ export const FollowButton = ({ userName, showButton, following = false }) => {
     )
   } else if (following) {
     return (
-      <MaterialButton
+      <Button
         onClick={() => unfollowAction(userName)}
-        wide
       >
         {t('common:userMenu.unfollow')}
-      </MaterialButton>
+      </Button>
     )
   }
   return (
-    <MaterialButton
+    <Button
       onClick={() => followAction(userName)}
-      wide
     >
       {t('common:userMenu.follow')}
-    </MaterialButton>
+    </Button>
   )
 }
 

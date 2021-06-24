@@ -1,8 +1,7 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { navigate } from 'gatsby'
 import { NewPortfolioButton, successFunc } from './'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import i18n from '@ndlib/gatsby-theme-marble/src/i18n/i18nextForTest'
 
 describe('NewPortfolioButton', () => {
@@ -14,8 +13,8 @@ describe('NewPortfolioButton', () => {
       },
       portfolios: [],
     }
-    const wrapper = shallow(<NewPortfolioButton {...props} i18n={i18n} />)
-    expect(wrapper.find(MaterialButton).exists()).toBeTruthy()
+    const wrapper = mount(<NewPortfolioButton {...props} i18n={i18n} />)
+    expect(wrapper.find('button').exists()).toBeTruthy()
   })
 
   test('successFunc', () => {

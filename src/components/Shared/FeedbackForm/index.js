@@ -1,11 +1,10 @@
 /* eslint-disable complexity */
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Button } from 'theme-ui'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import useForm from './useForm'
 import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
 import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
@@ -43,24 +42,24 @@ export const FeedbackForm = ({ closeFunc }) => {
           <p id='thankYou'>Houston. We have a problem.</p>
           <p>We were unable to create a ticket for you due to network issues.</p>
           <div sx={sx.buttonGroup}>
-            <MaterialButton
+            <Button
               onClick={() => {
                 changeFeedback('')
                 setResponse(false)
                 setError(false)
               }}
               id='submitAnother'
-              primary
+              variant='primary'
             >Try Again?
-            </MaterialButton>
-            <MaterialButton
+            </Button>
+            <Button
               onClick={() => {
                 closeFunc()
               }}
-              primary
+              variant='light'
               id='cancel'
             >Close
-            </MaterialButton>
+            </Button>
           </div>
         </form>
       </div>
@@ -74,14 +73,14 @@ export const FeedbackForm = ({ closeFunc }) => {
             <p>Your ServiceNow ticket number is: #{typy(response.result, 'number').safeString}</p>
             <p>You can submit <Link to='/help/contact-us'>another response</Link>.</p>
             <div sx={sx.buttonGroup}>
-              <MaterialButton
+              <Button
                 onClick={() => {
                   closeFunc()
                 }}
-                primary
+                variant='light'
                 id='cancel'
               >Close
-              </MaterialButton>
+              </Button>
             </div>
           </form>
         </div>
@@ -124,7 +123,7 @@ export const FeedbackForm = ({ closeFunc }) => {
             disabled={patching}
           />
           <div>
-            <MaterialButton
+            <Button
               id='submit'
               onClick={(e) => {
                 e.preventDefault()
@@ -149,9 +148,9 @@ export const FeedbackForm = ({ closeFunc }) => {
                 })
               }}
               disabled={patching || !email.match(emailRegex) || name === '' || feedback === ''}
-              primary
+              variant='primary'
             >Submit
-            </MaterialButton>
+            </Button>
           </div>
         </form>
       </div>

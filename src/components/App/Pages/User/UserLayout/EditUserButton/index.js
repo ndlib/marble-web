@@ -1,17 +1,16 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
 import { useTranslation } from 'react-i18next'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 const EditUserButton = ({ userName }) => {
   const { t } = useTranslation()
   return (
-    <MaterialButton
+    <Button
       onClick={() => navigate(`/user/${userName}/edit`)}
-      wide
-      primary
+      variant='primary'
     >{t('common:button.userEdit')}
-    </MaterialButton>
+    </Button>
   )
 }
 

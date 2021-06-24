@@ -1,9 +1,8 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Button } from 'theme-ui'
 import { useState } from 'react'
 import { Link } from 'gatsby'
 import ActionModal from '@ndlib/gatsby-theme-marble/src/components/Shared/ActionModal'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 
 const BetaModal = () => {
   const [settingsOpen, setSettingsOpen] = useState(true)
@@ -38,14 +37,14 @@ const BetaModal = () => {
           <label><input name='notAgain' type='checkbox' checked={checkSeenWarning()} onChange={e => handleChange(e)} />Do not show this again</label>
         </div>
         <div>&nbsp;</div>
-        <MaterialButton
+        <Button
           onClick={() => {
             handleCloseModal()
           }}
-          primary
+          variant='primary'
           id='cancel'
         >Close
-        </MaterialButton>
+        </Button>
       </ActionModal>
     </div>
   )

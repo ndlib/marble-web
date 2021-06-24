@@ -1,13 +1,12 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { navigate } from 'gatsby'
 import EditUserButton from './'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import i18n from '@ndlib/gatsby-theme-marble/src/i18n/i18nextForTest'
 
 test('EditUserButton', () => {
-  const wrapper = shallow(<EditUserButton userName='captainuser' i18n={i18n} />)
-  expect(wrapper.find(MaterialButton).html()).toContain('button.userEdit')
-  wrapper.find(MaterialButton).simulate('click')
+  const wrapper = mount(<EditUserButton userName='captainuser' i18n={i18n} />)
+  expect(wrapper.find('button').html()).toContain('button.userEdit')
+  wrapper.find('button').simulate('click')
   expect(navigate).toHaveBeenCalledWith('/user/captainuser/edit')
 })

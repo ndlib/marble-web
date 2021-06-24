@@ -1,10 +1,9 @@
 /** @jsx jsx */
 import React from 'react'
-import { jsx } from 'theme-ui'
+import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { patchData } from '@ndlib/gatsby-theme-marble/src/utils/api'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 
 // eslint-disable-next-line complexity
@@ -20,11 +19,12 @@ const SaveOrCancelButtons = ({
   const { portfolio, updatePortfolio } = usePortfolioContext()
   return (
     <React.Fragment>
-      <MaterialButton
+      <Button
         onClick={() => closeFunc()}
         disabled={patching}
-      >Cancel</MaterialButton>
-      <MaterialButton
+        variant='light'
+      >Cancel</Button>
+      <Button
         onClick={() => {
           if (valid) {
             setPatching(true)
@@ -44,9 +44,9 @@ const SaveOrCancelButtons = ({
             })
           }
         }}
-        primary
+        variant='primary'
         disabled={!valid || patching || !changed}
-      >Save</MaterialButton>
+      >Save</Button>
     </React.Fragment>
   )
 }

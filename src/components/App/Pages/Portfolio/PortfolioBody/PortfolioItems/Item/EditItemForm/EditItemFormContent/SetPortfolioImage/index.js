@@ -1,9 +1,8 @@
 /** @jsx jsx */
 import { useState } from 'react'
-import { jsx } from 'theme-ui'
+import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import { patchData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import sx from './sx'
@@ -23,7 +22,7 @@ const SetPortfolioImage = ({ item, loginReducer }) => {
   }
   return (
     <div sx={sx.wrapper}>
-      <MaterialButton
+      <Button
         onClick={() => {
           setPatching(true)
           const body = { image: item.image }
@@ -42,9 +41,8 @@ const SetPortfolioImage = ({ item, loginReducer }) => {
           })
         }}
         disabled={patching}
-        wide
       >Set as Portfolio Cover Image
-      </MaterialButton>
+      </Button>
     </div>
   )
 }

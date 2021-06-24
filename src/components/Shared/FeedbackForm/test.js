@@ -2,14 +2,13 @@ import React from 'react'
 // import nock from 'nock'
 import { shallow } from 'enzyme'
 import { FeedbackForm } from './'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
 // import { createData, successFunc, errorFunc } from './api'
 
 describe('FeedbackForm', () => {
   const wrapper = shallow(<FeedbackForm />)
   test('submit button disabled', () => {
-    expect(wrapper.find(MaterialButton).prop('disabled')).toBe(true)
+    expect(wrapper.find('#submit').prop('disabled')).toBe(true)
   })
   test('should validate the name field', () => {
     let textField = wrapper.findWhere((el) => el.type() === TextField && el.props().id === 'name')
@@ -70,7 +69,7 @@ describe('FeedbackForm', () => {
     createData(body, successFunc, errorFunc)
     const event = { preventDefault: () => jest.fn() }
     let wrapper = shallow(<FeedbackForm body={body} />)
-    wrapper.find(MaterialButton).simulate('click', event)
+    wrapper.find('button').simulate('click', event)
     wrapper = shallow(<FeedbackForm body={body} />)
   })
 })

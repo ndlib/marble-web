@@ -1,8 +1,9 @@
+/** @jsx jsx */
+import { jsx, Button } from 'theme-ui'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import { deleteData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import * as style from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/style.module.css'
 
@@ -20,7 +21,7 @@ export const DangerDelete = ({ portfolio, loginReducer }) => {
         <p>Are you sure you want to delete <code>{portfolio.title}</code>?</p>
       </label>
       <div className={style.buttonGroup}>
-        <MaterialButton
+        <Button
           onClick={(e) => {
             e.preventDefault()
             deleteData({
@@ -35,7 +36,7 @@ export const DangerDelete = ({ portfolio, loginReducer }) => {
               },
             })
           }}
-        >Delete</MaterialButton>
+        >Delete</Button>
       </div>
     </div>
   )

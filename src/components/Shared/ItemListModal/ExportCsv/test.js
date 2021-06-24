@@ -1,7 +1,6 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import ExportCsv from './index'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 
 let wrapper
 let props
@@ -43,7 +42,7 @@ describe('StatsPage', () => {
       ],
       filename: 'My Filename! Is /REALly b#ad (,?<!) and loooooooooooooong.csv',
     }
-    wrapper = shallow(<ExportCsv {...props} />)
+    wrapper = mount(<ExportCsv {...props} />)
   })
 
   afterEach(() => {
@@ -52,11 +51,11 @@ describe('StatsPage', () => {
   })
 
   test('should render an export button', () => {
-    expect(wrapper.find(MaterialButton).exists()).toBe(true)
+    expect(wrapper.find('button').exists()).toBe(true)
   })
 
   test('should download well-formed csv when clicked', async () => {
-    const btn = wrapper.find(MaterialButton)
+    const btn = wrapper.find('button')
     btn.simulate('click')
 
     expect(window.URL.createObjectURL).toHaveBeenCalledWith(expect.any(Blob))

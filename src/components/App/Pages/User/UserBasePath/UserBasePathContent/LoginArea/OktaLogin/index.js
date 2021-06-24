@@ -1,15 +1,15 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import  OktaAuth  from '@okta/okta-auth-js'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 
 export const OktaLogin = ({ loginReducer }) => {
   const { t } = useTranslation()
   return (
     <p>
-      <MaterialButton
+      <Button
         id='okta'
         onClick={(e) => {
           e.preventDefault()
@@ -27,10 +27,9 @@ export const OktaLogin = ({ loginReducer }) => {
             pkce: false
           })
         }}
-        primary
-        wide
+        variant='primary'
       >{t('text:loginPage.button')}
-      </MaterialButton>
+    </Button>
     </p>
   )
 }

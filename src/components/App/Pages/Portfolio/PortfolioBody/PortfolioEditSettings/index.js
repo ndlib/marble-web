@@ -13,6 +13,7 @@ export const PortfolioEditSettings = () => {
       <Button
         variant='primary'
         onClick={() => setSettingsOpen(true)}
+        className='edit-settings'
       >Edit Settings</Button>
       <ActionModal
         isOpen={settingsOpen}

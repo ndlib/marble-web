@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { shallow } from 'enzyme'
 import PortfolioEditSettings from './'
 import * as PortfolioContext from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import ActionModal from '@ndlib/gatsby-theme-marble/src/components/Shared/ActionModal'
@@ -12,7 +12,7 @@ test('PortfolioEditSettings', () => {
       },
     }
   })
-  const wrapper = mount(<PortfolioEditSettings />)
-  expect(wrapper.find('button').exists()).toBeTruthy()
+  const wrapper = shallow(<PortfolioEditSettings />)
+  expect(wrapper.find('.edit-settings').exists()).toBeTruthy()
   expect(wrapper.find(ActionModal).props().contentLabel).toContain('My Title')
 })

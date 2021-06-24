@@ -1,9 +1,8 @@
 /** @jsx jsx */
 import { useState } from 'react'
-import { jsx } from 'theme-ui'
+import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
 import typy from 'typy'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import NoItems from './NoItems'
 import AnnotatedView from './AnnotatedView'
 import GridListView from './GridListView'
@@ -55,13 +54,13 @@ const PortfolioItems = ({ isOwner }) => {
       <div sx={sx.reorderButton}>
         {
           isOwner && !editing ? (
-            <MaterialButton
+            <Button
               wide
               onClick={() => {
                 setEditing(!editing)
               }}
             >Sort Items
-            </MaterialButton>
+            </Button>
           ) : null
         }
       </div>

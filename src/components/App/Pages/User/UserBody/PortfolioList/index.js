@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { jsx, Button } from 'theme-ui'
 import { connect } from 'react-redux'
 import typy from 'typy'
 import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/CardGroup'
@@ -9,8 +10,6 @@ import NoPortfolios from './NoPortfolios'
 import VisibilityLabel from '@ndlib/gatsby-theme-marble/src/components/Shared/VisibilityLabel'
 import { DISPLAY_GRID } from '@ndlib/gatsby-theme-marble/src/store/actions/displayActions'
 import { isLoggedIn, ownsPage } from '@ndlib/gatsby-theme-marble/src/utils/auth'
-import * as style from './style.module.css'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import { deleteData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 
 const PortfolioList = ({
@@ -71,18 +70,15 @@ const PortfolioList = ({
               })
               .map((c, index) => {
                 return (
-                  <div key={index} className={style.cardWrapper}>
+                  <div key={index} sx={{ position: 'relative' }}>
                     {
                       isOwner
                         ? (
-                          <div className={style.deleteButton}>
-                            <MaterialButton
-                              primary
-                              wide
+                            <Button
+                              variant='light'
                               onClick={() => beGone(c)}
                             >Delete
-                            </MaterialButton>
-                          </div>
+                            </Button>
                         ) : null
                     }
                     <Card

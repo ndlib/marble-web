@@ -1,9 +1,10 @@
+/** @jsx jsx */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
+import { jsx, Button } from 'theme-ui'
 import typy from 'typy'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import Gravatar from '@ndlib/gatsby-theme-marble/src/components/Shared/Gravatar'
 import { ownsPage } from '@ndlib/gatsby-theme-marble/src/utils/auth'
 import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
@@ -27,7 +28,7 @@ export const UserEdit = ({ user, loginReducer }) => {
   return (
     <form className={style.edit}>
       <div className={style.buttonGroup}>
-        <MaterialButton
+        <Button
           onClick={(e) => {
             e.preventDefault()
             if (window.confirm(
@@ -37,8 +38,9 @@ export const UserEdit = ({ user, loginReducer }) => {
             }
           }}
           disabled={patching}
-        >Cancel</MaterialButton>
-        <MaterialButton
+          variant='light'
+        >Cancel</Button>
+        <Button
           onClick={(e) => {
             e.preventDefault()
             setPatching(true)
@@ -63,8 +65,8 @@ export const UserEdit = ({ user, loginReducer }) => {
             })
           }}
           disabled={patching || !emailRegex.test(email) || fullName === ''}
-          primary
-        >Save</MaterialButton>
+          variant='primary'
+        >Save</Button>
       </div>
       <TextField
         id='profileName'

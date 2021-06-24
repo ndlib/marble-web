@@ -2,7 +2,6 @@ import React from 'react'
 import { mount } from 'enzyme'
 import { DangerDelete } from './'
 import { navigate } from 'gatsby'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 
 describe('DangerDelete', () => {
   console.log = jest.fn()
@@ -21,14 +20,14 @@ describe('DangerDelete', () => {
     jest.spyOn(window, 'confirm').mockImplementationOnce(() => true)
     const wrapper = mount(<DangerDelete {...props} />)
 
-    wrapper.find(MaterialButton).simulate('click')
+    wrapper.find('button').simulate('click')
     expect(navigate).toHaveBeenCalled()
   })
   test('cancel', () => {
     jest.spyOn(window, 'confirm').mockImplementationOnce(() => false)
     const wrapper = mount(<DangerDelete {...props} />)
 
-    wrapper.find(MaterialButton).simulate('click')
+    wrapper.find('button').simulate('click')
     expect(navigate).not.toHaveBeenCalled()
   })
 })

@@ -1,8 +1,7 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
 import typy from 'typy'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 
 // These field keys can be nested multiple layers. Typy will fetch it.
 // (Ex: 'metadata[0].value': 'My Metadata Field')
@@ -73,9 +72,9 @@ const ExportCsv = ({ items, filename }) => {
   }
 
   return (
-    <MaterialButton secondary onClick={download}>
+    <Button variant='secondary' onClick={download}>
       Export CSV
-    </MaterialButton>
+    </Button>
   )
 }
 

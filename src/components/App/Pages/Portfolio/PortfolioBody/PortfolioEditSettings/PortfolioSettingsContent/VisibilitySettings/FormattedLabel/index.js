@@ -11,7 +11,7 @@ export const FormattedLabel = ({ value, description }) => {
         className='visibilityLabel'
         sx={{
           display: 'inline-block',
-          width: '90px',
+          width: '120px',
         }}>
         <VisibilityLabel visibility={value} />
       </span>
@@ -21,7 +21,7 @@ export const FormattedLabel = ({ value, description }) => {
           display: 'inline-block',
           padding: '0 0 0 2rem,',
           verticalAlign: 'top',
-          width: 'calc(100% - 90px)',
+          width: 'calc(100% - 120px)',
         }}>
         {description}
       </span>

@@ -1,7 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import ActionModal from '@ndlib/gatsby-theme-marble/src/components/Shared/ActionModal'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import ItemListModal from './index'
 import ExportCsv from './ExportCsv'
 
@@ -68,7 +67,7 @@ describe('StatsPage', () => {
 
     const modal = wrapper.find(ActionModal)
     const footerWrapper = shallow(modal.props().footer)
-    const btn = footerWrapper.find(MaterialButton)
+    const btn = footerWrapper.find('.close-button')
     expect(btn.exists()).toBe(true)
 
     btn.simulate('click')

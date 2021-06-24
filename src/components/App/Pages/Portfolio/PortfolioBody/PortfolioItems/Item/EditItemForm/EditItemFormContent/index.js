@@ -2,10 +2,9 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import MaterialButton from '@ndlib/gatsby-theme-marble/src/components/Shared/MaterialButton'
 import { patchData, getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import * as style from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/style.module.css'
-import { jsx, Heading } from 'theme-ui'
+import { jsx, Heading, Button } from 'theme-ui'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import SetPortfolioImage from './SetPortfolioImage'
 import sx from './sx'
@@ -32,11 +31,14 @@ export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
   return (
     <React.Fragment>
       <div className={style.buttonGroup}>
-        <MaterialButton onClick={() => closeFunc()}>
+        <Button
+          onClick={() => closeFunc()}
+          variant='light'
+          >
           Cancel
-        </MaterialButton>
-        <MaterialButton
-          primary
+        </Button>
+        <Button
+          variant='primary'
           onClick={
             (e) => {
               e.preventDefault()
@@ -48,7 +50,7 @@ export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
             }
           }>
           Save
-        </MaterialButton>
+        </Button>
       </div>
       <Heading as='h2'>{item.title}</Heading>
       <label

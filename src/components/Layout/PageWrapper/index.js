@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import SkipToMain from '@ndlib/gatsby-theme-marble/src/components/Shared/SkipToMain'
 import NDBrandHeader from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Header'
 import NDBrandLayout from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Layout'
-import ClickableMarbleLogoMono from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Logos/ClickableMarbleLogoMono'
+import MarbleLogoMono from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Logos/MarbleLogoMono'
 import Footer from './Footer'
 import FeedbackModal from '../../../components/Shared/FeedbackModal'
 import BetaModal from '../../../components/Shared/BetaModal'
@@ -26,13 +26,13 @@ const PageWrapper = ({ children, location, pageHeader }) => {
   if (!pageHeader) {
     pageHeader = (<NDBrandHeroBackgroundOnly location={location} />)
   }
-
+  // {<ClickableMarbleLogoMono width='300' url='/' />}
   return (
     <>
       <SkipToMain />
       <NDBrandLayout
         location={location}
-        titleOverride={<ClickableMarbleLogoMono width='300' url='/' />}
+        titleOverride={<MarbleLogoMono />}
         siteFooter={<Footer location={location} />}
         pageHeader={pageHeader}
       >

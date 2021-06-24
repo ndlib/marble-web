@@ -9,6 +9,12 @@ export default merge({}, theme, {
     highlight: '#fff190',
     muted: '',
   },
+  NDBrandHeader: {
+    p: ['1rem 0 0', '1rem 0 0', '1rem 0 0', '1rem 0 1.5rem'],
+    '& .mark': {
+      my: 'auto',
+    },
+  },
   hero: {
     fullBleed: {
       '& .lede': {

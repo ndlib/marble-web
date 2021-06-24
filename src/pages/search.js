@@ -12,7 +12,6 @@ import MarbleSearchFacets from '../components/Shared/MarbleSearchFacets'
 import NDBrandSectionLeftNav from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section/LeftNav'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
-import ActionModal from '@ndlib/gatsby-theme-marble/src/components/Shared/ActionModal'
 import { TagFilterConfig } from 'searchkit'
 
 const SearchPage = ({ location }) => {

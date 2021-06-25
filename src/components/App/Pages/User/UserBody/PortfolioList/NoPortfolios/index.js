@@ -8,7 +8,7 @@ const NoPortfolios = ({ isOwner = false, button }) => {
   const sx = {
     border: '1px solid',
     borderColor: 'gray.4',
-    color: 'gray.4',
+    color: 'gray.9',
     margin: '1rem',
     padding: '.5rem',
     textAlign: 'center',

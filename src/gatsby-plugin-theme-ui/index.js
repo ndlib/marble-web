@@ -52,7 +52,7 @@ export default merge({}, theme, {
         borderTop: '0.25rem solid transparent',
         borderBottom: '0.25rem solid transparent',
         transition: 'all 325ms ease-in-out',
-        bg: 'white',
+        bg: 'white !important',
         '&:hover': {
           background: 'var(--theme-ui-colors-light)',
           borderBottom: `0.25rem solid var(--theme-ui-colors-lightDark)`,
@@ -90,6 +90,11 @@ export default merge({}, theme, {
     '& div': {
       display: 'flex',
       flexWrap: 'wrap',
+    },
+    navTop: {
+      '& div':{
+        minWidth: [0, 0, 0, '29rem'],
+      },
     },
   },
   text: {

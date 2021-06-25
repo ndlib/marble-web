@@ -59,7 +59,7 @@ const PortfolioItems = ({ isOwner }) => {
               onClick={() => {
                 setEditing(!editing)
               }}
-            >Sort Items
+            >Reorder Items
             </Button>
           ) : null
         }

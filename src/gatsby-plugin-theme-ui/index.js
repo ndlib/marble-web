@@ -10,9 +10,11 @@ export default merge({}, theme, {
     muted: '',
   },
   NDBrandHeader: {
-    p: ['1rem 0 0', '1rem 0 0', '1rem 0 0', '1rem 0 1.5rem'],
+    '& .title': {
+      p: ['.5rem 0', '.5rem 0', '1rem 0', '1rem 0 0'],
+    },
     '& .mark': {
-      my: 'auto',
+      my: [0, 0, 'auto'],
     },
   },
   hero: {
@@ -85,6 +87,10 @@ export default merge({}, theme, {
         display: 'block',
       },
     },
+    siteHeader: {
+      lineHeight: 0,
+      fontSize: '0px',
+    },
   },
   menus: {
     '& div': {
@@ -93,7 +99,7 @@ export default merge({}, theme, {
     },
     navTop: {
       '& div':{
-        minWidth: [0, 0, 0, '29rem'],
+        minWidth: ['100vw', '100vw', '100vw', '29rem'],
       },
     },
   },
@@ -104,6 +110,9 @@ export default merge({}, theme, {
       lineHeight: 'body',
       fontWeight: 'body',
       color: 'text',
+    },
+    siteHeader: {
+      lineHeight: 0,
     },
   },
   fonts: {

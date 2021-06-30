@@ -8,7 +8,7 @@ module.exports = {
     height: '10rem',
     lineHeight: '1.45rem',
     minHeight: '6rem',
-    outline: 'none',
+    
     padding: '1rem',
     resize: 'vertical',
     width: '100%',

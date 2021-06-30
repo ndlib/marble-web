@@ -16,7 +16,7 @@ module.exports = {
     cursor: 'pointer',
   },
   'materialButton:focus': {
-    outline: 'none',
+    
   },
   'materialButton:hover': {
     boxShadow: '0px 2px 3px 0px rgba(153, 153, 153, 0.4)',

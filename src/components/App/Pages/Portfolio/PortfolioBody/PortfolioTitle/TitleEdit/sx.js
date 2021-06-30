@@ -6,7 +6,7 @@ module.exports = {
       display: 'inline-block',
       fontFamily: 'heading',
       fontSize: '26px',
-      outline: 'none',
+      
       width: ['100%', 'calc(100% - 230px)', 'calc(100% - 230px)'],
     }
   },

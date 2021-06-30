@@ -45,7 +45,7 @@ const SearchPage = ({ location }) => {
             <div
               className='overlay'
               sx={{
-                display: facectsOpen ? 'block' : 'none',
+                visibility: facectsOpen ? 'visible' : 'hidden',
                 position: 'fixed',
                 left: '14rem',
                 top: 0,
@@ -58,7 +58,7 @@ const SearchPage = ({ location }) => {
               onClick={() => setFacectsOpen(!facectsOpen)}
             />
             <nav id='drawer' sx={{
-              display: facectsOpen ? 'block' : 'none',
+              visibility: facectsOpen ? 'visible' : 'hidden',
               m: 0,
               p: '20px',
               position: 'fixed',

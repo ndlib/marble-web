@@ -18,6 +18,8 @@ const PageWrapper = ({ children, location, pageHeader }) => {
   } else {
     seenWarning = true
   }
+  const betaPopup = seenWarning ? (
+    null) : <BetaModal />
 
   if (!pageHeader) {
     pageHeader = (<NDBrandHeroBackgroundOnly location={location} />)
@@ -34,6 +36,7 @@ const PageWrapper = ({ children, location, pageHeader }) => {
         {children}
       </NDBrandLayout>
       <FeedbackModal location={location} />
+      {betaPopup}
     </>
   )
 }

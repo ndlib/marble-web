@@ -44,6 +44,7 @@ export const Layout = ({
           </PageWrapper>
         </PrivateRoute>
       </AuthWrapper>
+      <CornerBanner />
     </>
   )
 }

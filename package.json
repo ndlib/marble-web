@@ -20,6 +20,7 @@
     "gatsby-source-filesystem": "^3.5.0",
     "gatsby-transformer-json": "^3.5.0",
     "gatsby-transformer-marbleitem": "*",
+    "gatsby-transformer-remark": "^4.2.0",
     "gatsby-transformer-sharp": "^3.5.0",
     "graphql": "^15.5.0",
     "lodash.merge": "^4.6.2",

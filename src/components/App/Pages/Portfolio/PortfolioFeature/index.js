@@ -1,11 +1,13 @@
 /** @jsx jsx */
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { jsx, Flex, Box, Divider } from 'theme-ui'
+import { jsx, Flex, Box, Divider, Heading } from 'theme-ui'
 import PortfolioItems from '../PortfolioBody/PortfolioItems'
 import ManifestImageGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/ManifestImageGroup'
 import PortfolioContext, { initialContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import Html from '@ndlib/gatsby-theme-marble/src/components/Shared/Html'
+import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
+import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 
 const PortfolioFeature = ({ location, featuredJson }) => {
   // This is a hack for proof of concept
@@ -26,21 +28,29 @@ const PortfolioFeature = ({ location, featuredJson }) => {
   }
   const description = featuredJson.description
   return (
-    <div>
+
+    <NDBrandSection variant='fullBleed'>
+      <NDBrandBreadcrumbs
+        currentPageTitle={featuredJson.title}
+        breadcrumbs={[{ url: '/featured', title: 'Featured' }]}
+      />
+      <Heading as='h1' variant='pageTitle'>{featuredJson.title}</Heading>
       <Flex sx={{
         flexWrap: 'wrap',
-        width: '100%',
-        midWidth: '90vw',
+        width: '90vw',
+        maxWidth: '90vw',
       }}>
         <Box sx={{
-          width: ['100%', '34%'],
-          marginRight: '3rem',
+          width: ['100%', '100%', '100%', '30vw'],
+          maxWidth: '65rem',
+          pr: '1vw',
         }}
         >
           <Html html={description} />
         </Box>
         <Box sx={{
-          width: ['100%', '66%'],
+          width: ['100%', '100%', '100%', '60vw'],
+          pt: ['1rem', '1rem', '1rem', 0],
         }}
         >
           <ManifestImageGroup
@@ -73,7 +83,7 @@ const PortfolioFeature = ({ location, featuredJson }) => {
           </PortfolioContext.Provider>
         </Box>
       </Flex>
-    </div>
+    </NDBrandSection>
   )
 }
 
@@ -83,4 +93,3 @@ PortfolioFeature.propTypes = {
 }
 
 export default PortfolioFeature
-

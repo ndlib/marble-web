@@ -3,59 +3,28 @@
   "label": "Help",
   "items": [
     {
-      "id": "help-site-info",
-      "label": "Site Information",
-      "link": "/help"
+      "id": "help-searching",
+      "label": "Searching",
+      "link": "/help#searching",
+      "selectedPatterns": [
+        "searching$"
+      ]
     },
     {
-      "id": "help-search-tips",
-      "label": "Search Tips",
-      "link": "/help/search-tips"
+      "id": "help-port-tips",
+      "label": "Portfolio Tips",
+      "link": "/help?scrollto=portfolio-tips",
+      "selectedPatterns": [
+        "portfolio-tips$"
+      ]
     },
     {
-      "id": "help-creating-portfolios",
-      "label": "Creating Personal Portfolios",
-      "link": "/help/creating-personal-portfolios"
-    },
-    {
-      "id": "help-copyright-and-permissions",
-      "label": "Copyright and Permissions",
-      "link": "/help/copyright-and-permissions"
-    },
-    {
-      "id": "help-contact-us",
-      "label": "Contact Us",
-      "link": "/help/contact-us"
-    },
-    {
-      "id": "about",
-      "label": "About",
-      "link": "/about"
-    },
-    {
-      "id": "browse",
-      "label": "Browse",
-      "link": "/browse"
-    },
-    {
-      "id": "disclaimer",
-      "label": "Disclaimer",
-      "link": "/disclaimer"
-    },
-    {
-      "id": "exhibits",
-      "label": "Exhibits",
-      "link": "/exhibits"
-    },
-    {
-      "id": "learn",
-      "label": "Learn",
-      "link": "/learn"
-    },
-    {
-      "id": "privacy-policy",
-      "label": "Privacy Policy",
-      "link": "/privacy-policy"
+      "id": "help-digitization",
+      "label": "Digitization Information",
+      "link": "/help?scrollto=digitization-information",
+      "selectedPatterns": [
+        "digitization-information$"
+      ]
     }
   ]
 }

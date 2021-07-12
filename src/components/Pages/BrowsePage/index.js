@@ -51,7 +51,7 @@ const Browse = ({ location }) => {
     },
     {
       label: 'Maps',
-      target: '/search?format[0]=map',
+      target: '/search?format[0]=Map',
     },
     {
       label: 'Photographs',

@@ -34,7 +34,9 @@
       "label": "About",
       "link": "/about",
       "selectedPatterns": [
-        "^/about"
+        "^/about",
+        "^/help",
+        "^/policies"
       ]
     }
   ]

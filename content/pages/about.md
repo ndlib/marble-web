@@ -3,8 +3,8 @@ title: "About Marble"
 date: "2017-09-18T23:19:51.246Z"
 type: "page"
 slug: "/about"
-menu: ""
-template: "page.js"
+menu: "help"
+template: "pageWithMenu.js"
 ---
 ## Marble
 Marble (Museums, Archives, Rare Books, and Libraries Exploration) is a teaching and research platform designed to make cultural heritage collections at the University of Notre Dame more accessible to the campus community and beyond.

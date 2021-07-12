@@ -9,7 +9,7 @@ import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import PortfolioFeature from '../../components/App/Pages/Portfolio/PortfolioFeature'
 
 export const FeaturedPage = ({ data, location }) => {
-  const { featuredJson } = data
+  const { featuredJson, menusJson } = data
   return (
     <Layout
       title={featuredJson.title}
@@ -24,6 +24,7 @@ export const FeaturedPage = ({ data, location }) => {
       <PortfolioFeature
         location={location}
         featuredJson={featuredJson}
+        menusJson={menusJson}
       />
     </Layout>
 
@@ -54,6 +55,17 @@ export const query = graphql`
         link
         manifest
         title
+      }
+    }
+    menusJson(id: {eq: "portfolios"}) {
+      id
+      label
+      items {
+        id
+        label
+        link
+        icon
+        selectedPatterns
       }
     }
   }

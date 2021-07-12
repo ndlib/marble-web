@@ -3,24 +3,28 @@
   "label": "Portfolios",
   "items": [
     {
-      "id": "browse-all",
-      "label": "All",
-      "link": "/browse"
+      "id": "portfolios-browse",
+      "label": "Featured Portfolios",
+      "link": "/featured",
+      "selectedPatterns": [
+        "^/featured"
+      ]
     },
     {
-      "id": "browse-timeperiods",
-      "label": "Time Periods",
-      "link": "/browse/timeperiods"
+      "id": "portfolios-help",
+      "label": "Portfolios Help",
+      "link": "/portfolios-help",
+      "selectedPatterns": [
+        "^/portfolios-help"
+      ]
     },
     {
-      "id": "browse-theme",
-      "label": "Theme",
-      "link": "/browse/themes"
-    },
-    {
-      "id": "browse-places",
-      "label": "Places",
-      "link": "/browse/places"
+      "id": "portfolios-teaching",
+      "label": "Teaching with Digital Collections",
+      "link": "/portfolios-teaching",
+      "selectedPatterns": [
+        "^/portfolios-teaching"
+      ]
     }
   ]
 }

@@ -3,27 +3,27 @@
   "label": "Help",
   "items": [
     {
-      "id": "help-searching",
-      "label": "Searching",
-      "link": "/help#searching",
+      "id": "help-about",
+      "label": "About",
+      "link": "/about",
       "selectedPatterns": [
-        "searching$"
+        "^/about"
       ]
     },
     {
-      "id": "help-port-tips",
-      "label": "Portfolio Tips",
-      "link": "/help?scrollto=portfolio-tips",
+      "id": "help-policies",
+      "label": "Policies",
+      "link": "/policies",
       "selectedPatterns": [
-        "portfolio-tips$"
+        "^/policies"
       ]
     },
     {
-      "id": "help-digitization",
-      "label": "Digitization Information",
-      "link": "/help?scrollto=digitization-information",
+      "id": "help-help",
+      "label": "Help",
+      "link": "/help",
       "selectedPatterns": [
-        "digitization-information$"
+        "^/help"
       ]
     }
   ]

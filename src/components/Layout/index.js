@@ -22,7 +22,6 @@ export const Layout = ({
   useEffect(() => {
     const scrollTo = document.querySelector(`#${qs.scrollto}`)
     if (scrollTo) {
-      console.log('scrollyiop')
       scrollTo.scrollIntoView()
     } else {
       document.querySelector('#gatsby-focus-wrapper').scrollTop = 0

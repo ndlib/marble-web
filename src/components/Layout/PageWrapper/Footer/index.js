@@ -39,7 +39,6 @@ const footerSx = {
 export const Footer = (location, variant) => {
   const { menusJson } = useStaticQuery(menuQuery)
   const menu = typy(menusJson, 'items').safeArray
-
   return (
     <footer sx={footerSx} variant={'footer.' + variant}>
       <Flex variant={`footer.${variant}`} sx={{

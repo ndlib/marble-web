@@ -99,7 +99,7 @@ export default merge({}, theme, {
     },
     navTop: {
       '& div':{
-        minWidth: ['100vw', '100vw', '100vw', '29rem'],
+        minWidth: ['100vw', '100vw', '100vw', '35rem'],
       },
     },
   },

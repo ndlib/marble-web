@@ -1,4 +1,6 @@
-exports.createPages = async ({ graphql, actions }) => {
+const path = require('path')
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
   const marbleResult = await graphql(`
     {
@@ -26,4 +28,58 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     }
   })
+
+  // Get all markdown blog posts sorted by date
+  const result = await graphql(
+    `
+      {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: ASC }
+          limit: 1000
+        ) {
+          nodes {
+            id
+            frontmatter {
+              template
+              slug
+              menu
+            }
+          }
+        }
+      }
+    `,
+  )
+
+  if (result.errors) {
+    reporter.panicOnBuild(
+      'There was an error loading your blog posts',
+      result.errors,
+    )
+    return
+  }
+
+  const pages = result.data.allMarkdownRemark.nodes
+  // Create pages
+  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
+  // `context` is available in the template as a prop and as a variable in GraphQL
+
+  if (pages.length > 0) {
+    pages.forEach((page, index) => {
+      const previousPostId = index === 0 ? null : pages[index - 1].id
+      const nextPostId = index === pages.length - 1 ? null : pages[index + 1].id
+      // Define a template for blog post
+      const pageTemplate = path.resolve(`./src/templates/${page.frontmatter.template}`)
+      createPage({
+        path: page.frontmatter.slug,
+        component: pageTemplate,
+        context: {
+          id: page.id,
+          slug: page.frontmatter.slug,
+          menu: page.frontmatter.menu,
+          previousPostId,
+          nextPostId,
+        },
+      })
+    })
+  }
 }

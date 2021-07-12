@@ -26,7 +26,7 @@ const PageWrapper = ({ children, location, pageHeader }) => {
   }
   return (
     <>
-      <SkipToMain />
+      <SkipToMain location={location} />
       <NDBrandLayout
         location={location}
         titleOverride={<MarbleLogoMono />}

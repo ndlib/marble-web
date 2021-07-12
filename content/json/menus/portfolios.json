@@ -1,0 +1,30 @@
+{
+  "id": "portfolios",
+  "label": "Portfolios",
+  "items": [
+    {
+      "id": "portfolios-browse",
+      "label": "Featured Portfolios",
+      "link": "/featured",
+      "selectedPatterns": [
+        "^/featured"
+      ]
+    },
+    {
+      "id": "portfolios-help",
+      "label": "Portfolios Help",
+      "link": "/portfolios-help",
+      "selectedPatterns": [
+        "^/portfolios-help"
+      ]
+    },
+    {
+      "id": "portfolios-teaching",
+      "label": "Teaching with Digital Collections",
+      "link": "/portfolios-teaching",
+      "selectedPatterns": [
+        "^/portfolios-teaching"
+      ]
+    }
+  ]
+}

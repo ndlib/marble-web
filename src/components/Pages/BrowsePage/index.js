@@ -58,7 +58,7 @@ const Browse = ({ location }) => {
       target: '/search?format[0]=photographs',
     },
     {
-      label: 'Prints and Posters',
+      label: 'Prints and posters',
       target: '/search?format[0]=prints&format[1]=Two-dimensional%20nonprojected%20graphic&format[2]=Projected%20medium',
     },
     {
@@ -75,7 +75,7 @@ const Browse = ({ location }) => {
 
     },
     {
-      label: 'Decorative Arts, Craft, and Design',
+      label: 'Decorative arts, craft, and design',
       target: '/search?format[0]=ceramics&format[1]=glass&format[2]=metalwork',
     },
     {

@@ -99,37 +99,16 @@ export default merge({}, theme, {
     },
     navTop: {
       '& div':{
-        minWidth: ['100vw', '100vw', '100vw', '35rem'],
+        minWidth: ['100vw', '100vw', '100vw', '34rem'],
       },
     },
   },
   text: {
-    default: {
-      fontFamily: 'body',
-      fontSize: 3,
-      lineHeight: 'body',
-      fontWeight: 'body',
-      color: 'text',
-    },
     siteHeader: {
       lineHeight: 0,
     },
   },
   fonts: {
-    body: `
-      GPBook,
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      'Fira Sans',
-      'Droid Sans',
-      'Helvetica Neue',
-      sans-serif
-    `,
     bold: `
       GPBold,
       -apple-system,
@@ -143,11 +122,6 @@ export default merge({}, theme, {
       'Droid Sans',
       'Helvetica Neue',
       sans-serif
-    `,
-    heading: `
-      'EB Garamond',
-      georgia,
-      serif
     `,
     logo: `
       GPCBook,
@@ -163,33 +137,8 @@ export default merge({}, theme, {
       'Helvetica Neue',
       sans-serif
     `,
-    menu: `
-      GPCBook,
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      'Fira Sans',
-      'Droid Sans',
-      'Helvetica Neue',
-      sans-serif
-    `,
     tagline: `
-      GPCBook,
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      'Fira Sans',
-      'Droid Sans',
-      'Helvetica Neue',
-      sans-serif
+    "Sumana", Georgia, "Times New Roman", Times, serif;
     `,
   },
   header: {

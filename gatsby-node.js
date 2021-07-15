@@ -8,6 +8,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         nodes {
           id
           slug
+          sourceType
+          sourceSystem
         }
       }
     }

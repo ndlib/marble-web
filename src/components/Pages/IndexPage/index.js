@@ -65,7 +65,7 @@ const IndexPage = ({ location }) => {
         <Html html={t('common:hompageDescriptive')} />
       </NDBrandSection>
       <NDBrandSection location={location} variant='fullBleedLight'>
-        <Heading as='h2' variant='sectionTitle'>
+        <Heading as='h2'>
           {t('common:search.browseBy')}
         </Heading>
 
@@ -106,9 +106,7 @@ const IndexPage = ({ location }) => {
         variant='fullBleed'
         sx={{ px: 0 }}
       >
-        <Heading as='h2' variant='sectionTitle'>
-              Featured Items
-        </Heading>
+        <Heading as='h2'>Featured Items</Heading>
 
         <CardGroup
           label={t('common:search.recentAdditions')}

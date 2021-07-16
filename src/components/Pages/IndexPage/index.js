@@ -99,7 +99,6 @@ const IndexPage = ({ location }) => {
             />
           </Box>
         </Flex>
-
       </NDBrandSection>
       <NDBrandSection
         location={location}

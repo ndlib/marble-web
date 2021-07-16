@@ -34,7 +34,45 @@ const EditDescription = ({ closeFunc }) => {
           closeFunc={closeFunc}
           patching={patching}
           setPatching={setPatching}
-          body={{ description: newDescription }}
+          body={`mutation {
+            savePortfolioCollection(
+              description: "${newDescription}",
+              portfolioCollectionId: "${portfolio.portfolioCollectionId}",
+              title: "${portfolio.title}",
+              privacy: ${portfolio.privacy},
+              layout: "${portfolio.layout}",
+              imageUri: "${portfolio.imageUri}"
+            ) {
+              dateAddedToDynamo
+              dateModifiedInDynamo
+              description
+              featuredCollection
+              highlightedCollection
+              imageUri
+              layout
+              portfolioCollectionId
+              portfolioUserId
+              privacy
+              title
+              portfolioItems {
+                items {
+                  annotation
+                  dateAddedToDynamo
+                  dateModifiedInDynamo
+                  description
+                  imageUri
+                  internalItemId
+                  itemType
+                  portfolioCollectionId
+                  portfolioItemId
+                  portfolioUserId
+                  sequence
+                  title
+                  uri
+                }
+              }
+            }
+          }`}
           valid
           changed={description !== newDescription}
         />

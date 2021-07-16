@@ -3,7 +3,7 @@ import React from 'react'
 import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { patchData } from '@ndlib/gatsby-theme-marble/src/utils/api'
+import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 
 // eslint-disable-next-line complexity
@@ -28,10 +28,9 @@ const SaveOrCancelButtons = ({
         onClick={() => {
           if (valid) {
             setPatching(true)
-            patchData({
+            getData({
               loginReducer: loginReducer,
-              contentType: 'collection',
-              id: portfolio.uuid,
+              contentType: 'data.savePortfolioCollection',
               body: body,
               successFunc: (result) => {
                 updatePortfolio(result)
@@ -56,7 +55,7 @@ SaveOrCancelButtons.propTypes = {
   closeFunc: PropTypes.func.isRequired,
   patching: PropTypes.bool,
   setPatching: PropTypes.func.isRequired,
-  body: PropTypes.object.isRequired,
+  body: PropTypes.string.isRequired,
   valid: PropTypes.bool,
   changed: PropTypes.bool,
 }

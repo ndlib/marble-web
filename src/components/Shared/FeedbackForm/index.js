@@ -1,5 +1,5 @@
-/* eslint-disable complexity */
 /** @jsx jsx */
+/* eslint-disable complexity */
 import { jsx, Button } from 'theme-ui'
 import { useState } from 'react'
 import PropTypes from 'prop-types'

@@ -9,7 +9,7 @@ describe('NewPortfolioButton', () => {
     const props = {
       addFunc: jest.fn(),
       loginReducer: {
-        user: { uuid: 'asdf' },
+        user: { uuid: 'asdf', userName: 'myUserName'},
       },
       portfolios: [],
     }
@@ -29,7 +29,7 @@ describe('NewPortfolioButton', () => {
       addFunc: addFunc,
       setCreating: jest.fn(),
     })
-    expect(navigate).toBeCalledWith('/myportfolio/asdf')
+    expect(navigate).toBeCalledWith('/user/myUserName/asdf')
     expect(addFunc).toBeCalledWith([{ uuid: 'asdf' }, { uuid: '1' }, { uuid: '2' }])
   })
 })

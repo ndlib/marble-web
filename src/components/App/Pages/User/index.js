@@ -8,15 +8,38 @@ import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
 import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 
 const User = ({ loginReducer, userName, location, edit }) => {
-  const [user, setUser] = useState({ userName: userName })
+  const [user, setUser] = useState({ portfolioUserId: userName })
   const [content, setContent] = useState(<Loading />)
 
   useEffect(() => {
     const abortController = new AbortController()
     getData({
       loginReducer: loginReducer,
-      contentType: 'user',
-      id: userName,
+      body: `query {
+        getPortfolioUser {
+          bio
+          dateAddedToDynamo
+          dateModifiedInDynamo
+          department
+          email
+          fullName
+          portfolioUserId
+          primaryAffiliation
+          portfolioCollections {
+            items {
+              portfolioCollectionId
+              imageUri
+              description
+              portfolioUserId
+              dateAddedToDynamo
+              dateModifiedInDynamo
+              privacy
+              title
+            }
+          }
+        }
+      }`,
+      contentType: 'data.getPortfolioUser',
       successFunc: (data) => {
         setUser(data)
         setContent(<UserBody

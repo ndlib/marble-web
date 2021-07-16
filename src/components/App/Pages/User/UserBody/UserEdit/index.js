@@ -6,11 +6,12 @@ import { navigate } from 'gatsby'
 import { jsx, Button } from 'theme-ui'
 import typy from 'typy'
 import Gravatar from '@ndlib/gatsby-theme-marble/src/components/Shared/Gravatar'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import { ownsPage } from '@ndlib/gatsby-theme-marble/src/utils/auth'
 import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
 import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
 import Unauthorized from './Unauthorized'
-import { patchData } from '@ndlib/gatsby-theme-marble/src/utils/api'
+import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import * as style from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/style.module.css'
 
 export const UserEdit = ({ user, loginReducer }) => {
@@ -21,7 +22,7 @@ export const UserEdit = ({ user, loginReducer }) => {
   const [patching, setPatching] = useState(false)
   const emailRegex = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g
 
-  if (!ownsPage(loginReducer, user.uuid)) {
+  if (!ownsPage(loginReducer, user.portfolioUserId)) {
     return (<Unauthorized />)
   }
 
@@ -32,9 +33,9 @@ export const UserEdit = ({ user, loginReducer }) => {
           onClick={(e) => {
             e.preventDefault()
             if (window.confirm(
-              `Any unsaved changes you have made will be lost.`,
+              'Any unsaved changes you have made will be lost.',
             )) {
-              navigate(`/user/${user.userName}`)
+              navigate(`/user/${user.portfolioUserId}`)
             }
           }}
           disabled={patching}
@@ -44,20 +45,37 @@ export const UserEdit = ({ user, loginReducer }) => {
           onClick={(e) => {
             e.preventDefault()
             setPatching(true)
-            const body = {
-              fullName: fullName,
-              email: email,
-              bio: bio,
-              uuid: `${claims.sub}.${btoa(claims.iss)}`,
-              userName: claims.netid,
-            }
-            patchData({
+            const body = `mutation {
+              savePortfolioUser(
+                bio: "${bio}",
+                email: "${email}",
+                fullName: "${fullName}"
+              ) {
+                bio
+                dateAddedToDynamo
+                dateModifiedInDynamo
+                department
+                email
+                fullName
+                portfolioUserId
+                primaryAffiliation
+                portfolioCollections {
+                  items {
+                    portfolioCollectionId
+                    imageUri
+                    description
+                    portfolioUserId
+                    title
+                  }
+                }
+              }
+            }`
+            getData({
               loginReducer: loginReducer,
               contentType: 'user',
-              id: body.uuid,
               body: body,
               successFunc: () => {
-                navigate(`/user/${body.userName}`)
+                navigate(`/user/${user.portfolioUserId}`)
               },
               errorFunc: (e) => {
                 console.error(e)
@@ -82,7 +100,7 @@ export const UserEdit = ({ user, loginReducer }) => {
       <TextField
         id='profileUserName'
         label='Username'
-        defaultValue={user.userName}
+        defaultValue={user.portfolioUserId}
         disabled
       />
       <TextField
@@ -115,7 +133,7 @@ export const UserEdit = ({ user, loginReducer }) => {
           className={style.gravatarEdit}
         >
           <Gravatar email={user.email} size={100} />
-          <span>User icons are provided by <a href='https://en.gravatar.com'>Gravatar</a>, the globally recognized avatar service.</span>
+          <span>User icons are provided by <Link to='https://en.gravatar.com'>Gravatar</Link>, the globally recognized avatar service.</span>
         </div>
       </div>
     </form>

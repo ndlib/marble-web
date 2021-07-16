@@ -30,6 +30,7 @@ export const NewPortfolioButton = ({ portfolios, addFunc, loginReducer }) => {
             portfolios: portfolios,
             addFunc: addFunc,
             setCreating: setCreating,
+            userName: loginReducer.user.portfolioUserId,
           }),
           errorFunc: (e) => {
             console.error(e)
@@ -56,10 +57,10 @@ export default connect(
   mapStateToProps,
 )(NewPortfolioButton)
 
-export const successFunc = ({ data, portfolios, addFunc, setCreating }) => {
+export const successFunc = ({ data, portfolios, addFunc, setCreating, userName }) => {
   const ps = [...portfolios]
   ps.unshift(data)
   addFunc(ps)
   setCreating(false)
-  navigate(`/myportfolio/${data.uuid}`)
+  navigate(`/user/${userName}/${data.uuid}`)
 }

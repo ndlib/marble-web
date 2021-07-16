@@ -14,15 +14,16 @@ import sx from './sx'
 const PortfolioItems = ({ isOwner }) => {
   const { portfolio } = usePortfolioContext()
   const [editing, setEditing] = useState(false)
-  const { items, layout, userId } = portfolio
-  if (typy(portfolio, 'items').safeArray.length === 0) {
+  const { portfolioItems, layout, userId } = portfolio
+  if (typy(portfolioItems, 'items').safeArray.length === 0) {
     return (
       <NoItems />
     )
   }
-  const sortedItems = items.sort((i1, i2) => {
-    return i1.displayOrder - i2.displayOrder
+  const sortedItems = portfolioItems.items.sort((i1, i2) => {
+    return i1.sequence - i2.sequence
   })
+
   let list
   if (isOwner && editing) {
     list = (
@@ -53,15 +54,17 @@ const PortfolioItems = ({ isOwner }) => {
     <div>
       <div sx={sx.reorderButton}>
         {
-          isOwner && !editing ? (
-            <Button
-              wide
-              onClick={() => {
-                setEditing(!editing)
-              }}
-            >Reorder Items
-            </Button>
-          ) : null
+          isOwner && !editing
+            ? (
+              <Button
+                wide
+                onClick={() => {
+                  setEditing(!editing)
+                }}
+              >Reorder Items
+              </Button>
+            )
+            : null
         }
       </div>
       {list}

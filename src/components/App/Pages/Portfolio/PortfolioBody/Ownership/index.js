@@ -39,7 +39,7 @@ export const Ownership = ({ isOwner }) => {
       </ActionModal>
         </div>
         <div sx={sx.shareWrapper}>
-          <ShareButton path={`myportfolio/${uuid}`} />
+          <ShareButton path={`user/xyz/${uuid}`} />
           <PrintButton />
         </div>
         <div sx={sx.editWrapper}>
@@ -54,7 +54,7 @@ export const Ownership = ({ isOwner }) => {
         Portfolio collected and annotated by <UserCartouche user={{ uuid: userId }} />
       </Attribution>
       <div sx={sx.shareWrapper}>
-        <ShareButton path={`myportfolio/${uuid}`} />
+        <ShareButton path={`user/xyz/${uuid}`} />
         <PrintButton />
       </div>
     </div>

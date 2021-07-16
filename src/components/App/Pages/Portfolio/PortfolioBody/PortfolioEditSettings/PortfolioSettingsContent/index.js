@@ -14,7 +14,6 @@ const PortfolioSettingsContent = ({ callBack }) => {
   const [layout, changeLayout] = useState(portfolio.layout)
   const [privacy, changePrivacy] = useState(portfolio.privacy)
   const [patching, setPatching] = useState(false)
-
   return (
     <React.Fragment>
       <div sx={sx.buttonWrapper}>
@@ -22,10 +21,45 @@ const PortfolioSettingsContent = ({ callBack }) => {
           closeFunc={callBack}
           patching={patching}
           setPatching={setPatching}
-          body={{
-            privacy: privacy || 'private',
-            layout: layout || 'default',
-          }}
+          body={`mutation {
+            savePortfolioCollection(
+              privacy: ${privacy},
+              layout: "${layout}",
+              title: "${portfolio.title}",
+              portfolioCollectionId: "${portfolio.portfolioCollectionId}",
+              description: "${portfolio.description}",
+              imageUri: "${portfolio.imageUri}"
+            ) {
+              dateAddedToDynamo
+              dateModifiedInDynamo
+              description
+              featuredCollection
+              highlightedCollection
+              imageUri
+              layout
+              portfolioCollectionId
+              portfolioUserId
+              privacy
+              title
+              portfolioItems {
+                items {
+                  annotation
+                  dateAddedToDynamo
+                  dateModifiedInDynamo
+                  description
+                  imageUri
+                  internalItemId
+                  itemType
+                  portfolioCollectionId
+                  portfolioItemId
+                  portfolioUserId
+                  sequence
+                  title
+                  uri
+                }
+              }
+            }
+          }`}
           valid
           changed={layout !== portfolio.layout || privacy !== portfolio.privacy}
         />

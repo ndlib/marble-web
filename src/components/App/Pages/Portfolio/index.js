@@ -17,11 +17,43 @@ export const Portfolio = ({ portfolioId, location, loginReducer }) => {
     if (loginReducer.status === 'STATUS_NOT_LOGGED_IN' || loginReducer.status === 'STATUS_LOGGED_IN') {
       getData({
         loginReducer: loginReducer,
-        contentType: 'collection',
-        id: portfolioId,
+        contentType: 'data.getPortfolioCollection',
+        body: `query {
+          getPortfolioCollection(portfolioCollectionId: "${portfolioId}") {
+            dateAddedToDynamo
+            dateModifiedInDynamo
+            description
+            featuredCollection
+            highlightedCollection
+            imageUri
+            layout
+            portfolioCollectionId
+            portfolioUserId
+            privacy
+            title
+            portfolioItems {
+              items {
+                annotation
+                dateAddedToDynamo
+                dateModifiedInDynamo
+                description
+                imageUri
+                internalItemId
+                itemType
+                portfolioCollectionId
+                portfolioItemId
+                portfolioUserId
+                sequence
+                title
+                uri
+              }
+            }
+          }
+        }
+        `,
         successFunc: (data) => {
-          const { privacy, userId } = data
-          const isOwner = ownsPage(loginReducer, userId)
+          const { privacy, portfolioUserId } = data
+          const isOwner = ownsPage(loginReducer, portfolioUserId)
           if (privacy === 'private' && !isOwner) {
             setContent(<PortfolioUnavailable />)
           } else {

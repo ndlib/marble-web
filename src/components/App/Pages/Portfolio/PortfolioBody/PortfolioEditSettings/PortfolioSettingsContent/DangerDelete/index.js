@@ -4,13 +4,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
-import { deleteData } from '@ndlib/gatsby-theme-marble/src/utils/api'
+import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import * as style from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/style.module.css'
 
 export const DangerDelete = ({ portfolio, loginReducer }) => {
-  const warning = `Once you delete this portfolio it can not be recovered.`
-  const groupId = `danger`
-  const fieldId = `delete`
+  const warning = 'Once you delete this portfolio it can not be recovered.'
+  const groupId = 'danger'
+  const fieldId = 'delete'
   return (
     <div
       id={groupId}
@@ -24,12 +24,16 @@ export const DangerDelete = ({ portfolio, loginReducer }) => {
         <Button
           onClick={(e) => {
             e.preventDefault()
-            deleteData({
+            getData({
               loginReducer: loginReducer,
-              contentType: 'collection',
-              id: portfolio.uuid,
+              contentType: 'data.removePortfolioCollection',
+              body: `mutation {
+                removePortfolioCollection(portfolioCollectionId: "${portfolio.portfolioCollectionId}") {
+                recordsDeleted
+                }
+              }`,
               successFunc: () => {
-                navigate(`/user/${loginReducer.user.userName}`)
+                navigate(`/user/${loginReducer.user.portfolioUserId}`)
               },
               errorFunc: (e) => {
                 console.error(e)

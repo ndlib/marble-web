@@ -13,9 +13,10 @@ export const AppRouter = (props) => {
       <Router>
         <UserBasePath path='/user' {...props} />
         <LogOut path='/user/logout' {...props} />
-        <User path='/user/:userName' {...props} />
         <User path='/user/:userName/edit' edit {...props} />
-        <Portfolio path='/myportfolio/:portfolioId' {...props} />
+        <Portfolio path='/user/:userName/:portfolioId' {...props} />
+        <User path='/user/:userName' {...props} />
+
       </Router>
     </Layout>
   )

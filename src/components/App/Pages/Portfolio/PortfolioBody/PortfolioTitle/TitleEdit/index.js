@@ -38,7 +38,45 @@ const TitleEdit = ({ closeFunc }) => {
           closeFunc={closeFunc}
           patching={patching}
           setPatching={setPatching}
-          body={{ title: newTitle }}
+          body={`mutation {
+            savePortfolioCollection(
+              title: "${newTitle}",
+              portfolioCollectionId: "${portfolio.portfolioCollectionId}",
+              privacy: ${portfolio.privacy},
+              layout: "${portfolio.layout}",
+              description: "${portfolio.description}",
+              imageUri: "${portfolio.imageUri}"
+            ) {
+              dateAddedToDynamo
+              dateModifiedInDynamo
+              description
+              featuredCollection
+              highlightedCollection
+              imageUri
+              layout
+              portfolioCollectionId
+              portfolioUserId
+              privacy
+              title
+              portfolioItems {
+                items {
+                  annotation
+                  dateAddedToDynamo
+                  dateModifiedInDynamo
+                  description
+                  imageUri
+                  internalItemId
+                  itemType
+                  portfolioCollectionId
+                  portfolioItemId
+                  portfolioUserId
+                  sequence
+                  title
+                  uri
+                }
+              }
+            }
+          }`}
           valid={valid}
           changed={defaultTitle !== newTitle}
         />

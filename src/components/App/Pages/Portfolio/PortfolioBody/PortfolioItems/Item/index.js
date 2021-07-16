@@ -17,12 +17,14 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
       <Card
         label={item.title}
         target={finalTarget}
-        image={item.image}
+        image={item.imageUri}
       >
         {
-          item.annotation && !annotated ? (
-            <p>{item.annotation}</p>
-          ) : null
+          item.annotation && !annotated
+            ? (
+              <p>{item.annotation}</p>
+            )
+            : null
         }
       </Card>
       <ItemControls

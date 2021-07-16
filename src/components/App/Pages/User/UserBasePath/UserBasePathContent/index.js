@@ -29,7 +29,7 @@ export const UserBasePathContent = ({ loginReducer }) => {
     case STATUS_AUTHENTICATED_NOT_LOGGED_IN:
       return <CreateAccount loginReducer={loginReducer} />
     case STATUS_LOGGED_IN:
-      navigate(`/user/${loginReducer.user.userName}`)
+      navigate(`/user/${loginReducer.user.portfolioUserId}`)
       break
     case STATUS_AUTHENTICATION_FAILED:
     default:

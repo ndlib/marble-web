@@ -1,8 +1,11 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Flex, Box } from 'theme-ui'
+import { jsx, Flex, Box } from 'theme-ui'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
+import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
 import Gravatar from '@ndlib/gatsby-theme-marble/src/components/Shared/Gravatar'
 import PromptLogin from './PromptLogin'
 import EditUserButton from './EditUserButton'
@@ -12,32 +15,35 @@ import NDBrandSectionLeftNav from '@ndlib/gatsby-theme-marble/src/components/Sha
 import sx from './sx'
 
 export const UserLayout = ({ user, children, location, loginReducer }) => {
+  if (!user) {
+    return <Loading />
+  }
   const loggedIn = isLoggedIn(loginReducer)
-  const isOwner = ownsPage(loginReducer, user.uuid)
+  const isOwner = ownsPage(loginReducer, user.portfolioUserId)
   return (
     <>
       <Seo
         data={{}}
         location={location}
-        title={user.userName}
+        title={user.portfolioUserId}
         noIndex
       />
       <NDBrandSectionLeftNav location={location}>
         <NDBrandSection variant='sidebar'>
-          <Flex sx={{ flexWrap: 'wrap', }}>
+          <Flex sx={{ flexWrap: 'wrap' }}>
             <Box sx={{ width: ['25%', '100%', '100%'] }}>
               <Gravatar email={user.email} />
             </Box>
             <Box sx={{ width: ['75%', '100%', '100%'], px: '1rem' }}>
               <h1>{user.fullName}</h1>
-              <h2>{user.userName}</h2>
+              <h2>{user.portfolioUserId}</h2>
             </Box>
           </Flex>
           <div id='bio' sx={sx.bio}>{user.bio}</div>
           <div>
             {
               /* Follow or Edit button */
-              isOwner ? <EditUserButton userName={user.userName} /> : <PromptLogin showButton={!loggedIn} />
+              isOwner ? <EditUserButton userName={user.portfolioUserId} /> : <PromptLogin showButton={!loggedIn} />
             }
           </div>
         </NDBrandSection>

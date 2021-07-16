@@ -8,7 +8,7 @@ const SortableItem = ({
   // eslint-disable-next-line no-unused-vars
   dragging,
   dragged,
-  children: { title, image },
+  children: { title, imageUri },
   ...rest
 }) => {
   return (
@@ -26,7 +26,7 @@ const SortableItem = ({
         sx={sx.dragHandle}
       />
       <img
-        src={image}
+        src={imageUri}
         alt={title}
         sx={sx.image}
       />

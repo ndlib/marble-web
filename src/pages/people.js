@@ -103,7 +103,6 @@ const Page = ({ data, location }) => {
                 </div>
               </div>
               <div className='person'>
-
                 <div className='detail'>
                   <p className='name'>
                     <Heading as='h3' variant='styles.h3'>Rick Johnson </Heading>

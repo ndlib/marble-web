@@ -133,7 +133,7 @@ const Browse = ({ location }) => {
     <>
       <NDBrandSection variant='fullBleed'>
         <NDBrandBreadcrumbs
-          currentPageTitle='About'
+          currentPageTitle='Browse'
           breadcrumbs={[]}
         />
         <Heading as='h1' variant='pageTitle'>Browse</Heading>

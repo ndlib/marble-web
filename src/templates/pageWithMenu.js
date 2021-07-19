@@ -19,7 +19,7 @@ const Page = ({ data, location }) => {
 
   return (
     <Layout
-      title='Learn'
+      title={markdownRemark.frontmatter.title}
       location={location}
     >
       <Seo

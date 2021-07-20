@@ -9,9 +9,6 @@ import AuthWrapper from './AuthWrapper'
 import PrivateRoute from './PrivateRoute'
 import PageWrapper from './PageWrapper'
 
-/// CONSTRUCTION BANNER
-import CornerBanner from './CornerBanner'
-
 export const Layout = ({
   children,
   requireLogin, // bool to test login
@@ -44,7 +41,6 @@ export const Layout = ({
           </PageWrapper>
         </PrivateRoute>
       </AuthWrapper>
-      <CornerBanner />
     </>
   )
 }

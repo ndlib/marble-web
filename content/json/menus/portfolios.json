@@ -11,11 +11,11 @@
       ]
     },
     {
-      "id": "portfolios-help",
-      "label": "Portfolios Help",
-      "link": "/portfolios-help",
+      "id": "portfolios-about",
+      "label": "About Portfolios",
+      "link": "/portfolios-about",
       "selectedPatterns": [
-        "^/portfolios-help"
+        "^/portfolios-about"
       ]
     },
     {

@@ -1,5 +1,5 @@
 ---
-title: "Marble Help"
+title: "Help"
 date: "2017-09-18T23:19:51.246Z"
 type: "page"
 slug: "/help"

@@ -8,8 +8,11 @@ template: "pageWithMenu.js"
 ---
 
 Marble (__M__useums, __A__rchives, __R__are __B__ooks, and __L__ibraries __E__xploration) is a teaching and research platform designed to make cultural heritage collections at the University of Notre Dame more accessible to the campus community and beyond.
+
 Faculty, students, and the general public can browse digitized materials from across campus in a single platform — from books to manuscripts, sculptures to paintings, photographs to ephemera, and more. Each item displays one or more images,  with  descriptive information and options for magnified and comparable viewing.  
+
 These digitized materials are only a fraction of the University’s holdings, and cross-institutional teams will collaborate to add new items regularly.  The development roadmap will enable new features and continue to improve collaboration between libraries and museums.
+
 While only select materials from the Snite Museum of Art, Rare Books & Special Collections, and the University Archives are featured, the Marble content is representative of the distinctive collections housed at the University of Notre Dame. Learn more about the cultural holdings of these collaborators below.
 
 ## Snite Museum of Art

@@ -26,9 +26,9 @@ If you have difficulty logging in or accessing your account,
 ## Digitization Information
 
 Materials have been photographed or digitally scanned to the highest quality possible. In some cases, images have limitations on zooming and downloading, due to copyright restrictions.
-If you have additional materials you would like to be considered for digitization and upload to the Marble platform, please reach out to the appropriate partner(s):
-Snite Museum of Art: Registrar (Victoria Perdomo)
-Hesburgh Libraries: The Appropriate Subject Selector (consult the list of subject selectors)
+If you have additional materials you would like to be considered for digitization and uploaded to the Marble platform, please reach out to the appropriate partner(s):
+* Snite Museum of Art: [Registrar (Victoria Perdomo)](mailto:vperdomo@nd.edu)
+* Hesburgh Libraries: [Consult the subject librarian](https://directory.library.nd.edu/directory/subjects)
 
 Please note: The consideration and approval of digitization requests for Marble depend on a number of factors, including the size of the proposed collection; the physical condition of the proposed collection; and current or upcoming digitization work. If you are interested in starting or advocating for a digitization project, we encourage you to initiate the process as soon as possible.
 
@@ -39,3 +39,6 @@ To request a high-resolution image file for your personal use or reproduction pu
 * <a href="https://sniteartmuseum.nd.edu/about-us/contact-us/photo-requests/" target="_blank">Snite Museum of Art requests</a>.
 * <a href="https://rarebooks.library.nd.edu/using/duplication.shtmltarget=" target="_blank">Rare Books & Special Collections requests</a>.
 * <a href="http://archives.nd.edu/information/fees.htm" target="_blank">University Archives requests</a>.
+
+## Contact Us
+We welcome your thoughts on the collection, the site, and current features. If you have any questions, comments, or concerns, please contact us with the feedback form at the bottom of the page. 

@@ -33,11 +33,12 @@
     {
       "id": "top-about",
       "label": "About",
-      "link": "/about",
+      "link": "/project-partners",
       "selectedPatterns": [
-        "^/about",
+        "^/project-partners",
         "^/help",
-        "^/policies"
+        "^/policies",
+        "^/people"
       ]
     }
   ]

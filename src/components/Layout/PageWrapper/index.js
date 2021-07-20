@@ -8,19 +8,9 @@ import NDBrandLayout from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBr
 import MarbleLogoMono from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Logos/MarbleLogoMono'
 import Footer from './Footer'
 import FeedbackModal from '../../../components/Shared/FeedbackModal'
-import BetaModal from '../../../components/Shared/BetaModal'
 import NDBrandHeroBackgroundOnly from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Hero/BackgroundOnly'
 
 const PageWrapper = ({ children, location, pageHeader }) => {
-  let seenWarning = true
-  if (typeof window !== 'undefined' && location.pathname === '/') {
-    seenWarning = localStorage.getItem('seenWarning')
-  } else {
-    seenWarning = true
-  }
-  const betaPopup = seenWarning ? (
-    null) : <BetaModal />
-
   if (!pageHeader) {
     pageHeader = (<NDBrandHeroBackgroundOnly location={location} />)
   }
@@ -36,7 +26,6 @@ const PageWrapper = ({ children, location, pageHeader }) => {
         {children}
       </NDBrandLayout>
       <FeedbackModal location={location} />
-      {betaPopup}
     </>
   )
 }

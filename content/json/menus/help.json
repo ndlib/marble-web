@@ -1,13 +1,13 @@
 {
   "id": "help",
-  "label": "Help",
+  "label": "About",
   "items": [
     {
       "id": "help-about",
-      "label": "About",
-      "link": "/about",
+      "label": "Project and Partners",
+      "link": "/project-partners",
       "selectedPatterns": [
-        "^/about"
+        "^/project-partners"
       ]
     },
     {

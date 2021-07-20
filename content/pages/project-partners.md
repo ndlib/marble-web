@@ -13,7 +13,7 @@ Faculty, students, and the general public can browse digitized materials from ac
 
 These digitized materials are only a fraction of the University’s holdings, and cross-institutional teams will collaborate to add new items regularly.  The development roadmap will enable new features and continue to improve collaboration between libraries and museums.
 
-While only select materials from the Snite Museum of Art, Rare Books & Special Collections, and the University Archives are featured, the Marble content is representative of the distinctive collections housed at the University of Notre Dame. Learn more about the cultural holdings of these collaborators below.
+While only select materials from the Snite Museum of Art, Rare Books & Special Collections, and the University Archives are featured, the Marble content is representative of the distinctive collections housed at the University of Notre Dame. Learn more about the cultural holdings of the  Marble partners below.
 
 ## Snite Museum of Art
 

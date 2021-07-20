@@ -19,13 +19,13 @@ Note: You must have Notre Dame credentials to create portfolios. Please be prepa
 
 ## How to Create a Portfolio
 
-__STEP 1: Create a New Portfolio__
-1. New users must first log in with a Notre Dame NetID to create a profile for your “My Account” page and
+__STEP 1: Create a Portfolio__
+1. New users must first log in with a Notre Dame NetID to create a profile for your “My Account” page.
 2. [Review the Responsible Use policy](https://policy.nd.edu/assets/185268/responsible_use_it_resources_2015.pdf).
 
 __STEP 2: Create a portfolio.__
 1. Click on the “Create New Portfolio” button in the dashboard.
-2. In the future, all of your portfolios will be visible on your [Account][/user].
+2. In the future, all of your portfolios will be visible on your [Account](/user).
 
 __STEP 3: Set up your portfolio.__
 1. Name your portfolio.
@@ -34,7 +34,7 @@ __STEP 3: Set up your portfolio.__
 4. Select a layout.
 
 __STEP 4: Get started curating your portfolio.__
-1. To add items, [search for content](/search) or [browse via categories](/browse)
+1. To add items, [search for content](/search) or [browse via categories](/browse).
 2. Select an item you want to add.
 3. Select the blue "Save to Portfolio" button under the image when you are logged in, and choose which portfolio(s) to save it to.
 4. Keep going! Any time you are logged into the site, you can save items to a portfolio.
@@ -43,7 +43,7 @@ __STEP 5: Customize your portfolio.__
 
 By default, the first item you add to a portfolio becomes the cover image and items are saved in the order they are added.
 
-* To change the Cover Image:
+* To change the cover image:
   1. Open the portfolio.
   2. Select the Edit icon on the image you want to set as the cover image.
   3. Select “Set as Portfolio Cover Image.”

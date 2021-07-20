@@ -7,7 +7,7 @@ menu: "help"
 template: "pageWithMenu.js"
 ---
 
-Marble (__M__useums, __A__rchives, __R__are __B__ooks, and __L__ibraries __E__xploration) is a teaching and research platform designed to make cultural heritage collections at the University of Notre Dame more accessible to the campus community and beyond.
+Marble (<strong>M</strong>useums, <strong>A</strong>rchives, <strong>R</strong>are <strong>B</strong>ooks, and <strong>L</strong>ibraries <strong>E</strong>xploration) is a teaching and research platform designed to make cultural heritage collections at the University of Notre Dame more accessible to the campus community and beyond.
 
 Faculty, students, and the general public can browse digitized materials from across campus in a single platform — from books to manuscripts, sculptures to paintings, photographs to ephemera, and more. Each item displays one or more images,  with  descriptive information and options for magnified and comparable viewing.  
 

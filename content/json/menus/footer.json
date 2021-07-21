@@ -3,19 +3,14 @@
   "label": "",
   "items": [
     {
-      "id": "footer-browse",
-      "label": "Browse",
-      "link": "/browse"
-    },
-    {
-      "id": "footer-exhibits",
-      "label": "Digital Exhibits",
-      "link": "/exhibits"
-    },
-    {
       "id": "footer-about",
       "label": "About",
-      "link": "/about"
+      "link": "/project-partners"
+    },
+    {
+      "id": "portfolios",
+      "label": "Porfolios",
+      "link": "/featured"
     },
     {
       "id": "footer-help",
@@ -23,24 +18,14 @@
       "link": "/help"
     },
     {
-      "id": "footer-sitemap",
-      "label": "Site Map",
-      "link": "/sitemap"
-    },
-    {
       "id": "accessibility",
       "label": "Accessibility",
       "link": "https://www.nd.edu/about/accessibility/"
     },
     {
-      "id": "privacy-policy",
-      "label": "Privacy Policy",
-      "link": "/privacy-policy"
-    },
-    {
-      "id": "disclaimer",
-      "label": "Disclaimer",
-      "link": "/disclaimer"
+      "id": "footer-sitemap",
+      "label": "Site Map",
+      "link": "/sitemap"
     }
   ]
 }

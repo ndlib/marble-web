@@ -12,7 +12,7 @@ const WordMark = () => {
         href='https://nd.edu'
         className='mobile'
         sx={sx.link}
-      >University <i>of</i> Notre Dame
+      >University <em>of</em> Notre Dame
       </a>
     </div>
   )

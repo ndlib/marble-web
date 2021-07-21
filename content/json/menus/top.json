@@ -5,17 +5,41 @@
     {
       "id": "top-browse",
       "label": "Browse",
-      "link": "/browse"
+      "link": "/browse",
+      "selectedPatterns": [
+        "^/browse",
+        "^/search",
+        "^/item"
+      ]
     },
     {
-      "id": "top-exhibits",
-      "label": "Exhibits",
-      "link": "/exhibits"
+      "id": "top-portfolios",
+      "label": "Portfolios",
+      "link": "/featured",
+      "selectedPatterns": [
+        "^/portfolios",
+        "^/featured"
+      ]
     },
     {
-      "id": "top-my-protfolios",
-      "label": "My Portfolios",
-      "link": "/user"
+      "id": "top-my-account",
+      "label": "My Account",
+      "link": "/user",
+      "selectedPatterns": [
+        "^/user",
+        "^/myportfolio"
+      ]
+    },
+    {
+      "id": "top-about",
+      "label": "About",
+      "link": "/project-partners",
+      "selectedPatterns": [
+        "^/project-partners",
+        "^/help",
+        "^/policies",
+        "^/people"
+      ]
     }
   ]
 }

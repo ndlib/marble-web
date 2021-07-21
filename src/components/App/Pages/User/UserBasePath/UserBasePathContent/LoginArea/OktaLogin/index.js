@@ -3,7 +3,7 @@ import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import  OktaAuth  from '@okta/okta-auth-js'
+import OktaAuth from '@okta/okta-auth-js'
 
 export const OktaLogin = ({ loginReducer }) => {
   const { t } = useTranslation()
@@ -24,12 +24,12 @@ export const OktaLogin = ({ loginReducer }) => {
               'netid',
               'directory',
             ],
-            pkce: false
+            pkce: false,
           })
         }}
         variant='primary'
       >{t('text:loginPage.button')}
-    </Button>
+      </Button>
     </p>
   )
 }

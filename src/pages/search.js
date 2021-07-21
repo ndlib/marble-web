@@ -13,6 +13,7 @@ import NDBrandSectionLeftNav from '@ndlib/gatsby-theme-marble/src/components/Sha
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 import { TagFilterConfig } from 'searchkit'
+import { FaFilter, FaTimes } from 'react-icons/fa'
 
 const SearchPage = ({ location }) => {
   const [facectsOpen, setFacectsOpen] = useState(false)
@@ -29,9 +30,6 @@ const SearchPage = ({ location }) => {
         <TagFilterConfig field='creator.keyword' title='Creator' id='creator' />
         <TagFilterConfig field='collection.keyword' title='Collection' id='collection' />
 
-        <div id='marble-facet-modal' />
-        <div id='marble-facet-content' />
-
         <NDBrandSectionLeftNav location={location}>
           <NDBrandSection location={location} variant='sidebar'>
 
@@ -47,7 +45,7 @@ const SearchPage = ({ location }) => {
             <div
               className='overlay'
               sx={{
-                display: facectsOpen ? 'block' : 'none',
+                visibility: facectsOpen ? 'visible' : 'hidden',
                 position: 'fixed',
                 left: '14rem',
                 top: 0,
@@ -60,7 +58,7 @@ const SearchPage = ({ location }) => {
               onClick={() => setFacectsOpen(!facectsOpen)}
             />
             <nav id='drawer' sx={{
-              display: facectsOpen ? 'block' : 'none',
+              visibility: facectsOpen ? 'visible' : 'hidden',
               m: 0,
               p: '20px',
               position: 'fixed',
@@ -100,19 +98,27 @@ const SearchPage = ({ location }) => {
               }}>
                 <Button
                   name='Filter'
+                  sx={{
+                    p: '0.5rem',
+                    lineHeight: 0,
+                  }}
+                  title='Close Search Filter'
                   onClick={() => setFacectsOpen(!facectsOpen)}
-                >Close</Button>
+                ><FaTimes /></Button>
               </div>
             </nav>
 
             <SearchResults defaultDisplay='list' extraControls={(<Button
               sx={{
                 display: ['block', 'block', 'block', 'none'],
+                p: '0.5rem',
+                lineHeight: 0,
               }}
               name='Filter'
               variant='light'
+              title='Expand Search Filter'
               onClick={() => setFacectsOpen(!facectsOpen)}
-            >Filter</Button>)} />
+            ><FaFilter /></Button>)} />
 
           </NDBrandSection>
         </NDBrandSectionLeftNav>

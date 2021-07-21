@@ -27,7 +27,7 @@ export const Ownership = ({ isOwner }) => {
       ><VisibilityLabel visibility={privacy} /></button> portfolio.
       <ActionModal
         isOpen={settingsOpen}
-        contentLabel={`Settings for <i>${portfolio.title}</i>`}
+        contentLabel={`Settings for <em>${portfolio.title}</em>`}
         closeFunc={() => setSettingsOpen(false)}
         fullscreen
       >

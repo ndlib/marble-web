@@ -37,7 +37,7 @@ export const FeedbackForm = ({ closeFunc }) => {
   }
   if (error) {
     return (
-      <div>
+      <div sx={{ p: '1rem' }}>
         <form>
           <p id='thankYou'>Houston. We have a problem.</p>
           <p>We were unable to create a ticket for you due to network issues.</p>
@@ -67,7 +67,7 @@ export const FeedbackForm = ({ closeFunc }) => {
   } else {
     if (response) {
       return (
-        <div>
+        <div sx={{ p: '1rem' }}>
           <form>
             <p id='thankYou'>Thank you for your feedback! You will receive an automated email from ND Service Desk.</p>
             <p>Your ServiceNow ticket number is: #{typy(response.result, 'number').safeString}</p>
@@ -87,7 +87,7 @@ export const FeedbackForm = ({ closeFunc }) => {
       )
     }
     return (
-      <div>
+      <div sx={{ p: '1rem' }}>
         <form onSubmit={handleSubmit} noValidate>
           <TextField
             id='name'

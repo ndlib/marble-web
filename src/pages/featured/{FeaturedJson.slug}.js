@@ -5,12 +5,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../../components/Layout'
-import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import PortfolioFeature from '../../components/App/Pages/Portfolio/PortfolioFeature'
 
 export const FeaturedPage = ({ data, location }) => {
-  const { featuredJson } = data
+  const { featuredJson, menusJson } = data
   return (
     <Layout
       title={featuredJson.title}
@@ -22,12 +21,11 @@ export const FeaturedPage = ({ data, location }) => {
         title={featuredJson.title}
         description={featuredJson.description}
       />
-      <NDBrandSection variant='fullBleed'>
-        <PortfolioFeature
-          location={location}
-          featuredJson={featuredJson}
-        />
-      </NDBrandSection>
+      <PortfolioFeature
+        location={location}
+        featuredJson={featuredJson}
+        menusJson={menusJson}
+      />
     </Layout>
 
   )
@@ -57,6 +55,17 @@ export const query = graphql`
         link
         manifest
         title
+      }
+    }
+    menusJson(id: {eq: "portfolios"}) {
+      id
+      label
+      items {
+        id
+        label
+        link
+        icon
+        selectedPatterns
       }
     }
   }

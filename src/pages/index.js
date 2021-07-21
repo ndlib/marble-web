@@ -1,7 +1,7 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
-import { jsx, Heading } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { I18nextProvider } from 'react-i18next'
@@ -23,10 +23,11 @@ const Home = ({ data, location }) => {
       pageHeader={
         <NDBrandHeroFullBleed location={location}
           variant='fullBleed'
-          title=''
-          lede={<Heading as='h2'>Explore distinctive cultural heritage materials from the Hesburgh Libraries and the Snite Museum of Art.</Heading>}
-          image={(<GatsbyImage image={image} alt='' width='100%' height='100%' objectFit='cover' loading='eager' />)}
+          title='Explore distinctive cultural heritage materials from the Hesburgh Libraries and the Snite Museum of Art.'
+          image={(<GatsbyImage image={image} alt='Painting Absolution Underfire by Paul Henry Wood. The painting captures the dramatic moment before the fighting started when Rev. William J. Corby, C.S.C., then chaplain of the 88th New York Regiment, one of five regiments in the legendary Irish Brigade, stood upon a boulder and addressed the troops. Exposing himself to enemy fire, with cannonballs exploding nearby and bullets whistling overhead, Corby exhorted the soldiers to remember the noble cause and sacred nature of their duty.' width='100%' height='100%' objectFit='cover' loading='eager' />)}
           button={(<NDBrandNavSearch location={location} variant='hero.navSearch' searchPath='/search' />)}
+          link='item/1976.057'
+          attribution='Absolution under Fire'
         />
       }
     >

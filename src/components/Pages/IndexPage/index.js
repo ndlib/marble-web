@@ -3,23 +3,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
-import { jsx, Flex, Box, Heading } from 'theme-ui'
+import { jsx, useThemeUI, Flex, Box, Heading, Button } from 'theme-ui'
 import typy from 'typy'
 import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/CardGroup'
 import BrowseBar from '@ndlib/gatsby-theme-marble/src/components/Shared/BrowseBar'
 import ManifestCard from '@ndlib/gatsby-theme-marble/src/components/Shared/ManifestCard'
 import { useTranslation } from 'react-i18next'
 import findMetadata from 'utils/findMetadata'
-import dateImage from '../../../assets/images/date.jpg'
-import formatImage from '../../../assets/images/format.jpg'
-import campuslocationImage from '../../../assets/images/campus_location.jpg'
-import allImage from '../../../assets/images/all_items.jpg'
 import GoogleVerification from './GoogleVerification'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import Html from '@ndlib/gatsby-theme-marble/src/components/Shared/Html'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
+import { FaPhotoVideo, FaMapMarkerAlt, FaCalendarAlt, FaChevronRight } from 'react-icons/fa'
 
 const IndexPage = ({ location }) => {
   const { t } = useTranslation()
+  // jazz festival         "CJF_EAD",
+
   const { allMarbleItem } = useStaticQuery(
     graphql`
       query {
@@ -30,7 +30,6 @@ const IndexPage = ({ location }) => {
         "MSNEa8006_EAD",
         "002204685",
         "2008.026.008",
-        "CJF_EAD",
         "2010.030",
         "005095911",
         "004789783"
@@ -57,58 +56,56 @@ const IndexPage = ({ location }) => {
     `,
   )
   const { nodes } = allMarbleItem
+  const theme = useThemeUI()
+  const browseIconStyle = {
+    color: theme.theme.colors.secondary,
+    fontSize: '4rem',
+  }
   return (
     <React.Fragment>
       <NDBrandSection variant='default' location={location} sx={{ justifyContent: 'center', mx: ['5vw', '5vw', '5vw', '5vw', 'auto'] }}>
-        <Heading as='h2' sx={{ display: ['block', 'block', 'block', 'none'] }} variant='pageTitle'>Explore distinctive cultural heritage materials from the Hesburgh Libraries and the Snite Museum of Art.</Heading>
+        <Heading as='h1' sx={{ display: ['block', 'block', 'block', 'none'] }} variant='pageTitle'>Explore distinctive cultural heritage materials from the Hesburgh Libraries and the Snite Museum of Art.</Heading>
 
         <Html html={t('common:hompageDescriptive')} />
       </NDBrandSection>
-      <NDBrandSection location={location} variant='fullBleedLight'>
-        <Heading as='h2' variant='sectionTitle'>
+      <NDBrandSection location={location} variant='fullBleedDark'>
+        <Heading as='h2' variant='styles.h2' sx={{ color: 'white', fontSize: 7, pb: '1.5rem' }}>
           {t('common:search.browseBy')}
         </Heading>
 
         <Flex sx={{ flexWrap: 'wrap', width: '100%', minWidth: '90vw' }}>
-          <Box sx={{ width: ['100%', '100%', '50%'], px: '1rem', py: '.5rem' }}>
+          <Box sx={{ width: ['100%', '100%', '33.3%'], px: '1rem', py: '.5rem' }}>
             <BrowseBar
               label='Date'
               target='/browse?scrollto=date'
-              image={dateImage}
+              image={<FaCalendarAlt style={browseIconStyle} />}
             />
           </Box>
-          <Box sx={{ width: ['100%', '100%', '50%'], px: '1rem', py: '.5rem' }}>
+          <Box sx={{ width: ['100%', '100%', '33.3%'], px: '1rem', py: '.5rem' }}>
             <BrowseBar
               label='Work Type'
               target='/browse?scrollto=format'
-              image={formatImage}
+              image={<FaPhotoVideo style={browseIconStyle} />}
             />
           </Box>
-          <Box sx={{ width: ['100%', '100%', '50%'], px: '1rem', py: '.5rem' }}>
+          <Box sx={{ width: ['100%', '100%', '33%'], px: '1rem', py: '.5rem' }}>
             <BrowseBar
               label='Campus Location'
               target='/browse?scrollto=location'
-              image={campuslocationImage}
-            />
-          </Box>
-          <Box sx={{ width: ['100%', '100%', '50%'], px: '1rem', py: '.5rem' }}>
-            <BrowseBar
-              label='All Items'
-              target='/search?q='
-              image={allImage}
+              image={<FaMapMarkerAlt style={browseIconStyle} />}
             />
           </Box>
         </Flex>
-
+        <Flex sx={{ width: '100%', pt: '2rem', pb: '.5rem' }}>
+          <Button variant='primary'><Link to='/search?q='>Browse All Items <FaChevronRight style={{ color: theme.theme.colors.secondary }} /></Link></Button>
+        </Flex>
       </NDBrandSection>
       <NDBrandSection
         location={location}
         variant='fullBleed'
         sx={{ px: 0 }}
       >
-        <Heading as='h2' variant='sectionTitle'>
-              Featured Items
-        </Heading>
+        <Heading as='h2' sx={{ fontSize: 7 }}>Featured Items</Heading>
 
         <CardGroup
           label={t('common:search.recentAdditions')}

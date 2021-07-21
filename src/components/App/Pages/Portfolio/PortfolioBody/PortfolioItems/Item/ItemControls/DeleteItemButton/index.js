@@ -30,7 +30,7 @@ const DeleteItemButton = ({ item, loginReducer }) => {
       }}
       variant='inverse'
     >
-      Delete
+      Remove
     </Button>
   )
 }

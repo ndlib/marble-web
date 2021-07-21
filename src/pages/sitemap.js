@@ -52,7 +52,7 @@ export const AllPage = ({
         currentPageTitle='Sitemap'
         breadcrumbs={[]}
         />
-        <main>
+        <main id='mainContent'>
           <Heading as='h1' variant='pageTitle'>Sitemap</Heading>
         </main>
       </React.Fragment>

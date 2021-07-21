@@ -13,7 +13,7 @@ const PrivacyPolicyPage = () => {
         currentPageTitle={t('text:privacyPolicyPage.title')}
         breadcrumbs={[]}
       />
-      <main>
+      <main id='mainContent'>
         <Heading as='h1' variant='pageTitle'>{t('text:privacyPolicyPage.title')}</Heading>
         <Flex sx={{ flexWrap: 'wrap' }}>
           <Box sx={{ width: '100%', px: '1rem', py: '1rem' }}>

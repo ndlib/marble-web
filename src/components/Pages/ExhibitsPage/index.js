@@ -60,7 +60,7 @@ const ExhibitsPage = () => {
           currentPageTitle='Exhibits'
           breadcrumbs={[]}
         />
-        <main>
+        <main id='mainContent'>
           <Heading as='h1' variant='pageTitle'>Exhibits</Heading>
           <p>Looking for other ways to explore digital collections at the University of Notre Dame? Take a deeper dive with some of the digital exhibits created by students, faculty, and staff.</p>
           <CardGroup toggleGroup='exhibits-page' defaultDisplay='grid'>

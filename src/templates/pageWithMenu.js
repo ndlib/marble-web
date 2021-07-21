@@ -36,7 +36,7 @@ const Page = ({ data, location }) => {
             currentPageTitle={markdownRemark.frontmatter.title}
             breadcrumbs={[]}
           />
-          <main>
+          <main id='mainContent'>
             <Heading as='h1' variant='pageTitle'>{markdownRemark.frontmatter.title}</Heading>
             <Html html={markdownRemark.html} />
           </main>

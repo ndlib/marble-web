@@ -47,7 +47,7 @@ export const FeaturedList = ({ data, location }) => {
             currentPageTitle='Featured Portfolios'
             breadcrumbs={[]}
           />
-          <main>
+          <main id='mainContent'>
             <Heading as='h1' variant='pageTitle'>Featured Portfolios</Heading>
             <p>
               These portfolios have been created by members of the University of Notre Dame community and nominated by members of the Hesburgh Libraries and the Snite Museum of Art to be featured for inspiration and scholarly exploration.

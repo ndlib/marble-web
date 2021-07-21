@@ -136,7 +136,7 @@ const Browse = ({ location }) => {
           currentPageTitle='Browse'
           breadcrumbs={[]}
         />
-        <main>
+        <main id='mainContent'>
           <Heading as='h1' variant='pageTitle'>Browse</Heading>
           <Flex sx={{ flexWrap: 'wrap' }}>
             <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>

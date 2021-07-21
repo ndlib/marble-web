@@ -18,6 +18,8 @@ import { FaPhotoVideo, FaMapMarkerAlt, FaCalendarAlt, FaChevronRight } from 'rea
 
 const IndexPage = ({ location }) => {
   const { t } = useTranslation()
+  // jazz festival         "CJF_EAD",
+
   const { allMarbleItem } = useStaticQuery(
     graphql`
       query {
@@ -28,7 +30,6 @@ const IndexPage = ({ location }) => {
         "MSNEa8006_EAD",
         "002204685",
         "2008.026.008",
-        "CJF_EAD",
         "2010.030",
         "005095911",
         "004789783"

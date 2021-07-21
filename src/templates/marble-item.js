@@ -42,29 +42,31 @@ export const MarbleItemPage = ({ data, location }) => {
       />
       <NDBrandSection variant='fullBleed'>
         {breadcrumbs}
-        <Heading as='h1' variant='pageTitle'>{marbleItem.title}</Heading>
-        {
-          marbleItem.display === 'collection' ? (
-            <CollectionLayout
-              location={location}
-              marbleItem={marbleItem}
-            />
-          ) : (
-            <ItemLayout
-              location={location}
-              marbleItem={marbleItem}
-              allMarbleFile={allMarbleFile}
-            />
-          )
-        }
-        <RelatedItemsFromSearch marbleItem={marbleItem} />
-        <UserAnnotation location={location} />
+        <main>
+          <Heading as='h1' variant='pageTitle'>{marbleItem.title}</Heading>
+          {
+            marbleItem.display === 'collection' ? (
+              <CollectionLayout
+                location={location}
+                marbleItem={marbleItem}
+              />
+            ) : (
+              <ItemLayout
+                location={location}
+                marbleItem={marbleItem}
+                allMarbleFile={allMarbleFile}
+              />
+            )
+          }
+          <RelatedItemsFromSearch marbleItem={marbleItem} />
+          <UserAnnotation location={location} />
 
-        {
-          debug ? (
-            <pre>{JSON.stringify(data, null, 2)}</pre>
-          ) : null
-        }
+          {
+            debug ? (
+              <pre>{JSON.stringify(data, null, 2)}</pre>
+            ) : null
+          }
+        </main>
       </NDBrandSection>
     </Layout>
 

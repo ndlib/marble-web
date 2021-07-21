@@ -136,76 +136,78 @@ const Browse = ({ location }) => {
           currentPageTitle='Browse'
           breadcrumbs={[]}
         />
-        <Heading as='h1' variant='pageTitle'>Browse</Heading>
-        <Flex sx={{ flexWrap: 'wrap' }}>
-          <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
-            <div id='date'>
-              <Heading as='h1'>Browse By Date</Heading>
-            </div>
-          </Box>
-          <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
-            <Flex sx={{ flexWrap: 'wrap' }}>
-              {
-                dates.map(date => {
-                  return (
-                    <Box key={date.label} sx={{ width: ['100%', '50%', '50%', '33.33%'], px: '1rem', pb: '2rem' }}>
-                      <MiniCard
-                        label={date.label}
-                        target={date.target}
-                      />
-                    </Box>
-                  )
-                })
-              }
-            </Flex>
-          </Box>
-        </Flex>
-        <Flex sx={{ flexWrap: 'wrap' }}>
-          <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
-            <div id='format'>
-              <Heading as='h1'>Browse By Work Type</Heading>
-            </div>
-          </Box>
-          <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
-            <Flex sx={{ flexWrap: 'wrap' }}>
-              {
-                formats.map(format => {
-                  return (
-                    <Box key={format.label} sx={{ width: ['100%', '50%', '50%', '33.33%'], px: '1rem', pb: '2rem' }}>
-                      <MiniCard
-                        label={format.label}
-                        target={format.target}
-                      />
-                    </Box>
-                  )
-                })
-              }
-            </Flex>
-          </Box>
-        </Flex>
-        <Flex sx={{ flexWrap: 'wrap' }}>
-          <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
-            <div id='location'>
-              <Heading as='h1'>Browse By Location</Heading>
-            </div>
-          </Box>
-          <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
-            <Flex sx={{ flexWrap: 'wrap' }}>
-              {
-                locations.map(location => {
-                  return (
-                    <Box key={location.label} sx={{ width: ['100%', '50%', '50%', '33.33%'], px: '1rem', pb: '2rem' }}>
-                      <MiniCard
-                        label={location.label}
-                        target={location.target}
-                      />
-                    </Box>
-                  )
-                })
-              }
-            </Flex>
-          </Box>
-        </Flex>
+        <main>
+          <Heading as='h1' variant='pageTitle'>Browse</Heading>
+          <Flex sx={{ flexWrap: 'wrap' }}>
+            <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
+              <div id='date'>
+                  <Heading as='h2'>Browse By Date</Heading>
+              </div>
+            </Box>
+            <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
+              <Flex sx={{ flexWrap: 'wrap' }}>
+                {
+                  dates.map(date => {
+                    return (
+                      <Box key={date.label} sx={{ width: ['100%', '50%', '50%', '33.33%'], px: '1rem', pb: '2rem' }}>
+                        <MiniCard
+                          label={date.label}
+                          target={date.target}
+                        />
+                      </Box>
+                    )
+                  })
+                }
+              </Flex>
+            </Box>
+          </Flex>
+          <Flex sx={{ flexWrap: 'wrap' }}>
+            <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
+              <div id='format'>
+                <Heading as='h2'>Browse By Work Type</Heading>
+              </div>
+            </Box>
+            <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
+              <Flex sx={{ flexWrap: 'wrap' }}>
+                {
+                  formats.map(format => {
+                    return (
+                      <Box key={format.label} sx={{ width: ['100%', '50%', '50%', '33.33%'], px: '1rem', pb: '2rem' }}>
+                        <MiniCard
+                          label={format.label}
+                          target={format.target}
+                        />
+                      </Box>
+                    )
+                  })
+                }
+              </Flex>
+            </Box>
+          </Flex>
+          <Flex sx={{ flexWrap: 'wrap' }}>
+            <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
+              <div id='location'>
+                <Heading as='h2'>Browse By Location</Heading>
+              </div>
+            </Box>
+            <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
+              <Flex sx={{ flexWrap: 'wrap' }}>
+                {
+                  locations.map(location => {
+                    return (
+                      <Box key={location.label} sx={{ width: ['100%', '50%', '50%', '33.33%'], px: '1rem', pb: '2rem' }}>
+                        <MiniCard
+                          label={location.label}
+                          target={location.target}
+                        />
+                      </Box>
+                    )
+                  })
+                }
+              </Flex>
+            </Box>
+          </Flex>
+        </main>
       </NDBrandSection>
     </>
   )

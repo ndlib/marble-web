@@ -64,8 +64,9 @@ const IndexPage = ({ location }) => {
     <React.Fragment>
       <NDBrandSection variant='default' location={location} sx={{ justifyContent: 'center', mx: ['5vw', '5vw', '5vw', '5vw', 'auto'] }}>
         <Heading as='h1' sx={{ display: ['block', 'block', 'block', 'none'] }} variant='pageTitle'>Explore distinctive cultural heritage materials from the Hesburgh Libraries and the Snite Museum of Art.</Heading>
-
-        <Html html={t('common:hompageDescriptive')} />
+        <main>
+          <Html html={t('common:hompageDescriptive')} />
+        </main>
       </NDBrandSection>
       <NDBrandSection location={location} variant='fullBleedDark'>
         <Heading as='h2' variant='styles.h2' sx={{ color: 'white', fontSize: 7, pb: '1.5rem' }}>

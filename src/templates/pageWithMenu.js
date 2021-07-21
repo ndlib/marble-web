@@ -36,9 +36,10 @@ const Page = ({ data, location }) => {
             currentPageTitle={markdownRemark.frontmatter.title}
             breadcrumbs={[]}
           />
-
-          <Heading as='h1' variant='pageTitle'>{markdownRemark.frontmatter.title}</Heading>
-          <Html html={markdownRemark.html} />
+          <main>
+            <Heading as='h1' variant='pageTitle'>{markdownRemark.frontmatter.title}</Heading>
+            <Html html={markdownRemark.html} />
+          </main>
         </NDBrandSection>
 
       </NDBrandSectionLeftNav>

@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { jsx, Button } from 'theme-ui'
+import { jsx, Button, Heading } from 'theme-ui'
 import Layout from '../components/Layout'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import SearchBase from '@ndlib/gatsby-theme-marble/src/components/Shared/SearchBase'
@@ -42,6 +42,8 @@ const SearchPage = ({ location }) => {
               breadcrumbs={[]}
             />
             <SearchFilterBox />
+            <main>
+            <Heading as='h1' variant='pageTitle'>Search Results</Heading>
             <div
               className='overlay'
               sx={{
@@ -119,7 +121,7 @@ const SearchPage = ({ location }) => {
               title='Expand Search Filter'
               onClick={() => setFacectsOpen(!facectsOpen)}
             ><FaFilter /></Button>)} />
-
+          </main>
           </NDBrandSection>
         </NDBrandSectionLeftNav>
       </SearchBase>

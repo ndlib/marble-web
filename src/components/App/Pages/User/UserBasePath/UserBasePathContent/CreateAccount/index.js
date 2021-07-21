@@ -67,15 +67,15 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
         disabled={patching}
       />
       <Box>
-    <Label mb={3}>
-      <Checkbox
-        checked={hasAcceptedTerms}
-        onChange={() => acceptTerms(!hasAcceptedTerms)}
-        />
-      <span>
+        <Label mb={3}>
+          <Checkbox
+            checked={hasAcceptedTerms}
+            onChange={() => acceptTerms(!hasAcceptedTerms)}
+          />
+          <span>
       I have reviewed and agree to the <Link to='https://policy.nd.edu/assets/185268/responsible_use_it_resources_2015.pdf'>Responsible Use Policy</Link>.</span>
-    </Label>
-  </Box>
+        </Label>
+      </Box>
       <p>
         <Button
           id='createAccount'
@@ -85,9 +85,9 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
             const body = `
             mutation {
               savePortfolioUser(
-                bio: ${bio}
-                email: ${email}
-                fullName: ${fullName}
+                bio: "${bio}"
+                email: "${email}"
+                fullName: "${fullName}"
               ) {
                 bio
                 dateAddedToDynamo

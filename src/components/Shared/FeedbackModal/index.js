@@ -25,6 +25,7 @@ const FeedbackModal = ({ location }) => {
     <div>
       <button id='feedbackButton' onClick={handleOpenModal} sx={sx.feedbackButton}>Feedback</button>
       <ActionModal
+        aria-modal='true'
         isOpen={settingsOpen}
         contentLabel='Marble Feedback'
         shouldFocusAfterRender

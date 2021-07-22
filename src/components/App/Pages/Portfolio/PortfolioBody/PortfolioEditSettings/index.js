@@ -16,6 +16,7 @@ export const PortfolioEditSettings = () => {
         className='edit-settings'
       >Edit Settings</Button>
       <ActionModal
+        aria-modal='true'
         isOpen={settingsOpen}
         contentLabel={`Settings for <i>${portfolio.title}</i>`}
         closeFunc={() => setSettingsOpen(false)}

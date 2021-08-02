@@ -42,7 +42,7 @@ const SearchPage = ({ location }) => {
               breadcrumbs={[]}
             />
             <SearchFilterBox />
-            <main id='mainContent'>
+            <main>
             <Heading as='h1' variant='pageTitle'>Search Results</Heading>
             <div
               className='overlay'

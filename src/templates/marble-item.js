@@ -42,7 +42,7 @@ export const MarbleItemPage = ({ data, location }) => {
       />
       <NDBrandSection variant='fullBleed'>
         {breadcrumbs}
-        <main id='mainContent'>
+        <main>
           <Heading as='h1' variant='pageTitle'>{marbleItem.title}</Heading>
           {
             marbleItem.display === 'collection' ? (

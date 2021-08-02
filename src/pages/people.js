@@ -45,7 +45,7 @@ const Page = ({ data, location }) => {
             currentPageTitle='People'
             breadcrumbs={[{ url: '/help', title: 'Help' }]}
           />
-          <main id='mainContent'>
+          <main>
             <Heading as='h1' variant='pageTitle'>People</Heading>
             <div sx={sx} className='cell large-10'>
               <section id='lead' data-magellan-target='lead'>

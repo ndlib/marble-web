@@ -143,7 +143,7 @@ const Browse = ({ location }) => {
               <Heading as='h1'>Browse By Date</Heading>
             </div>
           </Box>
-          <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
+          <Box sx={{ width: ['100%', '80%'], pl: '1rem', py: '1rem' }}>
             <Flex sx={{ flexWrap: 'wrap' }}>
               {
                 dates.map(date => {
@@ -166,7 +166,7 @@ const Browse = ({ location }) => {
               <Heading as='h1'>Browse By Work Type</Heading>
             </div>
           </Box>
-          <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
+          <Box sx={{ width: ['100%', '80%'], pl: '1rem', py: '1rem' }}>
             <Flex sx={{ flexWrap: 'wrap' }}>
               {
                 formats.map(format => {
@@ -189,7 +189,7 @@ const Browse = ({ location }) => {
               <Heading as='h1'>Browse By Location</Heading>
             </div>
           </Box>
-          <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>
+          <Box sx={{ width: ['100%', '80%'], pl : '1rem', py: '1rem' }}>
             <Flex sx={{ flexWrap: 'wrap' }}>
               {
                 locations.map(location => {

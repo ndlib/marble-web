@@ -10,12 +10,13 @@ import NewPortfolioButton from './NewPortfolioButton'
 import NoPortfolios from './NoPortfolios'
 import VisibilityLabel from '@ndlib/gatsby-theme-marble/src/components/Shared/VisibilityLabel'
 import { DISPLAY_GRID } from '@ndlib/gatsby-theme-marble/src/store/actions/displayActions'
-import { isLoggedIn, ownsPage } from '@ndlib/gatsby-theme-marble/src/utils/auth'
+import { ownsPage } from '@ndlib/gatsby-theme-marble/src/utils/auth'
 import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 
 const PortfolioList = ({
   user,
   loginReducer,
+  location,
 }) => {
   const [portfolios, setPortfolios] = useState(typy(user, 'portfolioCollections.items').safeArray)
   const beGone = (portfolio) => {
@@ -42,8 +43,7 @@ const PortfolioList = ({
       : null
     return areYouSure
   }
-  const loggedIn = isLoggedIn(loginReducer)
-  const isOwner = ownsPage(loginReducer, user.portfolioUserId)
+  const isOwner = ownsPage(loginReducer, location)
 
   if (portfolios.length > 0) {
     return (
@@ -52,23 +52,20 @@ const PortfolioList = ({
           defaultDisplay={DISPLAY_GRID}
           toggleGroup='compilations-page'
           extraControls={isOwner
-            ? () => {
-              return (
-                <span sx={{
-                  float: 'left',
-                  verticalAlign: 'top',
-                }}
-                >
-                  <NewPortfolioButton
-                    addFunc={setPortfolios}
-                    portfolios={portfolios}
-                  />
-                </span>
-              )
-            }
-            : () => {
-              return null
-            }}
+            ? (
+              <span sx={{
+                float: 'left',
+                verticalAlign: 'top',
+              }}
+              >
+                <NewPortfolioButton
+                  addFunc={setPortfolios}
+                  portfolios={portfolios}
+                />
+              </span>
+            )
+            : null
+          }
         >
           {
             typy(portfolios).safeArray

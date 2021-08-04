@@ -19,7 +19,7 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
     return <Loading />
   }
   const loggedIn = isLoggedIn(loginReducer)
-  const isOwner = ownsPage(loginReducer, user.portfolioUserId)
+  const isOwner = ownsPage(loginReducer, location)
   return (
     <>
       <Seo

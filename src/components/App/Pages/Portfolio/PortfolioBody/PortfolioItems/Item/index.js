@@ -36,9 +36,11 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
   )
 
   if (editing) {
+    console.log('editing', item)
     card = (
       <EditItemForm
         uuid={item.uuid}
+        item={item}
         closeFunc={() => setEditing(false)}
       />
     )
@@ -69,8 +71,8 @@ Item.propTypes = {
 export default Item
 
 export const targetWithAnnotation = (item, userId) => {
-  if (item && item.annotation && !typy(item, 'link').safeString.startsWith('http')) {
-    return `${item.link}?${userId}${item.uuid}`
+  if (item && item.annotation && item.portfolioItemId) {
+    return `/item/${item.portfolioItemId}?${userId}${item.portfolioItemId}`
   }
   return item.link
 }

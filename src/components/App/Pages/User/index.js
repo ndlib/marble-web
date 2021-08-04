@@ -5,7 +5,7 @@ import UserLayout from './UserLayout'
 import UserBody from './UserBody'
 import NoUser from './NoUser'
 import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
-import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
+import { getPortfolioUser } from '@ndlib/gatsby-theme-marble/src/utils/api'
 
 const User = ({ loginReducer, userName, location, edit }) => {
   const [user, setUser] = useState({ portfolioUserId: userName })
@@ -13,48 +13,29 @@ const User = ({ loginReducer, userName, location, edit }) => {
 
   useEffect(() => {
     const abortController = new AbortController()
-    getData({
-      loginReducer: loginReducer,
-      body: `query {
-        getPortfolioUser {
-          bio
-          dateAddedToDynamo
-          dateModifiedInDynamo
-          department
-          email
-          fullName
-          portfolioUserId
-          primaryAffiliation
-          portfolioCollections {
-            items {
-              portfolioCollectionId
-              imageUri
-              description
-              portfolioUserId
-              dateAddedToDynamo
-              dateModifiedInDynamo
-              privacy
-              title
-            }
-          }
+
+    if (loginReducer.token) {
+      console.log('token!')
+      getPortfolioUser({ loginReducer: loginReducer })
+        .then((data) => {
+          console.log('BIGD', data)
+          setUser(data)
+          setContent(<UserBody
+            user={data}
+            edit={edit}
+            location={location}
+          />)
         }
-      }`,
-      contentType: 'data.getPortfolioUser',
-      successFunc: (data) => {
-        setUser(data)
-        setContent(<UserBody
-          user={data}
-          edit={edit}
-        />)
-      },
-      errorFunc: () => {
-        setContent(<NoUser userName={userName} />)
-      },
-    })
+        )
+        .catch(() => {
+          setContent(<NoUser userName={userName} />)
+        }
+        )
+    }
     return () => {
       abortController.abort()
     }
-  }, [loginReducer, userName, edit])
+  }, [loginReducer, userName, edit, location])
 
   return (
     <UserLayout

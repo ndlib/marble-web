@@ -2,8 +2,8 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { patchData, getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
-import * as style from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/style.module.css'
+import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
+import { savePortfolioItemQuery } from '../../../../../../../../utils/portfolioQueries'
 import { jsx, Heading, Button } from 'theme-ui'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import SetPortfolioImage from './SetPortfolioImage'
@@ -30,45 +30,46 @@ export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
   }
   return (
     <React.Fragment>
-      <div className={style.buttonGroup}>
-        <Button
-          onClick={() => closeFunc()}
-          variant='light'
-          >
-          Cancel
-        </Button>
+      <div sx={{ minHeight: '425px', borderBottom: '6px solid', borderColor: 'primary' }}>
+        <Heading as='h2' sx={
+          { maxHeight: '2rem', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }
+        }>{item.title}</Heading>
+        <label
+          htmlFor='annotation'
+          className='accessibilityOnly'
+        >Annotation
+        </label>
+        <textarea
+          id='annotation'
+          defaultValue={annotation}
+          onChange={(event) => {
+            changeAnnotation(event.target.value)
+          }}
+          placeholder='Add Annotation'
+          disabled={patching}
+          sx={sx.textArea}
+          aria-label='Annotation'
+        />
+        <SetPortfolioImage item={item} />
+      </div>
+      <div sx={{ padding: '.5rem', display: 'flex', width: '100%', justifyContent: 'space-around' }}>
         <Button
           variant='primary'
           onClick={
             (e) => {
               e.preventDefault()
-              const body = {
-                uuid: item.uuid,
-                annotation: annotation || '',
-              }
-              updateItem(e, loginReducer, body, changePatching, callBack)
+              updateItem(e, loginReducer, item, annotation, changePatching, closeFunc)
             }
           }>
-          Save
+        Save
+        </Button>
+        <Button
+          onClick={() => closeFunc()}
+          variant='inverse'
+        >
+          Cancel
         </Button>
       </div>
-      <Heading as='h2'>{item.title}</Heading>
-      <label
-        htmlFor='annotation'
-        className='accessibilityOnly'
-      >Annotation
-      </label>
-      <textarea
-        id='annotation'
-        defaultValue={annotation}
-        onChange={(event) => {
-          changeAnnotation(event.target.value)
-        }}
-        disabled={patching}
-        sx={sx.textArea}
-        aria-label='Annotation'
-      />
-      <SetPortfolioImage item={item} />
     </React.Fragment>
   )
 }
@@ -92,13 +93,19 @@ export default connect(
   mapStateToProps,
 )(EditItemFormContent)
 
-const updateItem = (event, loginReducer, body, patchingFunc, closeFunc) => {
+const updateItem = (event, loginReducer, item, annotation, patchingFunc, closeFunc) => {
   patchingFunc(true)
-  patchData({
+  item.annotation = annotation
+  console.log('event', event)
+  console.log('body', item)
+  console.log('query', savePortfolioItemQuery(item))
+  closeFunc(event)
+
+  getData({
     loginReducer: loginReducer,
     contentType: 'item',
-    id: body.uuid,
-    body: body,
+    // id: collection.uuid,
+    body: savePortfolioItemQuery(item),
     successFunc: (event) => {
       closeFunc(event)
     },

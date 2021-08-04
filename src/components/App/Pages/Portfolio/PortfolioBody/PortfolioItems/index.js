@@ -14,7 +14,7 @@ import sx from './sx'
 const PortfolioItems = ({ isOwner }) => {
   const { portfolio } = usePortfolioContext()
   const [editing, setEditing] = useState(false)
-  const { portfolioItems, layout, userId } = portfolio
+  const { portfolioItems, layout, portfolioUserId } = portfolio
   if (typy(portfolioItems, 'items').safeArray.length === 0) {
     return (
       <NoItems />
@@ -37,7 +37,7 @@ const PortfolioItems = ({ isOwner }) => {
       <AnnotatedView
         items={sortedItems}
         isOwner={isOwner}
-        userId={userId}
+        userId={portfolioUserId}
       />
     )
   } else {
@@ -45,7 +45,7 @@ const PortfolioItems = ({ isOwner }) => {
       <GridListView
         items={sortedItems}
         isOwner={isOwner}
-        userId={userId}
+        userId={portfolioUserId}
       />
     )
   }

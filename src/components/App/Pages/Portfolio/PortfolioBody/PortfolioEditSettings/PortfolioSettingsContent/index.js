@@ -1,16 +1,19 @@
 /** @jsx jsx */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { jsx, Flex, Box } from 'theme-ui'
 import VisibilitySettings from './VisibilitySettings'
 import LayoutSettings from './LayoutSettings'
 import DangerDelete from './DangerDelete'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
+import { savePortfolioCollectionQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import SaveOrCancelButtons from '../../SaveOrCancelButtons'
 import sx from './sx'
 
-const PortfolioSettingsContent = ({ callBack }) => {
-  const { portfolio } = usePortfolioContext()
+const PortfolioSettingsContent = ({ callBack, loginReducer }) => {
+  console.log(loginReducer)
+  const { portfolio, updatePortfolio } = usePortfolioContext()
   const [layout, changeLayout] = useState(portfolio.layout)
   const [privacy, changePrivacy] = useState(portfolio.privacy)
   const [patching, setPatching] = useState(false)
@@ -21,45 +24,20 @@ const PortfolioSettingsContent = ({ callBack }) => {
           closeFunc={callBack}
           patching={patching}
           setPatching={setPatching}
-          body={`mutation {
-            savePortfolioCollection(
-              privacy: ${privacy},
-              layout: "${layout}",
-              title: "${portfolio.title}",
-              portfolioCollectionId: "${portfolio.portfolioCollectionId}",
-              description: "${portfolio.description}",
-              imageUri: "${portfolio.imageUri}"
-            ) {
-              dateAddedToDynamo
-              dateModifiedInDynamo
-              description
-              featuredCollection
-              highlightedCollection
-              imageUri
-              layout
-              portfolioCollectionId
-              portfolioUserId
-              privacy
-              title
-              portfolioItems {
-                items {
-                  annotation
-                  dateAddedToDynamo
-                  dateModifiedInDynamo
-                  description
-                  imageUri
-                  internalItemId
-                  itemType
-                  portfolioCollectionId
-                  portfolioItemId
-                  portfolioUserId
-                  sequence
-                  title
-                  uri
-                }
-              }
-            }
-          }`}
+          onClick={() => {
+            setPatching(true)
+            portfolio.privacy = privacy
+            portfolio.layout = layout
+            savePortfolioCollectionQuery({ portfolio: portfolio, loginReducer: loginReducer })
+              .then((result) => {
+                updatePortfolio(result)
+                setPatching(false)
+                callBack()
+              })
+              .catch((e) => {
+                console.error(e)
+              })
+          }}
           valid
           changed={layout !== portfolio.layout || privacy !== portfolio.privacy}
         />
@@ -97,4 +75,10 @@ PortfolioSettingsContent.propTypes = {
   callBack: PropTypes.func.isRequired,
 }
 
-export default PortfolioSettingsContent
+export const mapStateToProps = (state) => {
+  return { ...state }
+}
+
+export default connect(
+  mapStateToProps,
+)(PortfolioSettingsContent)

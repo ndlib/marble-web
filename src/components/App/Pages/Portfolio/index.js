@@ -5,7 +5,7 @@ import typy from 'typy'
 import PortfolioBody from './PortfolioBody'
 import PortfolioUnavailable from './PortfolioUnavailable'
 import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
-import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
+import { getPortfolioQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import { ownsPage } from '@ndlib/gatsby-theme-marble/src/utils/auth'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 
@@ -14,46 +14,12 @@ export const Portfolio = ({ portfolioId, location, loginReducer }) => {
 
   useEffect(() => {
     const abortController = new AbortController()
+    console.log(loginReducer.status)
     if (loginReducer.status === 'STATUS_NOT_LOGGED_IN' || loginReducer.status === 'STATUS_LOGGED_IN') {
-      getData({
-        loginReducer: loginReducer,
-        contentType: 'data.getPortfolioCollection',
-        body: `query {
-          getPortfolioCollection(portfolioCollectionId: "${portfolioId}") {
-            dateAddedToDynamo
-            dateModifiedInDynamo
-            description
-            featuredCollection
-            highlightedCollection
-            imageUri
-            layout
-            portfolioCollectionId
-            portfolioUserId
-            privacy
-            title
-            portfolioItems {
-              items {
-                annotation
-                dateAddedToDynamo
-                dateModifiedInDynamo
-                description
-                imageUri
-                internalItemId
-                itemType
-                portfolioCollectionId
-                portfolioItemId
-                portfolioUserId
-                sequence
-                title
-                uri
-              }
-            }
-          }
-        }
-        `,
-        successFunc: (data) => {
-          const { privacy, portfolioUserId } = data
-          const isOwner = ownsPage(loginReducer, portfolioUserId)
+      const isOwner = ownsPage(loginReducer, location)
+      getPortfolioQuery({ loginReducer: loginReducer, isOwner: isOwner, portfolioId: portfolioId })
+        .then(data => {
+          const { privacy } = data
           if (privacy === 'private' && !isOwner) {
             setContent(<PortfolioUnavailable />)
           } else {
@@ -63,11 +29,10 @@ export const Portfolio = ({ portfolioId, location, loginReducer }) => {
               isOwner={isOwner}
             />)
           }
-        },
-        errorFunc: () => {
+        })
+        .catch(() => {
           setContent(<PortfolioUnavailable />)
-        },
-      })
+        })
     }
     return () => {
       abortController.abort()

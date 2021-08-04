@@ -3,18 +3,18 @@ import { jsx, Button } from 'theme-ui'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import typy from 'typy'
 import SortableList from 'react-sortable-dnd-list'
 import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
 import SortableItem from './SortableItem'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
-import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
+import { savePortfolioItemQuery, getPortfolioQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import sx from './sx'
 
 const EditList = ({ items, closeFunc, loginReducer }) => {
   const { portfolio, updatePortfolio } = usePortfolioContext()
   const [sortedItems, setItems] = useState(items)
   const [saving, setSaving] = useState(false)
+  console.log(sortedItems)
   if (saving) {
     return (
       <Loading />
@@ -32,36 +32,28 @@ const EditList = ({ items, closeFunc, loginReducer }) => {
           variant='primary'
           onClick={() => {
             setSaving(true)
-            Promise.all(sortedItems.map((item, index) => fetch(
-              `${loginReducer.userContentPath}item/${item.uuid}`,
-              {
-                method: 'PATCH',
-                headers: {
-                  Authorization: typy(loginReducer, 'token.idToken').safeString,
-                  'Access-Control-Request-Method': 'PATCH',
-                  'Access-Control-Request-Headers': 'Authorization',
-                },
-                mode: 'cors',
-                body: JSON.stringify({
-                  uuid: item.uuid,
-                  displayOrder: index,
-                }),
-              },
-            )))
+            Promise.all(sortedItems.map((item, index) => {
+              item.sequence = index
+              return savePortfolioItemQuery({ item: item, loginReducer: loginReducer })
+                .then((event) => {
+                  closeFunc(event)
+                })
+                .catch((e) => {
+                  console.error(e)
+                })
+            })
+            )
               .then(() => {
-                getData({
-                  loginReducer: loginReducer,
-                  contentType: 'collection',
-                  id: portfolio.uuid,
-                  successFunc: (data) => {
+                getPortfolioQuery({ loginReducer: loginReducer, isOwner: true, portfolioId: portfolio.portfolioCollectionId })
+                  .then((data) => {
+                    console.log('reorder', data)
                     updatePortfolio(data)
                     closeFunc()
-                  },
-                  errorFunc: (error) => {
+                  })
+                  .catch((error) => {
                     console.error(error)
                     closeFunc()
-                  },
-                })
+                  })
               })
               .catch(error => console.error(error))
           }}

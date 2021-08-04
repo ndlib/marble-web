@@ -5,52 +5,24 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { jsx } from 'theme-ui'
 import EditItemFormContent from './EditItemFormContent'
-import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
-import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 
-export const EditItemForm = ({ uuid, closeFunc, loginReducer }) => {
-  const [content, setContent] = useState(<Loading />)
-
-  useEffect(() => {
-    const abortController = new AbortController()
-    getData({
-      loginReducer: loginReducer,
-      contentType: 'item',
-      id: uuid,
-      successFunc: (data) => {
-        setContent(<EditItemFormContent
-          item={data}
-          closeFunc={closeFunc}
-        />)
-      },
-      errorFunc: () => {
-        setContent(<div>Error</div>)
-      },
-    })
-    return () => {
-      abortController.abort()
-    }
-  }, [closeFunc, loginReducer, uuid])
-
+export const EditItemForm = ({ item, closeFunc }) => {
   return (
     <div sx={{
       backgroundColor: 'background',
-      border: '1px solid',
-      borderColor: 'gray.4',
-      height: '400px',
       margin: '0',
-      overflowY: 'scroll',
-      padding: '1rem',
       width: '100%',
     }}>
-      {content}
+      <EditItemFormContent
+        item={item}
+        closeFunc={closeFunc}
+      />
     </div>
   )
 }
 EditItemForm.propTypes = {
-  uuid: PropTypes.string.isRequired,
   closeFunc: PropTypes.func.isRequired,
-  loginReducer: PropTypes.object.isRequired,
+  item: PropTypes.object.isRequired,
 }
 export const mapStateToProps = (state) => {
   return { ...state }

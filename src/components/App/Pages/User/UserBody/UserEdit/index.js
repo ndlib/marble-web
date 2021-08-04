@@ -14,7 +14,7 @@ import Unauthorized from './Unauthorized'
 import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import * as style from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/style.module.css'
 
-export const UserEdit = ({ user, loginReducer }) => {
+export const UserEdit = ({ user, loginReducer, location }) => {
   const claims = typy(loginReducer, 'token.claims').safeObject
   const [fullName, changeName] = useState(user.fullName)
   const [email, changeEmail] = useState(user.email)
@@ -22,7 +22,7 @@ export const UserEdit = ({ user, loginReducer }) => {
   const [patching, setPatching] = useState(false)
   const emailRegex = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g
 
-  if (!ownsPage(loginReducer, user.portfolioUserId)) {
+  if (!ownsPage(loginReducer, location)) {
     return (<Unauthorized />)
   }
 

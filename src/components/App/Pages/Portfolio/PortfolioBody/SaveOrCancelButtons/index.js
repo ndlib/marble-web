@@ -2,7 +2,6 @@
 import React from 'react'
 import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 
 // eslint-disable-next-line complexity
 const SaveOrCancelButtons = ({

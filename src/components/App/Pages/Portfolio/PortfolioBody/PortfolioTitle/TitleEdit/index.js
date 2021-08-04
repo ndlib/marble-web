@@ -2,13 +2,15 @@
 import { useState } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import SaveOrCancelButtons from '../../SaveOrCancelButtons'
+import { savePortfolioCollectionQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import sx from './sx'
 
 // eslint-disable-next-line complexity
-const TitleEdit = ({ closeFunc }) => {
-  const { portfolio } = usePortfolioContext()
+const TitleEdit = ({ closeFunc, loginReducer }) => {
+  const { portfolio, updatePortfolio } = usePortfolioContext()
   const defaultTitle = portfolio.title
   const [newTitle, setNewTitle] = useState(defaultTitle)
   const [patching, setPatching] = useState(false)
@@ -37,46 +39,19 @@ const TitleEdit = ({ closeFunc }) => {
         <SaveOrCancelButtons
           closeFunc={closeFunc}
           patching={patching}
-          setPatching={setPatching}
-          body={`mutation {
-            savePortfolioCollection(
-              title: "${newTitle}",
-              portfolioCollectionId: "${portfolio.portfolioCollectionId}",
-              privacy: ${portfolio.privacy},
-              layout: "${portfolio.layout}",
-              description: "${portfolio.description}",
-              imageUri: "${portfolio.imageUri}"
-            ) {
-              dateAddedToDynamo
-              dateModifiedInDynamo
-              description
-              featuredCollection
-              highlightedCollection
-              imageUri
-              layout
-              portfolioCollectionId
-              portfolioUserId
-              privacy
-              title
-              portfolioItems {
-                items {
-                  annotation
-                  dateAddedToDynamo
-                  dateModifiedInDynamo
-                  description
-                  imageUri
-                  internalItemId
-                  itemType
-                  portfolioCollectionId
-                  portfolioItemId
-                  portfolioUserId
-                  sequence
-                  title
-                  uri
-                }
-              }
-            }
-          }`}
+          onClick={() => {
+            setPatching(true)
+            portfolio.title = newTitle
+            savePortfolioCollectionQuery({ portfolio: portfolio, loginReducer: loginReducer })
+              .then((result) => {
+                updatePortfolio(result)
+                setPatching(false)
+                closeFunc()
+              })
+              .catch((e) => {
+                console.error(e)
+              })
+          }}
           valid={valid}
           changed={defaultTitle !== newTitle}
         />
@@ -88,6 +63,13 @@ const TitleEdit = ({ closeFunc }) => {
 
 TitleEdit.propTypes = {
   closeFunc: PropTypes.func.isRequired,
+  loginReducer: PropTypes.func.isRequired,
 }
 
-export default TitleEdit
+export const mapStateToProps = (state) => {
+  return { ...state }
+}
+
+export default connect(
+  mapStateToProps,
+)(TitleEdit)

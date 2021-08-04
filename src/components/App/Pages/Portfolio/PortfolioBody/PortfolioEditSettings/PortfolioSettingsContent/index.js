@@ -12,7 +12,6 @@ import SaveOrCancelButtons from '../../SaveOrCancelButtons'
 import sx from './sx'
 
 const PortfolioSettingsContent = ({ callBack, loginReducer }) => {
-  console.log(loginReducer)
   const { portfolio, updatePortfolio } = usePortfolioContext()
   const [layout, changeLayout] = useState(portfolio.layout)
   const [privacy, changePrivacy] = useState(portfolio.privacy)
@@ -73,6 +72,7 @@ const PortfolioSettingsContent = ({ callBack, loginReducer }) => {
 
 PortfolioSettingsContent.propTypes = {
   callBack: PropTypes.func.isRequired,
+  loginReducer: PropTypes.func.isRequired,
 }
 
 export const mapStateToProps = (state) => {

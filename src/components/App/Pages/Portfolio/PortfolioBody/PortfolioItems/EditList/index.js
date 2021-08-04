@@ -14,7 +14,7 @@ const EditList = ({ items, closeFunc, loginReducer }) => {
   const { portfolio, updatePortfolio } = usePortfolioContext()
   const [sortedItems, setItems] = useState(items)
   const [saving, setSaving] = useState(false)
-  console.log(sortedItems)
+
   if (saving) {
     return (
       <Loading />

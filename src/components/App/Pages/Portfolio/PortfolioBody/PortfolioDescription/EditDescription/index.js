@@ -1,13 +1,15 @@
 /** @jsx jsx */
 import { useState } from 'react'
+import { connect } from 'react-redux'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
+import { savePortfolioCollectionQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import SaveOrCancelButtons from '../../SaveOrCancelButtons'
 import sx from './sx'
 
-const EditDescription = ({ closeFunc }) => {
-  const { portfolio } = usePortfolioContext()
+const EditDescription = ({ closeFunc, loginReducer }) => {
+  const { portfolio, updatePortfolio } = usePortfolioContext()
   const description = portfolio.description
   const [newDescription, setNewDescription] = useState(description)
   const [patching, setPatching] = useState(false)
@@ -32,47 +34,19 @@ const EditDescription = ({ closeFunc }) => {
       <span sx={sx.buttonWrapper}>
         <SaveOrCancelButtons
           closeFunc={closeFunc}
-          patching={patching}
-          setPatching={setPatching}
-          body={`mutation {
-            savePortfolioCollection(
-              description: "${newDescription}",
-              portfolioCollectionId: "${portfolio.portfolioCollectionId}",
-              title: "${portfolio.title}",
-              privacy: ${portfolio.privacy},
-              layout: "${portfolio.layout}",
-              imageUri: "${portfolio.imageUri}"
-            ) {
-              dateAddedToDynamo
-              dateModifiedInDynamo
-              description
-              featuredCollection
-              highlightedCollection
-              imageUri
-              layout
-              portfolioCollectionId
-              portfolioUserId
-              privacy
-              title
-              portfolioItems {
-                items {
-                  annotation
-                  dateAddedToDynamo
-                  dateModifiedInDynamo
-                  description
-                  imageUri
-                  internalItemId
-                  itemType
-                  portfolioCollectionId
-                  portfolioItemId
-                  portfolioUserId
-                  sequence
-                  title
-                  uri
-                }
-              }
-            }
-          }`}
+          onClick={() => {
+            setPatching(true)
+            portfolio.description = newDescription
+            savePortfolioCollectionQuery({ portfolio: portfolio, loginReducer: loginReducer })
+              .then((result) => {
+                updatePortfolio(result)
+                setPatching(false)
+                closeFunc()
+              })
+              .catch((e) => {
+                console.error(e)
+              })
+          }}
           valid
           changed={description !== newDescription}
         />
@@ -83,6 +57,13 @@ const EditDescription = ({ closeFunc }) => {
 
 EditDescription.propTypes = {
   closeFunc: PropTypes.func.isRequired,
+  loginReducer: PropTypes.func.isRequired,
 }
 
-export default EditDescription
+export const mapStateToProps = (state) => {
+  return { ...state }
+}
+
+export default connect(
+  mapStateToProps,
+)(EditDescription)

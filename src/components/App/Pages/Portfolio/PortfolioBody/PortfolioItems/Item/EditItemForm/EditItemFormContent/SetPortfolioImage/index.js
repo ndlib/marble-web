@@ -3,9 +3,7 @@ import { useState } from 'react'
 import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
-import { savePortfolioCollectionQuery } from '../../../../../../../../../utils/portfolioQueries'
-
+import { savePortfolioCollectionQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import sx from './sx'
 
@@ -29,20 +27,15 @@ const SetPortfolioImage = ({ item, loginReducer }) => {
         onClick={() => {
           setPatching(true)
           portfolio.imageUri = item.imageUri
-          getData({
-            loginReducer: loginReducer,
-            contentType: 'data.savePortfolioCollection',
-            id: portfolio.portfolioCollectionId,
-            body: savePortfolioCollectionQuery(portfolio),
-            successFunc: (result) => {
+          savePortfolioCollectionQuery({ portfolio: portfolio, loginReducer: loginReducer })
+            .then((result) => {
               console.log('res=', result)
               updatePortfolio(result)
               setPatching(false)
-            },
-            errorFunc: (e) => {
+            })
+            .catch((e) => {
               console.error(e)
-            },
-          })
+            })
         }}
         disabled={patching}
       >Set as Portfolio Cover Image

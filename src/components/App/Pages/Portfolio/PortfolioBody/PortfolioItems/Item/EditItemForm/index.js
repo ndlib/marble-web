@@ -2,7 +2,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { jsx } from 'theme-ui'
 import EditItemFormContent from './EditItemFormContent'
 
@@ -24,10 +23,5 @@ EditItemForm.propTypes = {
   closeFunc: PropTypes.func.isRequired,
   item: PropTypes.object.isRequired,
 }
-export const mapStateToProps = (state) => {
-  return { ...state }
-}
 
-export default connect(
-  mapStateToProps,
-)(EditItemForm)
+export default EditItemForm

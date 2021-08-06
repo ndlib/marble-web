@@ -1,5 +1,6 @@
 
 export const getPortfolioQuery = (portfolioId) => {
+  console.error("don't run this ")
   return `query {
     getPortfolioCollection(portfolioCollectionId: "${portfolioId}") {
       dateAddedToDynamo

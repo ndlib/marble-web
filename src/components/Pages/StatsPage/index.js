@@ -89,55 +89,57 @@ const StatsPage = () => {
         currentPageTitle={pageTitle}
         breadcrumbs={[]}
       />
-      <Heading as='h1' variant='pageTitle'>{pageTitle}</Heading>
-      <Flex sx={{ flexWrap: 'wrap' }}>
-        <Box sx={{ width: '100%', px: '1rem', py: '1rem' }}>
-          <ul>
-            <li>
-              <Button
-                variant='text'
-                onClick={() => openModal(items, 'All items')}
-              >
-                <strong>Total items: {itemCount}</strong>
-              </Button>
-            </li>
+      <main>
+        <Heading as='h1' variant='pageTitle'>{pageTitle}</Heading>
+        <Flex sx={{ flexWrap: 'wrap' }}>
+          <Box sx={{ width: '100%', px: '1rem', py: '1rem' }}>
             <ul>
-              {Object.keys(locationGroups).sort().map(key => (
-                <li key={key}>
-                  <Button
-                    variant='text'
-                    onClick={() => openModal(locationGroups[key], `Items from: ${key}`)}
-                  >
-                    {key}: {locationGroups[key].length}
-                  </Button>
-                </li>
-              ))}
+              <li>
+                <Button
+                  variant='text'
+                  onClick={() => openModal(items, 'All items')}
+                >
+                  <strong>Total items: {itemCount}</strong>
+                </Button>
+              </li>
+              <ul>
+                {Object.keys(locationGroups).sort().map(key => (
+                  <li key={key}>
+                    <Button
+                      variant='text'
+                      onClick={() => openModal(locationGroups[key], `Items from: ${key}`)}
+                    >
+                      {key}: {locationGroups[key].length}
+                    </Button>
+                  </li>
+                ))}
+              </ul>
+              <li>
+                <Button
+                  variant='text'
+                  onClick={() => openModal(itemsMissingDescription, 'Items missing description')}
+                >
+                  Items missing description: {itemsMissingDescription.length}
+                </Button>
+              </li>
+              <li>
+                <Button
+                  variant='text'
+                  onClick={() => openModal(itemsMissingImages, 'Items missing images')}
+                >
+                  Items missing images: {itemsMissingImages.length}
+                </Button>
+              </li>
             </ul>
-            <li>
-              <Button
-                variant='text'
-                onClick={() => openModal(itemsMissingDescription, 'Items missing description')}
-              >
-                Items missing description: {itemsMissingDescription.length}
-              </Button>
-            </li>
-            <li>
-              <Button
-                variant='text'
-                onClick={() => openModal(itemsMissingImages, 'Items missing images')}
-              >
-                Items missing images: {itemsMissingImages.length}
-              </Button>
-            </li>
-          </ul>
-        </Box>
-      </Flex>
-      {typy(modalProps, 'marbleItems').safeArray.length > 0 && (
-        <ItemListModal
-          {...modalProps}
-          onClose={onModalClosed}
-        />
-      )}
+          </Box>
+        </Flex>
+        {typy(modalProps, 'marbleItems').safeArray.length > 0 && (
+          <ItemListModal
+            {...modalProps}
+            onClose={onModalClosed}
+          />
+        )}
+      </main>
     </NDBrandSection>
   )
 }

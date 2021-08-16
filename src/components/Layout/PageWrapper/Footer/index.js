@@ -70,7 +70,8 @@ export const Footer = (location, variant) => {
         <Box sx={{
           width: ['100%', '100%', '100%', '33%'],
           px: ['5vw', '5vw', '5vw', '4rem'],
-          py: '4rem' }}>
+          py: '4rem',
+        }}>
           <Link
             variant='footer'
             to='https://library.nd.edu'
@@ -94,7 +95,7 @@ export const Footer = (location, variant) => {
         </Box>
         <Box sx={{
           width: ['100%', '100%', '100%', '34%'],
-          justifyContent: 'center',
+          justifyContent: 'left',
           pl: ['5vw', '5vw', '5vw', '4rem'],
           pr: '5vw',
           py: '4rem',

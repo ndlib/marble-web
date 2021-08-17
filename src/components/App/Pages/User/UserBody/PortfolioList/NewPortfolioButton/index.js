@@ -37,7 +37,7 @@ export const NewPortfolioButton = ({ portfolios, addFunc, loginReducer }) => {
           },
         })
       }}
-      variant='primary'
+      variant='light'
       disabled={creating}
     >{t('common:button.createPortfolio')}
     </Button>

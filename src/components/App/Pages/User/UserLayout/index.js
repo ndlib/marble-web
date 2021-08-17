@@ -3,7 +3,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { jsx, Flex, Box } from 'theme-ui'
+import { jsx, Flex, Box, Heading, Divider } from 'theme-ui'
+import { useStaticQuery, graphql } from 'gatsby'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
 import Gravatar from '@ndlib/gatsby-theme-marble/src/components/Shared/Gravatar'
@@ -12,14 +13,36 @@ import EditUserButton from './EditUserButton'
 import { isLoggedIn, ownsPage } from '@ndlib/gatsby-theme-marble/src/utils/auth'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandSectionLeftNav from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section/LeftNav'
+import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
+import NewPortfolioButton from '../UserBody/PortfolioList/NewPortfolioButton'
 import sx from './sx'
+import typy from 'typy'
 
-export const UserLayout = ({ user, children, location, loginReducer }) => {
-  if (!user) {
+export const UserLayout = ({ children, location, loginReducer }) => {
+  const data = useStaticQuery(graphql`
+    {
+      menusJson(id: {eq: "myaccount"}) {
+        id
+        label
+        items {
+          id
+          label
+          link
+          icon
+          selectedPatterns
+        }
+      }
+    }
+  `)
+
+  const menusJson = typy(data, 'menusJson').safeObject
+  const menu = typy(menusJson, 'items').safeArray
+  if (!loginReducer.user) {
     return <Loading />
   }
   const loggedIn = isLoggedIn(loginReducer)
   const isOwner = ownsPage(loginReducer, location)
+  const user = loginReducer.user
   return (
     <>
       <Seo
@@ -30,24 +53,29 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
       />
       <NDBrandSectionLeftNav location={location}>
         <NDBrandSection variant='sidebar'>
-          <Flex sx={{ flexWrap: 'wrap' }}>
-            <Box sx={{ width: ['25%', '100%', '100%'] }}>
-              <Gravatar email={user.email} />
+          <Heading as='h1' sx={{ margin: 0, fontSize: '6' }}>{user.fullName}</Heading>
+          <Flex sx={{ display: 'flex', alignItems: 'top' }}>
+            <Box sx={{ width: '75px' }}>
+              <Gravatar email={user.email} size={75} />
             </Box>
-            <Box sx={{ width: ['75%', '100%', '100%'], px: '1rem' }}>
-              <h1>{user.fullName}</h1>
-              <h2>{user.portfolioUserId}</h2>
+            <Box sx={{ px: '1rem' }}>
+              <div>
+                {
+                  /* Follow or Edit button */
+                  isOwner ? <EditUserButton userName={user.portfolioUserId} /> : <PromptLogin showButton={!loggedIn} />
+                }
+              </div>
             </Box>
           </Flex>
           <div id='bio' sx={sx.bio}>{user.bio}</div>
-          <div>
-            {
-              /* Follow or Edit button */
-              isOwner ? <EditUserButton userName={user.portfolioUserId} /> : <PromptLogin showButton={!loggedIn} />
-            }
-          </div>
+
+          <Menu location={location} variant='navLeft' items={menu} label='Help' />
+          {
+            /* Follow or Edit button */
+            isOwner ? <NewPortfolioButton /> : null
+          }
         </NDBrandSection>
-        <NDBrandSection variant='fullBleedWithSidebar' sx={{ paddingTop: '2rem' }}>
+        <NDBrandSection variant='fullBleedWithSidebar'>
           {children}
         </NDBrandSection>
       </NDBrandSectionLeftNav>

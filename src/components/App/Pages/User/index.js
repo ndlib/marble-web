@@ -15,7 +15,6 @@ const User = ({ loginReducer, userName, location, edit }) => {
     const abortController = new AbortController()
 
     if (loginReducer.token) {
-      console.log('token!')
       getPortfolioUser({ loginReducer: loginReducer })
         .then((data) => {
           console.log('BIGD', data)

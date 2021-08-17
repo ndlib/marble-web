@@ -11,7 +11,8 @@ import NoPortfolios from './NoPortfolios'
 import VisibilityLabel from '@ndlib/gatsby-theme-marble/src/components/Shared/VisibilityLabel'
 import { DISPLAY_GRID } from '@ndlib/gatsby-theme-marble/src/store/actions/displayActions'
 import { ownsPage } from '@ndlib/gatsby-theme-marble/src/utils/auth'
-import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
+import { removeCollection } from '@ndlib/gatsby-theme-marble/src/utils/api'
+import { NDBrandBreadcrumbs } from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 
 const PortfolioList = ({
   user,
@@ -22,50 +23,33 @@ const PortfolioList = ({
   const beGone = (portfolio) => {
     const areYouSure = window.confirm('Are you sure you want to delete this protfolio?')
       ? (
-        getData({
+        removeCollection({
           loginReducer: loginReducer,
-          contentType: 'data.removePortfolioCollection',
-          body: `mutation {
-            removePortfolioCollection(portfolioCollectionId: "${portfolio.portfolioCollectionId}") {
-            recordsDeleted
-            }
-          }`,
-          successFunc: () => {
+          portfolio: portfolio,
+        })
+          .then(() => {
             setPortfolios(portfolios.filter(p => {
               return p.portfolioCollectionId !== portfolio.portfolioCollectionId
             }))
-          },
-          errorFunc: (e) => {
+          })
+          .catch((e) => {
             console.error(e)
-          },
-        })
+          })
       )
       : null
     return areYouSure
   }
   const isOwner = ownsPage(loginReducer, location)
-
   if (portfolios.length > 0) {
     return (
       <>
+        <NDBrandBreadcrumbs
+          currentPageTitle={loginReducer.user.fullName}
+          breadcrumbs={[]}
+        />
         <CardGroup
           defaultDisplay={DISPLAY_GRID}
           toggleGroup='compilations-page'
-          extraControls={isOwner
-            ? (
-              <span sx={{
-                float: 'left',
-                verticalAlign: 'top',
-              }}
-              >
-                <NewPortfolioButton
-                  addFunc={setPortfolios}
-                  portfolios={portfolios}
-                />
-              </span>
-            )
-            : null
-          }
         >
           {
             typy(portfolios).safeArray

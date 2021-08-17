@@ -11,7 +11,7 @@ export const PortfolioEditSettings = () => {
   return (
     <React.Fragment>
       <Button
-        variant='primary'
+        variant='light'
         onClick={() => setSettingsOpen(true)}
         className='edit-settings'
       >Edit Settings</Button>

@@ -8,8 +8,9 @@ import PortfolioItems from './PortfolioItems'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import Ownership from './Ownership'
 import PortfolioContext, { initialContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
+import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 
-const PortfolioBody = ({ portfolio, location, isOwner }) => {
+const PortfolioBody = ({ portfolio, location, loginReducer, isOwner }) => {
   const updatePortfolio = (portfolio) => {
     setContext({ ...context, portfolio: portfolio })
   }
@@ -27,6 +28,16 @@ const PortfolioBody = ({ portfolio, location, isOwner }) => {
         data={{}}
         noIndex // = {portfolio.privacy !== 'public'}
       />
+      <NDBrandBreadcrumbs
+        currentPageTitle={portfolio.title}
+        breadcrumbs={[
+          {
+            url: `/item/${loginReducer.user.portfolioUserId}`,
+            title: loginReducer.user.fullName,
+
+          },
+        ]}
+      />
       <PortfolioTitle
         isOwner={isOwner}
       />
@@ -34,7 +45,6 @@ const PortfolioBody = ({ portfolio, location, isOwner }) => {
         isOwner={isOwner}
         location={location}
       />
-      <div className='clearfix' />
       <PortfolioDescription
         isOwner={isOwner}
       />

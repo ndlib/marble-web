@@ -2,32 +2,15 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
-import { savePortfolioItemQuery } from '../../../../../../../../utils/portfolioQueries'
+import { savePortfolioItemQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import { jsx, Heading, Button } from 'theme-ui'
-import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import SetPortfolioImage from './SetPortfolioImage'
 import sx from './sx'
 
 export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
-  const { portfolio, updatePortfolio } = usePortfolioContext()
   const [annotation, changeAnnotation] = useState(item.annotation)
   const [patching, changePatching] = useState(false)
 
-  const callBack = () => {
-    getData({
-      loginReducer: loginReducer,
-      contentType: 'collection',
-      id: portfolio.uuid,
-      successFunc: (data) => {
-        updatePortfolio(data)
-        closeFunc()
-      },
-      errorFunc: (e) => {
-        console.error(e)
-      },
-    })
-  }
   return (
     <React.Fragment>
       <div sx={{ minHeight: '425px', borderBottom: '6px solid', borderColor: 'primary' }}>
@@ -96,21 +79,12 @@ export default connect(
 const updateItem = (event, loginReducer, item, annotation, patchingFunc, closeFunc) => {
   patchingFunc(true)
   item.annotation = annotation
-  console.log('event', event)
-  console.log('body', item)
-  console.log('query', savePortfolioItemQuery(item))
   closeFunc(event)
-
-  getData({
-    loginReducer: loginReducer,
-    contentType: 'item',
-    // id: collection.uuid,
-    body: savePortfolioItemQuery(item),
-    successFunc: (event) => {
+  savePortfolioItemQuery({ loginReducer: loginReducer, item: item })
+    .then((event) => {
       closeFunc(event)
-    },
-    errorFunc: (e) => {
+    })
+    .catch((e) => {
       console.error(e)
-    },
-  })
+    })
 }

@@ -2,7 +2,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Flex, Box } from 'theme-ui'
-import typy from 'typy'
 import Card from '@ndlib/gatsby-theme-marble/src/components/Shared/Card'
 import EditItemForm from './EditItemForm'
 import ItemControls from './ItemControls'
@@ -36,7 +35,6 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
   )
 
   if (editing) {
-    console.log('editing', item)
     card = (
       <EditItemForm
         uuid={item.uuid}

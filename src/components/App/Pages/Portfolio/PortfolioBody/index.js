@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 import PortfolioTitle from './PortfolioTitle'
@@ -7,21 +7,24 @@ import PortfolioDescription from './PortfolioDescription'
 import PortfolioItems from './PortfolioItems'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import Ownership from './Ownership'
-import PortfolioContext, { initialContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
+import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
+import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
+import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
+import PortfolioUnavailable from './PortfolioUnavailable'
 
-const PortfolioBody = ({ portfolio, location, loginReducer, isOwner }) => {
-  const updatePortfolio = (portfolio) => {
-    setContext({ ...context, portfolio: portfolio })
+const PortfolioBody = ({ location }) => {
+  const { portfolio } = usePortfolioContext()
+  const { portfolioUser, isPorfolioOwner } = useUserContext()
+  const isOwner = isPorfolioOwner()
+  if ('status' in portfolio && portfolio.status === 'private') {
+    return <PortfolioUnavailable />
   }
-
-  const [context, setContext] = useState({
-    ...initialContext,
-    portfolio: portfolio,
-    updatePortfolio: updatePortfolio,
-  })
+  if (!('title' in portfolio)) {
+    return (<Loading />)
+  }
   return (
-    <PortfolioContext.Provider value={context}>
+    <>
       <Seo
         title={portfolio.title}
         location={location}
@@ -32,15 +35,13 @@ const PortfolioBody = ({ portfolio, location, loginReducer, isOwner }) => {
         currentPageTitle={portfolio.title}
         breadcrumbs={[
           {
-            url: `/item/${loginReducer.user.portfolioUserId}`,
-            title: loginReducer.user.fullName,
+            url: `/user/${portfolioUser.portfolioUserId}`,
+            title: portfolioUser.fullName,
 
           },
         ]}
       />
-      <PortfolioTitle
-        isOwner={isOwner}
-      />
+      <PortfolioTitle />
       <Ownership
         isOwner={isOwner}
         location={location}
@@ -51,14 +52,12 @@ const PortfolioBody = ({ portfolio, location, loginReducer, isOwner }) => {
       <PortfolioItems
         isOwner={isOwner}
       />
-    </PortfolioContext.Provider>
+    </>
   )
 }
 
 PortfolioBody.propTypes = {
-  portfolio: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  isOwner: PropTypes.bool,
 }
 
 export default PortfolioBody

@@ -5,8 +5,10 @@ import PropTypes from 'prop-types'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import TitleEdit from './TitleEdit'
 import EditButton from '../EditButton'
+import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
-const PortfolioTitle = ({ isOwner }) => {
+const PortfolioTitle = () => {
+  const { isPorfolioOwner } = useUserContext()
   const { portfolio } = usePortfolioContext()
   const [editing, setEditing] = useState(false)
 
@@ -18,7 +20,7 @@ const PortfolioTitle = ({ isOwner }) => {
     <Heading as='h1' variant='pageTitle'>
       {portfolio.title}
       <EditButton
-        isOwner={isOwner}
+        isOwner={isPorfolioOwner()}
         setEditFunc={() => setEditing(true)}
       />
     </Heading>
@@ -26,7 +28,6 @@ const PortfolioTitle = ({ isOwner }) => {
 }
 
 PortfolioTitle.propTypes = {
-  isOwner: PropTypes.bool,
 }
 
 export default PortfolioTitle

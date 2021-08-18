@@ -9,12 +9,16 @@ import GridListView from './GridListView'
 import EditList from './EditList'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import sx from './sx'
+import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
 // eslint-disable-next-line complexity
-const PortfolioItems = ({ isOwner }) => {
+const PortfolioItems = () => {
+  const { isPorfolioOwner } = useUserContext()
   const { portfolio } = usePortfolioContext()
   const [editing, setEditing] = useState(false)
   const { portfolioItems, layout, portfolioUserId } = portfolio
+  const isOwner = isPorfolioOwner()
+
   if (typy(portfolioItems, 'items').safeArray.length === 0) {
     return (
       <NoItems />
@@ -73,6 +77,5 @@ const PortfolioItems = ({ isOwner }) => {
 }
 
 PortfolioItems.propTypes = {
-  isOwner: PropTypes.bool,
 }
 export default PortfolioItems

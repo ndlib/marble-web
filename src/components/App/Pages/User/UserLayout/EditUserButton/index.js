@@ -1,14 +1,19 @@
 /** @jsx jsx */
 import { jsx, Button } from 'theme-ui'
-import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
-import { useTranslation } from 'react-i18next'
+import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
-const EditUserButton = ({ userName }) => {
-  const { t } = useTranslation()
+const EditUserButton = () => {
+  const { portfolioUser, isPorfolioOwner } = useUserContext()
+
+  if (!isPorfolioOwner()) {
+    console.log('nope on the button')
+    return null
+  }
+
   return (
     <Button
-      onClick={() => navigate(`/user/${userName}/edit`)}
+      onClick={() => navigate(`/user/${portfolioUser.portfolioUserId}/edit`)}
       variant='inverse'
       title='Edit my portfolio'
     >Edit Bio
@@ -16,7 +21,4 @@ const EditUserButton = ({ userName }) => {
   )
 }
 
-EditUserButton.propTypes = {
-  userName: PropTypes.string.isRequired,
-}
 export default EditUserButton

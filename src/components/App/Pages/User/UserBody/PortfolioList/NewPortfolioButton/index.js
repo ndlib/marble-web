@@ -5,37 +5,39 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
 import { useTranslation } from 'react-i18next'
-import { createData } from '@ndlib/gatsby-theme-marble/src/utils/api'
+import { savePortfolioCollectionQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
+import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
 export const NewPortfolioButton = ({ portfolios, addFunc, loginReducer }) => {
   const { t } = useTranslation()
+  const { portfolioUser, isPorfolioOwner } = useUserContext()
   const [creating, setCreating] = useState(false)
+
+  if (!isPorfolioOwner()) {
+    return null
+  }
+
   return (
     <Button
       onClick={() => {
         setCreating(true)
-        createData({
+        savePortfolioCollectionQuery({
           loginReducer: loginReducer,
-          contentType: 'collection',
-          id: loginReducer.user.uuid,
-          body: {
+          portfolio: {
             title: 'My Portfolio',
             description: null,
-            image: null,
+            imageUri: null,
             layout: 'default',
             privacy: 'private',
-          },
-          successFunc: (data) => successFunc({
-            data: data,
-            portfolios: portfolios,
-            addFunc: addFunc,
-            setCreating: setCreating,
-            userName: loginReducer.user.portfolioUserId,
-          }),
-          errorFunc: (e) => {
+            portfolioUserId: portfolioUser.portfolioUserId,
+          } })
+          .then((data) => {
+            console.log('BIG RESULT', data)
+            setCreating(false)
+          })
+          .catch((e) => {
             console.error(e)
-          },
-        })
+          })
       }}
       variant='light'
       disabled={creating}
@@ -45,8 +47,8 @@ export const NewPortfolioButton = ({ portfolios, addFunc, loginReducer }) => {
 }
 
 NewPortfolioButton.propTypes = {
-  addFunc: PropTypes.func.isRequired,
-  portfolios: PropTypes.array.isRequired,
+  addFunc: PropTypes.func,
+  portfolios: PropTypes.array,
   loginReducer: PropTypes.object.isRequired,
 }
 

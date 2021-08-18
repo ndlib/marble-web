@@ -13,13 +13,14 @@ import { DISPLAY_GRID } from '@ndlib/gatsby-theme-marble/src/store/actions/displ
 import { ownsPage } from '@ndlib/gatsby-theme-marble/src/utils/auth'
 import { removeCollection } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import { NDBrandBreadcrumbs } from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
+import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
 const PortfolioList = ({
-  user,
   loginReducer,
   location,
 }) => {
-  const [portfolios, setPortfolios] = useState(typy(user, 'portfolioCollections.items').safeArray)
+  const { portfolioUser, isPorfolioOwner } = useUserContext()
+  const [portfolios, setPortfolios] = useState(typy(portfolioUser, 'portfolioCollections.items').safeArray)
   const beGone = (portfolio) => {
     const areYouSure = window.confirm('Are you sure you want to delete this protfolio?')
       ? (
@@ -39,12 +40,12 @@ const PortfolioList = ({
       : null
     return areYouSure
   }
-  const isOwner = ownsPage(loginReducer, location)
+  const isOwner = isPorfolioOwner()
   if (portfolios.length > 0) {
     return (
       <>
         <NDBrandBreadcrumbs
-          currentPageTitle={loginReducer.user.fullName}
+          currentPageTitle={portfolioUser.fullName}
           breadcrumbs={[]}
         />
         <CardGroup
@@ -72,7 +73,7 @@ const PortfolioList = ({
                     }
                     <Card
                       label={c.title}
-                      target={`/user/${user.portfolioUserId}/${c.portfolioCollectionId}`}
+                      target={`/user/${portfolioUser.portfolioUserId}/${c.portfolioCollectionId}`}
                       image={c.imageUri !== 'null' ? c.imageUri : ''}
                     >{c.description}
                     </Card>
@@ -97,12 +98,12 @@ const PortfolioList = ({
     <NewPortfolioButton
       addFunc={setPortfolios}
       portfolios={portfolios}
+      loginReducer={loginReducer}
     />
   )} />
 }
 
 PortfolioList.propTypes = {
-  user: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
 }
 

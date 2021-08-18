@@ -1,48 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import UserLayout from './UserLayout'
+import PortfolioUserLayer from '../../Layers/PortfolioUserLayer'
 import UserBody from './UserBody'
-import NoUser from './NoUser'
-import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
-import { getPortfolioUser } from '@ndlib/gatsby-theme-marble/src/utils/api'
 
 const User = ({ loginReducer, userName, location, edit }) => {
-  const [user, setUser] = useState({ portfolioUserId: userName })
-  const [content, setContent] = useState(<Loading />)
-
-  useEffect(() => {
-    const abortController = new AbortController()
-
-    if (loginReducer.token) {
-      getPortfolioUser({ loginReducer: loginReducer })
-        .then((data) => {
-          console.log('BIGD', data)
-          setUser(data)
-          setContent(<UserBody
-            user={data}
-            edit={edit}
-            location={location}
-          />)
-        }
-        )
-        .catch(() => {
-          setContent(<NoUser userName={userName} />)
-        }
-        )
-    }
-    return () => {
-      abortController.abort()
-    }
-  }, [loginReducer, userName, edit, location])
-
   return (
-    <UserLayout
-      user={user}
-      location={location}
-    >
-      {content}
-    </UserLayout>
+    <PortfolioUserLayer userName={userName} location={location} loginReducer={loginReducer}>
+      <UserLayout
+        location={location}
+      >
+        <UserBody
+          user={{}}
+          edit={edit}
+          location={location}
+        />
+      </UserLayout>
+    </PortfolioUserLayer>
   )
 }
 User.propTypes = {

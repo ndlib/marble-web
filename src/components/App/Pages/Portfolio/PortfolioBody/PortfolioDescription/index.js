@@ -6,11 +6,14 @@ import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/Port
 import EditButton from '../EditButton'
 import EditDescription from './EditDescription'
 import sx from './sx'
+import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
-const PortfolioDescription = ({ isOwner }) => {
+const PortfolioDescription = () => {
+  const { isPorfolioOwner } = useUserContext()
   const { portfolio } = usePortfolioContext()
   const [editing, setEditing] = useState(false)
   const { description } = portfolio
+  const isOwner = isPorfolioOwner()
 
   if (editing) {
     return (<EditDescription closeFunc={() => setEditing(false)} />)
@@ -44,7 +47,6 @@ const PortfolioDescription = ({ isOwner }) => {
 }
 
 PortfolioDescription.propTypes = {
-  isOwner: PropTypes.bool,
 }
 
 export default PortfolioDescription

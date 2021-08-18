@@ -17,16 +17,14 @@ import { NDBrandBreadcrumbs } from '@ndlib/gatsby-theme-marble/src/components/Sh
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
 export const UserEdit = ({ loginReducer, location }) => {
-  const { user, setUser } = useUserContext()
-  console.log('userEdit', user)
-  const claims = typy(loginReducer, 'token.claims').safeObject
-  const [fullName, changeName] = useState(user.fullName)
-  const [email, changeEmail] = useState(user.email)
-  const [bio, changeBio] = useState(user.bio)
+  const { portfolioUser, isPorfolioOwner, updatePortfolioUser } = useUserContext()
+  const [fullName, changeName] = useState(portfolioUser.fullName)
+  const [email, changeEmail] = useState(portfolioUser.email)
+  const [bio, changeBio] = useState(portfolioUser.bio)
   const [patching, setPatching] = useState(false)
   const emailRegex = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g
 
-  if (!ownsPage(loginReducer, location)) {
+  if (!isPorfolioOwner()) {
     return (<Unauthorized />)
   }
 
@@ -37,13 +35,11 @@ export const UserEdit = ({ loginReducer, location }) => {
       email: email,
       fullName: fullName,
     }
-    console.log('user=', user)
     savePortfolioUser({ loginReducer: loginReducer, user: newUser })
       .then((data) => {
         setPatching(false)
-        console.log(data)
-        setUser(data)
-        navigate(`/user/${user.portfolioUserId}`)
+        updatePortfolioUser(data)
+        navigate(`/user/${portfolioUser.portfolioUserId}`)
       })
       .catch((e) => {
         console.error(e)
@@ -56,8 +52,8 @@ export const UserEdit = ({ loginReducer, location }) => {
         currentPageTitle='Edit'
         breadcrumbs={[
           {
-            url: `/user/${loginReducer.user.userPorfolioId}`,
-            title: loginReducer.user.fullName,
+            url: `/user/${portfolioUser.userPorfolioId}`,
+            title: portfolioUser.fullName,
           },
         ]}
       />
@@ -69,7 +65,7 @@ export const UserEdit = ({ loginReducer, location }) => {
               if (window.confirm(
                 'Any unsaved changes you have made will be lost.',
               )) {
-                navigate(`/user/${user.portfolioUserId}`)
+                navigate(`/user/${portfolioUser.portfolioUserId}`)
               }
             }}
             disabled={patching}
@@ -87,7 +83,7 @@ export const UserEdit = ({ loginReducer, location }) => {
         <TextField
           id='profileName'
           label='Name'
-          defaultValue={user.fullName}
+          defaultValue={portfolioUser.fullName}
           onChange={(event) => {
             changeName(event.target.value)
           }}
@@ -98,13 +94,13 @@ export const UserEdit = ({ loginReducer, location }) => {
         <TextField
           id='profileUserName'
           label='Username'
-          defaultValue={user.portfolioUserId}
+          defaultValue={portfolioUser.portfolioUserId}
           disabled
         />
         <TextField
           id='profileEmail'
           label='Email Address'
-          defaultValue={user.email}
+          defaultValue={portfolioUser.email}
           onChange={(event) => {
             changeEmail(event.target.value)
           }}
@@ -115,9 +111,8 @@ export const UserEdit = ({ loginReducer, location }) => {
         <TextArea
           id='profileBio'
           label='Bio'
-          defaultValue={user.bio}
+          defaultValue={portfolioUser.bio}
           onChange={(event) => {
-            console.log('change bio')
             changeBio(event.target.value)
           }}
           disabled={patching}
@@ -131,7 +126,7 @@ export const UserEdit = ({ loginReducer, location }) => {
             id='profileGravatar'
             className={style.gravatarEdit}
           >
-            <Gravatar email={user.email} size={100} />
+            <Gravatar email={portfolioUser.email} size={100} />
             <span>User icons are provided by <Link to='https://en.gravatar.com'>Gravatar</Link>, the globally recognized avatar service.</span>
           </div>
         </div>

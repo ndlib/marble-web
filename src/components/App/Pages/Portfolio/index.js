@@ -3,47 +3,27 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
 import PortfolioBody from './PortfolioBody'
-import PortfolioUnavailable from './PortfolioUnavailable'
 import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
 import { getPortfolioQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import { ownsPage } from '@ndlib/gatsby-theme-marble/src/utils/auth'
 import UserLayout from '../User/UserLayout'
+import PortfolioUserLayer from '../../Layers/PortfolioUserLayer'
+import PortfolioLayer from '../../Layers/PortfolioLayer'
 
 export const Portfolio = ({ portfolioId, location, loginReducer }) => {
-  const [content, setContent] = useState(<Loading />)
-
-  useEffect(() => {
-    const abortController = new AbortController()
-    console.log(loginReducer.status)
-    if (loginReducer.status === 'STATUS_NOT_LOGGED_IN' || loginReducer.status === 'STATUS_LOGGED_IN') {
-      const isOwner = ownsPage(loginReducer, location)
-      getPortfolioQuery({ loginReducer: loginReducer, isOwner: isOwner, portfolioId: portfolioId })
-        .then(data => {
-          const { privacy } = data
-          if (privacy === 'private' && !isOwner) {
-            setContent(<PortfolioUnavailable />)
-          } else {
-            setContent(<PortfolioBody
-              location={location}
-              portfolio={data}
-              isOwner={isOwner}
-              loginReducer={loginReducer}
-            />)
-          }
-        })
-        .catch(() => {
-          setContent(<PortfolioUnavailable />)
-        })
-    }
-    return () => {
-      abortController.abort()
-    }
-  }, [portfolioId, loginReducer, location])
-
   return (
-    <UserLayout loginReducer={loginReducer} location={location}>
-      {content}
-    </UserLayout>
+    <PortfolioUserLayer location={location} loginReducer={loginReducer}>
+      <PortfolioLayer portfolioId={portfolioId} location={location} loginReducer={loginReducer}>
+
+        <UserLayout loginReducer={loginReducer} location={location}>
+          <PortfolioBody
+            location={location}
+            loginReducer={loginReducer}
+          />
+        </UserLayout>
+      </PortfolioLayer>
+    </PortfolioUserLayer>
+
   )
 }
 

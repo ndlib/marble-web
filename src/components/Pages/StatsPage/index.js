@@ -16,9 +16,6 @@ export const query = graphql`
         slug
         title
         description
-        collection
-        copyrightRestricted
-        partiallyDigitized
         childrenMarbleFile {
           fileType
           iiif {

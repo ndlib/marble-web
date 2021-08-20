@@ -12,6 +12,7 @@ const PortfolioLayer = ({ loginReducer, children, portfolioId }) => {
   }
 
   const [currentPortfolio, setCurrentPortfolio] = useState({})
+
   const context = {
     portfolio: currentPortfolio,
     updatePortfolio: updatePortfolio,

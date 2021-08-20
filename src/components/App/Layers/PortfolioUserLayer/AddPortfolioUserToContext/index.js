@@ -20,15 +20,9 @@ const PortfolioUserLayer = ({ portfolioUser, children, loginReducer }) => {
     },
   })
 
-  // we have to check if login is not finished communicating with okta and when it is
-  // re render with a new function stating if the current user is the owner of this portfolio section.
-  // this is based on the url /user/netid
   if (loggedInState !== loginReducer.status && loginReducer.status === 'STATUS_LOGGED_IN') {
-    //    setContext({ ...context, isPorfolioOwner: () => portfolioUser.portfolioUserId === loginReducer.user.portfolioUserId })
     setLoggedInState(loginReducer.status)
   } else if (loggedInState === 'STATUS_LOGGED_IN' && loginReducer.status !== loggedInState) {
-    // revert it if somehow the logged in status changes.
-    //    setContext({ ...context, isPorfolioOwner: () => false })
     setLoggedInState(loginReducer.status)
   }
 

@@ -11,9 +11,11 @@ const PortfolioUserLayer = ({ userName, loginReducer, children }) => {
   useEffect(() => {
     const abortController = new AbortController()
 
-    if (loginReducer.token) {
-      getPortfolioUser({ loginReducer: loginReducer })
+    if (loginReducer.status === 'STATUS_NOT_LOGGED_IN' || loginReducer.status === '"STATUS_LOGGED_IN"') {
+      console.log('un=', userName)
+      getPortfolioUser({ userName: userName, loginReducer: loginReducer })
         .then((data) => {
+          console.log('result', data)
           setContent(<AddPortfolioUserToContext loginReducer={loginReducer} portfolioUser={data}>
             {children}
           </AddPortfolioUserToContext>
@@ -40,6 +42,7 @@ const PortfolioUserLayer = ({ userName, loginReducer, children }) => {
 PortfolioUserLayer.propTypes = {
   loginReducer: PropTypes.object.isRequired,
   children: PropTypes.object.isRequired,
+  userName: PropTypes.string.isRequired,
 }
 
 export default PortfolioUserLayer

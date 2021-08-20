@@ -84,7 +84,7 @@ const StatsPage = () => {
 
   const pageTitle = 'Statistics'
   return (
-    <NDBrandSection variant='fullBleed' sx={{ '& div.sectionContent': { maxWidth: 'inherit', minWidth: '90vw' } }}>
+    <NDBrandSection variant='fullBleed' sx={{ '& div.sectionContent': { maxWidth: 'inherit', width: '100%' } }}>
       <NDBrandBreadcrumbs
         currentPageTitle={pageTitle}
         breadcrumbs={[]}

@@ -13,6 +13,7 @@ import { DISPLAY_GRID } from '@ndlib/gatsby-theme-marble/src/store/actions/displ
 import { removeCollection } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import { NDBrandBreadcrumbs } from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
+import { FaTrash } from 'react-icons/fa'
 
 const PortfolioList = ({
   loginReducer,
@@ -62,11 +63,9 @@ const PortfolioList = ({
                     {
                       isOwner
                         ? (
-                          <Button
-                            variant='light'
-                            onClick={() => beGone(c)}
-                          >Delete
-                          </Button>
+                          <div>
+                            <VisibilityLabel visibility={c.privacy} />
+                          </div>
                         )
                         : null
                     }
@@ -79,9 +78,11 @@ const PortfolioList = ({
                     {
                       isOwner
                         ? (
-                          <div>
-                            <VisibilityLabel visibility={c.privacy} />
-                          </div>
+                          <Button
+                            variant='inverse'
+                            onClick={() => beGone(c)}
+                          ><FaTrash sx={{ color: 'red' }} />
+                          </Button>
                         )
                         : null
                     }

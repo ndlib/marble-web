@@ -54,7 +54,7 @@ const PrivacyEditSettings = ({ callBack, loginReducer }) => {
 
 PrivacyEditSettings.propTypes = {
   callBack: PropTypes.func.isRequired,
-  loginReducer: PropTypes.func.isRequired,
+  loginReducer: PropTypes.object.isRequired,
 }
 
 export const mapStateToProps = (state) => {

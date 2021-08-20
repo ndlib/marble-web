@@ -10,7 +10,6 @@ import NewPortfolioButton from './NewPortfolioButton'
 import NoPortfolios from './NoPortfolios'
 import VisibilityLabel from '@ndlib/gatsby-theme-marble/src/components/Shared/VisibilityLabel'
 import { DISPLAY_GRID } from '@ndlib/gatsby-theme-marble/src/store/actions/displayActions'
-import { ownsPage } from '@ndlib/gatsby-theme-marble/src/utils/auth'
 import { removeCollection } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import { NDBrandBreadcrumbs } from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
@@ -96,8 +95,6 @@ const PortfolioList = ({
   }
   return <NoPortfolios isOwner={isOwner} button={(
     <NewPortfolioButton
-      addFunc={setPortfolios}
-      portfolios={portfolios}
       loginReducer={loginReducer}
     />
   )} />
@@ -105,6 +102,7 @@ const PortfolioList = ({
 
 PortfolioList.propTypes = {
   loginReducer: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export const mapStateToProps = (state) => {

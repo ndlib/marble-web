@@ -1,14 +1,13 @@
 /** @jsx jsx */
-import { jsx, Button } from 'theme-ui'
 import React, { useState } from 'react'
+import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
 import { useTranslation } from 'react-i18next'
 import { savePortfolioCollectionQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
-export const NewPortfolioButton = ({ portfolios, addFunc, loginReducer }) => {
+export const NewPortfolioButton = ({ loginReducer }) => {
   const { t } = useTranslation()
   const { portfolioUser, isPorfolioOwner } = useUserContext()
   const [creating, setCreating] = useState(false)
@@ -32,7 +31,7 @@ export const NewPortfolioButton = ({ portfolios, addFunc, loginReducer }) => {
             portfolioUserId: portfolioUser.portfolioUserId,
           } })
           .then((data) => {
-            console.log('BIG RESULT', data)
+            navigate(`/user/${portfolioUser.portfolioUserId}/${data.portfolioCollectionId}`)
             setCreating(false)
           })
           .catch((e) => {
@@ -47,22 +46,7 @@ export const NewPortfolioButton = ({ portfolios, addFunc, loginReducer }) => {
 }
 
 NewPortfolioButton.propTypes = {
-  addFunc: PropTypes.func,
-  portfolios: PropTypes.array,
   loginReducer: PropTypes.object.isRequired,
 }
 
-export const mapStateToProps = (state) => {
-  return { ...state }
-}
-export default connect(
-  mapStateToProps,
-)(NewPortfolioButton)
-
-export const successFunc = ({ data, portfolios, addFunc, setCreating, userName }) => {
-  const ps = [...portfolios]
-  ps.unshift(data)
-  addFunc(ps)
-  setCreating(false)
-  navigate(`/user/${userName}/${data.uuid}`)
-}
+export default NewPortfolioButton

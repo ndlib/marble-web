@@ -12,7 +12,7 @@ const GridListView = ({ items, userId, isOwner }) => {
           return (
             <Item
               item={item}
-              key={item.uuid}
+              key={item.portfolioItemId}
               userId={userId}
               isOwner={isOwner}
             />

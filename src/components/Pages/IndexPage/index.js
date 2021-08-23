@@ -74,7 +74,7 @@ const IndexPage = ({ location }) => {
           {t('common:search.browseBy')}
         </Heading>
 
-        <Flex sx={{ flexWrap: 'wrap', width: '100%', minWidth: '90vw' }}>
+        <Flex sx={{ flexWrap: 'wrap', width: '100%' }}>
           <Box sx={{ width: ['100%', '100%', '33.3%'], px: '1rem', py: '.5rem' }}>
             <BrowseBar
               label='Date'

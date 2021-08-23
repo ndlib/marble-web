@@ -8,7 +8,7 @@ import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared
 const DisclaimerPage = () => {
   const { t } = useTranslation()
   return (
-    <NDBrandSection variant='fullBleed' sx={{ '& div.sectionContent': { maxWidth: 'inherit', minWidth: '90vw' } }}>
+    <NDBrandSection variant='fullBleed' sx={{ '& div.sectionContent': { maxWidth: 'inherit', minWidth: '100%' } }}>
       <NDBrandBreadcrumbs
         currentPageTitle={t('text:disclaimerPage.title')}
         breadcrumbs={[]}

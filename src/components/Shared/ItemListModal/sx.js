@@ -1,6 +1,9 @@
 module.exports = {
   listItem: {
-    marginBottom: '1em',
+    margin: '1rem',
+    '&:not(:first-of-type)': {
+      marginTop: '0',
+    },
     '&:last-child': {
       marginBottom: '0',
     },

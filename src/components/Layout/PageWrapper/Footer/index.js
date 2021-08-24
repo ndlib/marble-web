@@ -36,7 +36,7 @@ const footerSx = {
   position: 'static',
 }
 
-export const Footer = (location, variant) => {
+export const Footer = ({ location, variant }) => {
   const { menusJson } = useStaticQuery(menuQuery)
   const menu = typy(menusJson, 'items').safeArray
   return (

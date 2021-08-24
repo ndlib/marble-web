@@ -3,7 +3,6 @@
 import React from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import SkipToMain from '@ndlib/gatsby-theme-marble/src/components/Shared/SkipToMain'
 import NDBrandLayout from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Layout'
 import MarbleLogoMono from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Logos/MarbleLogoMono'
 import Footer from './Footer'
@@ -16,7 +15,6 @@ const PageWrapper = ({ children, location, pageHeader }) => {
   }
   return (
     <>
-      <SkipToMain location={location} />
       <NDBrandLayout
         location={location}
         titleOverride={<MarbleLogoMono />}

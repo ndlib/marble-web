@@ -39,4 +39,4 @@ This site was collaboratively developed by the Snite Museum of Art and Hesburgh 
 ### Development Tools
 * The Digital Collections front end is built using [Gatsbyjs](https://gatsbyjs.org).
 * Our zoomable, high-resolution images are driven by [IIIF](https://iiif.io).
-* The code for the Marble project was developed by the Hesburgh Libraries development team. Is open by default and published on [Github](https://github.com/ndlib/marble-website-starter)
+* The code for the Marble project was developed by the Hesburgh Libraries development team and is open by default and published on [Github](https://github.com/ndlib/marble-website-starter)

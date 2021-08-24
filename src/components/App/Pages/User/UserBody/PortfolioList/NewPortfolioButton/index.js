@@ -38,7 +38,7 @@ export const NewPortfolioButton = ({ loginReducer }) => {
             console.error(e)
           })
       }}
-      variant='light'
+      variant='primary'
       disabled={creating}
     >{t('common:button.createPortfolio')}
     </Button>

@@ -19,7 +19,7 @@ Note: You must have Notre Dame credentials to create portfolios. Please be prepa
 
 ## How to Create a Portfolio
 
-__STEP 1: Create a Portfolio__
+__STEP 1: Create a profile__
 1. New users must first log in with a Notre Dame NetID to create a profile for your “My Account” page.
 2. [Review the Responsible Use policy](https://policy.nd.edu/assets/185268/responsible_use_it_resources_2015.pdf).
 

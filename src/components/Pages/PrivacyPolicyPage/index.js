@@ -8,18 +8,19 @@ import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared
 const PrivacyPolicyPage = () => {
   const { t } = useTranslation()
   return (
-    <NDBrandSection variant='fullBleed' sx={{ '& div.sectionContent': { maxWidth: 'inherit', minWidth: '90vw' } }}>
+    <NDBrandSection variant='fullBleed' sx={{ '& div.sectionContent': { maxWidth: 'inherit', width: '100%' } }}>
       <NDBrandBreadcrumbs
         currentPageTitle={t('text:privacyPolicyPage.title')}
         breadcrumbs={[]}
       />
-      <Heading as='h1' variant='pageTitle'>{t('text:privacyPolicyPage.title')}</Heading>
-
-      <Flex sx={{ flexWrap: 'wrap' }}>
-        <Box sx={{ width: '100%', px: '1rem', py: '1rem' }}>
-          <Html html={t('text:privacyPolicyPage.text')} />
-        </Box>
-      </Flex>
+      <main>
+        <Heading as='h1' variant='pageTitle'>{t('text:privacyPolicyPage.title')}</Heading>
+        <Flex sx={{ flexWrap: 'wrap' }}>
+          <Box sx={{ width: '100%', px: '1rem', py: '1rem' }}>
+            <Html html={t('text:privacyPolicyPage.text')} />
+          </Box>
+        </Flex>
+      </main>
     </NDBrandSection>
   )
 }

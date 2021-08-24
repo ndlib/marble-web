@@ -4,8 +4,9 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
-import { jsx } from 'theme-ui'
+import { jsx, Heading } from 'theme-ui'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
+import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 
 export const AllPage = ({
   data,
@@ -46,7 +47,15 @@ export const AllPage = ({
         title='Sitemap'
       />
       {
-      // <h2>Items</h2>
+      <React.Fragment>
+        <NDBrandBreadcrumbs
+        currentPageTitle='Sitemap'
+        breadcrumbs={[]}
+        />
+        <main>
+          <Heading as='h1' variant='pageTitle'>Sitemap</Heading>
+        </main>
+      </React.Fragment>
       }
       <ul>{items()}</ul>
       {

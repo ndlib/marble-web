@@ -10,7 +10,7 @@ import BrowseBar from '@ndlib/gatsby-theme-marble/src/components/Shared/BrowseBa
 import ManifestCard from '@ndlib/gatsby-theme-marble/src/components/Shared/ManifestCard'
 import { useTranslation } from 'react-i18next'
 import findMetadata from 'utils/findMetadata'
-import GoogleVerification from './GoogleVerification'
+import SearchVerification from './SearchVerification'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import Html from '@ndlib/gatsby-theme-marble/src/components/Shared/Html'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
@@ -131,7 +131,7 @@ const IndexPage = ({ location }) => {
           }
         </CardGroup>
       </NDBrandSection>
-      <GoogleVerification />
+      <SearchVerification />
     </React.Fragment>
   )
 }

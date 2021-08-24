@@ -84,7 +84,7 @@ const Browse = ({ location }) => {
     },
     {
       label: 'Texts',
-      target: '/search?format[0]=Language material',
+      target: '/search?format[0]=Serial&format[1]=Book&format[2]=manuscripts&format[3]=Newspaper&format[4]=Document&format[5]=Language%20material&format[6]=Fiction',
     },
     {
       label: 'Textiles',
@@ -141,7 +141,7 @@ const Browse = ({ location }) => {
           <Flex sx={{ flexWrap: 'wrap' }}>
             <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
               <div id='date'>
-                  <Heading as='h2'>Browse By Date</Heading>
+                <Heading as='h2'>Browse By Date</Heading>
               </div>
             </Box>
             <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>

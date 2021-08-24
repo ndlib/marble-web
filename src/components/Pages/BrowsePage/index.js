@@ -8,8 +8,8 @@ import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared
 const Browse = ({ location }) => {
   const dates = [
     {
-      label: '1300-1399',
-      target: '/search?timeperiod[0]=1300-1399',
+      label: 'Pre-1400',
+      target: '/search?timeperiod[0]=Pre-1400',
     },
     {
       label: '1400-1499',

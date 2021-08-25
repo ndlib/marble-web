@@ -55,6 +55,7 @@ module.exports = {
         key: graphQlKey,
         website: 'marble',
         iiifRoot: 'https://iiif-manifest.library.nd.edu',
+        timePeriodCutoff: 1400,
         useFixtures: useFixtures,
         // updateFixtures: true,
         // debug: true,

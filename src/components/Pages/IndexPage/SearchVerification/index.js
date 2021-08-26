@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-export const GoogleVerification = () => {
+export const SearchVerification = () => {
   return (
     <Helmet>
       <meta
@@ -33,8 +33,18 @@ export const GoogleVerification = () => {
         content='kiUlnvDP0sZ96LCd5lRAbBvMxYVje53ppg2omqweX2Q'
         user='dw'
       />
+      <meta
+        name='yandex-verification'
+        content='26e8b10857c012b8'
+        user='pw'
+      />
+      <meta
+        name='msvalidate.01'
+        content='C307D552024FFC4966541DEABD413761'
+        user='pw'
+      />
     </Helmet>
   )
 }
 
-export default GoogleVerification
+export default SearchVerification

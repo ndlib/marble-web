@@ -1,14 +1,10 @@
 module.exports = {
-  input: (valid) => {
-    return {
-      border: valid ? '1px solid' : '2px solid',
-      borderColor: valid ? 'gray.0' : 'attention',
-      display: 'inline-block',
-      fontFamily: 'heading',
-      fontSize: '26px',
-      
-      width: ['100%', 'calc(100% - 230px)', 'calc(100% - 230px)'],
-    }
+  input: {
+    fontFamily: 'heading',
+    fontSize: '26px',
+  },
+  inputWrapper: {
+    margin: '1em',
   },
   buttonWrapper: {
     marginLeft: '.5rem',

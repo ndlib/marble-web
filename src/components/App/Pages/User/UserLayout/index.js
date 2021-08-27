@@ -24,7 +24,7 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
       />
       <NDBrandSectionLeftNav location={location}>
         <NDBrandSection variant='sidebar'>
-          <Flex sx={{ flexWrap: 'wrap', }}>
+          <Flex sx={{ flexWrap: 'wrap' }}>
             <Box sx={{ width: ['25%', '100%', '100%'] }}>
               <Gravatar email={user.email} />
             </Box>

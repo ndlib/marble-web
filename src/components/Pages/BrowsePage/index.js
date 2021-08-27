@@ -1,11 +1,12 @@
 /** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { jsx, Flex, Box, Heading } from 'theme-ui'
 import MiniCard from '@ndlib/gatsby-theme-marble/src/components/Shared/MiniCard'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 
-const Browse = ({ location }) => {
+const Browse = () => {
   const dates = [
     {
       label: 'Pre-1400',

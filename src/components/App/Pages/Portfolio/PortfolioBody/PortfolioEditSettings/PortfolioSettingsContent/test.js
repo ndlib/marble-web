@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import PortfolioSettingsContent from './'
 import * as PortfolioContext from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
-import SaveOrCancelButtons from '../../SaveOrCancelButtons'
 import VisibilitySettings from './VisibilitySettings'
 import LayoutSettings from './LayoutSettings'
 import DangerDelete from './DangerDelete'
@@ -15,9 +14,7 @@ test('PortfolioSettingsContent', () => {
       },
     }
   })
-  const callBack = jest.fn()
-  const wrapper = shallow(<PortfolioSettingsContent callBack={callBack} />)
-  expect(wrapper.find(SaveOrCancelButtons).exists()).toBeTruthy()
+  const wrapper = shallow(<PortfolioSettingsContent onChangeLayout={jest.fn()} onChangePrivacy={jest.fn()} />)
   expect(wrapper.find(VisibilitySettings).exists()).toBeTruthy()
   expect(wrapper.find(LayoutSettings).exists()).toBeTruthy()
   expect(wrapper.find(DangerDelete).exists()).toBeTruthy()

@@ -1,3 +1,5 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Button } from 'theme-ui'
@@ -18,21 +20,23 @@ const PortfolioList = ({
 }) => {
   const [portfolios, setPortfolios] = useState(user.collections || [])
   const beGone = (portfolio) => {
-    const areYouSure = window.confirm('Are you sure you want to delete this protfolio?') ? (
-      deleteData({
-        loginReducer: loginReducer,
-        contentType: 'collection',
-        id: portfolio.uuid,
-        successFunc: () => {
-          setPortfolios(portfolios.filter(p => {
-            return p.uuid !== portfolio.uuid
-          }))
-        },
-        errorFunc: (e) => {
-          console.error(e)
-        },
-      })
-    ) : null
+    const areYouSure = window.confirm('Are you sure you want to delete this protfolio?')
+      ? (
+        deleteData({
+          loginReducer: loginReducer,
+          contentType: 'collection',
+          id: portfolio.uuid,
+          successFunc: () => {
+            setPortfolios(portfolios.filter(p => {
+              return p.uuid !== portfolio.uuid
+            }))
+          },
+          errorFunc: (e) => {
+            console.error(e)
+          },
+        })
+      )
+      : null
     return areYouSure
   }
   const loggedIn = isLoggedIn(loginReducer)
@@ -43,8 +47,8 @@ const PortfolioList = ({
         <CardGroup
           defaultDisplay={DISPLAY_GRID}
           toggleGroup='compilations-page'
-          extraControls={isOwner ? () => {
-            return (
+          extraControls={isOwner
+            ? (
               <span style={{
                 float: 'left',
                 verticalAlign: 'top',
@@ -56,9 +60,8 @@ const PortfolioList = ({
                 />
               </span>
             )
-          } : () => {
-            return null
-          }}
+            : null
+          }
         >
           {
             typy(portfolios).safeArray
@@ -74,12 +77,13 @@ const PortfolioList = ({
                     {
                       isOwner
                         ? (
-                            <Button
-                              variant='light'
-                              onClick={() => beGone(c)}
-                            >Delete
-                            </Button>
-                        ) : null
+                          <Button
+                            variant='light'
+                            onClick={() => beGone(c)}
+                          >Delete
+                          </Button>
+                        )
+                        : null
                     }
                     <Card
                       label={c.title}
@@ -88,11 +92,13 @@ const PortfolioList = ({
                     >{c.description}
                     </Card>
                     {
-                      isOwner ? (
-                        <div>
-                          <VisibilityLabel visibility={c.privacy} />
-                        </div>
-                      ) : null
+                      isOwner
+                        ? (
+                          <div>
+                            <VisibilityLabel visibility={c.privacy} />
+                          </div>
+                        )
+                        : null
                     }
                   </div>
                 )

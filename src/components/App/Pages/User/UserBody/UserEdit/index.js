@@ -1,4 +1,5 @@
 /** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -32,7 +33,7 @@ export const UserEdit = ({ user, loginReducer }) => {
           onClick={(e) => {
             e.preventDefault()
             if (window.confirm(
-              `Any unsaved changes you have made will be lost.`,
+              'Any unsaved changes you have made will be lost.',
             )) {
               navigate(`/user/${user.userName}`)
             }
@@ -93,7 +94,7 @@ export const UserEdit = ({ user, loginReducer }) => {
           changeEmail(event.target.value)
         }}
         disabled={patching}
-        valid={email.match(emailRegex)}
+        valid={!!email.match(emailRegex)}
         warning='Email must be a valid address.'
       />
       <TextArea

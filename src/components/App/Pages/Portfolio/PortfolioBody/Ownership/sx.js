@@ -21,6 +21,7 @@ module.exports = {
   button: {
     border: '0px',
     margin: '0px',
-    backgroundColor: 'background'
-  }
+    backgroundColor: 'background',
+    cursor: 'pointer',
+  },
 }

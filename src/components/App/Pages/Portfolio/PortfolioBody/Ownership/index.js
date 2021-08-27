@@ -10,6 +10,7 @@ import ActionModal from '@ndlib/gatsby-theme-marble/src/components/Shared/Action
 import PrivacyEditSettings from './PrivacyEditSettings'
 import ShareButton from '@ndlib/gatsby-theme-marble/src/components/Shared/ShareButton'
 import PrintButton from '@ndlib/gatsby-theme-marble/src/components/Shared/PrintButton'
+import SaveOrCancelButtons from '../SaveOrCancelButtons'
 
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import sx from './sx'
@@ -17,26 +18,40 @@ import sx from './sx'
 export const Ownership = ({ isOwner }) => {
   const { portfolio } = usePortfolioContext()
   const [settingsOpen, setSettingsOpen] = useState(false)
-  const { privacy, userId, uuid } = portfolio
+  const [patching, setPatching] = useState(false)
+  const [privacy, changePrivacy] = useState(portfolio.privacy)
+  const { userId, uuid } = portfolio
   if (isOwner) {
     return (
       <div sx={sx.wrapper}>
         <div sx={sx.visibilityWrapper}>
-        This is your <button sx={sx.button}
-        onClick={() => setSettingsOpen(true)}
-      ><VisibilityLabel visibility={privacy} /></button> portfolio.
-      <ActionModal
-        isOpen={settingsOpen}
-        contentLabel={`Settings for <em>${portfolio.title}</em>`}
-        closeFunc={() => setSettingsOpen(false)}
-        fullscreen
-      >
-        <PrivacyEditSettings
-          callBack={() => {
-            setSettingsOpen(false)
-          }}
-        />
-      </ActionModal>
+          This is your
+          <button sx={sx.button} onClick={() => setSettingsOpen(true)}>
+            <VisibilityLabel visibility={portfolio.privacy} />
+          </button>
+          portfolio.
+          <ActionModal
+            isOpen={settingsOpen}
+            contentLabel={`Settings for <em>${portfolio.title}</em>`}
+            closeFunc={() => setSettingsOpen(false)}
+            fullscreen
+            footer={(
+              <div sx={{ textAlign: 'right', '& > button': { marginLeft: '.5rem' } }}>
+                <SaveOrCancelButtons
+                  closeFunc={() => setSettingsOpen(false)}
+                  patching={patching}
+                  setPatching={setPatching}
+                  body={{
+                    privacy: privacy || 'private',
+                  }}
+                  valid
+                  changed={privacy !== portfolio.privacy}
+                />
+              </div>
+            )}
+          >
+            <PrivacyEditSettings onPrivacyChange={changePrivacy} />
+          </ActionModal>
         </div>
         <div sx={sx.shareWrapper}>
           <ShareButton path={`myportfolio/${uuid}`} />

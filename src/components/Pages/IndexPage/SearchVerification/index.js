@@ -7,7 +7,7 @@ export const SearchVerification = () => {
       <meta
         name='google-site-verification'
         content='i5bUlLd7k9T3I_XoLupYuPOrZGkJ8BMSX9EIcEXjU0w'
-        userId='pw'
+        user='pw'
       />
       <meta
         name='google-site-verification'
@@ -15,7 +15,8 @@ export const SearchVerification = () => {
         user='mk'
       />
       <meta
-        name='google-site-verification' content='qq7fBdp8zPSI3R9_LFQ4YFmBzTw7Etg5M5HbSgZ_hak'
+        name='google-site-verification'
+        content='qq7fBdp8zPSI3R9_LFQ4YFmBzTw7Etg5M5HbSgZ_hak'
         user='rf'
       />
       <meta

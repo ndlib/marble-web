@@ -9,6 +9,7 @@ const EditUserButton = ({ userName }) => {
     <Button
       onClick={() => navigate(`/user/${userName}/edit`)}
       variant='primary'
+      sx={{ mb: '1em' }}
     >{t('common:button.userEdit')}
     </Button>
   )

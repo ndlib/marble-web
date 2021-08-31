@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, Button } from 'theme-ui'
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -8,9 +9,9 @@ import { deleteData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import * as style from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/style.module.css'
 
 export const DangerDelete = ({ portfolio, loginReducer }) => {
-  const warning = `Once you delete this portfolio it can not be recovered.`
-  const groupId = `danger`
-  const fieldId = `delete`
+  const warning = 'Once you delete this portfolio it can not be recovered.'
+  const groupId = 'danger'
+  const fieldId = 'delete'
   return (
     <div
       id={groupId}

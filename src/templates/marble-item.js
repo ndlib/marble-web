@@ -14,10 +14,9 @@ import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDB
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 import ReturnToSearch from '@ndlib/gatsby-theme-marble/src/components/Shared/ReturnToSearch'
 import UserAnnotation from '@ndlib/gatsby-theme-marble/src/components/Shared/UserAnnotation'
-import { useTranslation } from 'react-i18next'
 import typy from 'typy'
 
-export const MarbleItemPage = ({ data, location }) => {
+const MarbleItemPage = ({ data, location }) => {
   const { marbleItem, allMarbleFile } = data
 
   let breadcrumbs = null
@@ -44,13 +43,14 @@ export const MarbleItemPage = ({ data, location }) => {
         {breadcrumbs}
         <main>
           <Heading as='h1' variant='pageTitle'>{marbleItem.title}</Heading>
-          {
-            marbleItem.display === 'collection' ? (
+          {marbleItem.display === 'collection'
+            ? (
               <CollectionLayout
                 location={location}
                 marbleItem={marbleItem}
               />
-            ) : (
+            )
+            : (
               <ItemLayout
                 location={location}
                 marbleItem={marbleItem}
@@ -60,11 +60,9 @@ export const MarbleItemPage = ({ data, location }) => {
           }
           <RelatedItemsFromSearch marbleItem={marbleItem} />
           <UserAnnotation location={location} />
-
-          {
-            debug ? (
-              <pre>{JSON.stringify(data, null, 2)}</pre>
-            ) : null
+          {debug
+            ? <pre>{JSON.stringify(data, null, 2)}</pre>
+            : null
           }
         </main>
       </NDBrandSection>

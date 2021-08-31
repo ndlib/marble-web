@@ -4,10 +4,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { patchData, getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import * as style from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/style.module.css'
+import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
 import { jsx, Heading, Button } from 'theme-ui'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import SetPortfolioImage from './SetPortfolioImage'
-import sx from './sx'
 
 export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
   const { portfolio, updatePortfolio } = usePortfolioContext()
@@ -30,11 +30,11 @@ export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
   }
   return (
     <React.Fragment>
-      <div className={style.buttonGroup}>
+      <div className={style.buttonGroup} sx={{ mb: '1em' }}>
         <Button
           onClick={() => closeFunc()}
           variant='light'
-          >
+        >
           Cancel
         </Button>
         <Button
@@ -53,20 +53,15 @@ export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
         </Button>
       </div>
       <Heading as='h2'>{item.title}</Heading>
-      <label
-        htmlFor='annotation'
-        className='accessibilityOnly'
-      >Annotation
-      </label>
-      <textarea
-        id='annotation'
+      <TextArea
+        id={`${item.uuid}_annotation`}
         defaultValue={annotation}
         onChange={(event) => {
           changeAnnotation(event.target.value)
         }}
         disabled={patching}
-        sx={sx.textArea}
-        aria-label='Annotation'
+        label='Annotation'
+        hideLabel
       />
       <SetPortfolioImage item={item} />
     </React.Fragment>

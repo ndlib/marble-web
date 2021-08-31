@@ -1,4 +1,7 @@
 module.exports = {
+  pageTitle: {
+    display: ['block', 'block', 'block', 'none'],
+  },
   h1: {
     fontFamily: 'menu',
     fontSize: '24px',

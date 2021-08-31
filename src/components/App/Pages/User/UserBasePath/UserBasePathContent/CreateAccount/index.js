@@ -9,7 +9,6 @@ import WelcomeMessage from './WelcomeMessage'
 import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
 import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
 import { createNewUser } from '@ndlib/gatsby-theme-marble/src/store/actions/loginActions'
-import * as style from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/style.module.css'
 
 const CreateAccount = ({ loginReducer, dispatch }) => {
   const claims = typy(loginReducer, 'token.claims').safeObject
@@ -20,7 +19,7 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
   const emailRegex = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g
 
   return (
-    <form className={style.loginArea}>
+    <form>
       <Heading as='h1' variant='pageTitle'>Finalize Account</Heading>
       <WelcomeMessage />
       <TextField

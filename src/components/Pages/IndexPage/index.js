@@ -7,7 +7,7 @@ import { jsx, useThemeUI, Flex, Box, Heading, Button } from 'theme-ui'
 import typy from 'typy'
 import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/CardGroup'
 import BrowseBar from '@ndlib/gatsby-theme-marble/src/components/Shared/BrowseBar'
-import ManifestCard from '@ndlib/gatsby-theme-marble/src/components/Shared/ManifestCard'
+import MarbleItemCard from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard/MarbleItemCard'
 import { useTranslation } from 'react-i18next'
 import findMetadata from 'utils/findMetadata'
 import SearchVerification from './SearchVerification'
@@ -116,9 +116,9 @@ const IndexPage = ({ location }) => {
           {
             nodes.map(item => {
               return (
-                <ManifestCard
+                <MarbleItemCard
                   key={item}
-                  label={item.title}
+                  title={item.title}
                   target={item.slug}
                   image={typy(item, 'childrenMarbleFile[0].iiif.thumbnail').safeString}
                   type={item.display}

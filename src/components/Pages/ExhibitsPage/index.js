@@ -2,7 +2,8 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/CardGroup'
-import Card from '@ndlib/gatsby-theme-marble/src/components/Shared/Card'
+import DisplayCard from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard'
+import CardBadge from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard/CardBadge'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
@@ -67,11 +68,12 @@ const ExhibitsPage = () => {
             {
               exhibits.map(exhibit => {
                 return (
-                  <Card
+                  <DisplayCard
                     key={exhibit.label}
-                    label={exhibit.label}
+                    title={exhibit.label}
                     image={exhibit.image}
                     target={exhibit.target}
+                    rightBadge={<CardBadge type='link'/>}
                   />
                 )
               })

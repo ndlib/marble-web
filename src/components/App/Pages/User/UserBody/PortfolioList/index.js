@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+/** @jsx jsx */
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Button } from 'theme-ui'
 import { connect } from 'react-redux'
 import typy from 'typy'
 import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/CardGroup'
-import Card from '@ndlib/gatsby-theme-marble/src/components/Shared/Card'
+import DisplayCard from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard'
 import NewPortfolioButton from './NewPortfolioButton'
 import NoPortfolios from './NoPortfolios'
 import VisibilityLabel from '@ndlib/gatsby-theme-marble/src/components/Shared/VisibilityLabel'
@@ -18,32 +19,34 @@ const PortfolioList = ({
 }) => {
   const [portfolios, setPortfolios] = useState(user.collections || [])
   const beGone = (portfolio) => {
-    const areYouSure = window.confirm('Are you sure you want to delete this protfolio?') ? (
-      deleteData({
-        loginReducer: loginReducer,
-        contentType: 'collection',
-        id: portfolio.uuid,
-        successFunc: () => {
-          setPortfolios(portfolios.filter(p => {
-            return p.uuid !== portfolio.uuid
-          }))
-        },
-        errorFunc: (e) => {
-          console.error(e)
-        },
-      })
-    ) : null
+    const areYouSure = window.confirm('Are you sure you want to delete this protfolio?')
+      ? (
+        deleteData({
+          loginReducer: loginReducer,
+          contentType: 'collection',
+          id: portfolio.uuid,
+          successFunc: () => {
+            setPortfolios(portfolios.filter(p => {
+              return p.uuid !== portfolio.uuid
+            }))
+          },
+          errorFunc: (e) => {
+            console.error(e)
+          },
+        })
+      )
+      : null
     return areYouSure
   }
   const loggedIn = isLoggedIn(loginReducer)
   const isOwner = ownsPage(loginReducer, user.uuid)
   if (portfolios.length > 0) {
     return (
-      <>
-        <CardGroup
-          defaultDisplay={DISPLAY_GRID}
-          toggleGroup='compilations-page'
-          extraControls={isOwner ? () => {
+      <CardGroup
+        defaultDisplay={DISPLAY_GRID}
+        toggleGroup='compilations-page'
+        extraControls={isOwner
+          ? () => {
             return (
               <span style={{
                 float: 'left',
@@ -56,50 +59,42 @@ const PortfolioList = ({
                 />
               </span>
             )
-          } : () => {
+          }
+          : () => {
             return null
           }}
-        >
-          {
-            typy(portfolios).safeArray
-              .filter(c => {
-                return viewable(c, loggedIn, isOwner)
-              })
-              .sort((a, b) => {
-                return b.updated - a.updated
-              })
-              .map((c, index) => {
-                return (
-                  <div key={index} sx={{ position: 'relative' }}>
-                    {
-                      isOwner
-                        ? (
-                            <Button
-                              variant='light'
-                              onClick={() => beGone(c)}
-                            >Delete
-                            </Button>
-                        ) : null
-                    }
-                    <Card
-                      label={c.title}
-                      target={`/myportfolio/${c.uuid}`}
-                      image={c.image || ''}
-                    >{c.description}
-                    </Card>
-                    {
-                      isOwner ? (
-                        <div>
-                          <VisibilityLabel visibility={c.privacy} />
-                        </div>
-                      ) : null
-                    }
-                  </div>
-                )
-              })
-          }
-        </CardGroup>
-      </>
+      >
+        {
+          typy(portfolios).safeArray
+            .filter(c => {
+              return viewable(c, loggedIn, isOwner)
+            })
+            .sort((a, b) => {
+              return b.updated - a.updated
+            })
+            .map((c, index) => {
+              return (
+                <DisplayCard
+                  key={index}
+                  title={c.title}
+                  target={`/myportfolio/${c.uuid}`}
+                  image={c.image || ''}
+                  leftBadge={isOwner ? <VisibilityLabel visibility={c.privacy} /> : null}
+                  controls={isOwner
+                    ? (
+                      <Button
+                        variant='light'
+                        onClick={() => beGone(c)}
+                      >Delete
+                      </Button>
+                    )
+                    : null}
+                >{c.description}
+                </DisplayCard>
+              )
+            })
+        }
+      </CardGroup>
     )
   }
   return <NoPortfolios isOwner={isOwner} button={(

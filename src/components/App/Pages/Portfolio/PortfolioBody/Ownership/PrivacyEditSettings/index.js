@@ -1,48 +1,31 @@
 /** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Flex, Box } from 'theme-ui'
 import VisibilitySettings from '../../PortfolioEditSettings/PortfolioSettingsContent/VisibilitySettings'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
-import SaveOrCancelButtons from '../../SaveOrCancelButtons'
 
-const PrivacyEditSettings = ({ callBack }) => {
+const PrivacyEditSettings = ({ onPrivacyChange }) => {
   const { portfolio } = usePortfolioContext()
-  const [privacy, changePrivacy] = useState(portfolio.privacy)
-  const [patching, setPatching] = useState(false)
 
   return (
-    <>
-      <div sx={{textAlign: 'right', '& > button': {marginLeft: '.5rem'}}}>
-        <SaveOrCancelButtons
-          closeFunc={callBack}
-          patching={patching}
-          setPatching={setPatching}
-          body={{
-            privacy: privacy || 'private',
-          }}
-          valid
-          changed={ privacy !== portfolio.privacy}
-        />
-      </div>
-      <Flex sx={{ flexWrap: 'wrap' }}>
-        <Box sx={{ width: ['100%', '66%'], px: '1rem', py: '1rem' }}>
-          <label htmlFor='visibility'>
-            <h2>Privacy</h2>
-            <VisibilitySettings
-              portfolio={portfolio}
-              onChange={changePrivacy}
-            />
-          </label>
-        </Box>
-      </Flex>
-
-    </>
+    <Flex sx={{ flexWrap: 'wrap' }}>
+      <Box sx={{ width: ['100%', '66%'], px: '1rem', py: '1rem' }}>
+        <label htmlFor='visibility'>
+          <h2>Privacy</h2>
+          <VisibilitySettings
+            portfolio={portfolio}
+            onChange={onPrivacyChange}
+          />
+        </label>
+      </Box>
+    </Flex>
   )
 }
 
 PrivacyEditSettings.propTypes = {
-  callBack: PropTypes.func.isRequired,
+  onPrivacyChange: PropTypes.func.isRequired,
 }
 
 export default PrivacyEditSettings

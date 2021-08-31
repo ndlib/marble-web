@@ -8,7 +8,7 @@ import Layout from '../../components/Layout'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import PortfolioFeature from '../../components/App/Pages/Portfolio/PortfolioFeature'
 
-export const FeaturedPage = ({ data, location }) => {
+const FeaturedPage = ({ data, location }) => {
   const { featuredJson, menusJson } = data
   return (
     <Layout

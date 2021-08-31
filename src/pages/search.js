@@ -1,6 +1,6 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Button, Heading } from 'theme-ui'
 import Layout from '../components/Layout'
@@ -16,7 +16,20 @@ import { TagFilterConfig } from 'searchkit'
 import { FaFilter, FaTimes } from 'react-icons/fa'
 import SearchSortingSelector from '@ndlib/gatsby-theme-marble/src/components/Shared/SearchTools/SearchSortingSelector'
 const SearchPage = ({ location }) => {
-  const [facectsOpen, setFacectsOpen] = useState(false)
+  const [facetsOpen, setFacetsOpen] = useState(false)
+
+  const keyPressHandler = (event) => {
+    if (event.code === 'Escape') {
+      setFacetsOpen(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', keyPressHandler)
+    return () => {
+      document.removeEventListener('keydown', keyPressHandler)
+    }
+  })
 
   return (
     <Layout
@@ -47,7 +60,7 @@ const SearchPage = ({ location }) => {
               <div
                 className='overlay'
                 sx={{
-                  visibility: facectsOpen ? 'visible' : 'hidden',
+                  visibility: facetsOpen ? 'visible' : 'hidden',
                   position: 'fixed',
                   left: '14rem',
                   top: 0,
@@ -57,10 +70,13 @@ const SearchPage = ({ location }) => {
                 }}
                 role='button'
                 title='close filters'
-                onClick={() => setFacectsOpen(!facectsOpen)}
+                onClick={() => setFacetsOpen(!facetsOpen)}
+                onKeyPress={keyPressHandler}
+                tabIndex={0}
+                aria-label='close filters'
               />
               <nav id='drawer' sx={{
-                visibility: facectsOpen ? 'visible' : 'hidden',
+                visibility: facetsOpen ? 'visible' : 'hidden',
                 m: 0,
                 p: '20px',
                 position: 'fixed',
@@ -105,7 +121,7 @@ const SearchPage = ({ location }) => {
                       lineHeight: 0,
                     }}
                     title='Close Search Filter'
-                    onClick={() => setFacectsOpen(!facectsOpen)}
+                    onClick={() => setFacetsOpen(!facetsOpen)}
                   ><FaTimes /></Button>
                 </div>
               </nav>
@@ -122,7 +138,7 @@ const SearchPage = ({ location }) => {
                     name='Filter'
                     variant='light'
                     title='Expand Search Filter'
-                    onClick={() => setFacectsOpen(!facectsOpen)}
+                    onClick={() => setFacetsOpen(!facetsOpen)}
                   ><FaFilter />
                   </Button>
                   <SearchSortingSelector />

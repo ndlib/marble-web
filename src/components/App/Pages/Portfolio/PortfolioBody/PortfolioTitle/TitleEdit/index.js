@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
+import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
 import SaveOrCancelButtons from '../../SaveOrCancelButtons'
 import sx from './sx'
 
@@ -21,17 +22,19 @@ const TitleEdit = ({ closeFunc }) => {
         className='accessibilityOnly'
       >Title
       </label>
-      <input
-        type='text'
-        name='portfolioName'
+      <TextField
+        id='portfolioName'
         defaultValue={newTitle}
         onChange={(event) => {
           setValid(event.target.value !== '')
           setNewTitle(event.target.value)
         }}
-        aria-label='Title'
+        label='Title'
+        hideLabel
         disabled={patching}
-        sx={sx.input(valid)}
+        inputSx={sx.input}
+        wrapperSx={sx.inputWrapper}
+        autoFocus
       />
       <span sx={sx.buttonWrapper}>
         <SaveOrCancelButtons

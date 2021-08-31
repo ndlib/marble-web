@@ -61,7 +61,7 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
 
 Item.propTypes = {
   item: PropTypes.object.isRequired,
-  userId: PropTypes.string.isRequired,
+  userId: PropTypes.string,
   isOwner: PropTypes.bool,
   annotated: PropTypes.bool,
 }
@@ -69,7 +69,7 @@ export default Item
 
 export const targetWithAnnotation = (item, userId) => {
   if (item && item.annotation && !typy(item, 'link').safeString.startsWith('http')) {
-    return `${item.link}?${userId}${item.uuid}`
+    return `${item.link}?${userId || ''}${item.uuid}`
   }
   return item.link
 }

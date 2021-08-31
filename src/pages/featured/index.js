@@ -17,7 +17,7 @@ import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import typy from 'typy'
 import { DISPLAY_LIST } from '@ndlib/gatsby-theme-marble/src/store/actions/displayActions'
 
-export const FeaturedList = ({ data, location }) => {
+const FeaturedList = ({ data, location }) => {
   const { allFeaturedJson, menusJson } = data
   const menu = typy(menusJson, 'items').safeArray
   const { nodes } = allFeaturedJson

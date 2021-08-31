@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import { OktaAuth } from '@okta/okta-auth-js'
+//import { OktaAuth } from '@okta/okta-auth-js'
 import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
 import { logUserOut } from '@ndlib/gatsby-theme-marble/src/store/actions/loginActions'
 import { jsx } from 'theme-ui'
@@ -13,8 +13,8 @@ export const LogOut = ({ dispatch, loginReducer }) => {
   const { t } = useTranslation()
   useEffect(() => {
     if (loginReducer.user.portfolioUserId) {
-      const authClient = new OktaAuth(loginReducer.authClientSettings)
-      dispatch(logUserOut(authClient))
+  //    const authClient = new OktaAuth(loginReducer.authClientSettings)
+      //dispatch(logUserOut(authClient))
     }
   })
 

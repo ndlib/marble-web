@@ -19,6 +19,7 @@ import * as style from '../style.module.css'
 
 // eslint-disable-next-line complexity
 export const UserBasePathContent = ({ loginReducer }) => {
+  console.log("user!", loginReducer)
   switch (loginReducer.status) {
     case STATUS_NOT_LOGGED_IN:
       return <LoginArea loginReducer={loginReducer} />

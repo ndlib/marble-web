@@ -8,11 +8,15 @@ import {
 
 export const AuthWrapper = ({ children, location, loginReducer, dispatch }) => {
   // if (process.env.AUTH_CLIENT_ID && process.env.AUTH_CLIENT_ISSUER && process.env.AUTH_CLIENT_URL) {
+  console.log("in auth wrapper", loginReducer)
+  /*
     if (!loginReducer.authClientSettings) {
       dispatch(putAuthSettingsInStore(location))
     } else {
+      console.log("dispatch!!")
       dispatch(getTokenAndPutInStore(loginReducer, location))
     }
+    */
   // }
   return (
     <>

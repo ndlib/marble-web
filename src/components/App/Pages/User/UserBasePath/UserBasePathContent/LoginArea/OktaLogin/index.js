@@ -3,7 +3,7 @@ import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import { OktaAuth } from '@okta/okta-auth-js'
+//import { OktaAuth } from '@okta/okta-auth-js'
 
 export const OktaLogin = ({ loginReducer }) => {
   const { t } = useTranslation()
@@ -13,6 +13,7 @@ export const OktaLogin = ({ loginReducer }) => {
         id='okta'
         onClick={(e) => {
           e.preventDefault()
+          /*
           const authClient = new OktaAuth(loginReducer.authClientSettings)
           authClient.token.getWithRedirect({
             responseType: 'id_token',
@@ -26,6 +27,7 @@ export const OktaLogin = ({ loginReducer }) => {
             ],
             pkce: false,
           })
+          */
         }}
         variant='primary'
       >{t('text:loginPage.button')}

@@ -81,7 +81,7 @@ const Browse = () => {
     },
     {
       label: 'Musical scores and recordings',
-      target: '/search?format[0]=Musical%20sound%20recording&format[1]=Notated%20music',
+      target: '/search?format[0]=Musical%20sound%20recording&format[1]=Notated%20music&format[2]=Sound&format[3]=Score',
     },
     {
       label: 'Texts',

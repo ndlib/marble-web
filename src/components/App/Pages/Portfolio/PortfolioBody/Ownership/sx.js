@@ -20,7 +20,10 @@ module.exports = {
   },
   button: {
     border: '0px',
-    margin: '0px',
-    backgroundColor: 'background'
-  }
+    borderRadius: '10px',
+    margin: '0 0.5em',
+    padding: '0.5em 0',
+    backgroundColor: 'background',
+    cursor: 'pointer',
+  },
 }

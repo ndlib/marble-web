@@ -15,7 +15,6 @@ import LoginArea from './LoginArea'
 import CreateAccount from './CreateAccount'
 
 import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
-import * as style from '../style.module.css'
 
 // eslint-disable-next-line complexity
 export const UserBasePathContent = ({ loginReducer }) => {
@@ -33,7 +32,7 @@ export const UserBasePathContent = ({ loginReducer }) => {
       break
     case STATUS_AUTHENTICATION_FAILED:
     default:
-      return <div className={style.error}>An error has occured.</div>
+      return <div>An error has occured.</div>
   }
   return null
 }

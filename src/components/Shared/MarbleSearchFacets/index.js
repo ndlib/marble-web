@@ -11,7 +11,7 @@ const MarbleSearchFacets = () => {
         field='centuryTag.keyword'
         label='Time Period'
         operator='OR'
-        sort='a-z'
+        sort='century'
       />
       <SearchRefinementListFilter
         field='repository.keyword'

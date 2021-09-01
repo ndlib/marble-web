@@ -18,13 +18,9 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
         target={finalTarget}
         image={item.imageUri}
       >
-        {
-          item.annotation && !annotated
-            ? (
-              <p>{item.annotation}</p>
-            )
-            : null
-        }
+        {item.annotation && !annotated && (
+          <p>{item.annotation}</p>
+        )}
       </Card>
       <ItemControls
         item={item}
@@ -62,15 +58,15 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
 
 Item.propTypes = {
   item: PropTypes.object.isRequired,
-  userId: PropTypes.string.isRequired,
+  userId: PropTypes.string,
   isOwner: PropTypes.bool,
   annotated: PropTypes.bool,
 }
 export default Item
 
 export const targetWithAnnotation = (item, userId) => {
-  if (item && item.annotation && item.portfolioItemId) {
-    return `/item/${item.portfolioItemId}?${userId}${item.portfolioItemId}`
+  if (item && item.annotation && !typy(item, 'link').safeString.startsWith('http')) {
+    return `${item.link}?${userId || ''}${item.uuid}`
   }
   return item.link
 }

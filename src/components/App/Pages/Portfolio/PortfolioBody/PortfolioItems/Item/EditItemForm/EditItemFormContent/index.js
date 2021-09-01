@@ -3,9 +3,11 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { savePortfolioItemQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
+
+import * as style from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/style.module.css'
+import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
 import { jsx, Heading, Button } from 'theme-ui'
 import SetPortfolioImage from './SetPortfolioImage'
-import sx from './sx'
 
 export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
   const [annotation, changeAnnotation] = useState(item.annotation)
@@ -13,29 +15,13 @@ export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
 
   return (
     <React.Fragment>
-      <div sx={{ minHeight: '425px', borderBottom: '6px solid', borderColor: 'primary' }}>
-        <Heading as='h2' sx={
-          { maxHeight: '2rem', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }
-        }>{item.title}</Heading>
-        <label
-          htmlFor='annotation'
-          className='accessibilityOnly'
-        >Annotation
-        </label>
-        <textarea
-          id='annotation'
-          defaultValue={annotation}
-          onChange={(event) => {
-            changeAnnotation(event.target.value)
-          }}
-          placeholder='Add Annotation'
-          disabled={patching}
-          sx={sx.textArea}
-          aria-label='Annotation'
-        />
-        <SetPortfolioImage item={item} />
-      </div>
-      <div sx={{ padding: '.5rem', display: 'flex', width: '100%', justifyContent: 'space-around' }}>
+      <div className={style.buttonGroup} sx={{ mb: '1em' }}>
+        <Button
+          onClick={() => closeFunc()}
+          variant='light'
+        >
+          Cancel
+        </Button>
         <Button
           variant='primary'
           onClick={
@@ -53,6 +39,18 @@ export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
           Cancel
         </Button>
       </div>
+      <Heading as='h2'>{item.title}</Heading>
+      <TextArea
+        id={`${item.uuid}_annotation`}
+        defaultValue={annotation}
+        onChange={(event) => {
+          changeAnnotation(event.target.value)
+        }}
+        disabled={patching}
+        label='Annotation'
+        hideLabel
+      />
+      <SetPortfolioImage item={item} />
     </React.Fragment>
   )
 }

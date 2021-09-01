@@ -14,7 +14,7 @@ const SaveOrCancelButtons = ({
   return (
     <React.Fragment>
       <Button
-        onClick={() => closeFunc()}
+        onClick={closeFunc}
         disabled={patching}
         variant='light'
       >Cancel</Button>

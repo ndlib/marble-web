@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, Button } from 'theme-ui'
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'

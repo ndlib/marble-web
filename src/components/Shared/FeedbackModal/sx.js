@@ -27,7 +27,7 @@ module.exports = {
       width: '8.3em',
       height: '2.2em',
       cursor: 'pointer',
-      borderRadius: '5px',
+      borderRadius: '5px 0 0 0',
     },
   },
   'ReactModal--ReactModal__Overlay ReactModal__Overlay--after-open': {

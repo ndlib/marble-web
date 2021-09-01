@@ -1,4 +1,5 @@
 /** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
@@ -8,7 +9,7 @@ import { jsx, Heading } from 'theme-ui'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 
-export const AllPage = ({
+const AllPage = ({
   data,
   location,
 }) => {
@@ -46,17 +47,13 @@ export const AllPage = ({
         location={location}
         title='Sitemap'
       />
-      {
-      <React.Fragment>
-        <NDBrandBreadcrumbs
+      <NDBrandBreadcrumbs
         currentPageTitle='Sitemap'
         breadcrumbs={[]}
-        />
-        <main>
-          <Heading as='h1' variant='pageTitle'>Sitemap</Heading>
-        </main>
-      </React.Fragment>
-      }
+      />
+      <main>
+        <Heading as='h1' variant='pageTitle'>Sitemap</Heading>
+      </main>
       <ul>{items()}</ul>
       {
         // Todo add other kinds of pages???

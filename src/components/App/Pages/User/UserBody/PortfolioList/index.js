@@ -1,12 +1,11 @@
 /** @jsx jsx */
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Button } from 'theme-ui'
 import { connect } from 'react-redux'
 import typy from 'typy'
-import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/CardGroup'
-import Card from '@ndlib/gatsby-theme-marble/src/components/Shared/Card'
+import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard/CardGroup'
+import DisplayCard from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard'
 import NewPortfolioButton from './NewPortfolioButton'
 import NoPortfolios from './NoPortfolios'
 import VisibilityLabel from '@ndlib/gatsby-theme-marble/src/components/Shared/VisibilityLabel'
@@ -43,12 +42,12 @@ const PortfolioList = ({
   const isOwner = ownsPage(loginReducer, user.uuid)
   if (portfolios.length > 0) {
     return (
-      <>
-        <CardGroup
-          defaultDisplay={DISPLAY_GRID}
-          toggleGroup='compilations-page'
-          extraControls={isOwner
-            ? (
+      <CardGroup
+        defaultDisplay={DISPLAY_GRID}
+        toggleGroup='compilations-page'
+        extraControls={isOwner
+          ? () => {
+            return (
               <span style={{
                 float: 'left',
                 verticalAlign: 'top',
@@ -60,52 +59,42 @@ const PortfolioList = ({
                 />
               </span>
             )
-            : null
           }
-        >
-          {
-            typy(portfolios).safeArray
-              .filter(c => {
-                return viewable(c, loggedIn, isOwner)
-              })
-              .sort((a, b) => {
-                return b.updated - a.updated
-              })
-              .map((c, index) => {
-                return (
-                  <div key={index} sx={{ position: 'relative' }}>
-                    {
-                      isOwner
-                        ? (
-                          <Button
-                            variant='light'
-                            onClick={() => beGone(c)}
-                          >Delete
-                          </Button>
-                        )
-                        : null
-                    }
-                    <Card
-                      label={c.title}
-                      target={`/myportfolio/${c.uuid}`}
-                      image={c.image || ''}
-                    >{c.description}
-                    </Card>
-                    {
-                      isOwner
-                        ? (
-                          <div>
-                            <VisibilityLabel visibility={c.privacy} />
-                          </div>
-                        )
-                        : null
-                    }
-                  </div>
-                )
-              })
-          }
-        </CardGroup>
-      </>
+          : () => {
+            return null
+          }}
+      >
+        {
+          typy(portfolios).safeArray
+            .filter(c => {
+              return viewable(c, loggedIn, isOwner)
+            })
+            .sort((a, b) => {
+              return b.updated - a.updated
+            })
+            .map((c, index) => {
+              return (
+                <DisplayCard
+                  key={index}
+                  title={c.title}
+                  target={`/myportfolio/${c.uuid}`}
+                  image={c.image || ''}
+                  leftBadge={isOwner ? <VisibilityLabel visibility={c.privacy} /> : null}
+                  controls={isOwner
+                    ? (
+                      <Button
+                        variant='light'
+                        onClick={() => beGone(c)}
+                      >Delete
+                      </Button>
+                    )
+                    : null}
+                >{c.description}
+                </DisplayCard>
+              )
+            })
+        }
+      </CardGroup>
     )
   }
   return <NoPortfolios isOwner={isOwner} button={(

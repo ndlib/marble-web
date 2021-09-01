@@ -10,8 +10,8 @@ import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDB
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 import NDBrandSectionLeftNav from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section/LeftNav'
 import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
-import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/CardGroup'
-import Card from '@ndlib/gatsby-theme-marble/src/components/Shared/Card'
+import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard/CardGroup'
+import DisplayCard from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard'
 import Html from '@ndlib/gatsby-theme-marble/src/components/Shared/Html'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import typy from 'typy'
@@ -22,12 +22,12 @@ const FeaturedList = ({ data, location }) => {
   const menu = typy(menusJson, 'items').safeArray
   const { nodes } = allFeaturedJson
   const browseLinks = nodes.map(item => {
-    return (<Card
-      key={item.id}
-      label={item.title}
+    return (<DisplayCard
+      key={item.marbleId}
+      title={item.title}
       image={item.image}
       target={'/featured/' + item.slug}
-    ><Html html={item.description} /></Card>)
+    ><Html html={item.description} /></DisplayCard>)
   })
   return (
     <Layout
@@ -54,7 +54,11 @@ const FeaturedList = ({ data, location }) => {
             </p>
             <Link to='/portfolios-about'>Learn more about creating portfolios</Link>
 
-            <CardGroup defaultDisplay={DISPLAY_LIST} toggleGroup='browse-page'>
+            <CardGroup
+              defaultDisplay={DISPLAY_LIST}
+              toggleGroup='browse-page'
+              gridWidthRule={['100%', '100%', '100%', '100%', '50%']}
+            >
               {browseLinks}
             </CardGroup>
           </main>

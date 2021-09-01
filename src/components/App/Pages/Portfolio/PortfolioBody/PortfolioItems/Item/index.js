@@ -3,7 +3,7 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Flex, Box } from 'theme-ui'
 import typy from 'typy'
-import Card from '@ndlib/gatsby-theme-marble/src/components/Shared/Card'
+import DisplayCard from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard'
 import EditItemForm from './EditItemForm'
 import ItemControls from './ItemControls'
 import sx from './sx'
@@ -13,22 +13,25 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
   const finalTarget = targetWithAnnotation(item, userId)
 
   let card = (
-    <div sx={sx.cardWrapper}>
-      <Card
-        label={item.title}
-        target={finalTarget}
-        image={item.image}
-      >
-        {item.annotation && !annotated && (
-          <p>{item.annotation}</p>
-        )}
-      </Card>
-      <ItemControls
+    <DisplayCard
+      title={item.title}
+      target={finalTarget}
+      image={item.image}
+      controls={<ItemControls
         item={item}
         isOwner={isOwner}
         setEditFunc={() => setEditing(true)}
-      />
-    </div>
+      />}
+    >
+      {
+        item.annotation && !annotated
+          ? (
+            <p>{item.annotation}</p>
+          )
+          : null
+      }
+    </DisplayCard>
+
   )
 
   if (editing) {

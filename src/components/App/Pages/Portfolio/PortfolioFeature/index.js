@@ -34,7 +34,7 @@ const PortfolioFeature = ({ location, featuredJson, menusJson }) => {
         <Html html={description} />
 
         <Image
-          src={featuredImage.image.replace('!250,250', ',500')}
+          src={featuredImage.image.replace('!300,300', ',500')}
           title={featuredImage.title}
           imageStyle={{ display: 'block', maxHeight: '500px', margin: '3rem auto 0' }}
           alt=''

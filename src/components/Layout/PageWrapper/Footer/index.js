@@ -63,14 +63,15 @@ export const Footer = ({ location, variant }) => {
               <span property='streetAddress'>100 Moose Krause Circle</span><br />
               <span property='addressLocality'>Notre Dame</span>, <span property='addressRegion'>IN</span> <span property='postalCode'>46556</span> <span property='addressCountry'>USA</span>
             </div>
-            <div className='footer-phone' property='telephone' content='+1 574-631-5466'>Phone <Link variant='footer' to='tel:574-631-5466'>(574) 631–5466</Link></div>
+            <div className='footer-phone' property='telephone' content='+1 574-631-5466'>Phone <Link variant='footer' to='tel:+15746315466'>(574) 631–5466</Link></div>
             <div className='footer-email' property='email'><Link variant='footer' to='mailto:sniteart@nd.edu'>sniteart@nd.edu</Link></div>
           </div>
         </Box>
         <Box sx={{
           width: ['100%', '100%', '100%', '33%'],
           px: ['5vw', '5vw', '5vw', '4rem'],
-          py: '4rem' }}>
+          py: '4rem',
+        }}>
           <Link
             variant='footer'
             to='https://library.nd.edu'
@@ -87,14 +88,14 @@ export const Footer = ({ location, variant }) => {
               <span property='streetAddress'>284 Hesburgh Library</span><br />
               <span property='addressLocality'>Notre Dame</span>, <span property='addressRegion'>IN</span> <span property='postalCode'>46556</span> <span property='addressCountry'>USA</span>
             </div>
-            <div className='footer-phone' property='telephone' content='+1 (574) 631-6258'>Phone <Link variant='footer' to='tel:5746316258'>(574) 631-6258</Link></div>
+            <div className='footer-phone' property='telephone' content='+1 (574) 631-6258'>Phone <Link variant='footer' to='tel:+15746316258'>(574) 631-6258</Link></div>
             <div className='footer-email' property='email'><Link variant='footer' to='mailto:asklib@nd.edu'>asklib@nd.edu</Link></div>
           </div>
           <div sx={sx.copyright} className='copyright'><Link variant='footer' to='https://www.nd.edu/copyright/'>&copy; {new Date().getFullYear()}</Link> <Link variant='footer' to='https://www.nd.edu'>University of Notre Dame</Link></div>
         </Box>
         <Box sx={{
           width: ['100%', '100%', '100%', '34%'],
-          justifyContent: 'center',
+          justifyContent: 'left',
           pl: ['5vw', '5vw', '5vw', '4rem'],
           pr: '5vw',
           py: '4rem',

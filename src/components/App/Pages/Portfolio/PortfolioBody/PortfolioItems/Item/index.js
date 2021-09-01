@@ -18,13 +18,9 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
         target={finalTarget}
         image={item.imageUri}
       >
-        {
-          item.annotation && !annotated
-            ? (
-              <p>{item.annotation}</p>
-            )
-            : null
-        }
+        {item.annotation && !annotated && (
+          <p>{item.annotation}</p>
+        )}
       </Card>
       <ItemControls
         item={item}
@@ -62,7 +58,7 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
 
 Item.propTypes = {
   item: PropTypes.object.isRequired,
-  userId: PropTypes.string.isRequired,
+  userId: PropTypes.string,
   isOwner: PropTypes.bool,
   annotated: PropTypes.bool,
 }

@@ -1,4 +1,5 @@
 /** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Button } from 'theme-ui'
@@ -63,9 +64,11 @@ const PortfolioList = ({
                     {
                       isOwner
                         ? (
-                          <div>
-                            <VisibilityLabel visibility={c.privacy} />
-                          </div>
+                          <Button
+                            variant='light'
+                            onClick={() => beGone(c)}
+                          >Delete
+                          </Button>
                         )
                         : null
                     }
@@ -78,11 +81,9 @@ const PortfolioList = ({
                     {
                       isOwner
                         ? (
-                          <Button
-                            variant='inverse'
-                            onClick={() => beGone(c)}
-                          ><FaTrash sx={{ color: 'red' }} />
-                          </Button>
+                          <div>
+                            <VisibilityLabel visibility={c.privacy} />
+                          </div>
                         )
                         : null
                     }

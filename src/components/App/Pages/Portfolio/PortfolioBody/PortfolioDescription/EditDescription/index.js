@@ -5,6 +5,8 @@ import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import { savePortfolioCollectionQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
+import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
+
 import SaveOrCancelButtons from '../../SaveOrCancelButtons'
 import sx from './sx'
 
@@ -16,20 +18,15 @@ const EditDescription = ({ closeFunc, loginReducer }) => {
 
   return (
     <div sx={sx.wrapper}>
-      <label
-        htmlFor='portfolioDescription'
-        className='accessibilityOnly'
-      >Description
-      </label>
-      <textarea
-        name='portfolioDescription'
+      <TextArea
+        id='portfolioDescription'
         defaultValue={newDescription}
         onChange={(event) => {
           setNewDescription(event.target.value)
         }}
         disabled={patching}
-        sx={sx.textArea}
-        aria-label='Description'
+        label='Description'
+        hideLabel
       />
       <span sx={sx.buttonWrapper}>
         <SaveOrCancelButtons

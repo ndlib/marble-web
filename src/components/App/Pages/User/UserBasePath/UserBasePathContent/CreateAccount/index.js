@@ -21,12 +21,7 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
   const emailRegex = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g
 
   return (
-    <form
-      className='loginArea'
-      sx={{
-        margin: '2rem auto',
-      }}
-    >
+    <form>
       <Heading as='h1' variant='pageTitle'>Finalize Account</Heading>
       <WelcomeMessage />
       <TextField

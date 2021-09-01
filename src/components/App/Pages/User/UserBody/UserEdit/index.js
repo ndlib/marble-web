@@ -1,4 +1,5 @@
 /** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -136,7 +137,6 @@ export const UserEdit = ({ loginReducer, location }) => {
 }
 
 UserEdit.propTypes = {
-  user: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
 }
 

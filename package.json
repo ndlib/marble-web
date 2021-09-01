@@ -9,7 +9,7 @@
   "dependencies": {
     "@ndlib/gatsby-source-appsync-marble": "*",
     "@ndlib/gatsby-theme-marble": "*",
-    "@okta/okta-auth-js": "^5.0.0",
+    "@okta/okta-auth-js": "^3.0.0",
     "aws-appsync": "^4.1.1",
     "gatsby": "^3.12.0",
     "gatsby-plugin-google-tagmanager": "^3.5.0",

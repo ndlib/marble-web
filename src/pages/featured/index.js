@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Heading, Text } from 'theme-ui'
+import { jsx, Heading } from 'theme-ui'
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -17,13 +17,13 @@ import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import typy from 'typy'
 import { DISPLAY_LIST } from '@ndlib/gatsby-theme-marble/src/store/actions/displayActions'
 
-export const FeaturedList = ({ data, location }) => {
+const FeaturedList = ({ data, location }) => {
   const { allFeaturedJson, menusJson } = data
   const menu = typy(menusJson, 'items').safeArray
   const { nodes } = allFeaturedJson
   const browseLinks = nodes.map(item => {
     return (<Card
-      key={item.marbleId}
+      key={item.id}
       label={item.title}
       image={item.image}
       target={'/featured/' + item.slug}

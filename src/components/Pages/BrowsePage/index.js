@@ -1,15 +1,16 @@
 /** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { jsx, Flex, Box, Heading } from 'theme-ui'
 import MiniCard from '@ndlib/gatsby-theme-marble/src/components/Shared/MiniCard'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 
-const Browse = ({ location }) => {
+const Browse = () => {
   const dates = [
     {
-      label: '1300-1399',
-      target: '/search?timeperiod[0]=1300-1399',
+      label: 'Pre-1400',
+      target: '/search?timeperiod[0]=Pre-1400',
     },
     {
       label: '1400-1499',
@@ -84,7 +85,7 @@ const Browse = ({ location }) => {
     },
     {
       label: 'Texts',
-      target: '/search?format[0]=Language material',
+      target: '/search?format[0]=Serial&format[1]=Book&format[2]=manuscripts&format[3]=Newspaper&format[4]=Document&format[5]=Language%20material&format[6]=Fiction',
     },
     {
       label: 'Textiles',
@@ -141,7 +142,7 @@ const Browse = ({ location }) => {
           <Flex sx={{ flexWrap: 'wrap' }}>
             <Box sx={{ width: ['100%', '20%'], px: '1rem', py: '1rem' }}>
               <div id='date'>
-                  <Heading as='h2'>Browse By Date</Heading>
+                <Heading as='h2'>Browse By Date</Heading>
               </div>
             </Box>
             <Box sx={{ width: ['100%', '80%'], px: '1rem', py: '1rem' }}>

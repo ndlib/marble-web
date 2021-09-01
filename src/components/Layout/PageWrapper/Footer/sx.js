@@ -3,6 +3,6 @@ module.exports = {
     bg: 'primaryBright',
   },
   copyright: {
-    my: '46px',
+    mt: '46px',
   },
 }

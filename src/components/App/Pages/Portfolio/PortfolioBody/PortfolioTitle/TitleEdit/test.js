@@ -3,6 +3,7 @@ import { shallow } from 'enzyme'
 import { act } from 'react-dom/test-utils'
 import TitleEdit from './'
 import * as PortfolioContext from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
+import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
 import SaveOrCancelButtons from '../../SaveOrCancelButtons'
 
 test('TitleEdit', () => {
@@ -19,9 +20,7 @@ test('TitleEdit', () => {
     wrapper = shallow(<TitleEdit closeFunc={closeFunc} />)
   })
   expect(wrapper.find('label').text()).toContain('Title')
-  const input = wrapper.findWhere(c => {
-    return c.props().name === 'portfolioName'
-  })
+  const input = wrapper.find(TextField)
 
   expect(input.props().defaultValue).toEqual('My Title')
   expect(wrapper.find(SaveOrCancelButtons).exists()).toBeTruthy()

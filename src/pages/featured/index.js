@@ -10,7 +10,7 @@ import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDB
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 import NDBrandSectionLeftNav from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section/LeftNav'
 import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
-import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/CardGroup'
+import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard/CardGroup'
 import DisplayCard from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard'
 import Html from '@ndlib/gatsby-theme-marble/src/components/Shared/Html'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'

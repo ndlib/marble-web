@@ -1,7 +1,7 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
-import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/CardGroup'
+import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard/CardGroup'
 import DisplayCard from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard'
 import CardBadge from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard/CardBadge'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'

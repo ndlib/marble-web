@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Item from '../Item'
-import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/CardGroup'
+import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard/CardGroup'
 import { DISPLAY_GRID } from '@ndlib/gatsby-theme-marble/src/store/actions/displayActions'
 
 const GridListView = ({ items, userId, isOwner }) => {

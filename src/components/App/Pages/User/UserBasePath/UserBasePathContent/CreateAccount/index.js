@@ -9,7 +9,7 @@ import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import WelcomeMessage from './WelcomeMessage'
 import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
 import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
-import { createNewUser } from '@ndlib/gatsby-theme-marble/src/store/actions/loginActions'
+// import { createNewUser } from '@ndlib/gatsby-theme-marble/src/store/actions/loginActions'
 
 const CreateAccount = ({ loginReducer, dispatch }) => {
   const claims = typy(loginReducer, 'token.claims').safeObject
@@ -101,7 +101,7 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
             //   uuid: `${claims.sub}.${btoa(claims.iss)}`,
             //   userName: claims.netid,
             // }
-            dispatch(createNewUser(body, loginReducer))
+            // dispatch(createNewUser(body, loginReducer))
           }}
           variant='primary'
           disabled={patching || !email.match(emailRegex) || fullName === '' || !hasAcceptedTerms}

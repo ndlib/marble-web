@@ -37,6 +37,7 @@ const SetPortfolioImage = ({ item, loginReducer }) => {
               console.error(e)
             })
         }}
+        variant='light'
         disabled={patching}
       >Set as Portfolio Cover Image
       </Button>

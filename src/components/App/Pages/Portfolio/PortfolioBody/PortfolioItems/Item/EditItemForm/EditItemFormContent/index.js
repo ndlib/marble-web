@@ -17,12 +17,6 @@ export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
     <React.Fragment>
       <div className={style.buttonGroup} sx={{ mb: '1em' }}>
         <Button
-          onClick={() => closeFunc()}
-          variant='light'
-        >
-          Cancel
-        </Button>
-        <Button
           variant='primary'
           onClick={
             (e) => {

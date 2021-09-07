@@ -34,7 +34,7 @@ export const DangerDelete = ({ portfolio, loginReducer }) => {
                 }
               }`,
               successFunc: () => {
-                navigate(`/user/${loginReducer.user.portfolioUserId}`)
+                navigate(`/user/${loginReducer.user.netid}`)
               },
               errorFunc: (e) => {
                 console.error(e)

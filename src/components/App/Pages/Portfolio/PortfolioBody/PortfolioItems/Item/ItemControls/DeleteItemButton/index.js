@@ -11,10 +11,11 @@ const DeleteItemButton = ({ item, loginReducer }) => {
   const { portfolio, updatePortfolio } = usePortfolioContext()
   const [patching, setPatching] = useState(false)
   const callBack = () => {
+    console.log('big old cb', portfolio.portfolioCollectionId)
     getPortfolioQuery({
       loginReducer: loginReducer,
       isOwner: true,
-      portfolioId: portfolio.portfolioId,
+      portfolioId: portfolio.portfolioCollectionId,
     })
       .then((data) => {
         updatePortfolio(data)
@@ -56,15 +57,15 @@ export const deleteItem = (event, loginReducer, item, patchingFunc, callBack) =>
     removeCollectionItem({
       loginReducer: loginReducer,
       item: item,
-      successFunc: () => {
+    })
+      .then(() => {
         callBack()
         patchingFunc(false)
-      },
-      errorFunc: (e) => {
+      })
+      .catch((e) => {
         console.error(e)
         patchingFunc(false)
-      },
-    })
+      })
   } else {
     patchingFunc(false)
   }

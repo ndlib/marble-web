@@ -18,7 +18,7 @@ export const LoginButton = ({ location, loginReducer }) => {
       <>
         <Link
           variant='navTop'
-          to={`/user/${loginReducer.user.portfolioUserId}`}
+          to={`/user/${loginReducer.user.netid}`}
         >{t('common:loginMenu.userPage')}
         </Link>
         <Link

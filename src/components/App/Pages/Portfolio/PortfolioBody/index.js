@@ -29,7 +29,7 @@ const PortfolioBody = ({ location }) => {
         title={portfolio.title}
         location={location}
         data={{}}
-        noIndex // = {portfolio.privacy !== 'public'}
+        noIndex={portfolio.privacy !== 'public'}
       />
       <NDBrandBreadcrumbs
         currentPageTitle={portfolio.title}

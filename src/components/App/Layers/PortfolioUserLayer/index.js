@@ -11,8 +11,8 @@ const PortfolioUserLayer = ({ userName, loginReducer, children }) => {
   useEffect(() => {
     const abortController = new AbortController()
 
-    if (loginReducer.status === 'STATUS_NOT_LOGGED_IN' || loginReducer.status === 'STATUS_LOGGED_IN') {
-      console.log('un=', userName)
+    if ((loginReducer.status === 'STATUS_NOT_LOGGED_IN' || loginReducer.status === 'STATUS_LOGGED_IN') && typeof window !== 'undefined') {
+      console.log('user lr', loginReducer)
       getPortfolioUser({ userName: userName, loginReducer: loginReducer })
         .then((data) => {
           console.log('result', data)

@@ -1,12 +1,11 @@
 /** @jsx jsx */
-// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Button } from 'theme-ui'
 import { connect } from 'react-redux'
 import typy from 'typy'
-import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/CardGroup'
-import Card from '@ndlib/gatsby-theme-marble/src/components/Shared/Card'
+import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard/CardGroup'
+import DisplayCard from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard'
 import NewPortfolioButton from './NewPortfolioButton'
 import NoPortfolios from './NoPortfolios'
 import VisibilityLabel from '@ndlib/gatsby-theme-marble/src/components/Shared/VisibilityLabel'
@@ -20,6 +19,7 @@ const PortfolioList = ({
   loginReducer,
   location,
 }) => {
+  const loggedIn = loginReducer.user
   const { portfolioUser, isPorfolioOwner } = useUserContext()
   const [portfolios, setPortfolios] = useState(typy(portfolioUser, 'portfolioCollections.items').safeArray)
   const beGone = (portfolio) => {
@@ -55,39 +55,31 @@ const PortfolioList = ({
         >
           {
             typy(portfolios).safeArray
+              .filter(c => {
+                return viewable(c, loggedIn, isOwner)
+              })
               .sort((a, b) => {
-                return b.dateModifiedInDynamo - a.dateModifiedInDynamo
+                return b.updated - a.updated
               })
               .map((c, index) => {
                 return (
-                  <div key={index} sx={{ position: 'relative' }}>
-                    {
-                      isOwner
-                        ? (
-                          <Button
-                            variant='light'
-                            onClick={() => beGone(c)}
-                          >Delete
-                          </Button>
-                        )
-                        : null
-                    }
-                    <Card
-                      label={c.title}
-                      target={`/user/${portfolioUser.portfolioUserId}/${c.portfolioCollectionId}`}
-                      image={c.imageUri !== 'null' ? c.imageUri : ''}
-                    >{c.description}
-                    </Card>
-                    {
-                      isOwner
-                        ? (
-                          <div>
-                            <VisibilityLabel visibility={c.privacy} />
-                          </div>
-                        )
-                        : null
-                    }
-                  </div>
+                  <DisplayCard
+                    key={index}
+                    title={c.title}
+                    target={`/user/${c.portfolioUserId}/${c.portfolioCollectionId}`}
+                    image={c.imageUri || ''}
+                    leftBadge={isOwner ? <VisibilityLabel visibility={c.privacy} /> : null}
+                    controls={isOwner
+                      ? (
+                        <Button
+                          variant='light'
+                          onClick={() => beGone(c)}
+                        >Delete
+                        </Button>
+                      )
+                      : null}
+                  >{c.description}
+                  </DisplayCard>
                 )
               })
           }

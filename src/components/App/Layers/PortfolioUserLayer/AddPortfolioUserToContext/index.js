@@ -16,7 +16,7 @@ const PortfolioUserLayer = ({ portfolioUser, children, loginReducer }) => {
     portfolioUser: portfolioUser,
     updatePortfolioUser: updatePortfolioUser,
     isPorfolioOwner: () => {
-      return loginReducer && loginReducer.status && portfolioUser.portfolioUserId === loginReducer.user.portfolioUserId
+      return loginReducer && loginReducer.status && portfolioUser.portfolioUserId === loginReducer.user.netid
     },
   })
 

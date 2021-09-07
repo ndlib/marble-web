@@ -2,7 +2,8 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Flex, Box } from 'theme-ui'
-import Card from '@ndlib/gatsby-theme-marble/src/components/Shared/Card'
+import typy from 'typy'
+import DisplayCard from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard'
 import EditItemForm from './EditItemForm'
 import ItemControls from './ItemControls'
 import sx from './sx'
@@ -10,24 +11,21 @@ import sx from './sx'
 const Item = ({ item, userId, isOwner, annotated = false }) => {
   const [editing, setEditing] = useState(false)
   const finalTarget = targetWithAnnotation(item, userId)
-
   let card = (
-    <div sx={sx.cardWrapper}>
-      <Card
-        label={item.title}
-        target={finalTarget}
-        image={item.imageUri}
-      >
-        {item.annotation && !annotated && (
-          <p>{item.annotation}</p>
-        )}
-      </Card>
-      <ItemControls
+    <DisplayCard
+      title={item.title}
+      target={finalTarget}
+      image={item.imageUri}
+      controls={<ItemControls
         item={item}
         isOwner={isOwner}
         setEditFunc={() => setEditing(true)}
-      />
-    </div>
+      />}
+    >
+      {item.annotation && !annotated && (
+        <p>{item.annotation}</p>
+      )}
+    </DisplayCard>
   )
 
   if (editing) {
@@ -66,7 +64,7 @@ export default Item
 
 export const targetWithAnnotation = (item, userId) => {
   if (item && item.annotation && !typy(item, 'link').safeString.startsWith('http')) {
-    return `${item.link}?${userId || ''}${item.uuid}`
+    return `/item/${item.portfolioItemId}?${userId || ''}${userId}`
   }
-  return item.link
+  return `/item/${item.portfolioItemId}`
 }

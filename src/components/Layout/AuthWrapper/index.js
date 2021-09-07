@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {
@@ -7,13 +7,15 @@ import {
 } from '@ndlib/gatsby-theme-marble/src/store/actions/loginActions'
 
 export const AuthWrapper = ({ children, location, loginReducer, dispatch }) => {
-  if (!loginReducer.authClientSettings) {
-    console.log('no settings')
-    dispatch(putAuthSettingsInStore(location))
-  } else {
-    console.log('toky')
-    dispatch(getTokenAndPutInStore(loginReducer, location))
-  }
+  useEffect(() => {
+    if (!loginReducer.authClientSettings) {
+      console.log('no settings')
+      dispatch(putAuthSettingsInStore(location))
+    } else {
+      console.log('toky')
+      dispatch(getTokenAndPutInStore(loginReducer, location))
+    }
+  })
 
   return (
     <>

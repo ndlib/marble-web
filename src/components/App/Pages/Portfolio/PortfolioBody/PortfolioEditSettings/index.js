@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { jsx, Button } from 'theme-ui'
 import { connect } from 'react-redux'
 import PortfolioSettingsContent from './PortfolioSettingsContent'
@@ -63,6 +64,10 @@ export const PortfolioEditSettings = ({ loginReducer }) => {
       </ActionModal>
     </React.Fragment>
   )
+}
+
+PortfolioEditSettings.propTypes = {
+  loginReducer: PropTypes.object.isRequired,
 }
 
 export const mapStateToProps = (state) => {

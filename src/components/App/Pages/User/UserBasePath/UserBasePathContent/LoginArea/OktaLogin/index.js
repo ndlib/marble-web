@@ -14,8 +14,6 @@ export const OktaLogin = ({ loginReducer }) => {
           e.preventDefault()
           const authClient = loginReducer.authClientSettings
           authClient.token.getWithRedirect({
-            responseType: 'id_token',
-            responseMode: 'fragment',
             scopes: [
               'openid',
               'email',

@@ -9,10 +9,8 @@ import {
 export const AuthWrapper = ({ children, location, loginReducer, dispatch }) => {
   useEffect(() => {
     if (!loginReducer.authClientSettings) {
-      console.log('no settings')
       dispatch(putAuthSettingsInStore(location))
     } else {
-      console.log('toky')
       dispatch(getTokenAndPutInStore(loginReducer, location))
     }
   })

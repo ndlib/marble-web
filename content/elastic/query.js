@@ -24,6 +24,7 @@ module.exports = `
           url
           formatTag
           allMetadata
+          hasImages
         }
       }
     }

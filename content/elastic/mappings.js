@@ -66,6 +66,9 @@ module.exports = async () => {
       date: {
         type: 'text',
       },
+      hasImages: {
+        type: 'boolean',
+      },
     },
   }
 

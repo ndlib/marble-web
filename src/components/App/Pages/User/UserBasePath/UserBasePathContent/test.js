@@ -4,7 +4,6 @@ import { navigate } from 'gatsby'
 import { UserBasePathContent } from './'
 import LoginArea from './LoginArea'
 import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
-import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
 import CreateAccount from './CreateAccount'
 
 describe('UserBasePathContent', () => {
@@ -64,7 +63,7 @@ describe('UserBasePathContent', () => {
       loginReducer: {
         status: 'STATUS_LOGGED_IN',
         user: {
-          userName: 'corporal_user',
+          netid: 'corporal_user',
         },
       },
     }

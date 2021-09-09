@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { act } from 'react-dom/test-utils'
-import EditDescription from './'
+import { EditDescription } from './'
 import * as PortfolioContext from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
 import SaveOrCancelButtons from '../../SaveOrCancelButtons'
@@ -17,7 +17,7 @@ test('TitleEdit', () => {
   })
   let wrapper
   act(() => {
-    wrapper = shallow(<EditDescription closeFunc={closeFunc} />)
+    wrapper = shallow(<EditDescription closeFunc={closeFunc} loginReducer={() => {}} />)
   })
   const input = wrapper.find(TextArea)
 

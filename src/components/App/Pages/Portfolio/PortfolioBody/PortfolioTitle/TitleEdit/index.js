@@ -10,7 +10,7 @@ import { savePortfolioCollectionQuery } from '@ndlib/gatsby-theme-marble/src/uti
 import sx from './sx'
 
 // eslint-disable-next-line complexity
-const TitleEdit = ({ closeFunc, loginReducer }) => {
+export const TitleEdit = ({ closeFunc, loginReducer }) => {
   const { portfolio, updatePortfolio } = usePortfolioContext()
   const defaultTitle = portfolio.title
   const [newTitle, setNewTitle] = useState(defaultTitle)

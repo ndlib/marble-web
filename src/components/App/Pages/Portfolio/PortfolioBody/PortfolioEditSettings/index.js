@@ -12,7 +12,6 @@ import sx from './sx'
 
 export const PortfolioEditSettings = ({ loginReducer }) => {
   const { portfolio, updatePortfolio } = usePortfolioContext()
-  console.log('mp', portfolio)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [layout, changeLayout] = useState(portfolio.layout)
   const [privacy, changePrivacy] = useState(portfolio.privacy)

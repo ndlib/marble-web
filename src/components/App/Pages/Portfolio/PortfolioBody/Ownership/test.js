@@ -1,7 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Ownership from './'
+import { Ownership } from './'
 import * as PortfolioContext from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
+import * as UserContext from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 import VisibilityLabel from '@ndlib/gatsby-theme-marble/src/components/Shared/VisibilityLabel'
 import UserCartouche from '@ndlib/gatsby-theme-marble/src/components/Shared/UserCartouche'
 import ActionModal from '@ndlib/gatsby-theme-marble/src/components/Shared/ActionModal'
@@ -17,7 +18,15 @@ describe('Ownership', () => {
         },
       }
     })
-    const wrapper = shallow(<Ownership isOwner />)
+    jest.spyOn(UserContext, 'useUserContext').mockImplementation(() => {
+      return {
+        portfolioUser: {
+          portfolioUserId: 'pete',
+        },
+        isPorfolioOwner: () => true,
+      }
+    })
+    const wrapper = shallow(<Ownership loginReducer={{}} />)
     expect(wrapper.find(VisibilityLabel).props().visibility).toEqual('public')
     expect(wrapper.find(PrivacyEditSettings).exists()).toBeTruthy()
     const modal = wrapper.find(ActionModal)
@@ -27,14 +36,23 @@ describe('Ownership', () => {
   })
 
   test('not isOwner', () => {
+    jest.spyOn(UserContext, 'useUserContext').mockImplementation(() => {
+      return {
+        portfolioUser: {
+          portfolioUserId: 'pete',
+        },
+        isPorfolioOwner: () => false,
+      }
+    })
     jest.spyOn(PortfolioContext, 'usePortfolioContext').mockImplementationOnce(() => {
       return {
         portfolio: {
-          userId: 'pete',
+          userPortfolioId: 'pete',
+          privacy: 'shared',
         },
       }
     })
-    const wrapper = shallow(<Ownership />)
-    expect(wrapper.find(UserCartouche).props().user).toEqual({ uuid: 'pete' })
+    const wrapper = shallow(<Ownership loginReducer={{}} />)
+    expect(wrapper.find(VisibilityLabel).exists()).toBe(false)
   })
 })

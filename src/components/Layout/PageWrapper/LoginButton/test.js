@@ -2,7 +2,6 @@ import React from 'react'
 import { mount } from 'enzyme'
 import { LoginButton } from './'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
-import userIcon from 'assets/icons/svg/baseline-person-24px-white.svg'
 import i18n from '@ndlib/gatsby-theme-marble/src/i18n/i18nextForTest'
 
 describe('LoginButton', () => {
@@ -22,8 +21,8 @@ describe('LoginButton', () => {
     const loginReducer = {
       status: 'STATUS_LOGGED_IN',
       user: {
-        fullname: 'Johnny Logged In',
-        userName: 'jloggedin',
+        fullName: 'Johnny Logged In',
+        netid: 'jloggedin',
       },
     }
     const wrapper = mount(<LoginButton loginReducer={loginReducer} i18n={i18n} />)

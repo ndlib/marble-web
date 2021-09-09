@@ -5,7 +5,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
-import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
+import { removeCollection } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import * as style from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/style.module.css'
 
 export const DangerDelete = ({ portfolio, loginReducer }) => {
@@ -25,21 +25,15 @@ export const DangerDelete = ({ portfolio, loginReducer }) => {
         <Button
           onClick={(e) => {
             e.preventDefault()
-            getData({
+            removeCollection({
               loginReducer: loginReducer,
-              contentType: 'data.removePortfolioCollection',
-              body: `mutation {
-                removePortfolioCollection(portfolioCollectionId: "${portfolio.portfolioCollectionId}") {
-                recordsDeleted
-                }
-              }`,
-              successFunc: () => {
-                navigate(`/user/${loginReducer.user.netid}`)
-              },
-              errorFunc: (e) => {
-                console.error(e)
-              },
+              portfolio: portfolio,
+            }).then(() => {
+              navigate(`/user/${loginReducer.user.netid}`)
             })
+              .catch((e) => {
+                console.error(e)
+              })
           }}
         >Delete</Button>
       </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import { mount } from 'enzyme'
 import { DangerDelete } from './'
 import { navigate } from 'gatsby'
+import * as api from '@ndlib/gatsby-theme-marble/src/utils/api'
 
 describe('DangerDelete', () => {
   console.log = jest.fn()
@@ -10,13 +11,19 @@ describe('DangerDelete', () => {
       id: 'my-id',
       title: 'Portfolio Title',
     },
-    loginReducer: {},
+    loginReducer: { user: { netid: 'jhartzle' } },
   }
   afterEach(() => {
     jest.clearAllMocks()
   })
 
   test.skip('confirm', () => {
+    jest.spyOn(api, 'removeCollection').mockImplementation(() => {
+      return new Promise((resolve, reject) => {
+        resolve()
+      })
+    })
+
     jest.spyOn(window, 'confirm').mockImplementationOnce(() => true)
     const wrapper = mount(<DangerDelete {...props} />)
 
@@ -24,6 +31,11 @@ describe('DangerDelete', () => {
     expect(navigate).toHaveBeenCalled()
   })
   test('cancel', () => {
+    jest.spyOn(api, 'removeCollection').mockImplementation(() => {
+      return new Promise((resolve, reject) => {
+        resolve()
+      })
+    })
     jest.spyOn(window, 'confirm').mockImplementationOnce(() => false)
     const wrapper = mount(<DangerDelete {...props} />)
 

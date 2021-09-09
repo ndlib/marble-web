@@ -9,7 +9,7 @@ import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormEleme
 import SaveOrCancelButtons from '../../SaveOrCancelButtons'
 import sx from './sx'
 
-const EditDescription = ({ closeFunc, loginReducer }) => {
+export const EditDescription = ({ closeFunc, loginReducer }) => {
   const { portfolio, updatePortfolio } = usePortfolioContext()
   const description = portfolio.description
   const [newDescription, setNewDescription] = useState(description)

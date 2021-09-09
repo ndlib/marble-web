@@ -2,7 +2,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { jsx, Flex, Box } from 'theme-ui'
 import VisibilitySettings from './VisibilitySettings'
 import LayoutSettings from './LayoutSettings'
@@ -44,11 +43,4 @@ PortfolioSettingsContent.propTypes = {
   onChangeLayout: PropTypes.func.isRequired,
   onChangePrivacy: PropTypes.func.isRequired,
 }
-
-export const mapStateToProps = (state) => {
-  return { ...state }
-}
-
-export default connect(
-  mapStateToProps,
-)(PortfolioSettingsContent)
+export default PortfolioSettingsContent

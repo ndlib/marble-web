@@ -135,11 +135,13 @@ module.exports = {
             ],
           },
           production: {
-            policy: allowRobots ? [
-              { userAgent: '*', disallow: ['/search', '/user', '/stats'] },
-            ] : [
-              { userAgent: '*', disallow: ['/'] },
-            ],
+            policy: allowRobots
+              ? [
+                { userAgent: '*', disallow: ['/search', '/user', '/stats'] },
+              ]
+              : [
+                { userAgent: '*', disallow: ['/'] },
+              ],
           },
         },
       },
@@ -187,15 +189,15 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `images`,
-        path: path.join(__dirname, `content`, `images`),
+        name: 'images',
+        path: path.join(__dirname, 'content', 'images'),
       },
     },
-    `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
       resolve : 'gatsby-plugin-page-creator',
       options: {

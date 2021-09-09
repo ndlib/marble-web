@@ -37,6 +37,15 @@ const MarbleSearchFacets = () => {
         sort='default'
         size='4'
       />
+      <SearchRefinementListFilter
+        field='hasImages'
+        label='Images'
+        labelOverrides={{
+          true: 'Show items with images',
+          false: 'Show items without images',
+        }}
+        operator='OR'
+      />
     </>
   )
 }

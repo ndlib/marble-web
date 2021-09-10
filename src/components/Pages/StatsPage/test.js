@@ -1,9 +1,10 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Heading, Button } from 'theme-ui'
+import { Heading } from 'theme-ui'
 import { useStaticQuery } from 'gatsby'
 import ItemListModal from '../../Shared/ItemListModal'
 import StatsPage from './'
+import Stat from './Stat'
 
 let wrapper
 
@@ -29,7 +30,6 @@ describe('StatsPage', () => {
       marbleId: '456',
       slug: 'item/456',
       title: 'Mine is better',
-      description: 'I have a description',
       collection: '007654321',
       copyrightRestricted: false,
       partiallyDigitized: null,
@@ -94,37 +94,49 @@ describe('StatsPage', () => {
     expect(wrapper.find(Heading).exists()).toBe(true)
   })
 
-  test('displays a count of all items', () => {
-    expect(wrapper.findWhere(el => el.text() === `Total items: ${items.length}`).exists()).toBe(true)
+  test('renders a stat for all items', () => {
+    const stat = wrapper.find(Stat).findWhere(el => el.props().label.startsWith('Total items'))
+    expect(stat.exists()).toBe(true)
+    expect(stat.props().items).toEqual(items)
+    expect(stat.props().openModal).toEqual(expect.any(Function))
   })
 
-  test('identifies items missing images', () => {
-    expect(wrapper.findWhere(el => el.text() === 'Items missing images: 1').exists()).toBe(true)
+  test('renders a stat for items missing images', () => {
+    const stat = wrapper.find(Stat).findWhere(el => el.props().label.startsWith('Items missing images'))
+    expect(stat.exists()).toBe(true)
+    expect(stat.props().items).toEqual([
+      items[0],
+    ])
+    expect(stat.props().openModal).toEqual(expect.any(Function))
   })
 
-  test('identifies items missing description', () => {
-    expect(wrapper.findWhere(el => el.text() === 'Items missing description: 1').exists()).toBe(true)
+  test('renders a stat for items missing description', () => {
+    const stat = wrapper.find(Stat).findWhere(el => el.props().label.startsWith('Items missing description'))
+    expect(stat.exists()).toBe(true)
+    expect(stat.props().items).toEqual([
+      items[0],
+      items[1],
+    ])
+    expect(stat.props().openModal).toEqual(expect.any(Function))
   })
 
-  test('groups items by Campus Location metadata', () => {
-    expect(wrapper.findWhere(el => el.text() === 'Group #1: 1').exists()).toBe(true)
-    expect(wrapper.findWhere(el => el.text() === 'Group #2: 2').exists()).toBe(true)
-  })
-
-  test('opens a modal when clicking item category', () => {
+  test('stats get a prop to open a modal', () => {
     // Shouldn't be visible before clicking!
     expect(wrapper.find(ItemListModal).exists()).toBe(false)
 
-    const btn = wrapper.findWhere(el => el.type() === Button && el.text().includes('Total items'))
-    expect(btn.exists()).toBe(true)
-    btn.simulate('click')
+    const stat = wrapper.find(Stat).first()
+    expect(stat.exists()).toBe(true)
+    expect(stat.props().openModal).toEqual(expect.any(Function))
+    stat.props().openModal(stat.props().items, stat.props().label)
 
     expect(wrapper.find(ItemListModal).exists()).toBe(true)
   })
 
   test('modal is no longer rendered after closing', () => {
-    const btn = wrapper.findWhere(el => el.type() === Button && el.text().includes('Total items'))
-    btn.simulate('click')
+    const stat = wrapper.find(Stat).first()
+    expect(stat.exists()).toBe(true)
+    expect(stat.props().openModal).toEqual(expect.any(Function))
+    stat.props().openModal(stat.props().items, stat.props().label)
 
     const modal = wrapper.find(ItemListModal)
     expect(modal.exists()).toBe(true)

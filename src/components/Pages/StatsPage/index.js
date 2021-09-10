@@ -6,6 +6,7 @@ import typy from 'typy'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 import ItemListModal from '../../Shared/ItemListModal'
+import Stat from './Stat'
 
 export const query = graphql`
   query {
@@ -39,18 +40,7 @@ export const query = graphql`
 const StatsPage = () => {
   const [modalProps, setModalProps] = useState({ marbleItems: [], headerLabel: '' })
   const { allMarbleItem } = useStaticQuery(query)
-  const itemCount = allMarbleItem.totalCount
   const items = allMarbleItem.nodes
-
-  const locationGroups = {}
-  items.forEach(item => {
-    const locationPair = typy(item, 'metadata').safeArray.find(meta => meta.label === 'Campus Location')
-    const locationName = typy(locationPair, 'value[0]').safeString || '_UNKNOWN_'
-    if (!Object.keys(locationGroups).includes(locationName)) {
-      locationGroups[locationName] = []
-    }
-    locationGroups[locationName].push(item)
-  })
 
   const itemsMissingDescription = items.filter(item => typy(item.description).isFalsy)
   const itemsMissingImages = items.filter(item => {
@@ -91,42 +81,22 @@ const StatsPage = () => {
         <Flex sx={{ flexWrap: 'wrap' }}>
           <Box sx={{ width: '100%', px: '1rem', py: '1rem' }}>
             <ul>
-              <li>
-                <Button
-                  variant='text'
-                  onClick={() => openModal(items, 'All items')}
-                >
-                  <strong>Total items: {itemCount}</strong>
-                </Button>
-              </li>
-              <ul>
-                {Object.keys(locationGroups).sort().map(key => (
-                  <li key={key}>
-                    <Button
-                      variant='text'
-                      onClick={() => openModal(locationGroups[key], `Items from: ${key}`)}
-                    >
-                      {key}: {locationGroups[key].length}
-                    </Button>
-                  </li>
-                ))}
-              </ul>
-              <li>
-                <Button
-                  variant='text'
-                  onClick={() => openModal(itemsMissingDescription, 'Items missing description')}
-                >
-                  Items missing description: {itemsMissingDescription.length}
-                </Button>
-              </li>
-              <li>
-                <Button
-                  variant='text'
-                  onClick={() => openModal(itemsMissingImages, 'Items missing images')}
-                >
-                  Items missing images: {itemsMissingImages.length}
-                </Button>
-              </li>
+              <Stat
+                items={items}
+                label='Total items'
+                openModal={openModal}
+                aggregateSx={{ fontWeight: 'bold' }}
+              />
+              <Stat
+                items={itemsMissingDescription}
+                label='Items missing description'
+                openModal={openModal}
+              />
+              <Stat
+                items={itemsMissingImages}
+                label='Items missing images'
+                openModal={openModal}
+              />
             </ul>
           </Box>
         </Flex>

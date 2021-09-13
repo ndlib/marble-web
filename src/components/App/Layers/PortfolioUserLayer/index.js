@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import UserContext from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 import { getPortfolioUser, removeCollection, savePortfolioUser, savePortfolioCollectionQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import typy from 'typy'
+import { navigate } from 'gatsby'
 
 const PortfolioUserLayer = ({ userName, loginReducer, children }) => {
   const [portfolioUserDirty, setPortfolioUserDirty] = useState(true)
@@ -78,8 +79,10 @@ const PortfolioUserLayer = ({ userName, loginReducer, children }) => {
       getPortfolioUser({ userName: userName, loginReducer: loginReducer })
         .then((data) => {
           if (!data.portfolioUserId) {
-            if (!loginReducer.user.netid === userName) {
-              window.location = '/user/' + userName + '/create'
+            // if they have not logged in before go to the create page.
+            console.log('here', loginReducer)
+            if (loginReducer.user.netid === userName) {
+              navigate('/user/create')
             } else {
               data.portfolioUserId = userName
               data.userNotFound = true

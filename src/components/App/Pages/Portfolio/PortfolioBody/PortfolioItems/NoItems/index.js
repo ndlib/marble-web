@@ -5,8 +5,8 @@ import { jsx } from 'theme-ui'
 const NoItems = () => {
   const sx = {
     border: '1px solid',
-    borderColor: 'gray.4',
-    color: 'gray.4',
+    borderColor: 'gray.7',
+    color: 'gray.7',
     margin: '2rem auto',
     padding: '2rem .5rem',
     textAlign: 'center',

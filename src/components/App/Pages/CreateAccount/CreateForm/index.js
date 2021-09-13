@@ -9,9 +9,10 @@ import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import WelcomeMessage from './WelcomeMessage'
 import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
 import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
-// import { createNewUser } from '@ndlib/gatsby-theme-marble/src/store/actions/loginActions'
+import { savePortfolioUser } from '@ndlib/gatsby-theme-marble/src/utils/api'
+import { navigate } from 'gatsby'
 
-const CreateAccount = ({ loginReducer, dispatch }) => {
+const CreateForm = ({ loginReducer }) => {
   const claims = typy(loginReducer, 'token.claims').safeObject
   const [fullName, changeName] = useState(claims.name)
   const [email, changeEmail] = useState(claims.email)
@@ -77,31 +78,18 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
           onClick={(event) => {
             event.preventDefault()
             setPatching(true)
-            const body = `
-            mutation {
-              savePortfolioUser(
-                bio: "${bio}"
-                email: "${email}"
-                fullName: "${fullName}"
-              ) {
-                bio
-                dateAddedToDynamo
-                dateModifiedInDynamo
-                department
-                email
-                fullName
-                portfolioUserId
-                primaryAffiliation
-              }
-            }`
-            // const body = {
-            //   fullName: fullName,
-            //   email: email,
-            //   bio: bio || '',
-            //   uuid: `${claims.sub}.${btoa(claims.iss)}`,
-            //   userName: claims.netid,
-            // }
-            // dispatch(createNewUser(body, loginReducer))
+            const newUser = {
+              bio: bio,
+              email: email,
+              fullName: fullName,
+            }
+            savePortfolioUser({ loginReducer: loginReducer, user: newUser })
+              .then(() => {
+                navigate('/user/' + claims.netid)
+              })
+              .catch((e) => {
+                console.error(e)
+              })
           }}
           variant='primary'
           disabled={patching || !email.match(emailRegex) || fullName === '' || !hasAcceptedTerms}
@@ -113,14 +101,11 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
 const mapStateToProps = (state) => {
   return { ...state }
 }
-const mapDispatchToProps = dispatch => {
-  return { dispatch }
-}
-CreateAccount.propTypes = {
+
+CreateForm.propTypes = {
   loginReducer: PropTypes.object,
-  dispatch: PropTypes.func,
 }
+
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(CreateAccount)
+  mapStateToProps
+)(CreateForm)

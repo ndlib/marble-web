@@ -4,12 +4,11 @@ import { connect } from 'react-redux'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
-import { savePortfolioCollectionQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
 import SaveOrCancelButtons from '../../SaveOrCancelButtons'
 import sx from './sx'
 
-export const EditDescription = ({ closeFunc, loginReducer }) => {
+export const EditDescription = ({ closeFunc }) => {
   const { portfolio, updatePortfolio } = usePortfolioContext()
   const description = portfolio.description
   const [newDescription, setNewDescription] = useState(description)
@@ -33,13 +32,13 @@ export const EditDescription = ({ closeFunc, loginReducer }) => {
           onClick={() => {
             setPatching(true)
             portfolio.description = newDescription
-            savePortfolioCollectionQuery({ portfolio: portfolio, loginReducer: loginReducer })
-              .then((result) => {
-                updatePortfolio(result)
+            updatePortfolio(portfolio)
+              .then(() => {
                 setPatching(false)
                 closeFunc()
               })
               .catch((e) => {
+                setPatching(false)
                 console.error(e)
               })
           }}
@@ -53,13 +52,6 @@ export const EditDescription = ({ closeFunc, loginReducer }) => {
 
 EditDescription.propTypes = {
   closeFunc: PropTypes.func.isRequired,
-  loginReducer: PropTypes.func.isRequired,
 }
 
-export const mapStateToProps = (state) => {
-  return { ...state }
-}
-
-export default connect(
-  mapStateToProps,
-)(EditDescription)
+export default EditDescription

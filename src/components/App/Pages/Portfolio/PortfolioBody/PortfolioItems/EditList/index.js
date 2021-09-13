@@ -2,16 +2,14 @@
 import { jsx, Button } from 'theme-ui'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import SortableList from 'react-sortable-dnd-list'
 import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
 import SortableItem from './SortableItem'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
-import { savePortfolioItemQuery, getPortfolioQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import sx from './sx'
 
-const EditList = ({ items, closeFunc, loginReducer }) => {
-  const { portfolio, updatePortfolio } = usePortfolioContext()
+const EditList = ({ items, closeFunc }) => {
+  const { reorderPortfolio } = usePortfolioContext()
   const [sortedItems, setItems] = useState(items)
   const [saving, setSaving] = useState(false)
 
@@ -32,30 +30,11 @@ const EditList = ({ items, closeFunc, loginReducer }) => {
           variant='primary'
           onClick={() => {
             setSaving(true)
-            Promise.all(sortedItems.map((item, index) => {
-              item.sequence = index
-              return savePortfolioItemQuery({ item: item, loginReducer: loginReducer })
-                .then((event) => {
-                  closeFunc(event)
-                })
-                .catch((e) => {
-                  console.error(e)
-                })
-            })
-            )
+            reorderPortfolio(sortedItems)
               .then(() => {
-                getPortfolioQuery({ loginReducer: loginReducer, isOwner: true, portfolioId: portfolio.portfolioCollectionId })
-                  .then((data) => {
-                    console.log('reorder', data)
-                    updatePortfolio(data)
-                    closeFunc()
-                  })
-                  .catch((error) => {
-                    console.error(error)
-                    closeFunc()
-                  })
+                setSaving(false)
+                closeFunc()
               })
-              .catch(error => console.error(error))
           }}
         >Save
         </Button>
@@ -75,12 +54,6 @@ const EditList = ({ items, closeFunc, loginReducer }) => {
 EditList.propTypes = {
   items: PropTypes.array,
   closeFunc: PropTypes.func.isRequired,
-  loginReducer: PropTypes.object,
-}
-export const mapStateToProps = (state) => {
-  return { ...state }
 }
 
-export default connect(
-  mapStateToProps,
-)(EditList)
+export default EditList

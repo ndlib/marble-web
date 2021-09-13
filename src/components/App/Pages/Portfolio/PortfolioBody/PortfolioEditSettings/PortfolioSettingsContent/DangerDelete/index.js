@@ -3,12 +3,13 @@ import { jsx, Button } from 'theme-ui'
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
-import { removeCollection } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import * as style from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/style.module.css'
+import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
-export const DangerDelete = ({ portfolio, loginReducer }) => {
+export const DangerDelete = ({ portfolio }) => {
+  const { removeUserPortfolio } = useUserContext()
+  console.log(useUserContext())
   const warning = 'Once you delete this portfolio it can not be recovered.'
   const groupId = 'danger'
   const fieldId = 'delete'
@@ -25,11 +26,8 @@ export const DangerDelete = ({ portfolio, loginReducer }) => {
         <Button
           onClick={(e) => {
             e.preventDefault()
-            removeCollection({
-              loginReducer: loginReducer,
-              portfolio: portfolio,
-            }).then(() => {
-              navigate(`/user/${loginReducer.user.netid}`)
+            removeUserPortfolio(portfolio).then(() => {
+              navigate(`/user/${portfolio.portfolioUserId}`)
             })
               .catch((e) => {
                 console.error(e)
@@ -43,13 +41,6 @@ export const DangerDelete = ({ portfolio, loginReducer }) => {
 
 DangerDelete.propTypes = {
   portfolio: PropTypes.object.isRequired,
-  loginReducer: PropTypes.object.isRequired,
 }
 
-export const mapStateToProps = (state) => {
-  return { ...state }
-}
-
-export default connect(
-  mapStateToProps,
-)(DangerDelete)
+export default DangerDelete

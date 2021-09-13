@@ -2,9 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import PortfolioList from './PortfolioList'
 import UserEdit from './UserEdit'
+import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
 const UserBody = ({ location, edit = false }) => {
-  return edit ? <UserEdit location={location} /> : <PortfolioList location={location} />
+  const { portfolioUser, isPorfolioOwner } = useUserContext()
+
+  if (edit) {
+    return <UserEdit location={location} portfolioUser={portfolioUser} isPorfolioOwner={isPorfolioOwner()} />
+  } else {
+    return <PortfolioList location={location} portfolioUser={portfolioUser} isPorfolioOwner={isPorfolioOwner()} />
+  }
 }
 
 UserBody.propTypes = {

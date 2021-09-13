@@ -2,30 +2,26 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
 import { jsx, Button } from 'theme-ui'
-import typy from 'typy'
 import Gravatar from '@ndlib/gatsby-theme-marble/src/components/Shared/Gravatar'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
-import { ownsPage } from '@ndlib/gatsby-theme-marble/src/utils/auth'
 import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
 import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
 import Unauthorized from './Unauthorized'
-import { savePortfolioUser } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import * as style from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/style.module.css'
 import { NDBrandBreadcrumbs } from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
-export const UserEdit = ({ loginReducer, location }) => {
-  const { portfolioUser, isPorfolioOwner, updatePortfolioUser } = useUserContext()
+export const UserEdit = ({ portfolioUser, isPorfolioOwner, location }) => {
+  const { updatePortfolioUser } = useUserContext()
   const [fullName, changeName] = useState(portfolioUser.fullName)
   const [email, changeEmail] = useState(portfolioUser.email)
   const [bio, changeBio] = useState(portfolioUser.bio)
   const [patching, setPatching] = useState(false)
   const emailRegex = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g
 
-  if (!isPorfolioOwner()) {
+  if (!isPorfolioOwner) {
     return (<Unauthorized />)
   }
 
@@ -36,14 +32,10 @@ export const UserEdit = ({ loginReducer, location }) => {
       email: email,
       fullName: fullName,
     }
-    savePortfolioUser({ loginReducer: loginReducer, user: newUser })
-      .then((data) => {
+    updatePortfolioUser(newUser)
+      .then(() => {
         setPatching(false)
-        updatePortfolioUser(data)
         navigate(`/user/${portfolioUser.portfolioUserId}`)
-      })
-      .catch((e) => {
-        console.error(e)
       })
   }
 
@@ -137,17 +129,9 @@ export const UserEdit = ({ loginReducer, location }) => {
 }
 
 UserEdit.propTypes = {
-  user: PropTypes.object.isRequired,
-  loginReducer: PropTypes.object.isRequired,
+  portfolioUser: PropTypes.object.isRequired,
+  isPorfolioOwner: PropTypes.bool,
+  location: PropTypes.object,
 }
 
-export const mapStateToProps = (state) => {
-  return { ...state }
-}
-const mapDispatchToProps = dispatch => {
-  return { dispatch }
-}
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(UserEdit)
+export default UserEdit

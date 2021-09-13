@@ -14,15 +14,17 @@ import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserConte
 import PortfolioUnavailable from './PortfolioUnavailable'
 
 const PortfolioBody = ({ location }) => {
-  const { portfolio } = usePortfolioContext()
+  const { portfolio, portfolioLoading } = usePortfolioContext()
   const { portfolioUser, isPorfolioOwner } = useUserContext()
   const isOwner = isPorfolioOwner()
-  if ('status' in portfolio && portfolio.status === 'private') {
-    return <PortfolioUnavailable />
-  }
-  if (!('title' in portfolio)) {
+
+  if (portfolioLoading) {
     return (<Loading />)
   }
+  if (portfolio.portfolioNotFound) {
+    return (<PortfolioUnavailable />)
+  }
+
   return (
     <>
       <Seo
@@ -45,6 +47,7 @@ const PortfolioBody = ({ location }) => {
       <Ownership
         isOwner={isOwner}
         location={location}
+        portfolio={portfolio}
       />
       <PortfolioDescription
         isOwner={isOwner}

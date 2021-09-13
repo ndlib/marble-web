@@ -7,7 +7,6 @@ const EditUserButton = () => {
   const { portfolioUser, isPorfolioOwner } = useUserContext()
 
   if (!isPorfolioOwner()) {
-    console.log('nope on the button')
     return null
   }
 

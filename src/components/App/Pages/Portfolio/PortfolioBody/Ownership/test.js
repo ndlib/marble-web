@@ -4,18 +4,19 @@ import { Ownership } from './'
 import * as PortfolioContext from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import * as UserContext from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 import VisibilityLabel from '@ndlib/gatsby-theme-marble/src/components/Shared/VisibilityLabel'
-import UserCartouche from '@ndlib/gatsby-theme-marble/src/components/Shared/UserCartouche'
 import ActionModal from '@ndlib/gatsby-theme-marble/src/components/Shared/ActionModal'
 import PrivacyEditSettings from './PrivacyEditSettings'
 import SaveOrCancelButtons from '../SaveOrCancelButtons'
 
 describe('Ownership', () => {
+  const portfolio = {
+    privacy: 'public',
+  }
+
   test('isOwner', () => {
     jest.spyOn(PortfolioContext, 'usePortfolioContext').mockImplementationOnce(() => {
       return {
-        portfolio: {
-          privacy: 'public',
-        },
+        updatePortfolio: jest.fn(),
       }
     })
     jest.spyOn(UserContext, 'useUserContext').mockImplementation(() => {
@@ -26,7 +27,7 @@ describe('Ownership', () => {
         isPorfolioOwner: () => true,
       }
     })
-    const wrapper = shallow(<Ownership loginReducer={{}} />)
+    const wrapper = shallow(<Ownership portfolio={portfolio} />)
     expect(wrapper.find(VisibilityLabel).props().visibility).toEqual('public')
     expect(wrapper.find(PrivacyEditSettings).exists()).toBeTruthy()
     const modal = wrapper.find(ActionModal)
@@ -36,6 +37,10 @@ describe('Ownership', () => {
   })
 
   test('not isOwner', () => {
+    const portfolio = {
+      userPortfolioId: 'pete',
+      privacy: 'shared',
+    }
     jest.spyOn(UserContext, 'useUserContext').mockImplementation(() => {
       return {
         portfolioUser: {
@@ -46,13 +51,10 @@ describe('Ownership', () => {
     })
     jest.spyOn(PortfolioContext, 'usePortfolioContext').mockImplementationOnce(() => {
       return {
-        portfolio: {
-          userPortfolioId: 'pete',
-          privacy: 'shared',
-        },
+        updatePortfolio: jest.fn(),
       }
     })
-    const wrapper = shallow(<Ownership loginReducer={{}} />)
+    const wrapper = shallow(<Ownership portfolio={portfolio} />)
     expect(wrapper.find(VisibilityLabel).exists()).toBe(false)
   })
 })

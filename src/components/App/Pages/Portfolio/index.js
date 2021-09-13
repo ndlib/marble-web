@@ -12,10 +12,9 @@ export const Portfolio = ({ userName, portfolioId, location, loginReducer }) => 
     <PortfolioUserLayer userName={userName} location={location} loginReducer={loginReducer}>
       <PortfolioLayer portfolioId={portfolioId} location={location} loginReducer={loginReducer}>
 
-        <UserLayout loginReducer={loginReducer} location={location}>
+        <UserLayout location={location}>
           <PortfolioBody
             location={location}
-            loginReducer={loginReducer}
           />
         </UserLayout>
       </PortfolioLayer>

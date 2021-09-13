@@ -8,8 +8,8 @@ import { Trans } from 'react-i18next'
 const NoUser = ({ userName }) => {
   const sx = {
     border: '1px solid',
-    borderColor: 'gray.4',
-    color: 'gray.4',
+    borderColor: 'gray.6',
+    color: 'gray.6',
     margin: '1rem',
     padding: '.5rem',
     textAlign: 'center',

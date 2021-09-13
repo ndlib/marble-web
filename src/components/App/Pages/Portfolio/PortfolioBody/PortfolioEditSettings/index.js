@@ -2,15 +2,13 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Button } from 'theme-ui'
-import { connect } from 'react-redux'
 import PortfolioSettingsContent from './PortfolioSettingsContent'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import ActionModal from '@ndlib/gatsby-theme-marble/src/components/Shared/ActionModal'
 import SaveOrCancelButtons from '../SaveOrCancelButtons'
-import { savePortfolioCollectionQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import sx from './sx'
 
-export const PortfolioEditSettings = ({ loginReducer }) => {
+export const PortfolioEditSettings = () => {
   const { portfolio, updatePortfolio } = usePortfolioContext()
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [layout, changeLayout] = useState(portfolio.layout)
@@ -40,14 +38,14 @@ export const PortfolioEditSettings = ({ loginReducer }) => {
                 setPatching(true)
                 portfolio.privacy = privacy || 'private'
                 portfolio.layout = layout || 'default'
-                savePortfolioCollectionQuery({ portfolio: portfolio, loginReducer: loginReducer })
-                  .then((result) => {
-                    updatePortfolio(result)
+                updatePortfolio(portfolio)
+                  .then(() => {
                     setPatching(false)
                     setSettingsOpen(false)
                   })
-                  .catch((e) => {
-                    console.error(e)
+                  .catch(() => {
+                    setPatching(false)
+                    setSettingsOpen(false)
                   })
               }}
               valid
@@ -66,13 +64,6 @@ export const PortfolioEditSettings = ({ loginReducer }) => {
 }
 
 PortfolioEditSettings.propTypes = {
-  loginReducer: PropTypes.object.isRequired,
 }
 
-export const mapStateToProps = (state) => {
-  return { ...state }
-}
-
-export default connect(
-  mapStateToProps,
-)(PortfolioEditSettings)
+export default PortfolioEditSettings

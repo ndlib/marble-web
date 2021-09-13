@@ -1,15 +1,15 @@
 /** @jsx jsx */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { savePortfolioItemQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
 
 import * as style from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/style.module.css'
 import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
 import { jsx, Heading, Button } from 'theme-ui'
 import SetPortfolioImage from './SetPortfolioImage'
+import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 
-export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
+export const EditItemFormContent = ({ item, closeFunc }) => {
+  const { updatePortfolioItem } = usePortfolioContext()
   const [annotation, changeAnnotation] = useState(item.annotation)
   const [patching, changePatching] = useState(false)
 
@@ -21,7 +21,12 @@ export const EditItemFormContent = ({ item, closeFunc, loginReducer }) => {
           onClick={
             (e) => {
               e.preventDefault()
-              updateItem(e, loginReducer, item, annotation, changePatching, closeFunc)
+              changePatching(true)
+              item.annotation = annotation
+              updatePortfolioItem(item).then((data) => {
+                closeFunc(data)
+                changePatching(false)
+              })
             }
           }>
         Save
@@ -58,25 +63,6 @@ EditItemFormContent.propTypes = {
     uuid: PropTypes.string,
   }),
   closeFunc: PropTypes.func.isRequired,
-  loginReducer: PropTypes.object.isRequired,
-}
-export const mapStateToProps = (state) => {
-  return { ...state }
 }
 
-export default connect(
-  mapStateToProps,
-)(EditItemFormContent)
-
-const updateItem = (event, loginReducer, item, annotation, patchingFunc, closeFunc) => {
-  patchingFunc(true)
-  item.annotation = annotation
-  closeFunc(event)
-  savePortfolioItemQuery({ loginReducer: loginReducer, item: item })
-    .then((event) => {
-      closeFunc(event)
-    })
-    .catch((e) => {
-      console.error(e)
-    })
-}
+export default EditItemFormContent

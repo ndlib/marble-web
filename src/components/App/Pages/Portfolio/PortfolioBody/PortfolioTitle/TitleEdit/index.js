@@ -2,15 +2,13 @@
 import { useState } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
 import SaveOrCancelButtons from '../../SaveOrCancelButtons'
-import { savePortfolioCollectionQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import sx from './sx'
 
 // eslint-disable-next-line complexity
-export const TitleEdit = ({ closeFunc, loginReducer }) => {
+export const TitleEdit = ({ closeFunc }) => {
   const { portfolio, updatePortfolio } = usePortfolioContext()
   const defaultTitle = portfolio.title
   const [newTitle, setNewTitle] = useState(defaultTitle)
@@ -45,13 +43,13 @@ export const TitleEdit = ({ closeFunc, loginReducer }) => {
           onClick={() => {
             setPatching(true)
             portfolio.title = newTitle
-            savePortfolioCollectionQuery({ portfolio: portfolio, loginReducer: loginReducer })
-              .then((result) => {
-                updatePortfolio(result)
+            updatePortfolio(portfolio)
+              .then(() => {
                 setPatching(false)
                 closeFunc()
               })
               .catch((e) => {
+                setPatching(false)
                 console.error(e)
               })
           }}
@@ -66,13 +64,6 @@ export const TitleEdit = ({ closeFunc, loginReducer }) => {
 
 TitleEdit.propTypes = {
   closeFunc: PropTypes.func.isRequired,
-  loginReducer: PropTypes.func.isRequired,
 }
 
-export const mapStateToProps = (state) => {
-  return { ...state }
-}
-
-export default connect(
-  mapStateToProps,
-)(TitleEdit)
+export default TitleEdit

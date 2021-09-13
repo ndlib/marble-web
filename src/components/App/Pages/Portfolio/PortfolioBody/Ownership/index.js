@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { useState } from 'react'
 import { jsx } from 'theme-ui'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import VisibilityLabel from '@ndlib/gatsby-theme-marble/src/components/Shared/VisibilityLabel'
 import Attribution from '@ndlib/gatsby-theme-marble/src/components/Shared/Attribution'
@@ -12,15 +11,14 @@ import PrivacyEditSettings from './PrivacyEditSettings'
 import ShareButton from '@ndlib/gatsby-theme-marble/src/components/Shared/ShareButton'
 import PrintButton from '@ndlib/gatsby-theme-marble/src/components/Shared/PrintButton'
 import SaveOrCancelButtons from '../SaveOrCancelButtons'
-import { savePortfolioCollectionQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
 
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import sx from './sx'
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
-export const Ownership = ({ loginReducer }) => {
+export const Ownership = ({ portfolio }) => {
   const { portfolioUser, isPorfolioOwner } = useUserContext()
-  const { portfolio, updatePortfolio } = usePortfolioContext()
+  const { updatePortfolio } = usePortfolioContext()
   const [settingsOpen, setSettingsOpen] = useState(false)
   const isOwner = isPorfolioOwner()
   const { portfolioCollectionId } = portfolio
@@ -32,8 +30,8 @@ export const Ownership = ({ loginReducer }) => {
       <div sx={sx.wrapper}>
         <div sx={sx.visibilityWrapper}>
         This is your <button sx={sx.button}
-          onClick={() => setSettingsOpen(true)}
-          ><VisibilityLabel visibility={privacy} /></button> portfolio.
+            onClick={() => setSettingsOpen(true)}
+          ><VisibilityLabel visibility={portfolio.privacy} /></button> portfolio.
           <ActionModal
             isOpen={settingsOpen}
             contentLabel={`Settings for <em>${portfolio.title}</em>`}
@@ -46,13 +44,13 @@ export const Ownership = ({ loginReducer }) => {
                   onClick={() => {
                     setPatching(true)
                     portfolio.privacy = privacy
-                    savePortfolioCollectionQuery({ portfolio: portfolio, loginReducer: loginReducer })
-                      .then((result) => {
-                        updatePortfolio(result)
+                    updatePortfolio(portfolio)
+                      .then(() => {
                         setPatching(false)
                         setSettingsOpen(false)
                       })
                       .catch((e) => {
+                        setPatching(false)
                         console.error(e)
                       })
                   }}
@@ -90,13 +88,7 @@ export const Ownership = ({ loginReducer }) => {
 }
 
 Ownership.propTypes = {
-  loginReducer: PropTypes.object.isRequired,
+  portfolio: PropTypes.object.isRequired,
 }
 
-export const mapStateToProps = (state) => {
-  return { ...state }
-}
-
-export default connect(
-  mapStateToProps,
-)(Ownership)
+export default Ownership

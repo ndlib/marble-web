@@ -6,14 +6,12 @@ import PortfolioUserLayer from '../../Layers/PortfolioUserLayer'
 import UserBody from './UserBody'
 
 const User = ({ loginReducer, userName, location, edit }) => {
-  console.log('user', loginReducer)
   return (
     <PortfolioUserLayer userName={userName} location={location} loginReducer={loginReducer}>
       <UserLayout
         location={location}
       >
         <UserBody
-          user={{}}
           edit={edit}
           location={location}
         />

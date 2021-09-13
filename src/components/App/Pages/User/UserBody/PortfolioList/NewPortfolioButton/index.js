@@ -5,12 +5,11 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
 import { useTranslation } from 'react-i18next'
-import { savePortfolioCollectionQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
-export const NewPortfolioButton = ({ loginReducer }) => {
+export const NewPortfolioButton = () => {
   const { t } = useTranslation()
-  const { portfolioUser, isPorfolioOwner } = useUserContext()
+  const { portfolioUser, isPorfolioOwner, createNewPortfolio } = useUserContext()
   const [creating, setCreating] = useState(false)
 
   if (!isPorfolioOwner()) {
@@ -21,19 +20,10 @@ export const NewPortfolioButton = ({ loginReducer }) => {
     <Button
       onClick={() => {
         setCreating(true)
-        savePortfolioCollectionQuery({
-          loginReducer: loginReducer,
-          portfolio: {
-            title: 'My Portfolio',
-            description: null,
-            imageUri: null,
-            layout: 'default',
-            privacy: 'private',
-            portfolioUserId: portfolioUser.portfolioUserId,
-          } })
+        createNewPortfolio()
           .then((data) => {
-            navigate(`/user/${portfolioUser.portfolioUserId}/${data.portfolioCollectionId}`)
             setCreating(false)
+            navigate(`/user/${portfolioUser.portfolioUserId}/${data.portfolioCollectionId}`)
           })
           .catch((e) => {
             console.error(e)
@@ -47,7 +37,6 @@ export const NewPortfolioButton = ({ loginReducer }) => {
 }
 
 NewPortfolioButton.propTypes = {
-  loginReducer: PropTypes.object.isRequired,
 }
 
 export default NewPortfolioButton

@@ -2,12 +2,10 @@
 import { useState } from 'react'
 import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { savePortfolioCollectionQuery } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import sx from './sx'
 
-const SetPortfolioImage = ({ item, loginReducer }) => {
+const SetPortfolioImage = ({ item }) => {
   const { portfolio, updatePortfolio } = usePortfolioContext()
   const [patching, setPatching] = useState(false)
 
@@ -27,10 +25,8 @@ const SetPortfolioImage = ({ item, loginReducer }) => {
         onClick={() => {
           setPatching(true)
           portfolio.imageUri = item.imageUri
-          savePortfolioCollectionQuery({ portfolio: portfolio, loginReducer: loginReducer })
-            .then((result) => {
-              console.log('res=', result)
-              updatePortfolio(result)
+          updatePortfolio(portfolio)
+            .then(() => {
               setPatching(false)
             })
             .catch((e) => {
@@ -47,13 +43,6 @@ const SetPortfolioImage = ({ item, loginReducer }) => {
 
 SetPortfolioImage.propTypes = {
   item: PropTypes.object.isRequired,
-  loginReducer: PropTypes.object.isRequired,
 }
 
-export const mapStateToProps = (state) => {
-  return { ...state }
-}
-
-export default connect(
-  mapStateToProps,
-)(SetPortfolioImage)
+export default SetPortfolioImage

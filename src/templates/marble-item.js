@@ -13,7 +13,6 @@ import RelatedItemsFromSearch from '@ndlib/gatsby-theme-marble/src/components/Sh
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 import ReturnToSearch from '@ndlib/gatsby-theme-marble/src/components/Shared/ReturnToSearch'
-import UserAnnotation from '@ndlib/gatsby-theme-marble/src/components/Shared/UserAnnotation'
 import typy from 'typy'
 
 const MarbleItemPage = ({ data, location }) => {
@@ -59,7 +58,6 @@ const MarbleItemPage = ({ data, location }) => {
             )
           }
           <RelatedItemsFromSearch marbleItem={marbleItem} />
-          <UserAnnotation location={location} />
           {debug
             ? <pre>{JSON.stringify(data, null, 2)}</pre>
             : null

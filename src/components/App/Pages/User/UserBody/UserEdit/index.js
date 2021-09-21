@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
-import { jsx, Button } from 'theme-ui'
+import { jsx, Button, Heading } from 'theme-ui'
 import Gravatar from '@ndlib/gatsby-theme-marble/src/components/Shared/Gravatar'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
@@ -20,7 +20,7 @@ export const UserEdit = ({ portfolioUser, isPorfolioOwner, location }) => {
   const [bio, changeBio] = useState(portfolioUser.bio)
   const [patching, setPatching] = useState(false)
   const emailRegex = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g
-
+  console.log('pu', portfolioUser)
   if (!isPorfolioOwner) {
     return (<Unauthorized />)
   }
@@ -45,11 +45,12 @@ export const UserEdit = ({ portfolioUser, isPorfolioOwner, location }) => {
         currentPageTitle='Edit'
         breadcrumbs={[
           {
-            url: `/user/${portfolioUser.userPorfolioId}`,
+            url: `/user/${portfolioUser.portfolioUserId}`,
             title: portfolioUser.fullName,
           },
         ]}
       />
+      <Heading as='h1' variant='pageTitle'>Edit {portfolioUser.fullName}</Heading>
       <form className={style.edit}>
         <div className={style.buttonGroup}>
           <Button

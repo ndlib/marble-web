@@ -17,7 +17,7 @@ import sx from './sx'
 import typy from 'typy'
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
-export const UserLayout = ({ children, location }) => {
+export const UserLayout = ({ children, location, showSideMenu }) => {
   const { portfolioUser, portfolioUserLoading } = useUserContext()
   const data = useStaticQuery(graphql`
     {
@@ -78,7 +78,6 @@ export const UserLayout = ({ children, location }) => {
           <div id='bio' sx={sx.bio} />
 
           <Menu location={location} variant='navLeft' items={menu} label='Help' />
-          <NewPortfolioButton />
         </NDBrandSection>
         <NDBrandSection variant='fullBleedWithSidebar'>
           {children}
@@ -92,6 +91,11 @@ export const UserLayout = ({ children, location }) => {
 UserLayout.propTypes = {
   children: PropTypes.node.isRequired,
   location: PropTypes.object.isRequired,
+  showSideMenu: PropTypes.bool.isRequired,
+}
+
+UserLayout.defaultProps = {
+  showSideMenu: true,
 }
 
 export default UserLayout

@@ -28,6 +28,19 @@ const PortfolioItems = () => {
     return i1.sequence - i2.sequence
   })
 
+  const extraControls = isOwner && !editing
+    ? (
+      <Button
+        wide
+        onClick={() => {
+          setEditing(!editing)
+        }}
+        variant='light'
+      >Reorder Items
+      </Button>
+    )
+    : null
+
   let list
   if (isOwner && editing) {
     list = (
@@ -38,11 +51,17 @@ const PortfolioItems = () => {
     )
   } else if (layout === 'annotated') {
     list = (
-      <AnnotatedView
-        items={sortedItems}
-        isOwner={isOwner}
-        userId={portfolioUserId}
-      />
+      <>
+        <div sx={sx.reorderButton}>
+          { extraControls}
+        </div>
+        <AnnotatedView
+          items={sortedItems}
+          isOwner={isOwner}
+          userId={portfolioUserId}
+        />
+
+      </>
     )
   } else {
     list = (
@@ -50,28 +69,13 @@ const PortfolioItems = () => {
         items={sortedItems}
         isOwner={isOwner}
         userId={portfolioUserId}
+        extraControls={extraControls}
       />
     )
   }
 
   return (
     <div>
-      <div sx={sx.reorderButton}>
-        {
-          isOwner && !editing
-            ? (
-              <Button
-                wide
-                onClick={() => {
-                  setEditing(!editing)
-                }}
-                variant='light'
-              >Reorder Items
-              </Button>
-            )
-            : null
-        }
-      </div>
       {list}
     </div>
   )

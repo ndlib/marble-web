@@ -29,7 +29,7 @@ export const NewPortfolioButton = () => {
             console.error(e)
           })
       }}
-      variant='primary'
+      variant='light'
       disabled={creating}
     >{t('common:button.createPortfolio')}
     </Button>

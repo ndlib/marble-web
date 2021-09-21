@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { jsx, Button } from 'theme-ui'
+import { jsx, Button, Heading } from 'theme-ui'
 import { connect } from 'react-redux'
 import typy from 'typy'
 import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard/CardGroup'
@@ -36,12 +36,16 @@ const PortfolioList = ({
     return (
       <>
         <NDBrandBreadcrumbs
-          currentPageTitle={portfolioUser.fullName}
+          currentPageTitle={portfolioUser.fullName + "'s Portfolios"}
           breadcrumbs={[]}
         />
+        <Heading as='h1' variant='pageTitle'>{portfolioUser.fullName}'s Portfolios</Heading>
         <CardGroup
           defaultDisplay={DISPLAY_GRID}
           toggleGroup='compilations-page'
+          extraControls={<>
+            <NewPortfolioButton />
+          </>}
         >
           {
             typy(portfolios).safeArray

@@ -14,9 +14,6 @@ module.exports = {
   shareWrapper: {
     display: 'block',
     margin: '0 !important',
-    '& button': {
-      float: 'left',
-    },
   },
   button: {
     border: '0px',

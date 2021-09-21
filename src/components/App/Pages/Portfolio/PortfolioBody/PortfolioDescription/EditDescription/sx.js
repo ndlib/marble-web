@@ -12,8 +12,9 @@ module.exports = {
     height: '14rem',
     lineHeight: '1.45rem',
     minHeight: '6rem',
-
-    padding: '1rem',
+    pt: '2rem',
+    px: '1rem',
+    pb: '1rem',
     resize: 'vertical',
     width: '100%',
   },

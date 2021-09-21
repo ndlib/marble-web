@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { useState } from 'react'
-import { jsx, Button } from 'theme-ui'
+import { jsx, Button, Box } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import EditButton from '../EditButton'
@@ -32,7 +32,7 @@ const PortfolioDescription = () => {
     return null
   }
   return (
-    <div sx={sx.wrapper}>
+    <Box as='div' sx={sx.wrapper}>
       <div sx={sx.innerWrapper(isOwner)}>
         {description}
       </div>
@@ -42,7 +42,7 @@ const PortfolioDescription = () => {
           setEditFunc={() => setEditing(true)}
         />
       </div>
-    </div>
+    </Box>
   )
 }
 

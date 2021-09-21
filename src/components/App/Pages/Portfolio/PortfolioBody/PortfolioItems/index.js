@@ -65,6 +65,7 @@ const PortfolioItems = () => {
                 onClick={() => {
                   setEditing(!editing)
                 }}
+                variant='light'
               >Reorder Items
               </Button>
             )

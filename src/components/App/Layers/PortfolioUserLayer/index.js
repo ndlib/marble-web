@@ -80,7 +80,6 @@ const PortfolioUserLayer = ({ userName, loginReducer, children }) => {
         .then((data) => {
           if (!data.portfolioUserId) {
             // if they have not logged in before go to the create page.
-            console.log('here', loginReducer)
             if (loginReducer.user.netid === userName) {
               navigate('/user/create')
             } else {

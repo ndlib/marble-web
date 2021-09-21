@@ -64,7 +64,7 @@ export default Item
 
 export const targetWithAnnotation = (item, userId) => {
   if (item && item.annotation && !typy(item, 'link').safeString.startsWith('http')) {
-    return `/item/${item.portfolioItemId}?${userId || ''}${userId}`
+    return `/item/${item.portfolioItemId}?${userId ? userId + '=' + item.portfolioCollectionId : ''}`
   }
   return `/item/${item.portfolioItemId}`
 }

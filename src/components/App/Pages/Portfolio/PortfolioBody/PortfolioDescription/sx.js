@@ -18,7 +18,9 @@ module.exports = {
       borderColor: 'gray.0',
       display: 'inline-block',
       minWidth: isOwner ? 'calc(100% - 40px)' : '100%',
-      padding: '1rem',
+      pt: '2rem',
+      px: '1rem',
+      pb: '1rem',
     }
   },
 }

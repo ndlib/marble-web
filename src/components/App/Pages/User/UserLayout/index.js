@@ -68,15 +68,14 @@ export const UserLayout = ({ children, location }) => {
       <NDBrandSectionLeftNav location={location}>
         <NDBrandSection variant='sidebar'>
           <Heading as='h1' sx={{ margin: 0, fontSize: '6' }}>{portfolioUser.fullName}</Heading>
-          <Flex sx={{ display: 'flex', alignItems: 'top' }}>
-            <Box sx={{ width: '75px' }}>
-              <Gravatar email={portfolioUser.email} size={75} />
-            </Box>
-            <Box sx={{ px: '1rem' }}>
-              <EditUserButton />
-            </Box>
-          </Flex>
-          <div id='bio' sx={sx.bio}>{portfolioUser.bio}</div>
+          <Box sx={{ textAlign: 'left' }}>
+            <Gravatar email={portfolioUser.email} size={75} align='left' />
+            {portfolioUser.bio}
+          </Box>
+          <Box sx={{ px: '1rem' }}>
+            <EditUserButton />
+          </Box>
+          <div id='bio' sx={sx.bio} />
 
           <Menu location={location} variant='navLeft' items={menu} label='Help' />
           <NewPortfolioButton />

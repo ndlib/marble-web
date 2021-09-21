@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { useState } from 'react'
-import { connect } from 'react-redux'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
@@ -22,6 +21,7 @@ export const EditDescription = ({ closeFunc }) => {
         onChange={(event) => {
           setNewDescription(event.target.value)
         }}
+        sx={sx.textArea}
         disabled={patching}
         label='Description'
         hideLabel

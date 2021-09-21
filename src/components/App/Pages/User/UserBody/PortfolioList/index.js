@@ -56,15 +56,7 @@ const PortfolioList = ({
                     target={`/user/${c.portfolioUserId}/${c.portfolioCollectionId}`}
                     image={c.imageUri || ''}
                     leftBadge={isPorfolioOwner ? <VisibilityLabel visibility={c.privacy} /> : null}
-                    controls={isPorfolioOwner
-                      ? (
-                        <Button
-                          variant='light'
-                          onClick={() => beGone(c)}
-                        ><FaTrash />
-                        </Button>
-                      )
-                      : null}
+
                   >{c.description}
                   </DisplayCard>
                 )

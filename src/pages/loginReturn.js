@@ -1,9 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-/*
-import {
-  OktaAuth,
-} from '@okta/okta-auth-js'
+// import { OktaAuth } from '@okta/okta-auth-js'
 
 const LoginReturn = ({ userName, location, edit }) => {
   const authClientSettings = {
@@ -17,15 +14,13 @@ const LoginReturn = ({ userName, location, edit }) => {
     pkce: true,
   }
 
-  const authClient = new OktaAuth(authClientSettings)
-  //authClient.start()
+  // const authClient = new OktaAuth(authClientSettings)
+  // authClient.start()
 
-  console.log(authClient)
+  // console.log(authClient)
   return (
     <div>Hi</div>
   )
-
 }
 
 export default LoginReturn
-*/

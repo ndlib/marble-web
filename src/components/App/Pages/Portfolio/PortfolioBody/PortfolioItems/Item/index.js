@@ -11,33 +11,28 @@ import sx from './sx'
 const Item = ({ item, userId, isOwner, annotated = false }) => {
   const [editing, setEditing] = useState(false)
   const finalTarget = targetWithAnnotation(item, userId)
-
   let card = (
     <DisplayCard
       title={item.title}
       target={finalTarget}
-      image={item.image}
+      image={item.imageUri}
       controls={<ItemControls
         item={item}
         isOwner={isOwner}
         setEditFunc={() => setEditing(true)}
       />}
     >
-      {
-        item.annotation && !annotated
-          ? (
-            <p>{item.annotation}</p>
-          )
-          : null
-      }
+      {item.annotation && !annotated && (
+        <p>{item.annotation}</p>
+      )}
     </DisplayCard>
-
   )
 
   if (editing) {
     card = (
       <EditItemForm
         uuid={item.uuid}
+        item={item}
         closeFunc={() => setEditing(false)}
       />
     )
@@ -69,7 +64,7 @@ export default Item
 
 export const targetWithAnnotation = (item, userId) => {
   if (item && item.annotation && !typy(item, 'link').safeString.startsWith('http')) {
-    return `${item.link}?${userId || ''}${item.uuid}`
+    return `/item/${item.portfolioItemId}?${userId ? userId + '=' + item.portfolioCollectionId : ''}`
   }
-  return item.link
+  return `/item/${item.portfolioItemId}`
 }

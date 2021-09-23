@@ -1,16 +1,19 @@
 /** @jsx jsx */
 import { useState } from 'react'
-import { jsx, Button } from 'theme-ui'
+import { jsx, Button, Box } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import EditButton from '../EditButton'
 import EditDescription from './EditDescription'
 import sx from './sx'
+import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
-const PortfolioDescription = ({ isOwner }) => {
+const PortfolioDescription = () => {
+  const { isPorfolioOwner } = useUserContext()
   const { portfolio } = usePortfolioContext()
   const [editing, setEditing] = useState(false)
   const { description } = portfolio
+  const isOwner = isPorfolioOwner()
 
   if (editing) {
     return (<EditDescription closeFunc={() => setEditing(false)} />)
@@ -29,7 +32,7 @@ const PortfolioDescription = ({ isOwner }) => {
     return null
   }
   return (
-    <div sx={sx.wrapper}>
+    <Box as='div' sx={sx.wrapper}>
       <div sx={sx.innerWrapper(isOwner)}>
         {description}
       </div>
@@ -39,12 +42,11 @@ const PortfolioDescription = ({ isOwner }) => {
           setEditFunc={() => setEditing(true)}
         />
       </div>
-    </div>
+    </Box>
   )
 }
 
 PortfolioDescription.propTypes = {
-  isOwner: PropTypes.bool,
 }
 
 export default PortfolioDescription

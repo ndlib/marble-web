@@ -2,20 +2,23 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { jsx, Heading, Button } from 'theme-ui'
+import { jsx, Heading, Button, Box, Label, Checkbox } from 'theme-ui'
 import { connect } from 'react-redux'
 import typy from 'typy'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import WelcomeMessage from './WelcomeMessage'
 import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
 import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
-import { createNewUser } from '@ndlib/gatsby-theme-marble/src/store/actions/loginActions'
+import { savePortfolioUser } from '@ndlib/gatsby-theme-marble/src/utils/api'
+import { navigate } from 'gatsby'
 
-const CreateAccount = ({ loginReducer, dispatch }) => {
+const CreateForm = ({ loginReducer }) => {
   const claims = typy(loginReducer, 'token.claims').safeObject
   const [fullName, changeName] = useState(claims.name)
   const [email, changeEmail] = useState(claims.email)
   const [bio, changeBio] = useState('')
   const [patching, setPatching] = useState(false)
+  const [hasAcceptedTerms, acceptTerms] = useState(false)
   const emailRegex = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g
 
   return (
@@ -59,24 +62,37 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
         }}
         disabled={patching}
       />
+      <Box>
+        <Label mb={3}>
+          <Checkbox
+            checked={hasAcceptedTerms}
+            onChange={() => acceptTerms(!hasAcceptedTerms)}
+          />
+          <span>
+      I have reviewed and agree to the <Link to='https://policy.nd.edu/assets/185268/responsible_use_it_resources_2015.pdf'>Responsible Use Policy</Link>.</span>
+        </Label>
+      </Box>
       <p>
         <Button
           id='createAccount'
           onClick={(event) => {
             event.preventDefault()
             setPatching(true)
-            const body = {
-              fullName: fullName,
+            const newUser = {
+              bio: bio,
               email: email,
-              bio: bio || '',
-              uuid: `${claims.sub}.${btoa(claims.iss)}`,
-              userName: claims.netid,
+              fullName: fullName,
             }
-            dispatch(createNewUser(`${claims.sub}.${btoa(claims.iss)}`, body, loginReducer))
+            savePortfolioUser({ loginReducer: loginReducer, user: newUser })
+              .then(() => {
+                navigate('/user/' + claims.netid)
+              })
+              .catch((e) => {
+                console.error(e)
+              })
           }}
-          primary
-          wide
-          disabled={patching || !email.match(emailRegex) || fullName === ''}
+          variant='primary'
+          disabled={patching || !email.match(emailRegex) || fullName === '' || !hasAcceptedTerms}
         >Create Account</Button>
       </p>
     </form>
@@ -85,14 +101,11 @@ const CreateAccount = ({ loginReducer, dispatch }) => {
 const mapStateToProps = (state) => {
   return { ...state }
 }
-const mapDispatchToProps = dispatch => {
-  return { dispatch }
-}
-CreateAccount.propTypes = {
+
+CreateForm.propTypes = {
   loginReducer: PropTypes.object,
-  dispatch: PropTypes.func,
 }
+
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(CreateAccount)
+  mapStateToProps
+)(CreateForm)

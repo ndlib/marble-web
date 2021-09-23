@@ -4,7 +4,6 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import { OktaAuth } from '@okta/okta-auth-js'
 import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
 import { logUserOut } from '@ndlib/gatsby-theme-marble/src/store/actions/loginActions'
 import { jsx } from 'theme-ui'
@@ -12,8 +11,8 @@ import { jsx } from 'theme-ui'
 export const LogOut = ({ dispatch, loginReducer }) => {
   const { t } = useTranslation()
   useEffect(() => {
-    if (loginReducer.user.userName) {
-      const authClient = new OktaAuth(loginReducer.authClientSettings)
+    if (loginReducer.user.netid) {
+      const authClient = loginReducer.authClientSettings
       dispatch(logUserOut(authClient))
     }
   })
@@ -29,7 +28,7 @@ export const LogOut = ({ dispatch, loginReducer }) => {
   }
 
   // render Loading if the dispatch is taking too long
-  if (loginReducer.user.userName) {
+  if (loginReducer.user.netid) {
     return <Loading />
   }
 

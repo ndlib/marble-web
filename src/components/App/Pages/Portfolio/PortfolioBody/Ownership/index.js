@@ -14,22 +14,24 @@ import SaveOrCancelButtons from '../SaveOrCancelButtons'
 
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import sx from './sx'
+import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
-export const Ownership = ({ isOwner }) => {
-  const { portfolio } = usePortfolioContext()
+export const Ownership = ({ portfolio }) => {
+  const { portfolioUser, isPorfolioOwner } = useUserContext()
+  const { updatePortfolio } = usePortfolioContext()
   const [settingsOpen, setSettingsOpen] = useState(false)
+  const isOwner = isPorfolioOwner()
+  const { portfolioCollectionId } = portfolio
   const [patching, setPatching] = useState(false)
   const [privacy, changePrivacy] = useState(portfolio.privacy)
-  const { userId, uuid } = portfolio
+
   if (isOwner) {
     return (
       <div sx={sx.wrapper}>
         <div sx={sx.visibilityWrapper}>
-          This is your
-          <button sx={sx.button} onClick={() => setSettingsOpen(true)}>
-            <VisibilityLabel visibility={portfolio.privacy} />
-          </button>
-          portfolio.
+        This is your <button sx={sx.button}
+            onClick={() => setSettingsOpen(true)}
+          ><VisibilityLabel visibility={portfolio.privacy} /></button> portfolio.
           <ActionModal
             isOpen={settingsOpen}
             contentLabel={`Settings for <em>${portfolio.title}</em>`}
@@ -39,11 +41,20 @@ export const Ownership = ({ isOwner }) => {
               <div sx={{ textAlign: 'right', '& > button': { marginLeft: '.5rem' } }}>
                 <SaveOrCancelButtons
                   closeFunc={() => setSettingsOpen(false)}
-                  patching={patching}
-                  setPatching={setPatching}
-                  body={{
-                    privacy: privacy || 'private',
+                  onClick={() => {
+                    setPatching(true)
+                    portfolio.privacy = privacy
+                    updatePortfolio(portfolio)
+                      .then(() => {
+                        setPatching(false)
+                        setSettingsOpen(false)
+                      })
+                      .catch((e) => {
+                        setPatching(false)
+                        console.error(e)
+                      })
                   }}
+
                   valid
                   changed={privacy !== portfolio.privacy}
                 />
@@ -54,7 +65,7 @@ export const Ownership = ({ isOwner }) => {
           </ActionModal>
         </div>
         <div sx={sx.shareWrapper}>
-          <ShareButton path={`myportfolio/${uuid}`} />
+          <ShareButton path={`user/xyz/${portfolioCollectionId}`} />
           <PrintButton />
         </div>
         <div sx={sx.editWrapper}>
@@ -66,10 +77,10 @@ export const Ownership = ({ isOwner }) => {
   return (
     <div sx={sx.wrapper}>
       <Attribution>
-        Portfolio collected and annotated by <UserCartouche user={{ uuid: userId }} />
+        Portfolio collected and annotated by <UserCartouche user={portfolioUser} />
       </Attribution>
       <div sx={sx.shareWrapper}>
-        <ShareButton path={`myportfolio/${uuid}`} />
+        <ShareButton path={`user/xyz/${portfolioCollectionId}`} />
         <PrintButton />
       </div>
     </div>
@@ -77,7 +88,7 @@ export const Ownership = ({ isOwner }) => {
 }
 
 Ownership.propTypes = {
-  isOwner: PropTypes.bool,
+  portfolio: PropTypes.object.isRequired,
 }
 
 export default Ownership

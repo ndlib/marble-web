@@ -13,6 +13,9 @@ import RelatedItemsFromSearch from '@ndlib/gatsby-theme-marble/src/components/Sh
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 import ReturnToSearch from '@ndlib/gatsby-theme-marble/src/components/Shared/ReturnToSearch'
+import AlertLayer from '../components/App/Layers/AlertLayer'
+import AlertMessages from '@ndlib/gatsby-theme-marble/src/components/Shared/AlertMessages'
+import UserAnnotation from '../components/Shared/UserAnnotation'
 import typy from 'typy'
 
 const MarbleItemPage = ({ data, location }) => {
@@ -27,45 +30,47 @@ const MarbleItemPage = ({ data, location }) => {
       currentPageTitle={marbleItem.title}
     />)
   }
-
   // use ?debug=true to render graphQL data at end of page
   const { debug } = queryString.parse(location.search)
   return (
-    <Layout
-      location={location}
-    >
-      <Seo
-        data={data}
+    <AlertLayer>
+      <Layout
         location={location}
-      />
-      <NDBrandSection variant='fullBleed'>
-        {breadcrumbs}
-        <main>
-          <Heading as='h1' variant='pageTitle'>{marbleItem.title}</Heading>
-          {marbleItem.display === 'collection'
-            ? (
-              <CollectionLayout
-                location={location}
-                marbleItem={marbleItem}
-              />
-            )
-            : (
-              <ItemLayout
-                location={location}
-                marbleItem={marbleItem}
-                allMarbleFile={allMarbleFile}
-              />
-            )
-          }
-          <RelatedItemsFromSearch marbleItem={marbleItem} />
-          {debug
-            ? <pre>{JSON.stringify(data, null, 2)}</pre>
-            : null
-          }
-        </main>
-      </NDBrandSection>
-    </Layout>
-
+      >
+        <Seo
+          data={data}
+          location={location}
+        />
+        <NDBrandSection variant='fullBleed'>
+          {breadcrumbs}
+          <main>
+            <Heading as='h1' variant='pageTitle'>{marbleItem.title}</Heading>
+            <UserAnnotation location={location} itemId={marbleItem.marbleId} />
+            {marbleItem.display === 'collection'
+              ? (
+                <CollectionLayout
+                  location={location}
+                  marbleItem={marbleItem}
+                />
+              )
+              : (
+                <ItemLayout
+                  location={location}
+                  marbleItem={marbleItem}
+                  allMarbleFile={allMarbleFile}
+                />
+              )
+            }
+            <RelatedItemsFromSearch marbleItem={marbleItem} />
+            {debug
+              ? <pre>{JSON.stringify(data, null, 2)}</pre>
+              : null
+            }
+          </main>
+        </NDBrandSection>
+        <AlertMessages />
+      </Layout>
+    </AlertLayer>
   )
 }
 MarbleItemPage.propTypes = {

@@ -2,18 +2,17 @@
 import { useState } from 'react'
 import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { patchData } from '@ndlib/gatsby-theme-marble/src/utils/api'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import sx from './sx'
 
-const SetPortfolioImage = ({ item, loginReducer }) => {
+const SetPortfolioImage = ({ item }) => {
   const { portfolio, updatePortfolio } = usePortfolioContext()
   const [patching, setPatching] = useState(false)
-  if (!item.image) {
+
+  if (!item.imageUri) {
     return null
   }
-  if (portfolio.image === item.image) {
+  if (portfolio.imageUri === item.imageUri) {
     return (
       <div sx={sx.wrapper}>
         <em>This item is the cover image for this portfolio.</em>
@@ -25,21 +24,16 @@ const SetPortfolioImage = ({ item, loginReducer }) => {
       <Button
         onClick={() => {
           setPatching(true)
-          const body = { image: item.image }
-          patchData({
-            loginReducer: loginReducer,
-            contentType: 'collection',
-            id: portfolio.uuid,
-            body: body,
-            successFunc: (result) => {
-              updatePortfolio(result)
+          portfolio.imageUri = item.imageUri
+          updatePortfolio(portfolio)
+            .then(() => {
               setPatching(false)
-            },
-            errorFunc: (e) => {
+            })
+            .catch((e) => {
               console.error(e)
-            },
-          })
+            })
         }}
+        variant='light'
         disabled={patching}
       >Set as Portfolio Cover Image
       </Button>
@@ -49,13 +43,6 @@ const SetPortfolioImage = ({ item, loginReducer }) => {
 
 SetPortfolioImage.propTypes = {
   item: PropTypes.object.isRequired,
-  loginReducer: PropTypes.object.isRequired,
 }
 
-export const mapStateToProps = (state) => {
-  return { ...state }
-}
-
-export default connect(
-  mapStateToProps,
-)(SetPortfolioImage)
+export default SetPortfolioImage

@@ -7,8 +7,8 @@ import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormEleme
 import SaveOrCancelButtons from '../../SaveOrCancelButtons'
 import sx from './sx'
 
-const EditDescription = ({ closeFunc }) => {
-  const { portfolio } = usePortfolioContext()
+export const EditDescription = ({ closeFunc }) => {
+  const { portfolio, updatePortfolio } = usePortfolioContext()
   const description = portfolio.description
   const [newDescription, setNewDescription] = useState(description)
   const [patching, setPatching] = useState(false)
@@ -21,6 +21,7 @@ const EditDescription = ({ closeFunc }) => {
         onChange={(event) => {
           setNewDescription(event.target.value)
         }}
+        sx={sx.textArea}
         disabled={patching}
         label='Description'
         hideLabel
@@ -28,9 +29,19 @@ const EditDescription = ({ closeFunc }) => {
       <span sx={sx.buttonWrapper}>
         <SaveOrCancelButtons
           closeFunc={closeFunc}
-          patching={patching}
-          setPatching={setPatching}
-          body={{ description: newDescription }}
+          onClick={() => {
+            setPatching(true)
+            portfolio.description = newDescription
+            updatePortfolio(portfolio)
+              .then(() => {
+                setPatching(false)
+                closeFunc()
+              })
+              .catch((e) => {
+                setPatching(false)
+                console.error(e)
+              })
+          }}
           valid
           changed={description !== newDescription}
         />

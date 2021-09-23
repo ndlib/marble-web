@@ -9,20 +9,38 @@ import GridListView from './GridListView'
 import EditList from './EditList'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import sx from './sx'
+import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
 // eslint-disable-next-line complexity
-const PortfolioItems = ({ isOwner }) => {
+const PortfolioItems = () => {
+  const { isPorfolioOwner } = useUserContext()
   const { portfolio } = usePortfolioContext()
   const [editing, setEditing] = useState(false)
-  const { items, layout, userId } = portfolio
-  if (typy(portfolio, 'items').safeArray.length === 0) {
+  const { portfolioItems, layout, portfolioUserId } = portfolio
+  const isOwner = isPorfolioOwner()
+
+  if (typy(portfolioItems, 'items').safeArray.length === 0) {
     return (
       <NoItems />
     )
   }
-  const sortedItems = items.sort((i1, i2) => {
-    return i1.displayOrder - i2.displayOrder
+  const sortedItems = portfolioItems.items.sort((i1, i2) => {
+    return i1.sequence - i2.sequence
   })
+
+  const extraControls = isOwner && !editing
+    ? (
+      <Button
+        wide
+        onClick={() => {
+          setEditing(!editing)
+        }}
+        variant='light'
+      >Reorder Items
+      </Button>
+    )
+    : null
+
   let list
   if (isOwner && editing) {
     list = (
@@ -33,43 +51,36 @@ const PortfolioItems = ({ isOwner }) => {
     )
   } else if (layout === 'annotated') {
     list = (
-      <AnnotatedView
-        items={sortedItems}
-        isOwner={isOwner}
-        userId={userId}
-      />
+      <>
+        <div sx={sx.reorderButton}>
+          { extraControls}
+        </div>
+        <AnnotatedView
+          items={sortedItems}
+          isOwner={isOwner}
+          userId={portfolioUserId}
+        />
+
+      </>
     )
   } else {
     list = (
       <GridListView
         items={sortedItems}
         isOwner={isOwner}
-        userId={userId}
+        userId={portfolioUserId}
+        extraControls={extraControls}
       />
     )
   }
 
   return (
     <div>
-      <div sx={sx.reorderButton}>
-        {
-          isOwner && !editing ? (
-            <Button
-              wide
-              onClick={() => {
-                setEditing(!editing)
-              }}
-            >Reorder Items
-            </Button>
-          ) : null
-        }
-      </div>
       {list}
     </div>
   )
 }
 
 PortfolioItems.propTypes = {
-  isOwner: PropTypes.bool,
 }
 export default PortfolioItems

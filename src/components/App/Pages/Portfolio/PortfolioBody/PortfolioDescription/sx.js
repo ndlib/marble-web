@@ -3,22 +3,29 @@ module.exports = {
     margin: '0 auto',
     position: 'relative',
     width: ['100%', '100%', '80%'],
+    clear: 'both',
   },
   buttonWrapper: (isOwner) => {
     return isOwner ? {
       display: 'inline-block',
       verticalAlign: 'top',
+      clear: 'both',
     } : {
       display: 'none',
     }
   },
   innerWrapper: (isOwner) => {
     return {
+      clear: 'both',
       border: '1px solid',
       borderColor: 'gray.0',
       display: 'inline-block',
       minWidth: isOwner ? 'calc(100% - 40px)' : '100%',
-      padding: '1rem',
+      pt: '2rem',
+      px: '1rem',
+      pb: '1rem',
+      margin: '0 auto',
+      width: ['100%', '100%', '80%'],
     }
   },
 }

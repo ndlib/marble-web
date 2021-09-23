@@ -1,47 +1,84 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Flex, Box } from 'theme-ui'
+import { jsx, Flex, Box, Heading } from 'theme-ui'
+import { useStaticQuery, graphql } from 'gatsby'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import Gravatar from '@ndlib/gatsby-theme-marble/src/components/Shared/Gravatar'
-import PromptLogin from './PromptLogin'
 import EditUserButton from './EditUserButton'
-import { isLoggedIn, ownsPage } from '@ndlib/gatsby-theme-marble/src/utils/auth'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandSectionLeftNav from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section/LeftNav'
+import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
+import NewPortfolioButton from '../UserBody/PortfolioList/NewPortfolioButton'
+import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
+import NoUser from './NoUser'
 import sx from './sx'
+import typy from 'typy'
+import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
-export const UserLayout = ({ user, children, location, loginReducer }) => {
-  const loggedIn = isLoggedIn(loginReducer)
-  const isOwner = ownsPage(loginReducer, user.uuid)
+export const UserLayout = ({ children, location, showSideMenu }) => {
+  const { portfolioUser, portfolioUserLoading } = useUserContext()
+  const data = useStaticQuery(graphql`
+    {
+      menusJson(id: {eq: "myaccount"}) {
+        id
+        label
+        items {
+          id
+          label
+          link
+          icon
+          selectedPatterns
+        }
+      }
+    }
+  `)
+
+  if (portfolioUserLoading) {
+    return (
+      <NDBrandSectionLeftNav location={location}>
+        <NDBrandSection variant='sidebar'>&nbsp;</NDBrandSection>
+        <NDBrandSection variant='fullBleedWithSidebar'>
+          <Loading />
+        </NDBrandSection>
+      </NDBrandSectionLeftNav>
+    )
+  } else if (portfolioUser['userNotFound']) {
+    return (
+      <NDBrandSectionLeftNav location={location}>
+        <NDBrandSection variant='sidebar'>&nbsp;</NDBrandSection>
+        <NDBrandSection variant='fullBleedWithSidebar'>
+          <NoUser userName={portfolioUser.portfolioUserId} />
+        </NDBrandSection>
+      </NDBrandSectionLeftNav>
+    )
+  }
+
+  const menusJson = typy(data, 'menusJson').safeObject
+  const menu = typy(menusJson, 'items').safeArray
   return (
     <>
       <Seo
         data={{}}
         location={location}
-        title={user.userName}
+        title={portfolioUser.portfolioUserId}
         noIndex
       />
       <NDBrandSectionLeftNav location={location}>
         <NDBrandSection variant='sidebar'>
-          <Flex sx={{ flexWrap: 'wrap' }}>
-            <Box sx={{ width: ['25%', '100%', '100%'] }}>
-              <Gravatar email={user.email} />
-            </Box>
-            <Box sx={{ width: ['75%', '100%', '100%'], px: '1rem' }}>
-              <h1>{user.fullName}</h1>
-              <h2>{user.userName}</h2>
-            </Box>
-          </Flex>
-          <div id='bio' sx={sx.bio}>{user.bio}</div>
-          <div>
-            {
-              /* Follow or Edit button */
-              isOwner ? <EditUserButton userName={user.userName} /> : <PromptLogin showButton={!loggedIn} />
-            }
-          </div>
+          <Heading as='h1' sx={{ margin: 0, fontSize: '6' }}>{portfolioUser.fullName}</Heading>
+          <Box sx={{ textAlign: 'left' }}>
+            <Gravatar email={portfolioUser.email} size={75} align='left' />
+          </Box>
+          <Box sx={{ px: '1rem' }}>
+            <EditUserButton />
+          </Box>
+          <div id='bio' sx={sx.bio}>{portfolioUser.bio}</div>
+
+          <Menu location={location} variant='navLeft' items={menu} label='Help' />
         </NDBrandSection>
-        <NDBrandSection variant='fullBleedWithSidebar' sx={{ paddingTop: '2rem' }}>
+        <NDBrandSection variant='fullBleedWithSidebar'>
           {children}
         </NDBrandSection>
       </NDBrandSectionLeftNav>
@@ -51,16 +88,13 @@ export const UserLayout = ({ user, children, location, loginReducer }) => {
 }
 
 UserLayout.propTypes = {
-  user: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
   location: PropTypes.object.isRequired,
-  loginReducer: PropTypes.object.isRequired,
+  showSideMenu: PropTypes.bool.isRequired,
 }
 
-export const mapStateToProps = (state) => {
-  return { ...state }
+UserLayout.defaultProps = {
+  showSideMenu: true,
 }
 
-export default connect(
-  mapStateToProps,
-)(UserLayout)
+export default UserLayout

@@ -1,56 +1,31 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import typy from 'typy'
 import PortfolioBody from './PortfolioBody'
-import PortfolioUnavailable from './PortfolioUnavailable'
-import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
-import { getData } from '@ndlib/gatsby-theme-marble/src/utils/api'
-import { ownsPage } from '@ndlib/gatsby-theme-marble/src/utils/auth'
-import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
+import UserLayout from '../User/UserLayout'
+import PortfolioUserLayer from '../../Layers/PortfolioUserLayer'
+import PortfolioLayer from '../../Layers/PortfolioLayer'
 
-export const Portfolio = ({ portfolioId, location, loginReducer }) => {
-  const [content, setContent] = useState(<Loading />)
-
-  useEffect(() => {
-    const abortController = new AbortController()
-    if (loginReducer.status === 'STATUS_NOT_LOGGED_IN' || loginReducer.status === 'STATUS_LOGGED_IN') {
-      getData({
-        loginReducer: loginReducer,
-        contentType: 'collection',
-        id: portfolioId,
-        successFunc: (data) => {
-          const { privacy, userId } = data
-          const isOwner = ownsPage(loginReducer, userId)
-          if (privacy === 'private' && !isOwner) {
-            setContent(<PortfolioUnavailable />)
-          } else {
-            setContent(<PortfolioBody
-              location={location}
-              portfolio={data}
-              isOwner={isOwner}
-            />)
-          }
-        },
-        errorFunc: () => {
-          setContent(<PortfolioUnavailable />)
-        },
-      })
-    }
-    return () => {
-      abortController.abort()
-    }
-  }, [portfolioId, loginReducer, location])
-
+export const Portfolio = ({ userName, portfolioId, location, loginReducer }) => {
   return (
-    <NDBrandSection variant='fullBleed'>
-      {content}
-    </NDBrandSection>
+    <PortfolioUserLayer userName={userName} location={location} loginReducer={loginReducer}>
+      <PortfolioLayer portfolioId={portfolioId} location={location} loginReducer={loginReducer}>
+
+        <UserLayout location={location}>
+          <PortfolioBody
+            location={location}
+          />
+        </UserLayout>
+      </PortfolioLayer>
+    </PortfolioUserLayer>
+
   )
 }
 
 Portfolio.propTypes = {
   portfolioId: PropTypes.string,
+  userName: PropTypes.string,
   location: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
 }

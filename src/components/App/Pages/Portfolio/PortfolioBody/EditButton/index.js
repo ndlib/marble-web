@@ -3,9 +3,11 @@ import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import editIcon from 'assets/icons/svg/baseline-edit-24px.svg'
 import sx from './sx'
+import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
-const EditButton = ({ isOwner, setEditFunc }) => {
-  if (isOwner) {
+const EditButton = ({ setEditFunc }) => {
+  const { isPorfolioOwner } = useUserContext()
+  if (isPorfolioOwner()) {
     return (
       <button
         onClick={() => setEditFunc()}
@@ -22,7 +24,6 @@ const EditButton = ({ isOwner, setEditFunc }) => {
 }
 
 EditButton.propTypes = {
-  isOwner: PropTypes.bool,
   setEditFunc: PropTypes.func.isRequired,
 }
 

@@ -1,7 +1,7 @@
 /** @jsx jsx */
-import { useState } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { jsx, Button } from 'theme-ui'
+import { jsx, Button, Heading } from 'theme-ui'
 import { connect } from 'react-redux'
 import typy from 'typy'
 import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard/CardGroup'
@@ -10,104 +10,74 @@ import NewPortfolioButton from './NewPortfolioButton'
 import NoPortfolios from './NoPortfolios'
 import VisibilityLabel from '@ndlib/gatsby-theme-marble/src/components/Shared/VisibilityLabel'
 import { DISPLAY_GRID } from '@ndlib/gatsby-theme-marble/src/store/actions/displayActions'
-import { isLoggedIn, ownsPage } from '@ndlib/gatsby-theme-marble/src/utils/auth'
-import { deleteData } from '@ndlib/gatsby-theme-marble/src/utils/api'
+import { NDBrandBreadcrumbs } from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
+import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
+import { FaTrash } from 'react-icons/fa'
 
 const PortfolioList = ({
-  user,
   loginReducer,
+  portfolioUser,
+  isPorfolioOwner,
+  location,
 }) => {
-  const [portfolios, setPortfolios] = useState(user.collections || [])
+  const { removeUserPortfolio } = useUserContext()
+  const portfolios = typy(portfolioUser, 'portfolioCollections.items').safeArray
+
   const beGone = (portfolio) => {
     const areYouSure = window.confirm('Are you sure you want to delete this protfolio?')
       ? (
-        deleteData({
-          loginReducer: loginReducer,
-          contentType: 'collection',
-          id: portfolio.uuid,
-          successFunc: () => {
-            setPortfolios(portfolios.filter(p => {
-              return p.uuid !== portfolio.uuid
-            }))
-          },
-          errorFunc: (e) => {
-            console.error(e)
-          },
-        })
+        removeUserPortfolio(portfolio)
       )
       : null
     return areYouSure
   }
-  const loggedIn = isLoggedIn(loginReducer)
-  const isOwner = ownsPage(loginReducer, user.uuid)
+
   if (portfolios.length > 0) {
     return (
-      <CardGroup
-        defaultDisplay={DISPLAY_GRID}
-        toggleGroup='compilations-page'
-        extraControls={isOwner
-          ? () => {
-            return (
-              <span style={{
-                float: 'left',
-                verticalAlign: 'top',
-              }}
-              >
-                <NewPortfolioButton
-                  addFunc={setPortfolios}
-                  portfolios={portfolios}
-                />
-              </span>
-            )
+      <>
+        <NDBrandBreadcrumbs
+          currentPageTitle={portfolioUser.fullName + "'s Portfolios"}
+          breadcrumbs={[]}
+        />
+        <Heading as='h1' variant='pageTitle'>{portfolioUser.fullName}'s Portfolios</Heading>
+        <CardGroup
+          defaultDisplay={DISPLAY_GRID}
+          toggleGroup='compilations-page'
+          extraControls={<>
+            <NewPortfolioButton />
+          </>}
+        >
+          {
+            typy(portfolios).safeArray
+              .sort((a, b) => {
+                return b.updated - a.updated
+              })
+              .map((c, index) => {
+                return (
+                  <DisplayCard
+                    key={index}
+                    title={c.title}
+                    target={`/user/${c.portfolioUserId}/${c.portfolioCollectionId}`}
+                    image={c.imageUri || ''}
+                    leftBadge={isPorfolioOwner ? <VisibilityLabel visibility={c.privacy} /> : null}
+
+                  >{c.description}
+                  </DisplayCard>
+                )
+              })
           }
-          : () => {
-            return null
-          }}
-      >
-        {
-          typy(portfolios).safeArray
-            .filter(c => {
-              return viewable(c, loggedIn, isOwner)
-            })
-            .sort((a, b) => {
-              return b.updated - a.updated
-            })
-            .map((c, index) => {
-              return (
-                <DisplayCard
-                  key={index}
-                  title={c.title}
-                  target={`/myportfolio/${c.uuid}`}
-                  image={c.image || ''}
-                  leftBadge={isOwner ? <VisibilityLabel visibility={c.privacy} /> : null}
-                  controls={isOwner
-                    ? (
-                      <Button
-                        variant='light'
-                        onClick={() => beGone(c)}
-                      >Delete
-                      </Button>
-                    )
-                    : null}
-                >{c.description}
-                </DisplayCard>
-              )
-            })
-        }
-      </CardGroup>
+        </CardGroup>
+      </>
     )
   }
-  return <NoPortfolios isOwner={isOwner} button={(
-    <NewPortfolioButton
-      addFunc={setPortfolios}
-      portfolios={portfolios}
-    />
+  return <NoPortfolios isPorfolioOwner={isPorfolioOwner} button={(
+    <NewPortfolioButton />
   )} />
 }
 
 PortfolioList.propTypes = {
-  user: PropTypes.object.isRequired,
   loginReducer: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export const mapStateToProps = (state) => {
@@ -116,14 +86,3 @@ export const mapStateToProps = (state) => {
 export default connect(
   mapStateToProps,
 )(PortfolioList)
-
-export const viewable = (portfolio, loggedIn, isOwner) => {
-  if (isOwner) {
-    return true
-  } else if (loggedIn && portfolio.privacy !== 'private') {
-    return true
-  } else if (portfolio.privacy === 'public') {
-    return true
-  }
-  return false
-}

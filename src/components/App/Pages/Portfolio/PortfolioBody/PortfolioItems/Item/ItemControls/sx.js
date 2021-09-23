@@ -4,12 +4,7 @@ module.exports = {
     borderColor: 'gray.0',
     margin: '8px',
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
-    '& button': {
-      cursor: 'pointer',
-      padding: '.5rem 0 !important',
-      width: '50%',
-    },
   },
 }

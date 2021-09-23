@@ -14,7 +14,7 @@
     },
     {
       "id": "top-portfolios",
-      "label": "Portfolios",
+      "label": "Featured",
       "link": "/featured",
       "selectedPatterns": [
         "^/portfolios",
@@ -23,11 +23,10 @@
     },
     {
       "id": "top-my-account",
-      "label": "My Account",
+      "label": "My Portfolios",
       "link": "/user",
       "selectedPatterns": [
-        "^/user",
-        "^/myportfolio"
+        "^/user"
       ]
     },
     {

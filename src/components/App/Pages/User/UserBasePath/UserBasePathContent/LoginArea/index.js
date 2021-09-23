@@ -2,10 +2,13 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { jsx } from 'theme-ui'
+import { jsx, Heading } from 'theme-ui'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { isLoggedIn } from '@ndlib/gatsby-theme-marble/src/utils/auth'
+import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
+import { NDBrandBreadcrumbs } from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
+
 import OktaLogin from './OktaLogin'
 import LogOut from './LogOut'
 
@@ -32,12 +35,18 @@ export const LoginArea = ({ loginReducer }) => {
   }
   return (
     <div>
+      <NDBrandBreadcrumbs
+        currentPageTitle='Marble Login'
+        breadcrumbs={[]}
+      />
+      <Heading as='h1' variant='pageTitle'>Marble Login</Heading>
       <form sx={sx.loginArea}>
-        <div sx={sx.message}>
-          {t('text:loginPage.message')}
-        </div>
         <OktaLogin />
       </form>
+      <Heading as='h2'>What is a portfolio?</Heading>
+      <p>Portfolios allow logged in users from the University of Notre Dame community to bring digitized items from across campus together in different ways. Each user can create customized lists and collections of content.</p>
+      <p>Users can learn more <Link to='/portfolios-about'>about portfolios</Link> or how to <Link to='/portfolios-teaching'>use Marble in your classroom</Link>. </p>
+
     </div>
   )
 }

@@ -8,8 +8,8 @@ import SaveOrCancelButtons from '../../SaveOrCancelButtons'
 import sx from './sx'
 
 // eslint-disable-next-line complexity
-const TitleEdit = ({ closeFunc }) => {
-  const { portfolio } = usePortfolioContext()
+export const TitleEdit = ({ closeFunc }) => {
+  const { portfolio, updatePortfolio } = usePortfolioContext()
   const defaultTitle = portfolio.title
   const [newTitle, setNewTitle] = useState(defaultTitle)
   const [patching, setPatching] = useState(false)
@@ -40,8 +40,19 @@ const TitleEdit = ({ closeFunc }) => {
         <SaveOrCancelButtons
           closeFunc={closeFunc}
           patching={patching}
-          setPatching={setPatching}
-          body={{ title: newTitle }}
+          onClick={() => {
+            setPatching(true)
+            portfolio.title = newTitle
+            updatePortfolio(portfolio)
+              .then(() => {
+                setPatching(false)
+                closeFunc()
+              })
+              .catch((e) => {
+                setPatching(false)
+                console.error(e)
+              })
+          }}
           valid={valid}
           changed={defaultTitle !== newTitle}
         />

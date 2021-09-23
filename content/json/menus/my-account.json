@@ -1,0 +1,22 @@
+{
+  "id": "myaccount",
+  "label": "Portfolios",
+  "items": [
+    {
+      "id": "portfolios-about",
+      "label": "About Portfolios",
+      "link": "/portfolios-about",
+      "selectedPatterns": [
+        "^/portfolios-about"
+      ]
+    },
+    {
+      "id": "portfolios-teaching",
+      "label": "Teaching with Digital Collections",
+      "link": "/portfolios-teaching",
+      "selectedPatterns": [
+        "^/portfolios-teaching"
+      ]
+    }
+  ]
+}

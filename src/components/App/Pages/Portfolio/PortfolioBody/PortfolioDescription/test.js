@@ -5,6 +5,8 @@ import PortfolioDescription from './'
 import * as PortfolioContext from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import EditButton from '../EditButton'
 import EditDescription from './EditDescription'
+import * as UserContext from '@ndlib/gatsby-theme-marble/src/context/UserContext'
+
 describe('PortfolioDescription', () => {
   test('isOwner, blank description', () => {
     jest.spyOn(PortfolioContext, 'usePortfolioContext').mockImplementationOnce(() => {
@@ -12,6 +14,11 @@ describe('PortfolioDescription', () => {
         portfolio: {
           description: '',
         },
+      }
+    })
+    jest.spyOn(UserContext, 'useUserContext').mockImplementationOnce(() => {
+      return {
+        isPorfolioOwner: () => true,
       }
     })
     let wrapper

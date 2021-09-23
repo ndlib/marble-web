@@ -43,5 +43,4 @@ PortfolioSettingsContent.propTypes = {
   onChangeLayout: PropTypes.func.isRequired,
   onChangePrivacy: PropTypes.func.isRequired,
 }
-
 export default PortfolioSettingsContent

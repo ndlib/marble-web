@@ -12,8 +12,6 @@ import {
   STATUS_LOGGED_IN,
 } from '@ndlib/gatsby-theme-marble/src/store/actions/loginActions'
 import LoginArea from './LoginArea'
-import CreateAccount from './CreateAccount'
-
 import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
 
 // eslint-disable-next-line complexity
@@ -25,10 +23,8 @@ export const UserBasePathContent = ({ loginReducer }) => {
     case STATUS_TRYING_AUTHENTICATION:
     case STATUS_AUTHENTICATED_TRYING_LOGIN:
       return <Loading />
-    case STATUS_AUTHENTICATED_NOT_LOGGED_IN:
-      return <CreateAccount loginReducer={loginReducer} />
     case STATUS_LOGGED_IN:
-      navigate(`/user/${loginReducer.user.userName}`)
+      navigate(`/user/${loginReducer.user.netid}`)
       break
     case STATUS_AUTHENTICATION_FAILED:
     default:

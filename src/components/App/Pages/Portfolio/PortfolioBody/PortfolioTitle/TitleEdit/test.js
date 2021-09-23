@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { act } from 'react-dom/test-utils'
-import TitleEdit from './'
+import { TitleEdit } from './'
 import * as PortfolioContext from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
 import SaveOrCancelButtons from '../../SaveOrCancelButtons'
@@ -17,7 +17,7 @@ test('TitleEdit', () => {
   })
   let wrapper
   act(() => {
-    wrapper = shallow(<TitleEdit closeFunc={closeFunc} />)
+    wrapper = shallow(<TitleEdit closeFunc={closeFunc} loginReducer={() => {}} />)
   })
   expect(wrapper.find('label').text()).toContain('Title')
   const input = wrapper.find(TextField)

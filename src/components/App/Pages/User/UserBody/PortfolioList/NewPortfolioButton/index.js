@@ -3,41 +3,33 @@ import { jsx, Button } from 'theme-ui'
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { navigate } from 'gatsby'
 import { useTranslation } from 'react-i18next'
-import { createData } from '@ndlib/gatsby-theme-marble/src/utils/api'
+import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
-export const NewPortfolioButton = ({ portfolios, addFunc, loginReducer }) => {
+export const NewPortfolioButton = () => {
   const { t } = useTranslation()
+  const { portfolioUser, isPorfolioOwner, createNewPortfolio } = useUserContext()
   const [creating, setCreating] = useState(false)
+
+  if (!isPorfolioOwner()) {
+    return null
+  }
+
   return (
     <Button
       onClick={() => {
         setCreating(true)
-        createData({
-          loginReducer: loginReducer,
-          contentType: 'collection',
-          id: loginReducer.user.uuid,
-          body: {
-            title: 'My Portfolio',
-            description: null,
-            image: null,
-            layout: 'default',
-            privacy: 'private',
-          },
-          successFunc: (data) => successFunc({
-            data: data,
-            portfolios: portfolios,
-            addFunc: addFunc,
-            setCreating: setCreating,
-          }),
-          errorFunc: (e) => {
+        createNewPortfolio()
+          .then((data) => {
+            setCreating(false)
+            navigate(`/user/${portfolioUser.portfolioUserId}/${data.portfolioCollectionId}`)
+          })
+          .catch((e) => {
             console.error(e)
-          },
-        })
+          })
       }}
-      variant='primary'
+      variant='light'
       disabled={creating}
     >{t('common:button.createPortfolio')}
     </Button>
@@ -45,22 +37,6 @@ export const NewPortfolioButton = ({ portfolios, addFunc, loginReducer }) => {
 }
 
 NewPortfolioButton.propTypes = {
-  addFunc: PropTypes.func.isRequired,
-  portfolios: PropTypes.array.isRequired,
-  loginReducer: PropTypes.object.isRequired,
 }
 
-export const mapStateToProps = (state) => {
-  return { ...state }
-}
-export default connect(
-  mapStateToProps,
-)(NewPortfolioButton)
-
-export const successFunc = ({ data, portfolios, addFunc, setCreating }) => {
-  const ps = [...portfolios]
-  ps.unshift(data)
-  addFunc(ps)
-  setCreating(false)
-  navigate(`/myportfolio/${data.uuid}`)
-}
+export default NewPortfolioButton

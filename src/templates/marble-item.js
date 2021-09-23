@@ -15,7 +15,7 @@ import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared
 import ReturnToSearch from '@ndlib/gatsby-theme-marble/src/components/Shared/ReturnToSearch'
 import AlertLayer from '../components/App/Layers/AlertLayer'
 import AlertMessages from '@ndlib/gatsby-theme-marble/src/components/Shared/AlertMessages'
-
+import UserAnnotation from '../components/Shared/UserAnnotation'
 import typy from 'typy'
 
 const MarbleItemPage = ({ data, location }) => {
@@ -45,6 +45,7 @@ const MarbleItemPage = ({ data, location }) => {
           {breadcrumbs}
           <main>
             <Heading as='h1' variant='pageTitle'>{marbleItem.title}</Heading>
+            <UserAnnotation location={location} itemId={marbleItem.marbleId} />
             {marbleItem.display === 'collection'
               ? (
                 <CollectionLayout

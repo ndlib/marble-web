@@ -3,10 +3,9 @@ import { shallow } from 'enzyme'
 import { act } from 'react-dom/test-utils'
 import { EditDescription } from './'
 import * as PortfolioContext from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
-import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
 import SaveOrCancelButtons from '../../SaveOrCancelButtons'
 
-test('TitleEdit', () => {
+test('EditDescription', () => {
   const closeFunc = jest.fn()
   jest.spyOn(PortfolioContext, 'usePortfolioContext').mockImplementationOnce(() => {
     return {
@@ -19,7 +18,7 @@ test('TitleEdit', () => {
   act(() => {
     wrapper = shallow(<EditDescription closeFunc={closeFunc} loginReducer={() => {}} />)
   })
-  const input = wrapper.find(TextArea)
+  const input = wrapper.find('EmotionCssPropInternal#portfolioDescription')
 
   expect(input.props().defaultValue).toEqual('I wrote something.')
   expect(wrapper.find(SaveOrCancelButtons).exists()).toBeTruthy()

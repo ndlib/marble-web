@@ -70,12 +70,11 @@ export const UserLayout = ({ children, location, showSideMenu }) => {
           <Heading as='h1' sx={{ margin: 0, fontSize: '6' }}>{portfolioUser.fullName}</Heading>
           <Box sx={{ textAlign: 'left' }}>
             <Gravatar email={portfolioUser.email} size={75} align='left' />
-            {portfolioUser.bio}
           </Box>
           <Box sx={{ px: '1rem' }}>
             <EditUserButton />
           </Box>
-          <div id='bio' sx={sx.bio} />
+          <div id='bio' sx={sx.bio}>{portfolioUser.bio}</div>
 
           <Menu location={location} variant='navLeft' items={menu} label='Help' />
         </NDBrandSection>

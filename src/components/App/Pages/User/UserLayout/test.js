@@ -5,7 +5,6 @@ import * as Auth from '@ndlib/gatsby-theme-marble/src/utils/auth'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import Gravatar from '@ndlib/gatsby-theme-marble/src/components/Shared/Gravatar'
 import EditUserButton from './EditUserButton'
-import NewPortfolioButton from '../UserBody/PortfolioList/NewPortfolioButton'
 import * as userContext from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
 describe('UserLayout', () => {
@@ -38,6 +37,5 @@ describe('UserLayout', () => {
     expect(wrapper.find('#bio').html()).toContain('some bio')
     // different for ownership status
     expect(wrapper.find(EditUserButton).exists()).toBeTruthy()
-    expect(wrapper.find(NewPortfolioButton).exists()).toBeTruthy()
   })
 })

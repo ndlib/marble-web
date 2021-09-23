@@ -4,7 +4,6 @@ import { navigate } from 'gatsby'
 import { UserBasePathContent } from './'
 import LoginArea from './LoginArea'
 import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
-import CreateAccount from './CreateAccount'
 
 describe('UserBasePathContent', () => {
   test('STATUS_NOT_LOGGED_IN', () => {
@@ -45,16 +44,6 @@ describe('UserBasePathContent', () => {
     }
     const wrapper = shallow(<UserBasePathContent {...props} />)
     expect(wrapper.find(Loading).exists()).toBeTruthy()
-  })
-
-  test('STATUS_AUTHENTICATED_NOT_LOGGED_IN', () => {
-    const props = {
-      loginReducer: {
-        status: 'STATUS_AUTHENTICATED_NOT_LOGGED_IN',
-      },
-    }
-    const wrapper = shallow(<UserBasePathContent {...props} />)
-    expect(wrapper.find(CreateAccount).exists()).toBeTruthy()
   })
 
   test('STATUS_LOGGED_IN', () => {

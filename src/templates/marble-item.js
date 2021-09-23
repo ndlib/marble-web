@@ -13,7 +13,6 @@ import RelatedItemsFromSearch from '@ndlib/gatsby-theme-marble/src/components/Sh
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 import ReturnToSearch from '@ndlib/gatsby-theme-marble/src/components/Shared/ReturnToSearch'
-import UserAnnotation from '../components/Shared/UserAnnotation'
 import AlertLayer from '../components/App/Layers/AlertLayer'
 import AlertMessages from '@ndlib/gatsby-theme-marble/src/components/Shared/AlertMessages'
 
@@ -46,8 +45,6 @@ const MarbleItemPage = ({ data, location }) => {
           {breadcrumbs}
           <main>
             <Heading as='h1' variant='pageTitle'>{marbleItem.title}</Heading>
-            <UserAnnotation location={location} itemId={marbleItem.marbleId} />
-
             {marbleItem.display === 'collection'
               ? (
                 <CollectionLayout

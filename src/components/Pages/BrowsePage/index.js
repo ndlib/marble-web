@@ -60,7 +60,7 @@ const Browse = () => {
     },
     {
       label: 'Prints and posters',
-      target: '/search?format[0]=prints&format[1]=Two-dimensional%20nonprojected%20graphic&format[2]=Projected%20medium',
+      target: '/search?format[0]=prints&format[1]=Graphic',
     },
     {
       label: 'Drawings',

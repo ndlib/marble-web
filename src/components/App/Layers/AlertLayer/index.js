@@ -9,13 +9,14 @@ const AlertLayer = ({ children }) => {
   const addAlert = (msg, type) => {
     const id = Date.now()
     currentAlerts[id] = { msg: msg, type: type }
-
+    /*
     setTimeout(() => {
       removeAlert(id)
     }, 5000)
 
     setAlerts(currentAlerts)
     setUpdates(updates + 1)
+    */
   }
 
   const removeAlert = (id) => {

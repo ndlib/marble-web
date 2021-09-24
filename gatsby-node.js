@@ -1,39 +1,5 @@
 const path = require('path')
 
-exports.onCreateWebpackConfig = ({ actions, stage, loaders, plugins }) => {
-  if (stage === 'build-html' || stage === 'develop-html') {
-    actions.setWebpackConfig({
-      module: {
-        rules: [
-          {
-            test: /okta-auth-js/,
-            use: loaders.null(),
-          },
-        ],
-      },
-    })
-  } else if (stage === 'build-javascript' || stage === 'develop') {
-    actions.setWebpackConfig({
-      plugins: [
-        plugins.provide({ process: 'process/browser' }),
-        plugins.provide({ Buffer: ['buffer', 'Buffer'] }),
-      ],
-    })
-  }
-  actions.setWebpackConfig({
-    resolve: {
-      alias: {
-        crypto: require.resolve('crypto-browserify'),
-        stream: require.resolve('stream-browserify'),
-        buffer: require.resolve('buffer'),
-      },
-      fallback: {
-        fs: false,
-      },
-    },
-  })
-}
-
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
   const marbleResult = await graphql(`

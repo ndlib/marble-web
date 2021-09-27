@@ -43,7 +43,7 @@ export const query = graphql`
       id
       title
       description
-      uuid
+      portfolioCollectionId
       layout
       imageUri
       items {
@@ -51,7 +51,7 @@ export const query = graphql`
         annotation
         imageUri
         created
-        uuid
+        portfolioItemId
         displayOrder
         link
         manifest

@@ -11,7 +11,7 @@ const AnnotatedView = ({ items, userId, isOwner }) => {
             <Item
               item={item}
               annotated
-              key={item.title}
+              key={item.portfolioItemId}
               userId={userId}
               isOwner={isOwner}
             />

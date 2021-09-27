@@ -95,7 +95,6 @@ const PortfolioLayer = ({ loginReducer, children, portfolioId }) => {
           if (!data.portfolioCollectionId) {
             data.portfolioNotFound = true
           }
-          console.log(data)
           setCurrentPortfolio(data)
           setPortfolioDirty(false)
         })

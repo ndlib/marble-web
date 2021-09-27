@@ -43,14 +43,15 @@ export const query = graphql`
       id
       title
       description
-      uuid
-      image
+      portfolioCollectionId
+      layout
+      imageUri
       items {
         updated
         annotation
-        image
+        imageUri
         created
-        uuid
+        portfolioItemId
         displayOrder
         link
         manifest

@@ -1,7 +1,7 @@
 {
     "slug": "posters",
     "updated": 1615386185300,
-    "image": "https://image-iiif.library.nd.edu/iiif/2/2009.007.066%2F2009_007_066-v0001/full/!300,300/0/default.jpg",
+    "imageUri": "https://image-iiif.library.nd.edu/iiif/2/2009.007.066%2F2009_007_066-v0001/full/!300,300/0/default.jpg",
     "privacy": "public",
     "userId": "00ud6jy2aANYJ10nY356.aHR0cHM6Ly9va3RhLm5kLmVkdS9vYXV0aDIvYXVzeG9zcTA2U0RkYUZOTUIzNTY=",
     "created": 1613489647048,
@@ -13,7 +13,7 @@
         {
             "updated": 1614624129842,
             "annotation": "",
-            "image": "https://image-iiif.library.nd.edu/iiif/2/2009.007.066%2F2009_007_066-v0001/full/!300,300/0/default.jpg",
+            "imageUri": "https://image-iiif.library.nd.edu/iiif/2/2009.007.066%2F2009_007_066-v0001/full/!300,300/0/default.jpg",
             "created": 1613742799516,
             "uuid": "338cd3ee-1d29-46de-85f0-aa6acf784cd6",
             "displayOrder": 1,
@@ -24,7 +24,7 @@
         {
             "updated": 1614624115481,
             "annotation": "",
-            "image": "https://image-iiif.library.nd.edu/iiif/2/003504839%2FPRI_003504839-001/full/!300,300/0/default.jpg",
+            "imageUri": "https://image-iiif.library.nd.edu/iiif/2/003504839%2FPRI_003504839-001/full/!300,300/0/default.jpg",
             "created": 1613743750053,
             "uuid": "f3da9391-3933-4a1f-b730-b419384f7826",
             "link": "item/003504839",
@@ -34,7 +34,7 @@
         {
             "updated": 1613743550270,
             "annotation": "",
-            "image": "https://image-iiif.library.nd.edu/iiif/2/2009.012.012%2F2009_012_012-v0001/full/!300,300/0/default.jpg",
+            "imageUri": "https://image-iiif.library.nd.edu/iiif/2/2009.012.012%2F2009_012_012-v0001/full/!300,300/0/default.jpg",
             "created": 1613742829632,
             "uuid": "6b23317c-7fb9-47d7-b431-6740d282bc09",
             "displayOrder": 0,
@@ -45,7 +45,7 @@
         {
             "updated": 1613743799865,
             "annotation": "",
-            "image": "https://image-iiif.library.nd.edu/iiif/2/005095915%2FPOR_005095915_001/full/!300,300/0/default.jpg",
+            "imageUri": "https://image-iiif.library.nd.edu/iiif/2/005095915%2FPOR_005095915_001/full/!300,300/0/default.jpg",
             "created": 1613743799865,
             "uuid": "0d9785dd-befe-48a5-9df7-120937843650",
             "link": "item/005095915",
@@ -55,7 +55,7 @@
         {
             "updated": 1613743744391,
             "annotation": "",
-            "image": "https://image-iiif.library.nd.edu/iiif/2/004862474%2FPRI_004560152a/full/!300,300/0/default.jpg",
+            "imageUri": "https://image-iiif.library.nd.edu/iiif/2/004862474%2FPRI_004560152a/full/!300,300/0/default.jpg",
             "created": 1613743744391,
             "uuid": "1d0a8508-7943-409d-b1e8-b17789a31d31",
             "link": "item/004862474",
@@ -65,7 +65,7 @@
         {
             "updated": 1613743739854,
             "annotation": "",
-            "image": "https://image-iiif.library.nd.edu/iiif/2/004789783%2FPRI_004789783-a/full/!300,300/0/default.jpg",
+            "imageUri": "https://image-iiif.library.nd.edu/iiif/2/004789783%2FPRI_004789783-a/full/!300,300/0/default.jpg",
             "created": 1613743739854,
             "uuid": "d20f4afd-971a-4ec3-9032-b4cefecb6aac",
             "link": "item/004789783",
@@ -75,7 +75,7 @@
         {
             "updated": 1613743550136,
             "annotation": "",
-            "image": "https://image-iiif.library.nd.edu/iiif/2/2014.052.008%2F2014_052_008-v0001/full/!300,300/0/default.jpg",
+            "imageUri": "https://image-iiif.library.nd.edu/iiif/2/2014.052.008%2F2014_052_008-v0001/full/!300,300/0/default.jpg",
             "created": 1613742880471,
             "uuid": "bc49a041-31de-47a6-9693-e12bf55dd104",
             "displayOrder": 2,
@@ -86,7 +86,7 @@
         {
             "updated": 1613743550683,
             "annotation": "",
-            "image": "https://image-iiif.library.nd.edu/iiif/2/2014.052.002%2F2014_052_002-v0001/full/!300,300/0/default.jpg",
+            "imageUri": "https://image-iiif.library.nd.edu/iiif/2/2014.052.002%2F2014_052_002-v0001/full/!300,300/0/default.jpg",
             "created": 1613742843113,
             "uuid": "73091c65-cbfa-4253-9852-4bfd5a12b01c",
             "displayOrder": 3,
@@ -97,7 +97,7 @@
         {
             "updated": 1613743550437,
             "annotation": "",
-            "image": "https://image-iiif.library.nd.edu/iiif/2/2014.052.007%2F2014_052_007-v0001/full/!300,300/0/default.jpg",
+            "imageUri": "https://image-iiif.library.nd.edu/iiif/2/2014.052.007%2F2014_052_007-v0001/full/!300,300/0/default.jpg",
             "created": 1613742885825,
             "uuid": "02935b4f-53b5-4a56-b91f-df74857d7ffe",
             "displayOrder": 4,
@@ -108,7 +108,7 @@
         {
             "updated": 1613743732610,
             "annotation": "",
-            "image": "https://image-iiif.library.nd.edu/iiif/2/005096931%2FPOR_005096931_001/full/!300,300/0/default.jpg",
+            "imageUri": "https://image-iiif.library.nd.edu/iiif/2/005096931%2FPOR_005096931_001/full/!300,300/0/default.jpg",
             "created": 1613743732610,
             "uuid": "5a9a443f-f7f3-46b6-a2d5-71611257c035",
             "link": "item/005096931",
@@ -118,7 +118,7 @@
         {
             "updated": 1613743548292,
             "annotation": "",
-            "image": "https://image-iiif.library.nd.edu/iiif/2/2009.020.002%2F2009_020_002-v0001/full/!300,300/0/default.jpg",
+            "imageUri": "https://image-iiif.library.nd.edu/iiif/2/2009.020.002%2F2009_020_002-v0001/full/!300,300/0/default.jpg",
             "created": 1613742814177,
             "uuid": "8e3f42df-14c4-4eea-aa86-a9987749555c",
             "displayOrder": 5,
@@ -129,7 +129,7 @@
         {
             "updated": 1613743548255,
             "annotation": "",
-            "image": "https://image-iiif.library.nd.edu/iiif/2/2014.052.003%2F2014_052_003-v0001/full/!300,300/0/default.jpg",
+            "imageUri": "https://image-iiif.library.nd.edu/iiif/2/2014.052.003%2F2014_052_003-v0001/full/!300,300/0/default.jpg",
             "created": 1613742895266,
             "uuid": "df51ab89-a68d-4727-8da2-ea14e089caea",
             "displayOrder": 6,
@@ -140,7 +140,7 @@
         {
             "updated": 1613743550354,
             "annotation": "",
-            "image": "https://image-iiif.library.nd.edu/iiif/2/2014.052.006%2F2014_052_006-v0001/full/!300,300/0/default.jpg",
+            "imageUri": "https://image-iiif.library.nd.edu/iiif/2/2014.052.006%2F2014_052_006-v0001/full/!300,300/0/default.jpg",
             "created": 1613742907795,
             "uuid": "c4cef6f4-e16a-4b3d-a94d-2628248af817",
             "displayOrder": 7,
@@ -151,7 +151,7 @@
         {
             "updated": 1613743550301,
             "annotation": "",
-            "image": "https://image-iiif.library.nd.edu/iiif/2/2014.052.004%2F2014_052_004-v0001/full/!300,300/0/default.jpg",
+            "imageUri": "https://image-iiif.library.nd.edu/iiif/2/2014.052.004%2F2014_052_004-v0001/full/!300,300/0/default.jpg",
             "created": 1613742891352,
             "uuid": "1ac1aa70-508e-4ac4-a502-9d1e61aad2e0",
             "displayOrder": 8,

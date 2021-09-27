@@ -14,12 +14,10 @@ import typy from 'typy'
 
 const PortfolioFeature = ({ location, featuredJson, menusJson }) => {
   const [context] = useState({
-    ...initialContext,
     portfolio: featuredJson,
   })
   const description = featuredJson.description
   const menu = typy(menusJson, 'items').safeArray
-  const featuredImage = featuredJson.items.sort((a, b) => a.displayOrder - b.displayOrder)[0]
   return (
     <NDBrandSectionLeftNav>
       <NDBrandSection variant='sidebar'>
@@ -34,8 +32,8 @@ const PortfolioFeature = ({ location, featuredJson, menusJson }) => {
         <Html html={description} />
 
         <Image
-          src={featuredImage.image.replace('!300,300', ',500')}
-          title={featuredImage.title}
+          src={featuredJson.imageUri.replace('!300,300', ',500')}
+          title={featuredJson.title}
           imageStyle={{ display: 'block', maxHeight: '500px', margin: '3rem auto 0' }}
           alt=''
         />

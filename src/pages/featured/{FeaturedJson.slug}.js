@@ -44,11 +44,12 @@ export const query = graphql`
       title
       description
       uuid
-      image
+      layout
+      imageUri
       items {
         updated
         annotation
-        image
+        imageUri
         created
         uuid
         displayOrder

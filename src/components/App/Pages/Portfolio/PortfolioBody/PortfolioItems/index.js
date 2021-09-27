@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { jsx, Button } from 'theme-ui'
 import PropTypes from 'prop-types'
 import typy from 'typy'
@@ -12,19 +12,19 @@ import sx from './sx'
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
 // eslint-disable-next-line complexity
-const PortfolioItems = () => {
+const PortfolioItems = ({ defaultDisplay }) => {
   const { isPorfolioOwner } = useUserContext()
   const { portfolio } = usePortfolioContext()
   const [editing, setEditing] = useState(false)
-  const { portfolioItems, layout, portfolioUserId } = portfolio
+  const { items, layout, portfolioUserId } = portfolio
   const isOwner = isPorfolioOwner()
 
-  if (typy(portfolioItems, 'items').safeArray.length === 0) {
+  if (typy(items).safeArray.length === 0) {
     return (
       <NoItems />
     )
   }
-  const sortedItems = portfolioItems.items.sort((i1, i2) => {
+  const sortedItems = items.sort((i1, i2) => {
     return i1.sequence - i2.sequence
   })
 

@@ -25,7 +25,7 @@ const FeaturedList = ({ data, location }) => {
     return (<DisplayCard
       key={item.marbleId}
       title={item.title}
-      image={item.image}
+      image={item.imageUri}
       target={'/featured/' + item.slug}
     ><Html html={item.description} /></DisplayCard>)
   })
@@ -80,7 +80,7 @@ export const query = graphql`
     allFeaturedJson {
       nodes {
         id
-        image
+        imageUri
         slug
         title
         description

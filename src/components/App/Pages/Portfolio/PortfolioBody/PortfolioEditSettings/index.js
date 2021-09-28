@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 import { jsx, Button } from 'theme-ui'
 import PortfolioSettingsContent from './PortfolioSettingsContent'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'

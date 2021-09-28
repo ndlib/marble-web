@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { Heading, jsx, Flex, Box, Button } from 'theme-ui'
+import { Heading, jsx, Flex, Box } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
 import { useState } from 'react'
 import typy from 'typy'

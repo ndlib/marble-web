@@ -56,6 +56,7 @@ export const Ownership = ({ portfolio }) => {
                   }}
 
                   valid
+                  patching={patching}
                   changed={privacy !== portfolio.privacy}
                 />
               </div>

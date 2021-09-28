@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { useState } from 'react'
 import { jsx, Heading } from 'theme-ui'
-import PropTypes from 'prop-types'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import TitleEdit from './TitleEdit'
 import EditButton from '../EditButton'
@@ -25,9 +24,6 @@ const PortfolioTitle = () => {
       />
     </Heading>
   )
-}
-
-PortfolioTitle.propTypes = {
 }
 
 export default PortfolioTitle

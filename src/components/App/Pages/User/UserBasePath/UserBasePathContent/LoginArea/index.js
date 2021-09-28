@@ -4,7 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Heading } from 'theme-ui'
 import { connect } from 'react-redux'
-import { useTranslation } from 'react-i18next'
+// import { useTranslation } from 'react-i18next'
 import { isLoggedIn } from '@ndlib/gatsby-theme-marble/src/utils/auth'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import { NDBrandBreadcrumbs } from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
@@ -23,7 +23,7 @@ const sx = {
 }
 
 export const LoginArea = ({ loginReducer }) => {
-  const { t } = useTranslation()
+  // const { t } = useTranslation()
   if (isLoggedIn(loginReducer)) {
     return (
       <div>

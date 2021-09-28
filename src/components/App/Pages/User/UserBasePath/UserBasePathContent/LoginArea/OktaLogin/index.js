@@ -21,7 +21,7 @@ export const OktaLogin = ({ loginReducer }) => {
               'netid',
               'directory',
             ],
-            pkce: false,
+            pkce: true,
           })
         }}
         variant='primary'

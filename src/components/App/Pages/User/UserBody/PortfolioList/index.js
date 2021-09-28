@@ -1,7 +1,8 @@
 /** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { jsx, Button, Heading } from 'theme-ui'
+import { jsx, Heading } from 'theme-ui'
 import { connect } from 'react-redux'
 import typy from 'typy'
 import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard/CardGroup'
@@ -11,26 +12,25 @@ import NoPortfolios from './NoPortfolios'
 import VisibilityLabel from '@ndlib/gatsby-theme-marble/src/components/Shared/VisibilityLabel'
 import { DISPLAY_GRID } from '@ndlib/gatsby-theme-marble/src/store/actions/displayActions'
 import { NDBrandBreadcrumbs } from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
-import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
-import { FaTrash } from 'react-icons/fa'
+// import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
 const PortfolioList = ({
-  loginReducer,
+  // loginReducer,
   portfolioUser,
   isPorfolioOwner,
-  location,
+  // location,
 }) => {
-  const { removeUserPortfolio } = useUserContext()
+  // const { removeUserPortfolio } = useUserContext()
   const portfolios = typy(portfolioUser, 'portfolioCollections.items').safeArray
 
-  const beGone = (portfolio) => {
-    const areYouSure = window.confirm('Are you sure you want to delete this protfolio?')
-      ? (
-        removeUserPortfolio(portfolio)
-      )
-      : null
-    return areYouSure
-  }
+  // const beGone = (portfolio) => {
+  //   const areYouSure = window.confirm('Are you sure you want to delete this protfolio?')
+  //     ? (
+  //       removeUserPortfolio(portfolio)
+  //     )
+  //     : null
+  //   return areYouSure
+  // }
 
   if (portfolios.length > 0) {
     return (
@@ -39,7 +39,8 @@ const PortfolioList = ({
           currentPageTitle={portfolioUser.fullName + "'s Portfolios"}
           breadcrumbs={[]}
         />
-        <Heading as='h1' variant='pageTitle'>{portfolioUser.fullName}'s Portfolios</Heading>
+        <Heading as='h1' variant='pageTitle'>{`${portfolioUser.fullName}'s`} Portfolios</Heading>
+
         <CardGroup
           defaultDisplay={DISPLAY_GRID}
           toggleGroup='compilations-page'
@@ -76,8 +77,10 @@ const PortfolioList = ({
 }
 
 PortfolioList.propTypes = {
-  loginReducer: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
+  // loginReducer: PropTypes.object.isRequired,
+  portfolioUser: PropTypes.shape({ fullName: PropTypes.string }),
+  isPorfolioOwner: PropTypes.bool,
+  // location: PropTypes.object.isRequired,
 }
 
 export const mapStateToProps = (state) => {

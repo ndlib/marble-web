@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import PropTypes from 'prop-types'
-import { jsx, Flex, Box, Heading } from 'theme-ui'
+import { jsx, Box, Heading } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import Gravatar from '@ndlib/gatsby-theme-marble/src/components/Shared/Gravatar'
@@ -10,7 +10,7 @@ import EditUserButton from './EditUserButton'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandSectionLeftNav from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section/LeftNav'
 import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
-import NewPortfolioButton from '../UserBody/PortfolioList/NewPortfolioButton'
+// import NewPortfolioButton from '../UserBody/PortfolioList/NewPortfolioButton'
 import Loading from '@ndlib/gatsby-theme-marble/src/components/Shared/Loading'
 import NoUser from './NoUser'
 import sx from './sx'
@@ -44,7 +44,7 @@ export const UserLayout = ({ children, location, showSideMenu }) => {
         </NDBrandSection>
       </NDBrandSectionLeftNav>
     )
-  } else if (portfolioUser['userNotFound']) {
+  } else if (portfolioUser.userNotFound) {
     return (
       <NDBrandSectionLeftNav location={location}>
         <NDBrandSection variant='sidebar'>&nbsp;</NDBrandSection>

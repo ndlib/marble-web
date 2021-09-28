@@ -1,8 +1,6 @@
 /** @jsx jsx */
 import { jsx, Button } from 'theme-ui'
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import { useState } from 'react'
 import { navigate } from 'gatsby'
 import { useTranslation } from 'react-i18next'
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'

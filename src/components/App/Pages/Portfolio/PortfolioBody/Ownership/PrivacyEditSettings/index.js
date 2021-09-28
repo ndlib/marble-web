@@ -1,8 +1,5 @@
 /** @jsx jsx */
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { jsx, Flex, Box } from 'theme-ui'
 import VisibilitySettings from '../../PortfolioEditSettings/PortfolioSettingsContent/VisibilitySettings'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'

@@ -8,7 +8,7 @@ import {
   STATUS_TRYING_AUTHENTICATION,
   STATUS_AUTHENTICATION_FAILED,
   STATUS_AUTHENTICATED_TRYING_LOGIN,
-  STATUS_AUTHENTICATED_NOT_LOGGED_IN,
+  // STATUS_AUTHENTICATED_NOT_LOGGED_IN,
   STATUS_LOGGED_IN,
 } from '@ndlib/gatsby-theme-marble/src/store/actions/loginActions'
 import LoginArea from './LoginArea'

@@ -1,7 +1,7 @@
 /** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import { jsx, Button } from 'theme-ui'
-import PropTypes from 'prop-types'
 import typy from 'typy'
 import NoItems from './NoItems'
 import AnnotatedView from './AnnotatedView'
@@ -12,7 +12,7 @@ import sx from './sx'
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
 // eslint-disable-next-line complexity
-const PortfolioItems = ({ defaultDisplay }) => {
+const PortfolioItems = () => {
   const { isPorfolioOwner } = useUserContext()
   const { portfolio } = usePortfolioContext()
   const [editing, setEditing] = useState(false)

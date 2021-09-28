@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { useState } from 'react'
 import { jsx, Button, Box } from 'theme-ui'
-import PropTypes from 'prop-types'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import EditButton from '../EditButton'
 import EditDescription from './EditDescription'
@@ -44,9 +43,6 @@ const PortfolioDescription = () => {
       </div>
     </Box>
   )
-}
-
-PortfolioDescription.propTypes = {
 }
 
 export default PortfolioDescription

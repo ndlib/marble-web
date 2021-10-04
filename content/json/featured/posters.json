@@ -9,6 +9,7 @@
     "layout": "default",
     "description": "At Hesburgh Libraries and the Snite Museum of Art, our holdings include a vast number of prints and posters, dating from the 18th century to the mid-20th century. Prints are impressions made by any method involving transfer from one surface to another, and posters are ephemera intended to be shared in publicly visible spaces.\n\n\n\nThis grouping of items represents a small percentage of our digitized  holdings. <a href=\"https://marble.nd.edu/search?format[0]=prints&format[1]=Two-dimensional%20nonprojected%20graphic&format[2]=Projected%20medium\">Explore all of the prints and posters</a>.",
     "title": "Prints and Posters",
+    "portfolioItems": {
     "items": [
         {
             "updated": 1614624129842,
@@ -153,4 +154,5 @@
             "title": "Lord Baltimore and the Group of Legislators"
         }
     ]
+  }
 }

@@ -16,7 +16,9 @@ const PortfolioItems = () => {
   const { isPorfolioOwner } = useUserContext()
   const { portfolio } = usePortfolioContext()
   const [editing, setEditing] = useState(false)
-  const { items, layout, portfolioUserId } = portfolio
+  const { portfolioItems, layout, portfolioUserId } = portfolio
+  const { items } = portfolioItems
+
   const isOwner = isPorfolioOwner()
 
   if (typy(items).safeArray.length === 0) {

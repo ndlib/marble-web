@@ -46,16 +46,18 @@ export const query = graphql`
       portfolioCollectionId
       layout
       imageUri
-      items {
-        updated
-        annotation
-        imageUri
-        created
-        portfolioItemId
-        displayOrder
-        link
-        manifest
-        title
+      portfolioItems {
+        items {
+          updated
+          annotation
+          imageUri
+          created
+          portfolioItemId
+          displayOrder
+          link
+          manifest
+          title
+        }
       }
     }
     menusJson(id: {eq: "portfolios"}) {

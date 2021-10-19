@@ -1,5 +1,5 @@
 # marble
-Git submodule for [MARBLE: Museums, Archives, Rare Books & Library Exploration](https://marble.nd.edu).
+Git submodule for [Marble: Museums, Archives, Rare Books & Library Exploration](https://marble.nd.edu).
 
 # Local Setup.
 1. Assume an aws role that can access the keys at the path set in ./scripts/setup-development.sh

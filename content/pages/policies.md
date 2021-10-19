@@ -51,7 +51,7 @@ If you are a rights holder and are concerned that you have found material on thi
 
 ## Copyright Policy
 
-Much of the content-both textual and visual-made available through the Museum, Archives, Rare Books, and Libraries Exploration platform (MARBLE) originates from objects that are out of copyright. As such, these collections are made available for use and download as presentation-quality images through a Creative Commons Attribution-NonCommercial ([CC BY-NC 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/)) designation. You may not use the materials for commercial purposes, and you must give appropriate credit to the appropriate holding repository.
+Much of the content-both textual and visual-made available through the Museum, Archives, Rare Books, and Libraries Exploration platform (Marble) originates from objects that are out of copyright. As such, these collections are made available for use and download as presentation-quality images through a Creative Commons Attribution-NonCommercial ([CC BY-NC 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/)) designation. You may not use the materials for commercial purposes, and you must give appropriate credit to the appropriate holding repository.
 
 When funded through grants or other external means, collections may be made available as open access, using the Creative Commons Zero ([CC0](https://creativecommons.org/publicdomain/zero/1.0/)) designation for images and their related data. In these instances, we ask that image reproductions be accompanied by a credit line, displayed with the image, for the appropriate repository.
 

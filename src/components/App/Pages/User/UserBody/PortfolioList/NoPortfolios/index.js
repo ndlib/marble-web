@@ -4,7 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from 'theme-ui'
 
-const NoPortfolios = ({ isOwner = false, button }) => {
+const NoPortfolios = ({ isPorfolioOwner = false, button }) => {
   const sx = {
     border: '1px solid',
     borderColor: 'gray.4',
@@ -14,7 +14,7 @@ const NoPortfolios = ({ isOwner = false, button }) => {
     textAlign: 'center',
     width: 'calc(100% - 2rem)',
   }
-  if (isOwner) {
+  if (isPorfolioOwner) {
     return (
       <div sx={sx}>
         <p>You have not created any portfolios yet.</p>

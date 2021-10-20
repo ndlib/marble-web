@@ -11,7 +11,7 @@ import CollectionLayout from '@ndlib/gatsby-theme-marble/src/components/Shared/M
 import ItemLayout from '@ndlib/gatsby-theme-marble/src/components/Shared/MarbleItem/ItemLayout'
 import RelatedItemsFromSearch from '@ndlib/gatsby-theme-marble/src/components/Shared/MarbleItem/RelatedItemsFromSearch'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
-import NDBrandBreadcrumbs from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
+import NDBrandBreadcrumbs, { getBreadcrumbs } from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 import ReturnToSearch from '@ndlib/gatsby-theme-marble/src/components/Shared/ReturnToSearch'
 import AlertLayer from '../components/App/Layers/AlertLayer'
 import AlertMessages from '@ndlib/gatsby-theme-marble/src/components/Shared/AlertMessages'
@@ -79,17 +79,6 @@ MarbleItemPage.propTypes = {
 }
 
 export default MarbleItemPage
-
-const getBreadcrumbs = (item, breadcrumbs = []) => {
-  if (item.marbleParent) {
-    getBreadcrumbs(item.marbleParent, breadcrumbs)
-    breadcrumbs.push({
-      url: item.marbleParent.slug,
-      title: item.marbleParent.title,
-    })
-  }
-  return breadcrumbs
-}
 
 export const query = graphql`
   query($slug: String!) {

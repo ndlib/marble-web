@@ -99,7 +99,7 @@ const IndexPage = ({ location }) => {
           </Box>
         </Flex>
         <Flex sx={{ width: '100%', pt: '2rem', pb: '.5rem' }}>
-          <Button variant='primary'><Link to='/search?q='>Browse All Items <FaChevronRight style={{ color: theme.theme.colors.secondary }} /></Link></Button>
+          <Button variant='primary'><Link to='/search?images[0]=true'>Browse All Items <FaChevronRight style={{ color: theme.theme.colors.secondary }} /></Link></Button>
         </Flex>
       </NDBrandSection>
       <NDBrandSection

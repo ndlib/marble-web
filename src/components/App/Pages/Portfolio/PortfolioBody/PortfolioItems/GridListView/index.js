@@ -6,7 +6,11 @@ import { DISPLAY_GRID } from '@ndlib/gatsby-theme-marble/src/store/actions/displ
 
 const GridListView = ({ items, userId, isOwner, extraControls, defaultDisplay = DISPLAY_GRID }) => {
   return (
-    <CardGroup defaultDisplay={defaultDisplay} toggleGroup='portfolio-grid-list' extraControls={extraControls}>
+    <CardGroup
+      defaultDisplay={defaultDisplay}
+      toggleGroup='portfolio-grid-list'
+      extraControls={extraControls}
+      gridWidthRule={['100%', '100%', '100%', '50%', '50%']}>
       {
         items.map(item => {
           return (

@@ -16,7 +16,7 @@ import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/Port
 import sx from './sx'
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
-export const Ownership = ({ portfolio }) => {
+export const Ownership = ({ portfolio, location }) => {
   const { portfolioUser, isPorfolioOwner } = useUserContext()
   const { updatePortfolio } = usePortfolioContext()
   const [settingsOpen, setSettingsOpen] = useState(false)
@@ -24,7 +24,7 @@ export const Ownership = ({ portfolio }) => {
   const { portfolioCollectionId } = portfolio
   const [patching, setPatching] = useState(false)
   const [privacy, changePrivacy] = useState(portfolio.privacy)
-
+  console.log('l', location)
   if (isOwner) {
     return (
       <div sx={sx.wrapper}>
@@ -66,7 +66,7 @@ export const Ownership = ({ portfolio }) => {
           </ActionModal>
         </div>
         <div sx={sx.shareWrapper}>
-          <ShareButton path={`user/xyz/${portfolioCollectionId}`} />
+          <ShareButton path={location.pathname.substring(1)} />
           <PrintButton />
         </div>
         <div sx={sx.editWrapper}>
@@ -81,7 +81,7 @@ export const Ownership = ({ portfolio }) => {
         Portfolio collected and annotated by <UserCartouche user={portfolioUser} />
       </Attribution>
       <div sx={sx.shareWrapper}>
-        <ShareButton path={`user/xyz/${portfolioCollectionId}`} />
+        <ShareButton path={location.pathname.substring(1)} />
         <PrintButton />
       </div>
     </div>

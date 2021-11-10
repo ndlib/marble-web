@@ -24,7 +24,6 @@ export const Ownership = ({ portfolio, location }) => {
   const { portfolioCollectionId } = portfolio
   const [patching, setPatching] = useState(false)
   const [privacy, changePrivacy] = useState(portfolio.privacy)
-  console.log('l', location)
   if (isOwner) {
     return (
       <div sx={sx.wrapper}>

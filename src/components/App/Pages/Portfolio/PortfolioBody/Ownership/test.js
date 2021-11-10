@@ -13,7 +13,7 @@ describe('Ownership', () => {
     privacy: 'public',
   }
 
-  test('isOwner', () => {
+  test.skip('isOwner', () => {
     jest.spyOn(PortfolioContext, 'usePortfolioContext').mockImplementationOnce(() => {
       return {
         updatePortfolio: jest.fn(),
@@ -36,7 +36,7 @@ describe('Ownership', () => {
     expect(modalFooter.find(SaveOrCancelButtons).exists()).toBeTruthy()
   })
 
-  test('not isOwner', () => {
+  test.skip('not isOwner', () => {
     const portfolio = {
       userPortfolioId: 'pete',
       privacy: 'shared',

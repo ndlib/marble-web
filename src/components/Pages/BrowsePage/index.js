@@ -129,6 +129,10 @@ const Browse = () => {
       label: 'General Collection, Hesburgh Libraries',
       target: '/search?campuslocation[0]=General%20Collection%2C%20Hesburgh%20Libraries&images[0]=true',
     },
+    {
+      label: 'Architecture Library, Hesburgh Libraries',
+      target: '/search?campuslocation[0]=Architecture%20Library%2C%20Hesburgh%20Libraries&images[0]=true',
+    },
   ]
   return (
     <>

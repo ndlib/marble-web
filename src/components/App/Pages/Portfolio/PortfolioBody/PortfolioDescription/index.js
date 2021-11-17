@@ -32,10 +32,10 @@ const PortfolioDescription = () => {
   }
   return (
     <Box as='div' sx={sx.wrapper}>
-      <div sx={sx.innerWrapper(isOwner)}>
+      <div sx={isOwner ? sx.innerWrapperOwner : sx.innerWrapper}>
         {description}
       </div>
-      <div sx={sx.buttonWrapper(isOwner)}>
+      <div sx={isOwner ? sx.buttonWrapperOwner : sx.buttonWrapper}>
         <EditButton
           isOwner={isOwner}
           setEditFunc={() => setEditing(true)}

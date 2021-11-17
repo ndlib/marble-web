@@ -5,27 +5,41 @@ module.exports = {
     width: ['100%', '100%', '80%'],
     clear: 'both',
   },
-  buttonWrapper: (isOwner) => {
-    return isOwner ? {
-      display: 'inline-block',
-      verticalAlign: 'top',
-      clear: 'both',
-    } : {
-      display: 'none',
-    }
+  buttonWrapper: {
+    display: 'none',
   },
-  innerWrapper: (isOwner) => {
-    return {
-      clear: 'both',
-      border: '1px solid',
-      borderColor: 'gray.0',
-      display: 'inline-block',
-      minWidth: isOwner ? 'calc(100% - 40px)' : '100%',
-      pt: '2rem',
-      px: '1rem',
-      pb: '1rem',
-      margin: '0 auto',
-      width: ['100%', '100%', '80%'],
-    }
+  buttonWrapperOwner:  {
+    display: 'inline-block',
+    marginTop: '1rem',
+    verticalAlign: 'top',
+    clear: 'both',
+  },
+  innerWrapper: {
+    clear: 'both',
+    border: '1px solid',
+    borderColor: 'gray.0',
+    display: 'inline-block',
+    minWidth: '100%',
+    pt: '1rem',
+    px: '1rem',
+    pb: '1rem',
+    margin: '1rem auto',
+    verticalAlign: 'top',
+    whiteSpace: 'pre',
+    width: ['100%', '100%', '80%'],
+  },
+  innerWrapperOwner: {
+    clear: 'both',
+    border: '1px solid',
+    borderColor: 'gray.2',
+    display: 'inline-block',
+    minWidth: 'calc(100% - 60px)',
+    pt: '1rem',
+    px: '1rem',
+    pb: '1rem',
+    margin: '1rem auto',
+    verticalAlign: 'top',
+    whiteSpace: 'pre',
+    width: ['100%', '100%', 'calc(80% - 60px)'],
   },
 }

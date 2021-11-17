@@ -23,7 +23,7 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
       />}
     >
       {item.annotation && !annotated && (
-        <p>{item.annotation}</p>
+        <p sx={{ whiteSpace: 'pre' }}>{item.annotation}</p>
       )}
     </DisplayCard>
   )
@@ -41,7 +41,7 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
     return (
       <div sx={sx.item}>
         <Flex sx={{ flexWrap: 'wrap' }}>
-          <Box sx={{ width: ['100%', '60%', '60%'], px: '1rem', py: '1rem' }}>
+          <Box sx={{ width: ['100%', '60%', '60%'], px: '1rem', py: '1rem', whiteSpace: 'pre' }}>
             {item.annotation}
           </Box>
           <Box sx={{ width: ['100%', '40%'], py: '1rem' }}>

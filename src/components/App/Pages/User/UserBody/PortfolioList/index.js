@@ -62,7 +62,10 @@ const PortfolioList = ({
                     image={c.imageUri || ''}
                     leftBadge={isPorfolioOwner ? <VisibilityLabel visibility={c.privacy} /> : null}
 
-                  >{c.description}
+                  >
+                    <span sx={{ whiteSpace: 'pre' }}>
+                      {c.description}
+                    </span>
                   </DisplayCard>
                 )
               })

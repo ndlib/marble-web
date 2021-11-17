@@ -14,6 +14,7 @@ The Marble site provides a single location to explore digitized cultural heritag
 * [Consult with University Archives](http://archives.nd.edu/contacts/)
 * [Consult with RBSC](https://rarebooks.library.nd.edu/using/)
 * [Connect with the Snite Museum of Art](https://sniteartmuseum.nd.edu/about-us/contact-us/)
+* [Explore Digital Exhibits from Hesburgh Libraries](https://digital-exhibits.library.nd.edu/)
 
 ## Other tools
 * Read the case study: [Stories of Power and Diversity During COVID: Building an Online Exhibition with Primary Sources](https://curate.nd.edu/show/3b591834b82), which describes how two RBSC curators leveraged Marble in a winter session course.

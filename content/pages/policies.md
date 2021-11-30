@@ -30,7 +30,7 @@ We use the information mentioned above within the Hesburgh Libraries IT team to 
 ### 3. What security measures do you have in place to keep my information safe?
 The University of Notre Dame Hesburgh Libraries has security measures in place to protect the loss, misuse and alteration of the information under our control.
 ### 4. Who should I contact with questions about this policy or the security of my information?
-If you have any questions about this policy or the security of your information, please use the feedback form or contact the service owner, [Mikala Narlock](mailto:mnarlock@nd.edu).
+If you have any questions about this policy or the security of your information, please use the feedback form.
 
 ## Using Images
 Hesburgh Libraries and the Snite Museum of Art strive to ensure they have the appropriate rights to provide access to content through this website. These materials are made available for educational, scholarly, and personal use. Some of the content on the site may be protected by copyright law or other third-party rights. It is the users’ responsibility to respect these rights and abide by copyright laws.

@@ -25,7 +25,7 @@ module.exports = {
     pb: '1rem',
     margin: '1rem auto',
     verticalAlign: 'top',
-    whiteSpace: 'pre',
+    whiteSpace: 'break-spaces',
     width: ['100%', '100%', '80%'],
   },
   innerWrapperOwner: {
@@ -39,7 +39,7 @@ module.exports = {
     pb: '1rem',
     margin: '1rem auto',
     verticalAlign: 'top',
-    whiteSpace: 'pre',
+    whiteSpace: 'break-spaces',
     width: ['100%', '100%', 'calc(80% - 60px)'],
   },
 }

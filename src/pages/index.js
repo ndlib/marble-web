@@ -25,7 +25,7 @@ const Home = ({ data, location }) => {
           variant='fullBleed'
           title='Explore distinctive cultural heritage materials from the Hesburgh Libraries and the Snite Museum of Art.'
           image={(<GatsbyImage image={image} alt='Painting Absolution Underfire by Paul Henry Wood. The painting captures the dramatic moment before the fighting started when Rev. William J. Corby, C.S.C., then chaplain of the 88th New York Regiment, one of five regiments in the legendary Irish Brigade, stood upon a boulder and addressed the troops. Exposing himself to enemy fire, with cannonballs exploding nearby and bullets whistling overhead, Corby exhorted the soldiers to remember the noble cause and sacred nature of their duty.' width='100%' height='100%' objectFit='cover' loading='eager' />)}
-          button={(<NDBrandNavSearch location={location} variant='hero.navSearch' searchPath='/search' />)}
+          button={(<NDBrandNavSearch location={location} variant='hero.navSearch' searchPath='/search' forceImages={true} />)}
           link='item/1976.057'
           attribution='Absolution under Fire'
         />

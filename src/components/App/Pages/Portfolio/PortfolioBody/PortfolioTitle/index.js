@@ -7,7 +7,7 @@ import EditButton from '../EditButton'
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
 const PortfolioTitle = () => {
-  const { isPorfolioOwner } = useUserContext()
+  const { isPortfolioOwner } = useUserContext()
   const { portfolio } = usePortfolioContext()
   const [editing, setEditing] = useState(false)
 
@@ -19,7 +19,7 @@ const PortfolioTitle = () => {
     <Heading as='h1' variant='pageTitle'>
       {portfolio.title}
       <EditButton
-        isOwner={isPorfolioOwner()}
+        isOwner={isPortfolioOwner()}
         setEditFunc={() => setEditing(true)}
       />
     </Heading>

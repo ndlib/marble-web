@@ -18,7 +18,7 @@ describe('PortfolioDescription', () => {
     })
     jest.spyOn(UserContext, 'useUserContext').mockImplementationOnce(() => {
       return {
-        isPorfolioOwner: () => true,
+        isPortfolioOwner: () => true,
       }
     })
     let wrapper

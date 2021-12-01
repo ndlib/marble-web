@@ -9,7 +9,7 @@ test('EditUserButton', () => {
   jest.spyOn(userContext, 'useUserContext').mockImplementation(() => {
     return {
       portfolioUser: { portfolioUserId: 'captainuser' },
-      isPorfolioOwner: () => true,
+      isPortfolioOwner: () => true,
     }
   })
   const wrapper = mount(<EditUserButton userName='captainuser' i18n={i18n} />)

@@ -13,7 +13,7 @@ import * as style from '@ndlib/gatsby-theme-marble/src/components/Shared/FormEle
 import { NDBrandBreadcrumbs } from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
-export const UserEdit = ({ portfolioUser, isPorfolioOwner, location }) => {
+export const UserEdit = ({ portfolioUser, isPortfolioOwner, location }) => {
   const { updatePortfolioUser } = useUserContext()
   const [fullName, changeName] = useState(portfolioUser.fullName)
   const [email, changeEmail] = useState(portfolioUser.email)
@@ -21,7 +21,7 @@ export const UserEdit = ({ portfolioUser, isPorfolioOwner, location }) => {
   const [patching, setPatching] = useState(false)
   const emailRegex = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g
   console.log('pu', portfolioUser)
-  if (!isPorfolioOwner) {
+  if (!isPortfolioOwner) {
     return (<Unauthorized />)
   }
 
@@ -131,7 +131,7 @@ export const UserEdit = ({ portfolioUser, isPorfolioOwner, location }) => {
 
 UserEdit.propTypes = {
   portfolioUser: PropTypes.object.isRequired,
-  isPorfolioOwner: PropTypes.bool,
+  isPortfolioOwner: PropTypes.bool,
   location: PropTypes.object,
 }
 

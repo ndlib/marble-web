@@ -24,7 +24,7 @@ describe('Ownership', () => {
         portfolioUser: {
           portfolioUserId: 'pete',
         },
-        isPorfolioOwner: () => true,
+        isPortfolioOwner: () => true,
       }
     })
     const wrapper = shallow(<Ownership portfolio={portfolio} />)
@@ -46,7 +46,7 @@ describe('Ownership', () => {
         portfolioUser: {
           portfolioUserId: 'pete',
         },
-        isPorfolioOwner: () => false,
+        isPortfolioOwner: () => false,
       }
     })
     jest.spyOn(PortfolioContext, 'usePortfolioContext').mockImplementationOnce(() => {

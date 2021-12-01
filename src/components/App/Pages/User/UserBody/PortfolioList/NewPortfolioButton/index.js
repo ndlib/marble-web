@@ -7,10 +7,10 @@ import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserConte
 
 export const NewPortfolioButton = () => {
   const { t } = useTranslation()
-  const { portfolioUser, isPorfolioOwner, createNewPortfolio } = useUserContext()
+  const { portfolioUser, isPortfolioOwner, createNewPortfolio } = useUserContext()
   const [creating, setCreating] = useState(false)
 
-  if (!isPorfolioOwner()) {
+  if (!isPortfolioOwner()) {
     return null
   }
 

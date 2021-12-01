@@ -13,13 +13,13 @@ import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserConte
 
 // eslint-disable-next-line complexity
 const PortfolioItems = () => {
-  const { isPorfolioOwner } = useUserContext()
+  const { isPortfolioOwner } = useUserContext()
   const { portfolio } = usePortfolioContext()
   const [editing, setEditing] = useState(false)
   const { portfolioItems, layout, portfolioUserId } = portfolio
   const { items } = portfolioItems
 
-  const isOwner = isPorfolioOwner()
+  const isOwner = isPortfolioOwner()
 
   if (typy(items).safeArray.length === 0) {
     return (

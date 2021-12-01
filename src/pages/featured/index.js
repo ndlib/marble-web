@@ -36,7 +36,7 @@ const FeaturedList = ({ data, location }) => {
       <Seo
         data={data}
         location={location}
-        title='Featured Porfolios'
+        title='Featured Portfolios'
       />
       <NDBrandSectionLeftNav>
         <NDBrandSection variant='sidebar'>

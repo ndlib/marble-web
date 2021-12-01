@@ -17,7 +17,7 @@ import { NDBrandBreadcrumbs } from '@ndlib/gatsby-theme-marble/src/components/Sh
 const PortfolioList = ({
   // loginReducer,
   portfolioUser,
-  isPorfolioOwner,
+  isPortfolioOwner,
   // location,
 }) => {
   // const { removeUserPortfolio } = useUserContext()
@@ -60,7 +60,7 @@ const PortfolioList = ({
                     title={c.title}
                     target={`/user/${c.portfolioUserId}/${c.portfolioCollectionId}`}
                     image={c.imageUri || ''}
-                    leftBadge={isPorfolioOwner ? <VisibilityLabel visibility={c.privacy} /> : null}
+                    leftBadge={isPortfolioOwner ? <VisibilityLabel visibility={c.privacy} /> : null}
 
                   >{c.description}
                   </DisplayCard>
@@ -71,7 +71,7 @@ const PortfolioList = ({
       </>
     )
   }
-  return <NoPortfolios isPorfolioOwner={isPorfolioOwner} button={(
+  return <NoPortfolios isPortfolioOwner={isPortfolioOwner} button={(
     <NewPortfolioButton />
   )} />
 }
@@ -79,7 +79,7 @@ const PortfolioList = ({
 PortfolioList.propTypes = {
   // loginReducer: PropTypes.object.isRequired,
   portfolioUser: PropTypes.shape({ fullName: PropTypes.string }),
-  isPorfolioOwner: PropTypes.bool,
+  isPortfolioOwner: PropTypes.bool,
   // location: PropTypes.object.isRequired,
 }
 

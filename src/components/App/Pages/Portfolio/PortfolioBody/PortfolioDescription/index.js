@@ -8,11 +8,11 @@ import sx from './sx'
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
 const PortfolioDescription = () => {
-  const { isPorfolioOwner } = useUserContext()
+  const { isPortfolioOwner } = useUserContext()
   const { portfolio } = usePortfolioContext()
   const [editing, setEditing] = useState(false)
   const { description } = portfolio
-  const isOwner = isPorfolioOwner()
+  const isOwner = isPortfolioOwner()
 
   if (editing) {
     return (<EditDescription closeFunc={() => setEditing(false)} />)

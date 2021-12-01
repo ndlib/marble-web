@@ -5,12 +5,12 @@ import UserEdit from './UserEdit'
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
 const UserBody = ({ location, edit = false }) => {
-  const { portfolioUser, isPorfolioOwner } = useUserContext()
+  const { portfolioUser, isPortfolioOwner } = useUserContext()
 
   if (edit) {
-    return <UserEdit location={location} portfolioUser={portfolioUser} isPorfolioOwner={isPorfolioOwner()} />
+    return <UserEdit location={location} portfolioUser={portfolioUser} isPortfolioOwner={isPortfolioOwner()} />
   } else {
-    return <PortfolioList location={location} portfolioUser={portfolioUser} isPorfolioOwner={isPorfolioOwner()} />
+    return <PortfolioList location={location} portfolioUser={portfolioUser} isPortfolioOwner={isPortfolioOwner()} />
   }
 }
 

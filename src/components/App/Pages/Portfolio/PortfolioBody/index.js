@@ -16,8 +16,8 @@ import PortfolioUnavailable from './PortfolioUnavailable'
 
 const PortfolioBody = ({ location }) => {
   const { portfolio, portfolioLoading } = usePortfolioContext()
-  const { portfolioUser, isPorfolioOwner } = useUserContext()
-  const isOwner = isPorfolioOwner()
+  const { portfolioUser, isPortfolioOwner } = useUserContext()
+  const isOwner = isPortfolioOwner()
 
   if (portfolioLoading) {
     return (<Loading />)

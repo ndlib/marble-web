@@ -11,7 +11,7 @@ import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserConte
 import typy from 'typy'
 
 const PortfolioLayer = ({ loginReducer, children, portfolioId }) => {
-  const { isPorfolioOwner, portfolioUserLoading } = useUserContext()
+  const { isPortfolioOwner, portfolioUserLoading } = useUserContext()
   const [portfolioDirty, setPortfolioDirty] = useState(true)
   const [portfolioUpdates, setUportfolioUpdates] = useState(1)
   const [currentPortfolio, setCurrentPortfolio] = useState({})
@@ -90,7 +90,7 @@ const PortfolioLayer = ({ loginReducer, children, portfolioId }) => {
   useEffect(() => {
     const abortController = new AbortController()
     if (!portfolioUserLoading && portfolioDirty) {
-      getPortfolioQuery({ loginReducer: loginReducer, isOwner: isPorfolioOwner(), portfolioId: portfolioId })
+      getPortfolioQuery({ loginReducer: loginReducer, isOwner: isPortfolioOwner(), portfolioId: portfolioId })
         .then(data => {
           if (!data.portfolioCollectionId) {
             data.portfolioNotFound = true
@@ -105,7 +105,7 @@ const PortfolioLayer = ({ loginReducer, children, portfolioId }) => {
     return () => {
       abortController.abort()
     }
-  }, [portfolioId, loginReducer, isPorfolioOwner, portfolioDirty, portfolioUserLoading])
+  }, [portfolioId, loginReducer, isPortfolioOwner, portfolioDirty, portfolioUserLoading])
 
   return (
     <PortfolioContext.Provider value={context}>{children}</PortfolioContext.Provider>

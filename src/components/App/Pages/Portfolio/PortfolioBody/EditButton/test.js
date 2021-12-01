@@ -10,7 +10,7 @@ describe('EditButton', () => {
     jest.spyOn(userContext, 'useUserContext').mockImplementation(() => {
       return {
         portfolioUser: { portfolioUserId: 'captainuser' },
-        isPorfolioOwner: () => false,
+        isPortfolioOwner: () => false,
       }
     })
 
@@ -22,7 +22,7 @@ describe('EditButton', () => {
     jest.spyOn(userContext, 'useUserContext').mockImplementation(() => {
       return {
         portfolioUser: { portfolioUserId: 'captainuser' },
-        isPorfolioOwner: () => true,
+        isPortfolioOwner: () => true,
       }
     })
 

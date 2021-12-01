@@ -17,10 +17,10 @@ import sx from './sx'
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
 export const Ownership = ({ portfolio, location }) => {
-  const { portfolioUser, isPorfolioOwner } = useUserContext()
+  const { portfolioUser, isPortfolioOwner } = useUserContext()
   const { updatePortfolio } = usePortfolioContext()
   const [settingsOpen, setSettingsOpen] = useState(false)
-  const isOwner = isPorfolioOwner()
+  const isOwner = isPortfolioOwner()
   const { portfolioCollectionId } = portfolio
   const [patching, setPatching] = useState(false)
   const [privacy, changePrivacy] = useState(portfolio.privacy)

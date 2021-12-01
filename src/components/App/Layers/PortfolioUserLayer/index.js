@@ -67,7 +67,7 @@ const PortfolioUserLayer = ({ userName, loginReducer, children }) => {
     updatePortfolioUser: updatePortfolioUser,
     removeUserPortfolio: removeUserPortfolio,
     createNewPortfolio: createNewPortfolio,
-    isPorfolioOwner: () => {
+    isPortfolioOwner: () => {
       return loginReducer && loginReducer.status && currentPortfolioUser.portfolioUserId === loginReducer.user.netid
     },
   }

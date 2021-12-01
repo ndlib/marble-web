@@ -4,9 +4,9 @@ import { navigate } from 'gatsby'
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
 const EditUserButton = () => {
-  const { portfolioUser, isPorfolioOwner } = useUserContext()
+  const { portfolioUser, isPortfolioOwner } = useUserContext()
 
-  if (!isPorfolioOwner()) {
+  if (!isPortfolioOwner()) {
     return null
   }
 

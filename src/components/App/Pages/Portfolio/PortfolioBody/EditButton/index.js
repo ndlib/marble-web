@@ -6,8 +6,8 @@ import sx from './sx'
 import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
 const EditButton = ({ setEditFunc }) => {
-  const { isPorfolioOwner } = useUserContext()
-  if (isPorfolioOwner()) {
+  const { isPortfolioOwner } = useUserContext()
+  if (isPortfolioOwner()) {
     return (
       <button
         onClick={() => setEditFunc()}

@@ -23,7 +23,7 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
       />}
     >
       {item.annotation && !annotated && (
-        <p sx={{ whiteSpace: 'pre' }}>{item.annotation}</p>
+        <p sx={{ whiteSpace: 'break-space' }}>{item.annotation}</p>
       )}
     </DisplayCard>
   )

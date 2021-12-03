@@ -63,7 +63,7 @@ const PortfolioList = ({
                     leftBadge={isPortfolioOwner ? <VisibilityLabel visibility={c.privacy} /> : null}
 
                   >
-                    <span sx={{ whiteSpace: 'pre' }}>
+                    <span sx={{ whiteSpace: 'break-space' }}>
                       {c.description}
                     </span>
                   </DisplayCard>

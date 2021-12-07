@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { jsx, Button } from 'theme-ui'
 import typy from 'typy'
 import NoItems from './NoItems'
+import EmptyAddItems from './EmptyAddItems'
 import AnnotatedView from './AnnotatedView'
 import GridListView from './GridListView'
 import EditList from './EditList'
@@ -23,7 +24,7 @@ const PortfolioItems = () => {
 
   if (typy(items).safeArray.length === 0) {
     return (
-      <NoItems />
+      isPortfolioOwner ? <EmptyAddItems /> : <NoItems />
     )
   }
   const sortedItems = items.sort((i1, i2) => {

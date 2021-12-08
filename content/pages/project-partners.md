@@ -15,19 +15,19 @@ These digitized materials are only a fraction of the University’s holdings, an
 
 While only select materials from the Snite Museum of Art, Rare Books & Special Collections, and the University Archives are featured, the Marble content is representative of the distinctive collections housed at the University of Notre Dame. Learn more about the cultural holdings of the  Marble partners below.
 
-## Snite Museum of Art
+### Snite Museum of Art <a name="snite"></a>
 
 The [Snite Museum of Art](https://snite.nd.edu) at the University of Notre Dame  is founded on the principle that art is essential to understanding individual, shared, and diverse human experiences and beliefs. The permanent collection features over 29,000 artworks. Major collection strengths include Mesoamerican art, old master paintings and drawings, nineteenth-century French art, nineteenth-century photography, and the art of Ivan Mestrovic. Our holdings also include Native American, Latino, African, African-American, and contemporary art.
 
 [Browse select collections from the Snite Museum of Art](https://marble.nd.edu/search?campuslocation%5B0%5D=Snite%20Museum%20of%20Art&images[0]=true).
 ## Hesburgh Libraries
 
-### Rare Books & Special Collections
+### Rare Books & Special Collections <a name="rare"></a>
 
 The [University of Notre Dame Rare Books & Special Collections (RSBC)](https://rarebooks.library.nd.edu/) is open to the public and welcomes researchers from both on and off campus. RSBC offers more than 132,000 volumes of printed books and periodicals and over 6,000 linear feet of non-book materials including manuscripts, printed ephemera, broadsides, prints, posters, numismatics, and philately. The strengths of the department's holdings include Catholic studies, Irish studies, Italian literature, Latin American and Iberian history and literature, sports and physical culture, and theology and church history.
 
 [Browse select collections from Rare Books & Special Collections](https://marble.nd.edu/search?campuslocation[0]=General%20Collection%2C%20Hesburgh%20Libraries&campuslocation[1]=Rare%20Books%20%26%20Special%20Collections&images[0]=true).
-### University Archives
+### University Archives <a name="archives"></a>
 
 The [University Archives](https://archives.nd.edu) collects, preserves, and makes accessible the official records of the University of Notre Dame. This historically valuable material documents the academic and administrative responsibilities of the University as well as the experiences of its students, alumni, officers, faculty, staff, and benefactors. The Archives also collects and maintains records, papers, photographs, printed material, and audio-visual material that document the life of the Catholic Church and her people as lived in the American context, and is recognized as one of the nation's foremost archival repositories for the study of American Catholicism.
 

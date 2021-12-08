@@ -8,6 +8,13 @@
       "link": "/project-partners",
       "selectedPatterns": [
         "^/project-partners"
+      ],
+      "items": [
+        {
+          "id": "help-policies",
+          "label": "x1",
+          "link": "/x1"
+        }
       ]
     },
     {

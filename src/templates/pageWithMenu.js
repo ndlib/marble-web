@@ -74,6 +74,13 @@ export const query = graphql`
         link
         icon
         selectedPatterns
+        items {
+          id
+          label
+          link
+          icon
+          selectedPatterns
+        }
       }
     }
   }

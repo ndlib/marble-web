@@ -49,7 +49,10 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
           }}>
             {item.annotation}
           </Box>
-          <Box sx={{ width: ['100%', '40%'], py: '1rem' }}>
+          <Box sx={{
+            width: ['100%', '40%'],
+            py: '1rem',
+          }}>
             {card}
           </Box>
         </Flex>

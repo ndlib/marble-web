@@ -41,10 +41,18 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
     return (
       <div sx={sx.item}>
         <Flex sx={{ flexWrap: 'wrap' }}>
-          <Box sx={{ width: ['100%', '60%', '60%'], px: '1rem', py: '1rem', whiteSpace: 'pre' }}>
+          <Box sx={{
+            width: ['100%', '60%', '60%'],
+            px: '1rem',
+            py: '1rem',
+            whiteSpace: 'break-space',
+          }}>
             {item.annotation}
           </Box>
-          <Box sx={{ width: ['100%', '40%'], py: '1rem' }}>
+          <Box sx={{
+            width: ['100%', '40%'],
+            py: '1rem',
+          }}>
             {card}
           </Box>
         </Flex>

@@ -22,9 +22,9 @@ const useFixtures = process.env.USE_FIXTURES || !!process.env.GITHUB_ACTIONS || 
 const iiifViewerUrl = process.env.IIIF_VIEWER_URL || null
 
 // OpenSearch
-const opensearchEndpoint = process.env.OPENSEARCH_ENDPOINT
-const opensearchMasterUsername = process.env.OPENSEARCH_MASTER_USERNAME
-const opensearchMasterPassword = process.env.OPENSEARCH_MASTER_PASSWORD
+const opensearchEndpoint = process.env.OPENSEARCH_ENDPOINT || ''
+const opensearchMasterUsername = process.env.OPENSEARCH_MASTER_USERNAME || ''
+const opensearchMasterPassword = process.env.OPENSEARCH_MASTER_PASSWORD || ''
 const opensearchReadOnlyUsername = process.env.OPENSEARCH_READONLY_USERNAME || 'readOnly'
 const opensearchReadOnlyPassword = process.env.OPENSEARCH_READONLY_PASSWORD || 'readOnly1!'
 

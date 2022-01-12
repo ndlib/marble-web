@@ -14,14 +14,25 @@ require('dotenv').config({
 
 const siteUrl = 'https://marble.nd.edu'
 const siteName = 'Marble: Museums, Archives, Rare Books & Libraries Exploration'
-const searchUrl = process.env.SEARCH_URL || ''
-const searchIndex = process.env.SEARCH_INDEX || ''
 const s3BucketName = process.env.S3_DEST_BUCKET || ''
 const allowRobots = process.env.ALLOW_ROBOTS === 'true' || false
 const sourceGraphQlUrl = process.env.GRAPHQL_API_URL || ''
 const graphQlKey = process.env.GRAPHQL_API_KEY || ''
 const useFixtures = process.env.USE_FIXTURES || !!process.env.GITHUB_ACTIONS || false
 const iiifViewerUrl = process.env.IIIF_VIEWER_URL || null
+
+// OpenSearch
+const opensearchEndpoint = process.env.OPENSEARCH_ENDPOINT || ''
+const opensearchMasterUsername = process.env.OPENSEARCH_MASTER_USERNAME || ''
+const opensearchMasterPassword = process.env.OPENSEARCH_MASTER_PASSWORD || ''
+const opensearchReadOnlyUsername = process.env.OPENSEARCH_READONLY_USERNAME || 'readOnly'
+const opensearchReadOnlyPassword = process.env.OPENSEARCH_READONLY_PASSWORD || 'readOnly1!'
+
+const opensearchAuth = encodeURIComponent(opensearchMasterUsername) + ':' + encodeURIComponent(opensearchMasterPassword)
+const readAuth = encodeURIComponent(opensearchReadOnlyUsername) + ':' + encodeURIComponent(opensearchReadOnlyPassword)
+const opensearchIndexingUrl = opensearchEndpoint.replace('https://', 'https://' + opensearchAuth + '@') + ':443'
+
+const searchIndex = process.env.SEARCH_INDEX || 'marble'
 
 module.exports = {
   flags: {
@@ -60,6 +71,7 @@ module.exports = {
         // updateFixtures: true,
         // debug: true,
         // logIds: true,
+        // itemList: [{ itemId: 'MSHLAT0090_EAD' }],
         mergeItems: [
           {
             parentId: 'CJF_EAD',
@@ -71,7 +83,7 @@ module.exports = {
     {
       resolve: '@ndlib/gatsby-plugin-marble-elasticsearch',
       options: {
-        url: searchUrl,
+        url: opensearchIndexingUrl,
         searchIndex: searchIndex,
         region: 'us-east-1',
         query: elasticQuery,
@@ -84,8 +96,9 @@ module.exports = {
       resolve: '@ndlib/gatsby-theme-marble',
       options: {
         iiifViewerUrl: iiifViewerUrl,
-        searchUrl: searchUrl,
+        searchUrl: opensearchEndpoint,
         searchIndex: searchIndex,
+        readAuth: readAuth,
       },
     },
     // {

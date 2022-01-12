@@ -32,9 +32,9 @@ const Page = ({ data, location }) => {
           <Menu location={location} variant='navLeft' items={menu} label={menusJson.label} />
         </NDBrandSection>
         <NDBrandSection variant='defaultWithSidebar'>
-          <NDBrandBreadcrumbs
+        <NDBrandBreadcrumbs
             currentPageTitle={markdownRemark.frontmatter.title}
-            breadcrumbs={[]}
+            breadcrumbs={[{ url: '/project-partners', title: 'About' }]}
           />
           <main>
             <Heading as='h1' variant='pageTitle'>{markdownRemark.frontmatter.title}</Heading>

@@ -4,7 +4,7 @@ date: "2017-09-18T23:19:51.246Z"
 type: "page"
 slug: "/help"
 menu: "help"
-template: "pageWithMenu.js"
+template: "about.js"
 ---
 On this page, users can find additional information about using the Marble platform and the distinctive, digitized collections at the University of Notre Dame.
 

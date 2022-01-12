@@ -4,7 +4,7 @@ date: "2017-09-18T23:19:51.246Z"
 type: "page"
 menu: "help"
 slug: "/policies"
-template: "pageWithMenu.js"
+template: "about.js"
 ---
 ## Disclaimer
 This site is a gateway to a selection of the publicly accessible research collections stewarded by the Hesburgh Libraries and Snite Museum of Art at the University of Notre Dame. We invite you to explore our cultural heritage holdings.

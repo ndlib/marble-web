@@ -1,0 +1,64 @@
+{
+  "id": "project",
+  "label": "About",
+  "items": [
+    {
+      "id": "help-about",
+      "label": "Project and Partners",
+      "link": "/project-partners",
+      "selectedPatterns": [
+        "^/project-partners"
+      ],
+      "items": [
+        {
+          "id": "snite",
+          "label": "Snite Museum of Art",
+          "link": "/snite-museum-of-art",
+          "selectedPatterns": [
+            "^/snite-museum-of-art"
+          ]
+        },
+        {
+          "id": "rare-books",
+          "label": "Rare Books & Special Collections",
+          "link": "/rare-books-special-collections",
+          "selectedPatterns": [
+            "^/rare-books-special-collections"
+          ]
+        },
+        {
+          "id": "university-archives",
+          "label": "University Archives",
+          "link": "/university-archives",
+          "selectedPatterns": [
+            "^/university-archives"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "help-policies",
+      "label": "Policies",
+      "link": "/policies",
+      "selectedPatterns": [
+        "^/policies"
+      ]
+    },
+    {
+      "id": "help-help",
+      "label": "Help",
+      "link": "/help",
+      "selectedPatterns": [
+        "^/help"
+      ]
+    },
+    {
+      "id": "help-people",
+      "label": "People",
+      "link": "/people",
+      "selectedPatterns": [
+        "^/people"
+      ]
+    }
+  ]
+}

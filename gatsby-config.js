@@ -16,8 +16,8 @@ const siteUrl = 'https://marble.nd.edu'
 const siteName = 'Marble: Museums, Archives, Rare Books & Libraries Exploration'
 const s3BucketName = process.env.S3_DEST_BUCKET || ''
 const allowRobots = process.env.ALLOW_ROBOTS === 'true' || false
-const sourceGraphQlUrl = process.env.GRAPHQL_API_URL_KEY_PATH || ''
-const graphQlKey = process.env.GRAPHQL_API_KEY_KEY_PATH || ''
+const sourceGraphQlUrl = process.env.GRAPHQL_API_URL || ''
+const graphQlKey = process.env.GRAPHQL_API_KEY || ''
 const useFixtures = process.env.USE_FIXTURES || !!process.env.GITHUB_ACTIONS || false
 const iiifViewerUrl = process.env.IIIF_VIEWER_URL || null
 
@@ -37,7 +37,7 @@ const searchIndex = process.env.SEARCH_INDEX || 'marble'
 module.exports = {
   flags: {
     DEV_SSR: true,
-    PRESERVE_FILE_DOWNLOAD_CACHE: false,
+    PRESERVE_WEBPACK_CACHE: false,
   },
   siteMetadata: {
     title: siteName,

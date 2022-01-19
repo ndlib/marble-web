@@ -16,15 +16,15 @@ const siteUrl = process.env.BUILD_ENVIRONMENT === 'production' ? 'https://marble
 const siteName = 'Marble: Museums, Archives, Rare Books & Libraries Exploration'
 const s3BucketName = process.env.S3_DEST_BUCKET || 'ci-bucket'
 const allowRobots = process.env.BUILD_ENVIRONMENT === 'production' || false
-const sourceGraphQlUrl = process.env.GRAPHQL_API_URL || ''
-const graphQlKey = process.env.GRAPHQL_API_KEY || ''
+const sourceGraphQlUrl = process.env.GRAPHQL_API_URL
+const graphQlKey = process.env.GRAPHQL_API_KEY
 const useFixtures = !!process.env.GITHUB_ACTIONS || false
 const iiifViewerUrl = process.env.IIIF_VIEWER_URL || 'https://viewer-iiif.library.nd.edu/marble/?manifest='
 
 // OpenSearch
-const opensearchEndpoint = process.env.OPENSEARCH_ENDPOINT || ''
-const opensearchMasterUsername = process.env.OPENSEARCH_MASTER_USERNAME || ''
-const opensearchMasterPassword = process.env.OPENSEARCH_MASTER_PASSWORD || ''
+const opensearchEndpoint = process.env.OPENSEARCH_ENDPOINT
+const opensearchMasterUsername = process.env.OPENSEARCH_MASTER_USERNAME
+const opensearchMasterPassword = process.env.OPENSEARCH_MASTER_PASSWORD
 const opensearchReadOnlyUsername = process.env.OPENSEARCH_READONLY_USERNAME || 'readOnly'
 const opensearchReadOnlyPassword = process.env.OPENSEARCH_READONLY_PASSWORD || 'readOnly1!'
 

@@ -22,7 +22,7 @@ const useFixtures = !!process.env.GITHUB_ACTIONS || false
 const iiifViewerUrl = process.env.IIIF_VIEWER_URL || 'https://viewer-iiif.library.nd.edu/marble/?manifest='
 
 // OpenSearch
-const opensearchEndpoint = process.env.OPENSEARCH_ENDPOINT
+const opensearchEndpoint = process.env.OPENSEARCH_ENDPOINT || ''
 const opensearchMasterUsername = process.env.OPENSEARCH_MASTER_USERNAME
 const opensearchMasterPassword = process.env.OPENSEARCH_MASTER_PASSWORD
 const opensearchReadOnlyUsername = process.env.OPENSEARCH_READONLY_USERNAME || 'readOnly'

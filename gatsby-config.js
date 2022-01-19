@@ -12,14 +12,14 @@ require('dotenv').config({
   path: eV,
 })
 
-const siteUrl = 'https://marble.nd.edu'
+const siteUrl = process.env.BUILD_ENVIRONMENT === 'production' ? 'https://marble.nd.edu' : 'https://marble-test.library.nd.edu'
 const siteName = 'Marble: Museums, Archives, Rare Books & Libraries Exploration'
-const s3BucketName = process.env.S3_DEST_BUCKET || ''
-const allowRobots = process.env.ALLOW_ROBOTS === 'true' || false
+const s3BucketName = process.env.S3_DEST_BUCKET || 'ci-bucket'
+const allowRobots = process.env.BUILD_ENVIRONMENT === 'production' || false
 const sourceGraphQlUrl = process.env.GRAPHQL_API_URL || ''
 const graphQlKey = process.env.GRAPHQL_API_KEY || ''
-const useFixtures = process.env.USE_FIXTURES || !!process.env.GITHUB_ACTIONS || false
-const iiifViewerUrl = process.env.IIIF_VIEWER_URL || null
+const useFixtures = !!process.env.GITHUB_ACTIONS || false
+const iiifViewerUrl = process.env.IIIF_VIEWER_URL || 'https://viewer-iiif.library.nd.edu/marble/?manifest='
 
 // OpenSearch
 const opensearchEndpoint = process.env.OPENSEARCH_ENDPOINT || ''
@@ -101,19 +101,6 @@ module.exports = {
         readAuth: readAuth,
       },
     },
-    // {
-    //   resolve: 'gatsby-plugin-okta-auth',
-    //   options: {
-    //     domain: 'https://okta.nd.edu',
-    //     issuer: 'https://okta.nd.edu/oauth2/ausxosq06SDdaFNMB356',
-    //     clientId: '0oa1f3ut0aKpdwap5357',
-    //     redirectUri: 'http://localhost:8000/user',
-    //     scopes: ['openid', 'email', 'profile', 'netid', 'directory'],
-    //     pkce: false,
-    //     responseType: ['id_token','token'],
-    //     callbackPath: '/user',
-    //   },
-    // },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

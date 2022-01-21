@@ -89,6 +89,7 @@ export const query = graphql`
       display
       title
       description
+      additionalDescription
       iiifUri
       partiallyDigitized
       metadata {

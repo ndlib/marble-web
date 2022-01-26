@@ -98,6 +98,11 @@ export const query = graphql`
         value
         type
       }
+      defaultImage {
+        default
+        service
+        thumbnail
+      }
       marbleParent {
         title
         slug
@@ -150,7 +155,7 @@ export const query = graphql`
     allMarbleFile(
       filter: {marbleParent: {slug: {eq: $slug}}, fileType: {eq: "image"}},
       sort: {fields: sequence, order: ASC},
-      limit: 6
+      limit: 5
     ) {
       nodes {
         fileType

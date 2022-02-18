@@ -43,4 +43,4 @@ To request a high-resolution image file for reproduction purposes, please consul
 * <a href="http://archives.nd.edu/information/fees.htm" target="_blank">University Archives requests</a>
 
 ## Contact Us
-We welcome your thoughts on the collection, the site, and current features. If you have any questions, comments, or concerns, please contact us with the feedback form at the bottom of the page.
+We welcome your thoughts on the collection, the site, and current features.  If you have any questions, comments, or concerns, please contact us at: <a href="mailto:marble-contacts-list@nd.edu" target="_blank" rel="nofollow noopener" title="Contact Us">marble-contacts-list@nd.edu</a>.

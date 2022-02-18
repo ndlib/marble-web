@@ -51,14 +51,6 @@
       "selectedPatterns": [
         "^/help"
       ]
-    },
-    {
-      "id": "help-people",
-      "label": "People",
-      "link": "/people",
-      "selectedPatterns": [
-        "^/people"
-      ]
     }
   ]
 }

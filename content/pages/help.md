@@ -39,7 +39,7 @@ Please note: The consideration and approval of digitization requests for Marble 
 To request a high-resolution image file for reproduction purposes, please consult the following links.
 
 * <a href="https://sniteartmuseum.nd.edu/about-us/contact-us/photo-requests/" target="_blank">Snite Museum of Art requests</a>
-* <a href="https://rarebooks.library.nd.edu/using/duplication.shtmltarget=" target="_blank">Rare Books & Special Collections requests</a>
+* <a href="https://rarebooks.library.nd.edu/using/duplication.shtml" target="_blank">Rare Books & Special Collections requests</a>
 * <a href="http://archives.nd.edu/information/fees.htm" target="_blank">University Archives requests</a>
 
 ## Contact Us

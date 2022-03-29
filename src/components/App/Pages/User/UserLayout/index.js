@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import { jsx, Box, Heading } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
-import Gravatar from '@ndlib/gatsby-theme-marble/src/components/Shared/Gravatar'
 import EditUserButton from './EditUserButton'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandSectionLeftNav from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section/LeftNav'
@@ -68,10 +67,7 @@ export const UserLayout = ({ children, location, showSideMenu }) => {
       <NDBrandSectionLeftNav location={location}>
         <NDBrandSection variant='sidebar'>
           <Heading as='h1' sx={{ margin: 0, fontSize: '6' }}>{portfolioUser.fullName}</Heading>
-          <Box sx={{ textAlign: 'left' }}>
-            <Gravatar email={portfolioUser.email} size={75} align='left' />
-          </Box>
-          <Box sx={{ px: '1rem' }}>
+          <Box sx={{ py: '1rem' }}>
             <EditUserButton />
           </Box>
           <div id='bio' sx={sx.bio}>{portfolioUser.bio}</div>

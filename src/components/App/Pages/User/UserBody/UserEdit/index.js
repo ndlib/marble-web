@@ -4,8 +4,6 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
 import { jsx, Button, Heading } from 'theme-ui'
-import Gravatar from '@ndlib/gatsby-theme-marble/src/components/Shared/Gravatar'
-import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import TextField from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextField'
 import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
 import Unauthorized from './Unauthorized'
@@ -111,19 +109,6 @@ export const UserEdit = ({ portfolioUser, isPortfolioOwner, location }) => {
           }}
           disabled={patching}
         />
-        <div>
-          <label
-            htmlFor='profileGravatar'
-            className={style.editLabel}
-          >Avatar</label>
-          <div
-            id='profileGravatar'
-            className={style.gravatarEdit}
-          >
-            <Gravatar email={portfolioUser.email} size={100} />
-            <span>User icons are provided by <Link to='https://en.gravatar.com'>Gravatar</Link>, the globally recognized avatar service.</span>
-          </div>
-        </div>
       </form>
     </>
   )

@@ -13,7 +13,7 @@ const EditUserButton = () => {
   return (
     <Button
       onClick={() => navigate(`/user/${portfolioUser.portfolioUserId}/edit`)}
-      variant='inverse'
+      variant='light'
       title='Edit my portfolio'
     >Edit Bio
     </Button>

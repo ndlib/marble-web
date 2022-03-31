@@ -30,7 +30,7 @@ export const Ownership = ({ portfolio, location }) => {
         <div sx={sx.visibilityWrapper}>
         This is your <button sx={sx.button}
             onClick={() => setSettingsOpen(true)}
-          ><VisibilityLabel visibility={portfolio.privacy} /></button> portfolio.
+          ><VisibilityLabel visibility={portfolio.privacy} /></button> portfolio with {portfolio.portfolioItems.items.length} item(s)
           <ActionModal
             isOpen={settingsOpen}
             contentLabel={`Settings for <em>${portfolio.title}</em>`}

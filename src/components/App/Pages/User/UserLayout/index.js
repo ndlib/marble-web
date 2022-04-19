@@ -6,6 +6,7 @@ import { jsx, Box, Heading } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
 import EditUserButton from './EditUserButton'
+import UserLogoutButton from './UserLogoutButton'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
 import NDBrandSectionLeftNav from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section/LeftNav'
 import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
@@ -69,6 +70,8 @@ export const UserLayout = ({ children, location, showSideMenu }) => {
           <Heading as='h1' sx={{ margin: 0, fontSize: '6' }}>{portfolioUser.fullName}</Heading>
           <Box sx={{ py: '1rem' }}>
             <EditUserButton />
+            &nbsp;
+            <UserLogoutButton />
           </Box>
           <div id='bio' sx={sx.bio}>{portfolioUser.bio}</div>
 

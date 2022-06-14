@@ -1,6 +1,6 @@
 module.exports = {
   wrapper: {
-    margin: '0 auto',
+    margin: '0',
     position: 'relative',
     width: ['100%', '100%', '80%'],
     clear: 'both',

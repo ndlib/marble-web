@@ -124,6 +124,14 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'AppSync',
+        fieldName: 'appSync',
+        url: process.env.PUBLIC_GRAPHQL_API_URL,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: siteUrl,

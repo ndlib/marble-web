@@ -18,16 +18,19 @@ import typy from 'typy'
 import { DISPLAY_LIST } from '@ndlib/gatsby-theme-marble/src/store/actions/displayActions'
 
 const FeaturedList = ({ data, location }) => {
-  const { allFeaturedJson, menusJson } = data
+  const { appSync, menusJson } = data
+  const items = typy(appSync, 'listPublicFeaturedPortfolioCollections.items').safeArray.sort((a, b) => {
+    // sort with most recently modified first
+    return new Date(a.dateModifiedInDynamo).getTime() - new Date(b.dateModifiedInDynamo).getTime()
+  })
   const menu = typy(menusJson, 'items').safeArray
-  const { nodes } = allFeaturedJson
-  const browseLinks = nodes.map(item => {
+  const browseLinks = items.map(item => {
     return (<DisplayCard
-      key={item.marbleId}
-      title={item.title}
+      key={item.portfolioCollectionId}
+      title={decodeURIComponent(item.title)}
       image={item.imageUri}
-      target={'/featured/' + item.slug}
-    ><Html html={item.description} /></DisplayCard>)
+      target={'/user/' + item.portfolioUserId + '/' + item.portfolioCollectionId}
+    ><Html html={decodeURIComponent(item.description)} /></DisplayCard>)
   })
   return (
     <Layout
@@ -77,13 +80,17 @@ export default FeaturedList
 
 export const query = graphql`
   query {
-    allFeaturedJson {
-      nodes {
-        id
-        imageUri
-        slug
-        title
-        description
+    appSync {
+      listPublicFeaturedPortfolioCollections {
+        items {
+          portfolioCollectionId
+          portfolioUserId
+          dateAddedToDynamo
+          dateModifiedInDynamo
+          description
+          imageUri
+          title
+        }
       }
     }
     menusJson(id: {eq: "portfolios"}) {

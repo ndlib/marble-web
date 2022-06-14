@@ -26,6 +26,19 @@ const PortfolioBody = ({ location }) => {
     return (<PortfolioUnavailable />)
   }
 
+  const breadcrumbs = []
+  if (portfolio.featuredCollection) {
+    breadcrumbs.push({
+      url: '/featured',
+      title: 'Featured Portfolios',
+    })
+  } else {
+    breadcrumbs.push({
+      url: `/user/${portfolioUser.portfolioUserId}`,
+      title: `${portfolioUser.fullName}'s Portfolios`,
+    })
+  }
+
   return (
     <>
       <Seo
@@ -36,13 +49,7 @@ const PortfolioBody = ({ location }) => {
       />
       <NDBrandBreadcrumbs
         currentPageTitle={portfolio.title}
-        breadcrumbs={[
-          {
-            url: `/user/${portfolioUser.portfolioUserId}`,
-            title: portfolioUser.fullName,
-
-          },
-        ]}
+        breadcrumbs={breadcrumbs}
       />
       <PortfolioTitle />
       <Ownership

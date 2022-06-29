@@ -1,6 +1,6 @@
 module.exports = {
   wrapper: {
-    margin: '0 auto',
+    margin: '0',
     width: ['100%', '100%', '80%'],
   },
   textArea: {
@@ -9,7 +9,6 @@ module.exports = {
     display: 'block',
     fontFamily: 'body',
     fontSize: '16px',
-    height: '14rem',
     lineHeight: '1.45rem',
     minHeight: '6rem',
     pt: '2rem',

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { jsx, Heading } from 'theme-ui'
 import { connect } from 'react-redux'
 import typy from 'typy'
+import ReactMarkdown from 'react-markdown'
 import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard/CardGroup'
 import DisplayCard from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard'
 import NewPortfolioButton from './NewPortfolioButton'
@@ -22,6 +23,7 @@ const PortfolioList = ({
 }) => {
   // const { removeUserPortfolio } = useUserContext()
   const portfolios = typy(portfolioUser, 'portfolioCollections.items').safeArray
+  console.log(portfolios)
 
   // const beGone = (portfolio) => {
   //   const areYouSure = window.confirm('Are you sure you want to delete this protfolio?')
@@ -54,6 +56,7 @@ const PortfolioList = ({
                 return b.updated - a.updated
               })
               .map((c, index) => {
+                const fixEndLinesRegExp = /\\\n/gm
                 return (
                   <DisplayCard
                     key={index}
@@ -61,11 +64,25 @@ const PortfolioList = ({
                     target={`/user/${c.portfolioUserId}/${c.portfolioCollectionId}`}
                     image={c.imageUri || ''}
                     leftBadge={isPortfolioOwner ? <VisibilityLabel visibility={c.privacy} /> : null}
-
                   >
-                    <span sx={{ whiteSpace: 'break-space' }}>
-                      {c.description}
-                    </span>
+                    <ReactMarkdown
+                      sx={{
+                        whiteSpace: 'break-space',
+                        '& p': {
+                          margin: '0',
+                        },
+                        '& h1, & h2, & h3': {
+                          fontFamily: 'body',
+                          fontSize: '1rem',
+                          fontWeight: 'normal',
+                          margin: '0',
+                          color: 'black',
+                        },
+                      }}
+                      allowedElements={['h1', 'h2', 'h3', 'p']}
+                    >
+                      {c.description.replace(fixEndLinesRegExp, '\n')}
+                    </ReactMarkdown>
                   </DisplayCard>
                 )
               })

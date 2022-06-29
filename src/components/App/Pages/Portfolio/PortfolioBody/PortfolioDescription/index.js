@@ -34,9 +34,12 @@ const PortfolioDescription = () => {
   }
 
   // Look for spaces between parentheses and replace them with %20
-  const regExp = /\s+(?=[^\(\)]*\))/gm
-  const cleanDescription = description ? description.replace(regExp, '%20') : ''
-
+  const fixSpacesRegExp = /\s+(?=[^()]*\))/gm
+  // Fix issue with inserting "\" when file ends in newline.
+  const fixEndLinesRegExp = /\\\n/gm
+  const cleanDescription = description ? description.replace(fixSpacesRegExp, '%20').replace(fixEndLinesRegExp, '\n') : ''
+  console.log(description)
+  console.log(cleanDescription)
   return (
     <BaseStyles>
       <Box as='div' sx={sx.wrapper}>

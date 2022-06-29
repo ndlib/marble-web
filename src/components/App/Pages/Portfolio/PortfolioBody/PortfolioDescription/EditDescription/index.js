@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
+import Editor from '@akord/rich-markdown-editor'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
 import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
 import SaveOrCancelButtons from '../../SaveOrCancelButtons'
@@ -12,20 +13,36 @@ export const EditDescription = ({ closeFunc }) => {
   const description = portfolio.description
   const [newDescription, setNewDescription] = useState(description)
   const [patching, setPatching] = useState(false)
-
+  console.log('starting description: ' + description)
   return (
     <div sx={sx.wrapper}>
-      <TextArea
-        id='portfolioDescription'
-        defaultValue={newDescription}
-        onChange={(event) => {
-          setNewDescription(event.target.value)
-        }}
-        sx={sx.textArea}
-        disabled={patching}
-        label='Description'
-        hideLabel
-      />
+      <div sx={sx.textArea}>
+        <Editor
+          id={portfolio.portfolioCollectionId}
+          defaultValue={newDescription}
+          disableExtensions={['blockquote', 'highlight', 'strikethrough', 'bullet_list', 'checkbox_item', 'checkbox_list']}
+          onChange={setNewDescription}
+          onClickLink={(href, event) => {
+            console.log(href)
+            console.log(event)
+          }}
+          readOnly={patching}
+          hideDropDownToolbar={true}
+        />
+      </div>
+      {
+      // <TextArea
+      //   id='portfolioDescription'
+      //   defaultValue={newDescription}
+      //   onChange={(event) => {
+      //     setNewDescription(event.target.value)
+      //   }}
+      //   sx={sx.textArea}
+      //   disabled={patching}
+      //   label='Description'
+      //   hideLabel
+      // />
+      }
       <span sx={sx.buttonWrapper}>
         <SaveOrCancelButtons
           closeFunc={closeFunc}

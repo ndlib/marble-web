@@ -27,6 +27,11 @@ module.exports = {
     verticalAlign: 'top',
     whiteSpace: 'break-spaces',
     width: ['100%', '100%', '80%'],
+    p: {
+      marginBottom: '0',
+      marginTop: '0',
+      lineHeight: '1rem',
+    },
   },
   innerWrapperOwner: {
     clear: 'both',
@@ -41,5 +46,10 @@ module.exports = {
     verticalAlign: 'top',
     whiteSpace: 'break-spaces',
     width: ['100%', '100%', 'calc(80% - 60px)'],
+    p: {
+      marginBottom: '0',
+      marginTop: '0',
+      lineHeight: '1rem',
+    },
   },
 }

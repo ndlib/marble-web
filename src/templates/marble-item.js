@@ -109,6 +109,11 @@ export const query = graphql`
         childrenMarbleItem {
           title
           slug
+          defaultImage {
+            default
+            service
+            thumbnail
+          }
           childrenMarbleFile {
             fileType
             iiif {
@@ -124,6 +129,11 @@ export const query = graphql`
       childrenMarbleItem {
         title
         slug
+        defaultImage {
+          default
+          service
+          thumbnail
+        }
         childrenMarbleFile {
           file
           fileType
@@ -164,14 +174,6 @@ export const query = graphql`
           service
           default
           thumbnail
-        }
-        local {
-          publicURL
-          childImageSharp {
-            fixed(width: 125, height: 125) {
-              src
-            }
-          }
         }
       }
     }

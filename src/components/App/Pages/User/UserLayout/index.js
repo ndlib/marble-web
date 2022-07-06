@@ -73,7 +73,7 @@ export const UserLayout = ({ children, location, showSideMenu }) => {
             &nbsp;
             <UserLogoutButton />
           </Box>
-          <div id='bio' sx={sx.bio}>{portfolioUser.bio}</div>
+          <div id='bio' sx={sx.bio}>{portfolioUser.bio64}</div>
 
           <Menu location={location} variant='navLeft' items={menu} label='Help' />
         </NDBrandSection>

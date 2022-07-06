@@ -103,7 +103,7 @@ export const UserEdit = ({ portfolioUser, isPortfolioOwner, location }) => {
         <TextArea
           id='profileBio'
           label='Bio'
-          defaultValue={portfolioUser.bio}
+          defaultValue={portfolioUser.bio64}
           onChange={(event) => {
             changeBio(event.target.value)
           }}

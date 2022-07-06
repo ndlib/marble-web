@@ -13,13 +13,13 @@ const PortfolioDescription = () => {
   const { isPortfolioOwner } = useUserContext()
   const { portfolio } = usePortfolioContext()
   const [editing, setEditing] = useState(false)
-  const { description } = portfolio
+  const { description64 } = portfolio
   const isOwner = isPortfolioOwner()
 
   if (editing) {
     return (<EditDescription closeFunc={() => setEditing(false)} />)
   }
-  if (description === '' || description === null) {
+  if (description64 === '' || description64 === null) {
     if (isOwner) {
       return (
         <Button
@@ -37,9 +37,7 @@ const PortfolioDescription = () => {
   const fixSpacesRegExp = /\s+(?=[^()]*\))/gm
   // Fix issue with inserting "\" when file ends in newline.
   const fixEndLinesRegExp = /\\\n/gm
-  const cleanDescription = description ? description.replace(fixSpacesRegExp, '%20').replace(fixEndLinesRegExp, '\n') : ''
-  console.log(description)
-  console.log(cleanDescription)
+  const cleanDescription = description64 ? description64.replace(fixSpacesRegExp, '%20').replace(fixEndLinesRegExp, '\n') : ''
   return (
     <BaseStyles>
       <Box as='div' sx={sx.wrapper}>

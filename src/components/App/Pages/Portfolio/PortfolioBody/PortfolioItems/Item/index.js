@@ -22,8 +22,8 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
         setEditFunc={() => setEditing(true)}
       />}
     >
-      {item.annotation && !annotated && (
-        <p sx={{ whiteSpace: 'break-space' }}>{item.annotation}</p>
+      {item.annotation64 && !annotated && (
+        <p sx={{ whiteSpace: 'break-space' }}>{item.annotation64}</p>
       )}
     </DisplayCard>
   )
@@ -47,7 +47,7 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
             py: '1rem',
             whiteSpace: 'break-space',
           }}>
-            {item.annotation}
+            {item.annotation64}
           </Box>
           <Box sx={{
             width: ['100%', '40%'],
@@ -71,7 +71,7 @@ Item.propTypes = {
 export default Item
 
 export const targetWithAnnotation = (item, userId) => {
-  if (item && item.annotation && !typy(item, 'link').safeString.startsWith('http')) {
+  if (item && item.annotation64 && !typy(item, 'link').safeString.startsWith('http')) {
     return `/item/${item.portfolioItemId}?${userId ? userId + '=' + item.portfolioCollectionId : ''}`
   }
   return `/item/${item.portfolioItemId}`

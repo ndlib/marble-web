@@ -19,7 +19,7 @@ const FeaturedPage = ({ data, location }) => {
         data={data}
         location={location}
         title={featuredJson.title}
-        description={featuredJson.description}
+        description={featuredJson.description64}
       />
       <PortfolioFeature
         location={location}

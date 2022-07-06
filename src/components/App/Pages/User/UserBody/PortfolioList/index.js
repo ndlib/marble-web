@@ -81,7 +81,7 @@ const PortfolioList = ({
                       }}
                       allowedElements={['h1', 'h2', 'h3', 'p']}
                     >
-                      {c.description.replace(fixEndLinesRegExp, '\n')}
+                      {c.description64.replace(fixEndLinesRegExp, '\n')}
                     </ReactMarkdown>
                   </DisplayCard>
                 )

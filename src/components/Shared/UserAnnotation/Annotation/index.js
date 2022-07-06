@@ -13,12 +13,12 @@ export const UserAnnotation = ({ itemId }) => {
   const { portfolioUser } = useUserContext()
   const item = typy(portfolio, 'portfolioItems.items').safeArray.find(i => itemId === i.portfolioItemId)
 
-  if (portfolio && item && item.annotation) {
+  if (portfolio && item && item.annotation64) {
     return (
       <CalloutBox>
         <Attribution>
           <UserCartouche user={portfolioUser} /> provided the annotation:</Attribution>
-        <p>{item.annotation}</p>
+        <p>{item.annotation64}</p>
         <Attribution>See <Link to={`/user/${portfolioUser.portfolioUserId}/${portfolio.portfolioCollectionId}`}>portfolio</Link>.</Attribution>
       </CalloutBox>
     )

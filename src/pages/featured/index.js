@@ -30,7 +30,7 @@ const FeaturedList = ({ data, location }) => {
       title={decodeURIComponent(item.title)}
       image={item.imageUri}
       target={'/user/' + item.portfolioUserId + '/' + item.portfolioCollectionId}
-    ><Html html={decodeURIComponent(item.description)} /></DisplayCard>)
+    ><Html html={decodeURIComponent(item.description64)} /></DisplayCard>)
   })
   return (
     <Layout

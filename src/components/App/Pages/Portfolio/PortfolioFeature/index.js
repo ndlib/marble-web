@@ -16,7 +16,7 @@ const PortfolioFeature = ({ location, featuredJson, menusJson }) => {
   const [context] = useState({
     portfolio: featuredJson,
   })
-  const description = featuredJson.description
+  const description = featuredJson.description64
   const menu = typy(menusJson, 'items').safeArray
   return (
     <NDBrandSectionLeftNav>

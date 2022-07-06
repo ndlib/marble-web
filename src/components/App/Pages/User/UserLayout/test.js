@@ -14,7 +14,7 @@ describe('UserLayout', () => {
           portfolioUserId: 'person_user',
           email: 'me@email.web',
           fullName: 'Person User',
-          bio: 'some bio',
+          bio64: 'some bio',
 
         },
       }

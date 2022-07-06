@@ -16,7 +16,7 @@ export const EditDescription = ({ closeFunc }) => {
     <div sx={sx.wrapper}>
       <div sx={sx.textArea}>
         <Editor
-          id={portfolio.portfolioCollectionId}
+          id={`portfolio-${portfolio.portfolioCollectionId}`}
           defaultValue={newDescription}
           disableExtensions={['blockquote', 'highlight', 'strikethrough', 'bullet_list', 'checkbox_item', 'checkbox_list']}
           onChange={setNewDescription}

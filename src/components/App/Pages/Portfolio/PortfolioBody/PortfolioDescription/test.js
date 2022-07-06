@@ -12,7 +12,7 @@ describe('PortfolioDescription', () => {
     jest.spyOn(PortfolioContext, 'usePortfolioContext').mockImplementationOnce(() => {
       return {
         portfolio: {
-          description: '',
+          description64: '',
         },
       }
     })
@@ -37,7 +37,7 @@ describe('PortfolioDescription', () => {
     jest.spyOn(PortfolioContext, 'usePortfolioContext').mockImplementationOnce(() => {
       return {
         portfolio: {
-          description: 'Some text',
+          description64: 'Some text',
         },
       }
     })
@@ -56,7 +56,7 @@ describe('PortfolioDescription', () => {
     jest.spyOn(PortfolioContext, 'usePortfolioContext').mockImplementationOnce(() => {
       return {
         portfolio: {
-          description: '',
+          description64: '',
         },
       }
     })

@@ -91,7 +91,6 @@ const IndexPage = ({ location }) => {
     `,
   )
   const { nodes } = allMarbleItem
-  console.log(appSync)
   const theme = useThemeUI()
   const browseIconStyle = {
     color: theme.theme.colors.secondary,

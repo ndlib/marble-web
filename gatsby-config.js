@@ -128,7 +128,7 @@ module.exports = {
       options: {
         typeName: 'AppSync',
         fieldName: 'appSync',
-        url: process.env.PUBLIC_GRAPHQL_API_URL,
+        url: process.env.PUBLIC_GRAPHQL_API_URL || 'https://m2tflrkkyrc3jlcqjyc4bhiviq.appsync-api.us-east-1.amazonaws.com/graphql',
       },
     },
     {

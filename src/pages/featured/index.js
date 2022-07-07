@@ -12,22 +12,50 @@ import NDBrandSectionLeftNav from '@ndlib/gatsby-theme-marble/src/components/Sha
 import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
 import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard/CardGroup'
 import DisplayCard from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard'
-import Html from '@ndlib/gatsby-theme-marble/src/components/Shared/Html'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import typy from 'typy'
+import ReactMarkdown from 'react-markdown'
+import { decode } from 'js-base64'
 import { DISPLAY_LIST } from '@ndlib/gatsby-theme-marble/src/store/actions/displayActions'
 
 const FeaturedList = ({ data, location }) => {
-  const { allFeaturedJson, menusJson } = data
+  const { appSync, menusJson } = data
+  const items = typy(appSync, 'listPublicFeaturedPortfolioCollections.items').safeArray.sort((a, b) => {
+    // sort with most recently modified first
+    return new Date(a.dateModifiedInDynamo).getTime() - new Date(b.dateModifiedInDynamo).getTime()
+  })
   const menu = typy(menusJson, 'items').safeArray
-  const { nodes } = allFeaturedJson
-  const browseLinks = nodes.map(item => {
-    return (<DisplayCard
-      key={item.marbleId}
-      title={item.title}
-      image={item.imageUri}
-      target={'/featured/' + item.slug}
-    ><Html html={item.description} /></DisplayCard>)
+  const browseLinks = items.map(item => {
+    // Look for spaces between parentheses and replace them with %20
+    const fixSpacesRegExp = /\s+(?=[^()]*\))/gm
+    const fixEndLinesRegExp = /\\\n/gm
+    return (
+      <DisplayCard
+        key={item.portfolioCollectionId}
+        title={decodeURIComponent(item.title)}
+        image={item.imageUri}
+        target={'/user/' + item.portfolioUserId + '/' + item.portfolioCollectionId}
+      >
+        <ReactMarkdown
+          sx={{
+            whiteSpace: 'break-space',
+            '& p': {
+              margin: '0',
+            },
+            '& h1, & h2, & h3': {
+              fontFamily: 'body',
+              fontSize: '1rem',
+              fontWeight: 'normal',
+              margin: '0',
+              color: 'black',
+            },
+          }}
+          allowedElements={['h1', 'h2', 'h3', 'p']}
+          unwrapDisallowed={true}
+        >
+          {decode(item.description64).replace(fixSpacesRegExp, '%20').replace(fixEndLinesRegExp, '\n')}
+        </ReactMarkdown>
+      </DisplayCard>)
   })
   return (
     <Layout
@@ -77,13 +105,17 @@ export default FeaturedList
 
 export const query = graphql`
   query {
-    allFeaturedJson {
-      nodes {
-        id
-        imageUri
-        slug
-        title
-        description
+    appSync {
+      listPublicFeaturedPortfolioCollections {
+        items {
+          portfolioCollectionId
+          portfolioUserId
+          dateAddedToDynamo
+          dateModifiedInDynamo
+          description64
+          imageUri
+          title
+        }
       }
     }
     menusJson(id: {eq: "portfolios"}) {

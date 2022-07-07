@@ -71,7 +71,7 @@ module.exports = {
         // updateFixtures: true,
         // debug: true,
         // logIds: true,
-        // itemList: [{ itemId: 'MSHLAT0090_EAD' }],
+        // itemList: [{ itemId: 'BPP1001_EAD' }],
         mergeItems: [
           {
             parentId: 'CJF_EAD',
@@ -121,6 +121,14 @@ module.exports = {
         gfm: true,
         // Plugins configs
         plugins: [],
+      },
+    },
+    {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'AppSync',
+        fieldName: 'appSync',
+        url: process.env.PUBLIC_GRAPHQL_API_URL || 'https://t8mhrjrn63.execute-api.us-east-1.amazonaws.com/prod/query/getPortfolioCollection',
       },
     },
     {
@@ -179,13 +187,6 @@ module.exports = {
           'https://static.nd.edu',
           'https://image-iiif.library.nd.edu',
         ],
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'featured',
-        path: path.join(__dirname, 'content', 'json', 'featured'),
       },
     },
     {

@@ -10,7 +10,7 @@ import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/Port
 
 export const EditItemFormContent = ({ item, closeFunc }) => {
   const { updatePortfolioItem } = usePortfolioContext()
-  const [annotation, changeAnnotation] = useState(item.annotation)
+  const [annotation, changeAnnotation] = useState(item.annotation64)
   const [patching, changePatching] = useState(false)
 
   return (
@@ -22,7 +22,7 @@ export const EditItemFormContent = ({ item, closeFunc }) => {
             (e) => {
               e.preventDefault()
               changePatching(true)
-              item.annotation = annotation
+              item.annotation64 = annotation
               updatePortfolioItem(item).then((data) => {
                 closeFunc(data)
                 changePatching(false)
@@ -56,7 +56,7 @@ export const EditItemFormContent = ({ item, closeFunc }) => {
 EditItemFormContent.propTypes = {
   item: PropTypes.shape({
     title: PropTypes.string,
-    annotation: PropTypes.string,
+    annotation64: PropTypes.string,
     image: PropTypes.string,
     manifest: PropTypes.string,
     link: PropTypes.string,

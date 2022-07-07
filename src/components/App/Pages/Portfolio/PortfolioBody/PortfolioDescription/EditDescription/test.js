@@ -10,7 +10,8 @@ test('EditDescription', () => {
   jest.spyOn(PortfolioContext, 'usePortfolioContext').mockImplementationOnce(() => {
     return {
       portfolio: {
-        description: 'I wrote something.',
+        description64: 'I wrote something.',
+        portfolioCollectionId: '123',
       },
     }
   })
@@ -18,7 +19,7 @@ test('EditDescription', () => {
   act(() => {
     wrapper = shallow(<EditDescription closeFunc={closeFunc} loginReducer={() => {}} />)
   })
-  const input = wrapper.find('EmotionCssPropInternal#portfolioDescription')
+  const input = wrapper.find('#portfolio-123')
 
   expect(input.props().defaultValue).toEqual('I wrote something.')
   expect(wrapper.find(SaveOrCancelButtons).exists()).toBeTruthy()

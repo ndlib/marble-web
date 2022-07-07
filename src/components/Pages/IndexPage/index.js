@@ -21,7 +21,7 @@ const IndexPage = ({ location }) => {
   const { t } = useTranslation()
   // jazz festival         "CJF_EAD",
 
-  const { allMarbleItem } = useStaticQuery(
+  const { allMarbleItem, appSync } = useStaticQuery(
     graphql`
       query {
         allMarbleItem(filter: {marbleId: {in: [

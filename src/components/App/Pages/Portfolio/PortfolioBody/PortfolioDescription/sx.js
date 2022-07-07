@@ -1,6 +1,6 @@
 module.exports = {
   wrapper: {
-    margin: '0 auto',
+    margin: '0',
     position: 'relative',
     width: ['100%', '100%', '80%'],
     clear: 'both',
@@ -27,6 +27,9 @@ module.exports = {
     verticalAlign: 'top',
     whiteSpace: 'break-spaces',
     width: ['100%', '100%', '80%'],
+    p: {
+      marginTop: '0',
+    },
   },
   innerWrapperOwner: {
     clear: 'both',
@@ -41,5 +44,8 @@ module.exports = {
     verticalAlign: 'top',
     whiteSpace: 'break-spaces',
     width: ['100%', '100%', 'calc(80% - 60px)'],
+    p: {
+      marginTop: '0',
+    },
   },
 }

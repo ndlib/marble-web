@@ -5,6 +5,8 @@ import PropTypes from 'prop-types'
 import { jsx, Heading } from 'theme-ui'
 import { connect } from 'react-redux'
 import typy from 'typy'
+import ReactMarkdown from 'react-markdown'
+import { decode } from 'js-base64'
 import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard/CardGroup'
 import DisplayCard from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard'
 import NewPortfolioButton from './NewPortfolioButton'
@@ -12,25 +14,12 @@ import NoPortfolios from './NoPortfolios'
 import VisibilityLabel from '@ndlib/gatsby-theme-marble/src/components/Shared/VisibilityLabel'
 import { DISPLAY_GRID } from '@ndlib/gatsby-theme-marble/src/store/actions/displayActions'
 import { NDBrandBreadcrumbs } from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
-// import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
 const PortfolioList = ({
-  // loginReducer,
   portfolioUser,
   isPortfolioOwner,
-  // location,
 }) => {
-  // const { removeUserPortfolio } = useUserContext()
   const portfolios = typy(portfolioUser, 'portfolioCollections.items').safeArray
-
-  // const beGone = (portfolio) => {
-  //   const areYouSure = window.confirm('Are you sure you want to delete this protfolio?')
-  //     ? (
-  //       removeUserPortfolio(portfolio)
-  //     )
-  //     : null
-  //   return areYouSure
-  // }
 
   if (portfolios.length > 0) {
     return (
@@ -54,6 +43,7 @@ const PortfolioList = ({
                 return b.updated - a.updated
               })
               .map((c, index) => {
+                const fixEndLinesRegExp = /\\\n/gm
                 return (
                   <DisplayCard
                     key={index}
@@ -61,11 +51,26 @@ const PortfolioList = ({
                     target={`/user/${c.portfolioUserId}/${c.portfolioCollectionId}`}
                     image={c.imageUri || ''}
                     leftBadge={isPortfolioOwner ? <VisibilityLabel visibility={c.privacy} /> : null}
-
                   >
-                    <span sx={{ whiteSpace: 'break-space' }}>
-                      {c.description}
-                    </span>
+                    <ReactMarkdown
+                      sx={{
+                        whiteSpace: 'break-space',
+                        '& p': {
+                          margin: '0',
+                        },
+                        '& h1, & h2, & h3': {
+                          fontFamily: 'body',
+                          fontSize: '1rem',
+                          fontWeight: 'normal',
+                          margin: '0',
+                          color: 'black',
+                        },
+                      }}
+                      allowedElements={['h1', 'h2', 'h3', 'p']}
+                      unwrapDisallowed={true}
+                    >
+                      {c.description64.replace(fixEndLinesRegExp, '\n')}
+                    </ReactMarkdown>
                   </DisplayCard>
                 )
               })

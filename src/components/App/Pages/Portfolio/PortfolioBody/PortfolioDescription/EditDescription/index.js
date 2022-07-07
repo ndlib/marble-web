@@ -2,36 +2,39 @@
 import { useState } from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
+import Editor from '@akord/rich-markdown-editor'
 import { usePortfolioContext } from '@ndlib/gatsby-theme-marble/src/context/PortfolioContext'
-import TextArea from '@ndlib/gatsby-theme-marble/src/components/Shared/FormElements/TextArea'
 import SaveOrCancelButtons from '../../SaveOrCancelButtons'
 import sx from './sx'
 
 export const EditDescription = ({ closeFunc }) => {
   const { portfolio, updatePortfolio } = usePortfolioContext()
-  const description = portfolio.description
-  const [newDescription, setNewDescription] = useState(description)
+  const { description64 } = portfolio
+  const [newDescription, setNewDescription] = useState(description64)
   const [patching, setPatching] = useState(false)
-
   return (
     <div sx={sx.wrapper}>
-      <TextArea
-        id='portfolioDescription'
-        defaultValue={newDescription}
-        onChange={(event) => {
-          setNewDescription(event.target.value)
-        }}
-        sx={sx.textArea}
-        disabled={patching}
-        label='Description'
-        hideLabel
-      />
+      <div sx={sx.textArea}>
+        <Editor
+          id={`portfolio-${portfolio.portfolioCollectionId}`}
+          defaultValue={newDescription}
+          disableExtensions={['blockquote', 'highlight', 'strikethrough', 'bullet_list', 'checkbox_item', 'checkbox_list']}
+          onChange={setNewDescription}
+          onClickLink={(href, event) => {
+            // prevent navigation on link click
+            console.log(href)
+            console.log(event)
+          }}
+          readOnly={patching}
+          hideDropDownToolbar={true}
+        />
+      </div>
       <span sx={sx.buttonWrapper}>
         <SaveOrCancelButtons
           closeFunc={closeFunc}
           onClick={() => {
             setPatching(true)
-            portfolio.description = newDescription
+            portfolio.description64 = newDescription
             updatePortfolio(portfolio)
               .then(() => {
                 setPatching(false)
@@ -43,7 +46,7 @@ export const EditDescription = ({ closeFunc }) => {
               })
           }}
           valid
-          changed={description !== newDescription}
+          changed={description64 !== newDescription}
         />
       </span>
     </div>

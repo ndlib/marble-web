@@ -71,7 +71,7 @@ module.exports = {
         // updateFixtures: true,
         // debug: true,
         // logIds: true,
-        // itemList: [{ itemId: 'MSHLAT0090_EAD' }],
+        itemList: [{ itemId: 'BPP1001_EAD' }],
         mergeItems: [
           {
             parentId: 'CJF_EAD',
@@ -189,13 +189,13 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'featured',
-        path: path.join(__dirname, 'content', 'json', 'featured'),
-      },
-    },
+    // {
+    //   resolve: 'gatsby-source-filesystem',
+    //   options: {
+    //     name: 'featured',
+    //     path: path.join(__dirname, 'content', 'json', 'featured'),
+    //   },
+    // },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

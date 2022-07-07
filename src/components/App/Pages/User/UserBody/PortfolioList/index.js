@@ -6,6 +6,7 @@ import { jsx, Heading } from 'theme-ui'
 import { connect } from 'react-redux'
 import typy from 'typy'
 import ReactMarkdown from 'react-markdown'
+import { decode } from 'js-base64'
 import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard/CardGroup'
 import DisplayCard from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard'
 import NewPortfolioButton from './NewPortfolioButton'
@@ -13,26 +14,12 @@ import NoPortfolios from './NoPortfolios'
 import VisibilityLabel from '@ndlib/gatsby-theme-marble/src/components/Shared/VisibilityLabel'
 import { DISPLAY_GRID } from '@ndlib/gatsby-theme-marble/src/store/actions/displayActions'
 import { NDBrandBreadcrumbs } from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Breadcrumbs'
-// import { useUserContext } from '@ndlib/gatsby-theme-marble/src/context/UserContext'
 
 const PortfolioList = ({
-  // loginReducer,
   portfolioUser,
   isPortfolioOwner,
-  // location,
 }) => {
-  // const { removeUserPortfolio } = useUserContext()
   const portfolios = typy(portfolioUser, 'portfolioCollections.items').safeArray
-  console.log(portfolios)
-
-  // const beGone = (portfolio) => {
-  //   const areYouSure = window.confirm('Are you sure you want to delete this protfolio?')
-  //     ? (
-  //       removeUserPortfolio(portfolio)
-  //     )
-  //     : null
-  //   return areYouSure
-  // }
 
   if (portfolios.length > 0) {
     return (
@@ -80,6 +67,7 @@ const PortfolioList = ({
                         },
                       }}
                       allowedElements={['h1', 'h2', 'h3', 'p']}
+                      unwrapDisallowed={true}
                     >
                       {c.description64.replace(fixEndLinesRegExp, '\n')}
                     </ReactMarkdown>

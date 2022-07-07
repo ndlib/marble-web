@@ -12,9 +12,10 @@ import NDBrandSectionLeftNav from '@ndlib/gatsby-theme-marble/src/components/Sha
 import Menu from '@ndlib/gatsby-theme-marble/src/components/Shared/Menu'
 import CardGroup from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard/CardGroup'
 import DisplayCard from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard'
-import Html from '@ndlib/gatsby-theme-marble/src/components/Shared/Html'
 import Link from '@ndlib/gatsby-theme-marble/src/components/Shared/Link'
 import typy from 'typy'
+import ReactMarkdown from 'react-markdown'
+import { decode } from 'js-base64'
 import { DISPLAY_LIST } from '@ndlib/gatsby-theme-marble/src/store/actions/displayActions'
 
 const FeaturedList = ({ data, location }) => {
@@ -25,12 +26,36 @@ const FeaturedList = ({ data, location }) => {
   })
   const menu = typy(menusJson, 'items').safeArray
   const browseLinks = items.map(item => {
-    return (<DisplayCard
-      key={item.portfolioCollectionId}
-      title={decodeURIComponent(item.title)}
-      image={item.imageUri}
-      target={'/user/' + item.portfolioUserId + '/' + item.portfolioCollectionId}
-    ><Html html={decodeURIComponent(item.description64)} /></DisplayCard>)
+    // Look for spaces between parentheses and replace them with %20
+    const fixSpacesRegExp = /\s+(?=[^()]*\))/gm
+    const fixEndLinesRegExp = /\\\n/gm
+    return (
+      <DisplayCard
+        key={item.portfolioCollectionId}
+        title={decodeURIComponent(item.title)}
+        image={item.imageUri}
+        target={'/user/' + item.portfolioUserId + '/' + item.portfolioCollectionId}
+      >
+        <ReactMarkdown
+          sx={{
+            whiteSpace: 'break-space',
+            '& p': {
+              margin: '0',
+            },
+            '& h1, & h2, & h3': {
+              fontFamily: 'body',
+              fontSize: '1rem',
+              fontWeight: 'normal',
+              margin: '0',
+              color: 'black',
+            },
+          }}
+          allowedElements={['h1', 'h2', 'h3', 'p']}
+          unwrapDisallowed={true}
+        >
+          {decode(item.description64).replace(fixSpacesRegExp, '%20').replace(fixEndLinesRegExp, '\n')}
+        </ReactMarkdown>
+      </DisplayCard>)
   })
   return (
     <Layout
@@ -87,7 +112,7 @@ export const query = graphql`
           portfolioUserId
           dateAddedToDynamo
           dateModifiedInDynamo
-          description
+          description64
           imageUri
           title
         }

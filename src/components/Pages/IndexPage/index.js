@@ -24,40 +24,6 @@ const IndexPage = ({ location }) => {
   const { allMarbleItem, appSync } = useStaticQuery(
     graphql`
       query {
-        appSync {
-          listPublicFeaturedPortfolioCollections {
-            items {
-              portfolioCollectionId
-              portfolioUserId
-              dateAddedToDynamo
-              dateModifiedInDynamo
-              description
-              imageUri
-              featuredCollection
-              highlightedCollection
-              layout
-              privacy
-              title
-              portfolioItems {
-                items {
-                  portfolioItemId
-                  portfolioCollectionId
-                  portfolioUserId
-                  annotation
-                  dateAddedToDynamo
-                  dateModifiedInDynamo
-                  description
-                  imageUri
-                  internalItemId
-                  itemType
-                  sequence
-                  title
-                  uri
-                }
-              }
-            }
-          }
-        }
         allMarbleItem(filter: {marbleId: {in: [
         "1978.025.001",
         "BPP1001_EAD",

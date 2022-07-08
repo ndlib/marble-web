@@ -15,7 +15,7 @@ export const UserEdit = ({ portfolioUser, isPortfolioOwner, location }) => {
   const { updatePortfolioUser } = useUserContext()
   const [fullName, changeName] = useState(portfolioUser.fullName)
   const [email, changeEmail] = useState(portfolioUser.email)
-  const [bio, changeBio] = useState(portfolioUser.bio)
+  const [bio64, changeBio] = useState(portfolioUser.bio64)
   const [patching, setPatching] = useState(false)
   const emailRegex = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g
   console.log('pu', portfolioUser)
@@ -26,7 +26,7 @@ export const UserEdit = ({ portfolioUser, isPortfolioOwner, location }) => {
   const callBack = () => {
     setPatching(true)
     const newUser = {
-      bio: bio,
+      bio64: bio64,
       email: email,
       fullName: fullName,
     }

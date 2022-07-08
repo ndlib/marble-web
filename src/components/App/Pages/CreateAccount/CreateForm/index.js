@@ -16,7 +16,7 @@ const CreateForm = ({ loginReducer }) => {
   const claims = typy(loginReducer, 'token.claims').safeObject
   const [fullName, changeName] = useState(claims.name)
   const [email, changeEmail] = useState(claims.email)
-  const [bio, changeBio] = useState('')
+  const [bio64, changeBio] = useState('')
   const [patching, setPatching] = useState(false)
   const [hasAcceptedTerms, acceptTerms] = useState(false)
   const emailRegex = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g
@@ -79,7 +79,7 @@ const CreateForm = ({ loginReducer }) => {
             event.preventDefault()
             setPatching(true)
             const newUser = {
-              bio: bio,
+              bio64: bio64,
               email: email,
               fullName: fullName,
             }
@@ -107,5 +107,5 @@ CreateForm.propTypes = {
 }
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
 )(CreateForm)

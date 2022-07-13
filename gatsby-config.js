@@ -71,7 +71,7 @@ module.exports = {
         // updateFixtures: true,
         // debug: true,
         // logIds: true,
-        // itemList: [{ itemId: 'BPP1001_EAD' }],
+        // itemList: [{ itemId: 'MSPFEFER_EAD' }],
         mergeItems: [
           {
             parentId: 'CJF_EAD',

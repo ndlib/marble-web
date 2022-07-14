@@ -36,8 +36,10 @@ const searchIndex = process.env.SEARCH_INDEX || 'marble'
 
 module.exports = {
   flags: {
-    DEV_SSR: true,
+    FAST_DEV: true,
     PRESERVE_WEBPACK_CACHE: false,
+    LMDB_STORE: true,
+    PARALLEL_SOURCING: true,
   },
   siteMetadata: {
     title: siteName,

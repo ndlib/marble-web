@@ -38,8 +38,8 @@ module.exports = {
   flags: {
     FAST_DEV: true,
     PRESERVE_WEBPACK_CACHE: false,
-    LMDB_STORE: true,
-    PARALLEL_SOURCING: true,
+    LMDB_STORE: false,
+    PARALLEL_SOURCING: false,
   },
   siteMetadata: {
     title: siteName,

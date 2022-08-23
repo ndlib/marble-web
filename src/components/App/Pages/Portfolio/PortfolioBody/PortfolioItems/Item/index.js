@@ -4,16 +4,19 @@ import PropTypes from 'prop-types'
 import { jsx, Flex, Box } from 'theme-ui'
 import typy from 'typy'
 import DisplayCard from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard'
+import MarbleItemCardChildren from '@ndlib/gatsby-theme-marble/src/components/Shared/DisplayCard/MarbleItemCard/MarbleItemCardChildren'
 import EditItemForm from './EditItemForm'
 import ItemControls from './ItemControls'
 import sx from './sx'
 
+// eslint-disable-next-line complexity
 const Item = ({ item, userId, isOwner, annotated = false }) => {
   const [editing, setEditing] = useState(false)
   const finalTarget = targetWithAnnotation(item, userId)
+  const { internalItem } = item
   let card = (
     <DisplayCard
-      title={item.title}
+      title={typy(internalItem, 'title').safeString || item.title}
       target={finalTarget}
       image={item.imageUri}
       controls={<ItemControls
@@ -22,9 +25,15 @@ const Item = ({ item, userId, isOwner, annotated = false }) => {
         setEditFunc={() => setEditing(true)}
       />}
     >
-      {item.annotation64 && !annotated && (
+      <MarbleItemCardChildren
+        date={typy(internalItem, 'createdDate').safeString}
+        creator={typy(internalItem, 'creators[0].display').safeString}
+        collectionName={[]}
+        parentProps={{}}
+      />
+      { item.annotation64 && !annotated && (
         <p sx={{ whiteSpace: 'break-space' }}>{item.annotation64}</p>
-      )}
+      ) }
     </DisplayCard>
   )
 

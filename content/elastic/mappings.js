@@ -63,6 +63,24 @@ module.exports = async () => {
           },
         },
       },
+      uniqueIdentifier: {
+        type: 'text',
+        analyzer: 'standard',
+        fields: {
+          idMatch: {
+            type: 'text',
+            analyzer: 'no_punctuation_keyword',
+          },
+          keyword: {
+            type: 'keyword',
+            ignore_above: 256,
+          },
+          folded: {
+            type:       'text',
+            analyzer:   'folded_analyzer',
+          },
+        },
+      },
       date: {
         type: 'text',
       },

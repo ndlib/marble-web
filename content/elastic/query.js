@@ -25,6 +25,7 @@ module.exports = `
           formatTag
           allMetadata
           hasImages
+          uniqueIdentifier
         }
       }
     }

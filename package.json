@@ -7,7 +7,7 @@
     "@akord/rich-markdown-editor": "^11.24.1",
     "@ndlib/gatsby-source-appsync-marble": "*",
     "@ndlib/gatsby-theme-marble": "*",
-    "@okta/okta-auth-js": "^5.5.0",
+    "@okta/okta-auth-js": "^6.8.0",
     "aws-appsync": "^4.1.1",
     "buffer": "^6.0.3",
     "crypto-browserify": "^3.12.0",

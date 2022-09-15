@@ -7,10 +7,10 @@ import { useStaticQuery } from 'gatsby'
 const sq = {
   menusJson: {
     label: 'footer',
-    id: 'footer',
+    menuId: 'footer',
     items: [
       {
-        id: 'footer',
+        menuId: 'footer',
         label: 'label',
         link: 'link',
       },

@@ -21,11 +21,11 @@ export const UserLayout = ({ children, location, showSideMenu }) => {
   const { portfolioUser, portfolioUserLoading } = useUserContext()
   const data = useStaticQuery(graphql`
     {
-      menusJson(id: {eq: "myaccount"}) {
-        id
+      menusJson(menuId: {eq: "myaccount"}) {
+        menuId
         label
         items {
-          id
+          menuId
           label
           link
           icon

@@ -1,9 +1,9 @@
 {
-  "id": "myaccount",
+  "menuId": "myaccount",
   "label": "Portfolios",
   "items": [
     {
-      "id": "portfolios-about",
+      "menuId": "portfolios-about",
       "label": "About Portfolios",
       "link": "/portfolios-about",
       "selectedPatterns": [
@@ -11,7 +11,7 @@
       ]
     },
     {
-      "id": "portfolios-teaching",
+      "menuId": "portfolios-teaching",
       "label": "Teaching with Digital Collections",
       "link": "/portfolios-teaching",
       "selectedPatterns": [

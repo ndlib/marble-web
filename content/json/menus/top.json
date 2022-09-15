@@ -1,9 +1,9 @@
 {
-  "id": "header",
+  "menuId": "header",
   "label": "",
   "items": [
     {
-      "id": "top-browse",
+      "menuId": "top-browse",
       "label": "Browse",
       "link": "/browse",
       "selectedPatterns": [
@@ -13,7 +13,7 @@
       ]
     },
     {
-      "id": "top-portfolios",
+      "menuId": "top-portfolios",
       "label": "Featured",
       "link": "/featured",
       "selectedPatterns": [
@@ -22,7 +22,7 @@
       ]
     },
     {
-      "id": "top-my-account",
+      "menuId": "top-my-account",
       "label": "My Portfolios",
       "link": "/user",
       "selectedPatterns": [
@@ -30,7 +30,7 @@
       ]
     },
     {
-      "id": "top-about",
+      "menuId": "top-about",
       "label": "About",
       "link": "/project-partners",
       "selectedPatterns": [

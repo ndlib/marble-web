@@ -32,7 +32,7 @@ const Page = ({ data, location }) => {
           <Menu location={location} variant='navLeft' items={menu} label={menusJson.label} />
         </NDBrandSection>
         <NDBrandSection variant='defaultWithSidebar'>
-        <NDBrandBreadcrumbs
+          <NDBrandBreadcrumbs
             currentPageTitle={markdownRemark.frontmatter.title}
             breadcrumbs={[{ url: '/project-partners', title: 'About' },{ url: '/project-partners', title: 'Projects and Partners'}]}
           />
@@ -65,17 +65,17 @@ export const query = graphql`
         menu
       }
     }
-    menusJson(id: {eq: $menu}) {
-      id
+    menusJson(menuId: {eq: $menu}) {
+      menuId
       label
       items {
-        id
+        menuId
         label
         link
         icon
         selectedPatterns
         items {
-          id
+          menuId
           label
           link
           icon

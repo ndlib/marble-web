@@ -1,24 +1,24 @@
 {
-  "id": "browse",
+  "menuId": "browse",
   "label": "Browse",
   "items": [
     {
-      "id": "browse-all",
+      "menuId": "browse-all",
       "label": "All",
       "link": "/browse"
     },
     {
-      "id": "browse-timeperiods",
+      "menuId": "browse-timeperiods",
       "label": "Time Periods",
       "link": "/browse/timeperiods"
     },
     {
-      "id": "browse-theme",
+      "menuId": "browse-theme",
       "label": "Theme",
       "link": "/browse/themes"
     },
     {
-      "id": "browse-places",
+      "menuId": "browse-places",
       "label": "Places",
       "link": "/browse/places"
     }

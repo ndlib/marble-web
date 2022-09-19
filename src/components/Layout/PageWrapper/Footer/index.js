@@ -14,11 +14,11 @@ import sx from './sx'
 
 export const menuQuery = graphql`
   query {
-    menusJson(id: {eq: "footer"}) {
-      id
+    menusJson(menuId: {eq: "footer"}) {
+      menuId
       label
       items {
-        id
+        menuId
         label
         link
       }

@@ -118,11 +118,11 @@ export const query = graphql`
         }
       }
     }
-    menusJson(id: {eq: "portfolios"}) {
-      id
+    menusJson(menuId: {eq: "portfolios"}) {
+      menuId
       label
       items {
-        id
+        menuId
         label
         link
         icon

@@ -1,9 +1,9 @@
 {
-  "id": "help",
+  "menuId": "help",
   "label": "About",
   "items": [
     {
-      "id": "help-about",
+      "menuId": "help-about",
       "label": "Project and Partners",
       "link": "/project-partners",
       "selectedPatterns": [
@@ -11,7 +11,7 @@
       ]
     },
     {
-      "id": "help-policies",
+      "menuId": "help-policies",
       "label": "Policies",
       "link": "/policies",
       "selectedPatterns": [
@@ -19,7 +19,7 @@
       ]
     },
     {
-      "id": "help-help",
+      "menuId": "help-help",
       "label": "Help",
       "link": "/help",
       "selectedPatterns": [

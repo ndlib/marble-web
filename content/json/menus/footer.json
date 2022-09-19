@@ -1,29 +1,29 @@
 {
-  "id": "footer",
+  "menuId": "footer",
   "label": "",
   "items": [
     {
-      "id": "footer-about",
+      "menuId": "footer-about",
       "label": "About",
       "link": "/project-partners"
     },
     {
-      "id": "portfolios",
+      "menuId": "portfolios",
       "label": "Portfolios",
       "link": "/featured"
     },
     {
-      "id": "footer-help",
+      "menuId": "footer-help",
       "label": "Help",
       "link": "/help"
     },
     {
-      "id": "accessibility",
+      "menuId": "accessibility",
       "label": "Accessibility",
       "link": "https://www.nd.edu/about/accessibility/"
     },
     {
-      "id": "footer-sitemap",
+      "menuId": "footer-sitemap",
       "label": "Site Map",
       "link": "/sitemap"
     }

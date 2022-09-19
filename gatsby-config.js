@@ -36,10 +36,6 @@ const searchIndex = process.env.SEARCH_INDEX || 'marble'
 
 module.exports = {
   flags: {
-    FAST_DEV: true,
-    PRESERVE_WEBPACK_CACHE: false,
-    LMDB_STORE: false,
-    PARALLEL_SOURCING: false,
   },
   siteMetadata: {
     title: siteName,
@@ -73,7 +69,8 @@ module.exports = {
         // updateFixtures: true,
         // debug: true,
         // logIds: true,
-        // itemList: [{ itemId: 'MSPFEFER_EAD' }],
+        // itemList: [{ itemId: '002204685' }, { itemId: '004789783' }, { itemId: '005095911' }, { itemId: '1978.025.001' }, { itemId: '2008.026.008'}, { itemId: '2000.031' }, { itemId: '2010.030' }, { itemId: 'BPP1001_EAD' }, { itemId: 'MSNEa8006_EAD' }], // front page items
+        // itemList: [{ itemId: 'MSPFEFER_EAD' }], // wrestling collection
         mergeItems: [
           {
             parentId: 'CJF_EAD',
@@ -113,12 +110,8 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-remark',
       options: {
-      // CommonMark mode (default: true)
-        commonmark: true,
         // Footnotes mode (default: true)
         footnotes: true,
-        // Pedantic mode (default: true)
-        pedantic: true,
         // GitHub Flavored Markdown mode (default: true)
         gfm: true,
         // Plugins configs

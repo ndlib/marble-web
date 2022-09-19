@@ -65,17 +65,17 @@ export const query = graphql`
         menu
       }
     }
-    menusJson(id: {eq: $menu}) {
-      id
+    menusJson(menuId: {eq: $menu}) {
+      menuId
       label
       items {
-        id
+        menuId
         label
         link
         icon
         selectedPatterns
         items {
-          id
+          menuId
           label
           link
           icon

@@ -69,7 +69,7 @@ module.exports = {
         // updateFixtures: true,
         // debug: true,
         // logIds: true,
-        // itemList: [{ itemId: '002204685' }, { itemId: '004789783' }, { itemId: '005095911' }, { itemId: '1978.025.001' }, { itemId: '2008.026.008'}, { itemId: '2000.031' }, { itemId: '2010.030' }, { itemId: 'BPP1001_EAD' }, { itemId: 'MSNEa8006_EAD' }], // front page items
+        itemList: [{ itemId: '002204685' }, { itemId: '004789783' }, { itemId: '005095911' }, { itemId: '1978.025.001' }, { itemId: '2008.026.008'}, { itemId: '2000.031' }, { itemId: '2010.030' }, { itemId: 'BPP1001_EAD' }, { itemId: 'MSNEa8006_EAD' }], // front page items
         // itemList: [{ itemId: 'MSPFEFER_EAD' }], // wrestling collection
         mergeItems: [
           {

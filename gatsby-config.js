@@ -30,7 +30,7 @@ const opensearchReadOnlyPassword = process.env.OPENSEARCH_READONLY_PASSWORD || '
 
 const opensearchAuth = encodeURIComponent(opensearchMasterUsername) + ':' + encodeURIComponent(opensearchMasterPassword)
 const readAuth = encodeURIComponent(opensearchReadOnlyUsername) + ':' + encodeURIComponent(opensearchReadOnlyPassword)
-const opensearchIndexingUrl = opensearchEndpoint.replace('https://', 'https://' + opensearchAuth + '@') + ':443'
+const opensearchIndexingUrl = opensearchEndpoint.includes('https://') ? opensearchEndpoint.replace('https://', 'https://' + opensearchAuth + '@') + ':443' : 'https://' + opensearchAuth + '@' + opensearchEndpoint + ':443'
 
 const searchIndex = process.env.SEARCH_INDEX || 'marble'
 
@@ -95,7 +95,7 @@ module.exports = {
       resolve: '@ndlib/gatsby-theme-marble',
       options: {
         iiifViewerUrl: iiifViewerUrl,
-        searchUrl: opensearchEndpoint,
+        searchUrl: opensearchEndpoint.includes('https://') ? opensearchEndpoint : 'https://' + opensearchEndpoint,
         searchIndex: searchIndex,
         readAuth: readAuth,
       },

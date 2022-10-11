@@ -32,7 +32,7 @@ const opensearchAuth = encodeURIComponent(opensearchMasterUsername) + ':' + enco
 const readAuth = encodeURIComponent(opensearchReadOnlyUsername) + ':' + encodeURIComponent(opensearchReadOnlyPassword)
 const opensearchIndexingUrl = opensearchEndpoint.includes('https://') ? opensearchEndpoint.replace('https://', 'https://' + opensearchAuth + '@') + ':443' : 'https://' + opensearchAuth + '@' + opensearchEndpoint + ':443'
 
-const searchIndex = process.env.SEARCH_INDEX || 'marble'
+const searchIndex = process.env.OPENSEARCH_INDEX ||process.env.SEARCH_INDEX || 'marble'
 
 module.exports = {
   flags: {

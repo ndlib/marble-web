@@ -64,7 +64,7 @@ export const Footer = ({ location, variant }) => {
               <span property='addressLocality'>Notre Dame</span>, <span property='addressRegion'>IN</span> <span property='postalCode'>46556</span> <span property='addressCountry'>USA</span>
             </div>
             <div className='footer-phone' property='telephone' content='+1 574-631-5466'>Phone <Link variant='footer' to='tel:+15746315466'>(574) 631–5466</Link></div>
-            <div className='footer-email' property='email'><Link variant='footer' to='mailto:sniteart@nd.edu'>sniteart@nd.edu</Link></div>
+            <div className='footer-email' property='email'><Link variant='footer' to='mailto:RMMACollections@nd.edu'>RMMACollections@nd.edu</Link></div>
           </div>
         </Box>
         <Box sx={{

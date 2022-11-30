@@ -66,6 +66,7 @@ module.exports = {
         iiifRoot: 'https://iiif-manifest.library.nd.edu',
         timePeriodCutoff: 1400,
         useFixtures: useFixtures,
+        skipEmptyAleph: false,
         // updateFixtures: true,
         // debug: true,
         // logIds: true,

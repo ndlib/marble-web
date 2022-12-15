@@ -35,8 +35,8 @@ const opensearchIndexingUrl = opensearchEndpoint.includes('https://') ? opensear
 const searchIndex = process.env.OPENSEARCH_INDEX ||process.env.SEARCH_INDEX || 'marble'
 
 module.exports = {
-  flags: {
-  },
+  trailingSlash: 'never',
+  flags: {},
   siteMetadata: {
     title: siteName,
     subTitle: '',

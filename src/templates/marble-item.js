@@ -163,8 +163,8 @@ export const query = graphql`
       citation
     }
     allMarbleFile(
-      filter: {marbleParent: {slug: {eq: $slug}}, fileType: {eq: "image"}},
-      sort: {fields: sequence, order: ASC},
+      filter: {marbleParent: {slug: {eq: $slug}}, fileType: {eq: "image"}}
+      sort: {sequence: ASC}
       limit: 5
     ) {
       nodes {

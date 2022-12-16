@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@akord/rich-markdown-editor": "^11.24.1",
+    "@ndlib/aws-opensearch": "^1.0.8",
     "@ndlib/gatsby-source-appsync-marble": "*",
     "@ndlib/gatsby-theme-marble": "*",
     "@okta/okta-auth-js": "^6.8.1",
@@ -81,8 +82,8 @@
     "moduleNameMapper": {
       ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy",
       ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/file-mock.js",
-      "^gatsby-page-utils/(.*)$": "gatsby-page-utils/dist/$1", 
-      "^gatsby-core-utils/(.*)$": "gatsby-core-utils/dist/$1", 
+      "^gatsby-page-utils/(.*)$": "gatsby-page-utils/dist/$1",
+      "^gatsby-core-utils/(.*)$": "gatsby-core-utils/dist/$1",
       "^gatsby-plugin-utils/(.*)$": [
         "gatsby-plugin-utils/dist/$1",
         "gatsby-plugin-utils/$1"

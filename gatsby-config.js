@@ -1,6 +1,5 @@
 const path = require('path')
 const elasticQuery = require('./content/elastic/query')
-const elasticSettings = require('./content/elastic/settings')
 const elasticMappings = require('./content/elastic/mappings')
 const elasticSelector = require('./content/elastic/selector')
 const activeEnv =
@@ -23,16 +22,13 @@ const iiifViewerUrl = process.env.IIIF_VIEWER_URL || 'https://viewer-iiif.librar
 
 // OpenSearch
 const opensearchEndpoint = process.env.OPENSEARCH_ENDPOINT || ''
-const opensearchMasterUsername = process.env.OPENSEARCH_MASTER_USERNAME
 const opensearchMasterPassword = process.env.OPENSEARCH_MASTER_PASSWORD
 const opensearchReadOnlyUsername = process.env.OPENSEARCH_READONLY_USERNAME || 'readOnly'
 const opensearchReadOnlyPassword = process.env.OPENSEARCH_READONLY_PASSWORD || 'readOnly1!'
 
-const opensearchAuth = encodeURIComponent(opensearchMasterUsername) + ':' + encodeURIComponent(opensearchMasterPassword)
 const readAuth = encodeURIComponent(opensearchReadOnlyUsername) + ':' + encodeURIComponent(opensearchReadOnlyPassword)
-const opensearchIndexingUrl = opensearchEndpoint.includes('https://') ? opensearchEndpoint.replace('https://', 'https://' + opensearchAuth + '@') + ':443' : 'https://' + opensearchAuth + '@' + opensearchEndpoint + ':443'
 
-const searchIndex = process.env.OPENSEARCH_INDEX ||process.env.SEARCH_INDEX || 'marble'
+const searchIndex = process.env.OPENSEARCH_INDEX || process.env.SEARCH_INDEX || 'marble'
 
 module.exports = {
   trailingSlash: 'never',
@@ -80,14 +76,17 @@ module.exports = {
       },
     },
     {
-      resolve: '@ndlib/gatsby-plugin-marble-elasticsearch',
+      resolve: '@ndlib/aws-opensearch',
       options: {
-        url: opensearchIndexingUrl,
-        searchIndex: searchIndex,
-        region: 'us-east-1',
+        opensearch_hostname: opensearchEndpoint,
+        opensearch_password: opensearchMasterPassword,
+        opensearch_port: 443,
+        opensearch_protocol: 'https',
+        index_name: searchIndex,
+        content_grouping: 'bulk',
         query: elasticQuery,
+        unique_id:'id',
         selector: elasticSelector,
-        settings: elasticSettings,
         mappings: elasticMappings,
       },
     },

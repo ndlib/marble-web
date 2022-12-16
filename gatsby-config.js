@@ -28,7 +28,7 @@ const opensearchReadOnlyPassword = process.env.OPENSEARCH_READONLY_PASSWORD || '
 
 const readAuth = encodeURIComponent(opensearchReadOnlyUsername) + ':' + encodeURIComponent(opensearchReadOnlyPassword)
 
-const searchIndex = process.env.OPENSEARCH_INDEX ||process.env.SEARCH_INDEX || 'marble'
+const searchIndex = process.env.OPENSEARCH_INDEX || process.env.SEARCH_INDEX || 'marble'
 
 module.exports = {
   trailingSlash: 'never',
@@ -78,7 +78,7 @@ module.exports = {
     {
       resolve: '@ndlib/aws-opensearch',
       options: {
-        opensearch_hostname: opensearchEndpoint, 
+        opensearch_hostname: opensearchEndpoint,
         opensearch_password: opensearchMasterPassword,
         opensearch_port: 443,
         opensearch_protocol: 'https',

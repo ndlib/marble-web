@@ -7,7 +7,7 @@ import { graphql } from 'gatsby'
 import queryString from 'query-string'
 import Layout from '../components/Layout'
 import Seo from '@ndlib/gatsby-theme-marble/src/components/Shared/Seo'
-import CollectionLayout from '@ndlib/gatsby-theme-marble/src/components/Shared/MarbleItem/CollectionLayout'
+import CollectionNewLayout from '@ndlib/gatsby-theme-marble/src/components/Shared/MarbleItem/CollectionNewLayout'
 import ItemLayout from '@ndlib/gatsby-theme-marble/src/components/Shared/MarbleItem/ItemLayout'
 import RelatedItemsFromSearch from '@ndlib/gatsby-theme-marble/src/components/Shared/MarbleItem/RelatedItemsFromSearch'
 import NDBrandSection from '@ndlib/gatsby-theme-marble/src/components/Shared/NDBrand/Section'
@@ -48,20 +48,22 @@ const MarbleItemPage = ({ data, location }) => {
             <UserAnnotation location={location} itemId={marbleItem.marbleId} />
             {marbleItem.display === 'collection'
               ? (
-                <CollectionLayout
+                <CollectionNewLayout
                   location={location}
                   marbleItem={marbleItem}
                 />
               )
               : (
-                <ItemLayout
-                  location={location}
-                  marbleItem={marbleItem}
-                  allMarbleFile={allMarbleFile}
-                />
+                <>
+                  <ItemLayout
+                    location={location}
+                    marbleItem={marbleItem}
+                    allMarbleFile={allMarbleFile}
+                  />
+                  <RelatedItemsFromSearch marbleItem={marbleItem} />
+                </>
               )
             }
-            <RelatedItemsFromSearch marbleItem={marbleItem} />
             {debug
               ? <pre>{JSON.stringify(data, null, 2)}</pre>
               : null
